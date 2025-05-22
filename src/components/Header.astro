@@ -1,0 +1,66 @@
+---
+---
+
+<div class="image_container">
+  <img src="/miku.jpg" alt="Miku" class="main" />
+  <img src="/play.svg" class="icon">
+  <img src="down.svg" class="icon_secondary" >
+</div>
+
+<style>
+  .image_container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+
+  .main{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: 8rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 100%;
+    transition: transform 1s;
+    cursor: pointer
+  }
+
+  .icon_secondary{
+    position: absolute;
+    bottom: 1rem;
+    width: 4rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: rotate(90deg);
+    animation: move infinite 2s alternate;
+  }
+
+  .icon:hover{
+    transition: transform 1s;
+    transform: scale(1.1);
+  }
+
+  @keyframes move {
+    100%{
+      transform: scale(1.05) rotate(90deg);
+      opacity: 1;
+    }
+    0%{
+      transform: scale(0.95) rotate(90deg);
+      opacity: .5;
+    }
+      
+    
+  }
+</style>
