@@ -12,14 +12,22 @@
     let current = document.getElementById(character);
     let currentButton = document.getElementById(character+"Button")
     
+    const movementC = gsap.to(current, {
+                x: -400,
+                duration: 50,
+                yoyo: true,
+                repeat: -1,
+                ease: "Power1.inOut"
+              })
 
     currentButton?.addEventListener("mouseenter",()=>{
         anyActive = character;
         gsap.to(current, {
             opacity: 1,
             zIndex: 20,
-            duration: 0.5,
+            duration: 0.3,
             })
+        movementC.play();
         gsap.to(iconImages,{
             opacity: 0,        
             })
@@ -31,8 +39,10 @@
         gsap.to(current, {
             opacity: 0,
             zIndex: 10,
-            duration: 0.5,
+            duration: 0.3,
             onComplete: ()=>{
+              movementC.restart();
+              movementC.pause();
                 if(anyActive === ""){
                     gsap.to(iconImages,{
                         opacity: 1,
@@ -113,61 +123,61 @@
     id="sidebarImages"
     class="custom_gradient w-6/12 bg-black absolute h-[100vh] top-0 opacity-0 hidden"
   >
-    <ul class="flex justify-center items-center h-full">
-      <li><img id="iconImages" class="z-0" src="cosplayer.png" /></li>
-      <li>
+    <ul class="h-full w-full relative overflow-hidden">
+      <li class="flex justify-center items-center w-full h-full"><img id="iconImages" class="z-0" src="cosplayer.png" /></li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]" class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="sailormoon"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/sailormoon.jpeg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="mikasa"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/mikasa.jpeg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="frieren"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/frieren.jpg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="hinata"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/hinata.jpg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="rukia"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/rukia.jpg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="zero"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/zero.jpg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="matoko"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/matoko.jpg"
         />
       </li>
-      <li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="nao"
-          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/nao.jpg"
         />
       </li>
