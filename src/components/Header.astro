@@ -1,8 +1,49 @@
 <script>
-  import type { z } from "astro:content";
-import { gsap } from "gsap";
+  import { gsap } from "gsap";
   const menuIcon = document.getElementById("menuIcon");
   const xIcon = document.getElementById("xIcon");
+  const sidebar = document.getElementById("sidebar");
+  const sidebarImages = document.getElementById("sidebarImages");
+  const iconImages = document.getElementById("iconImages");
+
+  const characters = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao"]
+  let anyActive = "";
+  characters.forEach((character)=>{
+    let current = document.getElementById(character);
+    let currentButton = document.getElementById(character+"Button")
+    
+
+    currentButton?.addEventListener("mouseenter",()=>{
+        anyActive = character;
+        gsap.to(current, {
+            opacity: 1,
+            zIndex: 20,
+            duration: 0.5,
+            })
+        gsap.to(iconImages,{
+            opacity: 0,        
+            })
+        
+    })
+
+    currentButton?.addEventListener("mouseleave",()=>{
+        anyActive = "";
+        gsap.to(current, {
+            opacity: 0,
+            zIndex: 10,
+            duration: 0.5,
+            onComplete: ()=>{
+                if(anyActive === ""){
+                    gsap.to(iconImages,{
+                        opacity: 1,
+                        zIndex: 0,
+                        delay: .2
+                    })
+                }
+            }
+        })
+    })
+  })
 
   menuIcon?.addEventListener("click", () => {
     gsap.to(menuIcon, {
@@ -12,61 +53,190 @@ import { gsap } from "gsap";
       zIndex: 20,
       onComplete: () => {
         gsap.to(xIcon, {
-            opacity: 1,
-            scale: 1,
-            zIndex: 30
-        })
-      }
-    })})
+          opacity: 1,
+          scale: 1,
+          zIndex: 30,
+        });
+        gsap.to(sidebar, {
+          right: 0,
+        });
+        gsap.to(sidebarImages, {
+          opacity: 1,
+          display: "block",
+          delay: 0.5,
+        });
+      },
+    });
+  });
 
-    xIcon?.addEventListener("click", () => {
-        gsap.to(xIcon, {
-            opacity: 0,
-            scale: 0.5,
-            duration: 0.3,
-            zIndex: 20,
-            onComplete: () => {
-                gsap.to(menuIcon, {
-                    opacity: 1,
-                    scale: 1,
-                    zIndex: 30
-                })
-            }
-        })
-    })
-    
+  xIcon?.addEventListener("click", () => {
+    gsap.to(xIcon, {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.3,
+      zIndex: 20,
+      onComplete: () => {
+        gsap.to(menuIcon, {
+          opacity: 1,
+          scale: 1,
+          zIndex: 30,
+          delay: 0.2,
+        });
+        gsap.to(sidebar, {
+          right: "-50%",
+          delay: 0.2,
+        });
+        gsap.to(sidebarImages, {
+          opacity: 0,
+          display: "hidden",
+        });
+      },
+    });
+  });
 </script>
 
 <div class="fixed top-0 w-full m-auto">
-    <div class="flex relative content-between w-11/12 m-auto mt-18 pt-3">
-        <img src="/cosplayer.png" />
-        <img src="/menu.svg" id="menuIcon" class="menu_icon z-30 cursor-pointer absolute right-8 top-3">
-        <img src="/xmark.svg" id="xIcon" class="menu_icon z-20 cursor-pointer absolute right-8 top-3 icon_inactive">
-    </div>
-    <div class="absolute h-[100vh] bg-[rgb(42,0,48)] w-6/12 right-0 top-0">
-        <ul class="flex content-center mt-18 ml-15 text-xl text-white font-semibold">
-            <li class="cursor-pointer py-3 px-5 item_active"> Characters. </li>
-            <li class="cursor-pointer py-3 px-5 "> Pages. </li>
-            <li class="cursor-pointer py-3 px-5 "> Trailers. </li>
-            <li class="cursor-pointer py-3 px-5 "> Download. </li>
-        </ul>
-    </div>
+  <div class="flex relative content-between w-11/12 m-auto mt-18 pt-3">
+    <img src="/cosplayer.png" class="w-10" />
+    <img
+      src="/menu.svg"
+      id="menuIcon"
+      class="menu_icon z-30 cursor-pointer absolute right-8 top-3 w-10"
+    />
+    <img
+      src="/xmark.svg"
+      id="xIcon"
+      class="menu_icon z-20 cursor-pointer absolute right-8 top-3 opacity-0 bg-gray-800/40 rounded-full p-2 w-10"
+    />
+  </div>
+  <div
+    id="sidebarImages"
+    class="custom_gradient w-6/12 bg-black absolute h-[100vh] top-0 opacity-0 hidden"
+  >
+    <ul class="flex justify-center items-center h-full">
+      <li><img id="iconImages" class="z-0" src="cosplayer.png" /></li>
+      <li>
+        <img
+          id="sailormoon"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/sailormoon.jpeg"
+        />
+      </li>
+      <li>
+        <img
+          id="mikasa"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/mikasa.jpeg"
+        />
+      </li>
+      <li>
+        <img
+          id="frieren"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/frieren.jpg"
+        />
+      </li>
+      <li>
+        <img
+          id="hinata"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/hinata.jpg"
+        />
+      </li>
+      <li>
+        <img
+          id="rukia"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/rukia.jpg"
+        />
+      </li>
+      <li>
+        <img
+          id="zero"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/zero.jpg"
+        />
+      </li>
+      <li>
+        <img
+          id="matoko"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/matoko.jpg"
+        />
+      </li>
+      <li>
+        <img
+          id="nao"
+          class="absolute object-cover top-0 left-0 h-full opacity-0 z-0"
+          src="/characters/nao.jpg"
+        />
+      </li>
+    </ul>
+  </div>
+  <div
+    id="sidebar"
+    class="absolute h-[100vh] pl-15 bg-[rgb(42,0,48)] w-6/12 right-[-50%] top-0 flex flex-col justify-between pb-10"
+  >
+    <ul class="flex content-center mt-18 text-xl text-white font-semibold">
+      <li class="cursor-pointer py-3 px-5 item_active">Characters.</li>
+      <li class="cursor-pointer py-3 px-5">Pages.</li>
+      <li class="cursor-pointer py-3 px-5">Trailers.</li>
+      <li class="cursor-pointer py-3 px-5">Download.</li>
+    </ul>
+    <ul
+      class="font-bold flex flex-col text-6xl items-start text-white uppercase gap-2 tracking-tighter"
+    >
+      <li id="sailormoonButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Sailon Moon
+      </li>
+      <li id="mikasaButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Mikasa Ackerman
+      </li>
+      <li id="frierenButton" class="cursor-pointer hover:text-pink-400 duration-200">Frieren</li>
+      <li id="hinataButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Hinata Hyuga
+      </li>
+      <li id="rukiaButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Rukia Kuchiki
+      </li>
+      <li id="zeroButton" class="cursor-pointer hover:text-pink-400 duration-200">Zero Two</li>
+      <li id="matokoButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Motoko Kusanagi
+      </li>
+      <li id="naoButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Nao Tomori
+      </li>
+    </ul>
+    <ul class="flex justify-between w-11/12 text-xl">
+      <li class="flex gap-2 text-white font-bold items-center cursor-pointer">
+        <img class="w-5"
+          src="/language.svg" /> English 
+          <img
+          class="w-5 rotate-180"
+          src="/arrow.svg"
+        />
+      </li>
+      <li class="flex gap-2 text-white font-bold items-center cursor-pointer">
+        Motion <img class="w-5 rotate-180" src="/arrow.svg" />
+      </li>
+    </ul>
+  </div>
 </div>
 
 <style>
-    img{
-        width: 2.5rem;
-        object-fit: cover;
-    }
+  .custom_gradient {
+    background: #410541;
+    background: radial-gradient(
+      circle,
+      rgba(65, 5, 65, 1) 13%,
+      rgba(50, 0, 50, 1) 40%,
+      rgba(42, 0, 48, 1) 100%
+    );
+  }
 
-    .icon_inactive{
-        opacity: 0;
-    }
-
-    .item_active{
-        background-color: white;
-        color: black;
-        border-radius: 2rem;
-    }
-    
+  .item_active {
+    background-color: white;
+    color: black;
+    border-radius: 2rem;
+  }
 </style>
