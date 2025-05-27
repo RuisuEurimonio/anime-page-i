@@ -1,66 +1,72 @@
----
----
+<script>
+  import type { z } from "astro:content";
+import { gsap } from "gsap";
+  const menuIcon = document.getElementById("menuIcon");
+  const xIcon = document.getElementById("xIcon");
 
-<div class="image_container">
-  <img src="/miku.jpg" alt="Miku" class="main" />
-  <img src="/play.svg" class="icon">
-  <img src="down.svg" class="icon_secondary" >
+  menuIcon?.addEventListener("click", () => {
+    gsap.to(menuIcon, {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.3,
+      zIndex: 20,
+      onComplete: () => {
+        gsap.to(xIcon, {
+            opacity: 1,
+            scale: 1,
+            zIndex: 30
+        })
+      }
+    })})
+
+    xIcon?.addEventListener("click", () => {
+        gsap.to(xIcon, {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.3,
+            zIndex: 20,
+            onComplete: () => {
+                gsap.to(menuIcon, {
+                    opacity: 1,
+                    scale: 1,
+                    zIndex: 30
+                })
+            }
+        })
+    })
+    
+</script>
+
+<div class="fixed top-0 w-full m-auto">
+    <div class="flex relative content-between w-11/12 m-auto mt-18 pt-3">
+        <img src="/cosplayer.png" />
+        <img src="/menu.svg" id="menuIcon" class="menu_icon z-30 cursor-pointer absolute right-8 top-3">
+        <img src="/xmark.svg" id="xIcon" class="menu_icon z-20 cursor-pointer absolute right-8 top-3 icon_inactive">
+    </div>
+    <div class="absolute h-[100vh] bg-[rgb(42,0,48)] w-6/12 right-0 top-0">
+        <ul class="flex content-center mt-18 ml-15 text-xl text-white font-semibold">
+            <li class="cursor-pointer py-3 px-5 item_active"> Characters. </li>
+            <li class="cursor-pointer py-3 px-5 "> Pages. </li>
+            <li class="cursor-pointer py-3 px-5 "> Trailers. </li>
+            <li class="cursor-pointer py-3 px-5 "> Download. </li>
+        </ul>
+    </div>
 </div>
 
 <style>
-  .image_container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-  }
-
-  .main{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  .icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-    width: 8rem;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 100%;
-    transition: transform 1s;
-    cursor: pointer
-  }
-
-  .icon_secondary{
-    position: absolute;
-    bottom: 1rem;
-    width: 4rem;
-    left: 0;
-    right: 0;
-    margin: auto;
-    transform: rotate(90deg);
-    animation: move infinite 2s alternate;
-  }
-
-  .icon:hover{
-    transition: transform 1s;
-    transform: scale(1.1);
-  }
-
-  @keyframes move {
-    100%{
-      transform: scale(1.05) rotate(90deg);
-      opacity: 1;
+    img{
+        width: 2.5rem;
+        object-fit: cover;
     }
-    0%{
-      transform: scale(0.95) rotate(90deg);
-      opacity: .5;
+
+    .icon_inactive{
+        opacity: 0;
     }
-      
+
+    .item_active{
+        background-color: white;
+        color: black;
+        border-radius: 2rem;
+    }
     
-  }
 </style>
