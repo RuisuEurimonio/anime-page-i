@@ -70,21 +70,12 @@
   })
 
   movementInputContainer?.addEventListener("click", ()=>{
-    if(fullMovementActive){
       gsap.to(movementInputBall,{
-        x: 22,
+        x: fullMovementActive ? 22 : 0,
         duration: .5,
         ease: "power3.out"
       })
-      fullMovementActive = !fullMovementActive
-    }else{
-      gsap.to(movementInputBall,{
-        x: 0,
-        duration: .5,
-        ease: "power3.out"
-      })
-      fullMovementActive = !fullMovementActive
-    }
+      fullMovementActive = !fullMovementActive;
   })
 
   menuIcon?.addEventListener("click", () => {
@@ -137,87 +128,44 @@
   });
 
   motion?.addEventListener("click",()=>{
-    if(openMotion){
       gsap.to(motionContainer,{
-        opacity: 0,
-        zIndex: -10,
+        opacity: openMotion ? 0 : 1,
+        zIndex: openMotion ? -10 : 30,
         duration: 0.2
       })
       gsap.to(motionArrow,{
-        rotate: window.innerWidth > 768 ? 180 : 360,
+        rotate: openMotion ? (window.innerWidth > 768 ? 180 : 360) : (window.innerWidth > 768 ? 360 : 180),
         duration: 1
       })
       gsap.to(charactersList,{
-        opacity: 1,
+        opacity: openMotion ? 1 : 0,
         duration: 0.2
       })
       gsap.to(language,{
-        zIndex: 40
+        zIndex: openMotion ? 40 : 20
       })
       openMotion = !openMotion
-    }else{
-      gsap.to(motionContainer,{
-        opacity: 1,
-        zIndex: 30,
-        duration: 0.2
-      })
-      gsap.to(motionArrow,{
-        rotate: window.innerWidth > 768 ? 360 : 180,
-        duration: 1
-      })
-      gsap.to(charactersList,{
-        opacity: 0,
-        duration: 0.2
-      })
-      gsap.to(language,{
-        zIndex: 20
-      })
-      openMotion = !openMotion
-    }
   })
 
   language?.addEventListener("click", ()=>{
-    if(openLanguage){
       gsap.to(arrowLanguage, {
-        rotate: window.innerWidth > 768 ? 180 : 360,
+        rotate: openLanguage ? (window.innerWidth > 768 ? 180 : 360) : (window.innerWidth > 768 ? 360 : 180),
         duration: 1
       })
       gsap.to(listLanguages,{
-        opacity: 0,
-        zIndex: -10,
+        opacity: openLanguage ? 0 : 1,
+        zIndex: openLanguage ? -10 : 30,
         duration: 0.2
       })
       gsap.to(charactersList, {
-          opacity: 1,
-          zIndex: 30,
+          opacity: openLanguage ? 1 : 0,
+          zIndex: openLanguage ? 30 : -10,
           duration: 0.2
         })
         gsap.to(motion,{
-        zIndex: 40
+        zIndex: openLanguage ? 40 : 20
         })
       openLanguage = !openLanguage;
-    }else{
-        gsap.to(charactersList, {
-          opacity: 0,
-          zIndex: -10,
-          duration: 0.2
-        })
-        gsap.to(listLanguages,{
-          opacity: 1,
-          zIndex: 30,
-          duration: 0.2
-        })
-        gsap.to(motion,{
-          zIndex: 20
-        })
-        gsap.to(arrowLanguage, {
-        rotate: window.innerWidth > 768 ? 360 : 180,
-        duration: 1
-      })
-      openLanguage = !openLanguage;
-    }
-
-    
   })
 </script>
 
