@@ -10,7 +10,13 @@
   const charactersList = document.getElementById("charactersList");
   const listLanguages = document.getElementById("listLanguages");
   const motion = document.getElementById("motion");
+  const motionContainer = document.getElementById("motionContainer");
+  const motionArrow = document.getElementById("motionArrow");
+  const movementInputContainer = document.getElementById("movementInputContainer");
+  const movementInputBall = document.getElementById("movementInputBall");
   let openLanguage = false;
+  let openMotion = false;
+  let fullMovementActive = true;
 
   const sidebarMovementValue = 768 > window.innerWidth ? "-91.6667%" : "-50%";
 
@@ -63,6 +69,24 @@
     })
   })
 
+  movementInputContainer?.addEventListener("click", ()=>{
+    if(fullMovementActive){
+      gsap.to(movementInputBall,{
+        x: 22,
+        duration: .5,
+        ease: "power3.out"
+      })
+      fullMovementActive = !fullMovementActive
+    }else{
+      gsap.to(movementInputBall,{
+        x: 0,
+        duration: .5,
+        ease: "power3.out"
+      })
+      fullMovementActive = !fullMovementActive
+    }
+  })
+
   menuIcon?.addEventListener("click", () => {
     gsap.to(menuIcon, {
       opacity: 0,
@@ -112,6 +136,46 @@
     });
   });
 
+  motion?.addEventListener("click",()=>{
+    if(openMotion){
+      gsap.to(motionContainer,{
+        opacity: 0,
+        zIndex: -10,
+        duration: 0.2
+      })
+      gsap.to(motionArrow,{
+        rotate: window.innerWidth > 768 ? 180 : 360,
+        duration: 1
+      })
+      gsap.to(charactersList,{
+        opacity: 1,
+        duration: 0.2
+      })
+      gsap.to(language,{
+        zIndex: 40
+      })
+      openMotion = !openMotion
+    }else{
+      gsap.to(motionContainer,{
+        opacity: 1,
+        zIndex: 30,
+        duration: 0.2
+      })
+      gsap.to(motionArrow,{
+        rotate: window.innerWidth > 768 ? 360 : 180,
+        duration: 1
+      })
+      gsap.to(charactersList,{
+        opacity: 0,
+        duration: 0.2
+      })
+      gsap.to(language,{
+        zIndex: 20
+      })
+      openMotion = !openMotion
+    }
+  })
+
   language?.addEventListener("click", ()=>{
     if(openLanguage){
       gsap.to(arrowLanguage, {
@@ -120,21 +184,31 @@
       })
       gsap.to(listLanguages,{
         opacity: 0,
+        zIndex: -10,
         duration: 0.2
       })
       gsap.to(charactersList, {
           opacity: 1,
+          zIndex: 30,
           duration: 0.2
+        })
+        gsap.to(motion,{
+        zIndex: 40
         })
       openLanguage = !openLanguage;
     }else{
         gsap.to(charactersList, {
           opacity: 0,
+          zIndex: -10,
           duration: 0.2
         })
         gsap.to(listLanguages,{
           opacity: 1,
+          zIndex: 30,
           duration: 0.2
+        })
+        gsap.to(motion,{
+          zIndex: 20
         })
         gsap.to(arrowLanguage, {
         rotate: window.innerWidth > 768 ? 360 : 180,
@@ -303,7 +377,7 @@
           id="arrowLanguage"
         />
       </li>
-      <div id="listLanguages" class="absolute z-30 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0"> 
+      <div id="listLanguages" class="absolute -z-10 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0"> 
           <ul class="relative top-1/6 ml-15 flex flex-col gap-5 text-sm items-baseline text-white font-bold
               md:text-2xl
           ">
@@ -322,9 +396,19 @@
             <li> <input type="radio"> 简体中文</li>
           </ul>
         </div>
-      <li class="flex gap-2 text-white font-bold items-center cursor-pointer" id="motion">
-        Motion <img class="w-5 md:rotate-180" src="/arrow.svg" />
+      <li class="flex gap-2 text-white font-bold items-center cursor-pointer z-40" id="motion">
+        Motion <img class="w-5 md:rotate-180" src="/arrow.svg" id="motionArrow"/>
       </li>
+      <div class="absolute -z-10 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0" id="motionContainer">
+        <div class="relative top-3/12 left-0 right-0 mx-auto w-2/3 bg-purple-950 px-6 py-10
+            md:top-5/12
+        ">
+          <input type="checkbox" class="sr-only" id="movementInput"> 
+          <label id="movementInputContainer" for="movementInput" class="absolute top-10 right-10 w-14 h-8 bg-gray-800 border-2 rounded-2xl flex items-center cursor-pointer"> <div id="movementInputBall" class="bg-black size-6 rounded-full ml-0.5"> </div> </label>
+          <h2 class="font-semibold text-lg text-white"> Reducir movimiento </h2>
+          <p class="text-lg text-shadow-fuchsia-500 mt-2"> Reduce al mínimo las animaciones, los efectos dinámicos y el movimiento visual para aumentar el rendimiento. </p>
+        </div> 
+      </div>
     </ul>
   </div>
 </div>
@@ -351,3 +435,4 @@ background: linear-gradient(90deg, rgba(42, 0, 48, 1) 0%, rgba(50, 0, 50, 1) 71%
     border-radius: 2rem;
   }
 </style>
+
