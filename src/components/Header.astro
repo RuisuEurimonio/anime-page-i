@@ -5,6 +5,12 @@
   const sidebar = document.getElementById("sidebar");
   const sidebarImages = document.getElementById("sidebarImages");
   const iconImages = document.getElementById("iconImages");
+  const language = document.getElementById("language");
+  const arrowLanguage = document.getElementById("arrowLanguage");
+  const charactersList = document.getElementById("charactersList");
+  const listLanguages = document.getElementById("listLanguages");
+  const motion = document.getElementById("motion");
+  let openLanguage = false;
 
   const sidebarMovementValue = 768 > window.innerWidth ? "-91.6667%" : "-50%";
 
@@ -105,6 +111,40 @@
       },
     });
   });
+
+  language?.addEventListener("click", ()=>{
+    if(openLanguage){
+      gsap.to(arrowLanguage, {
+        rotate: window.innerWidth > 768 ? 180 : 360,
+        duration: 1
+      })
+      gsap.to(listLanguages,{
+        opacity: 0,
+        duration: 0.2
+      })
+      gsap.to(charactersList, {
+          opacity: 1,
+          duration: 0.2
+        })
+      openLanguage = !openLanguage;
+    }else{
+        gsap.to(charactersList, {
+          opacity: 0,
+          duration: 0.2
+        })
+        gsap.to(listLanguages,{
+          opacity: 1,
+          duration: 0.2
+        })
+        gsap.to(arrowLanguage, {
+        rotate: window.innerWidth > 768 ? 360 : 180,
+        duration: 1
+      })
+      openLanguage = !openLanguage;
+    }
+
+    
+  })
 </script>
 
 <div class="fixed top-0 w-full m-auto">
@@ -221,7 +261,7 @@
           md:py-3 md:px-5
       ">Download.</li>
     </ul>
-    <ul
+    <ul id="charactersList"
       class="font-bold flex flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3
           sm:textl-xl
           md:text-2xl  md:translate-y-0
@@ -251,19 +291,39 @@
         Nao Tomori
       </li>
     </ul>
-    <ul class="flex w-11/12 text-sm
+    <ul class="flex w-11/12 text-sm gap-2
         md:text-xl md:justify-between
     ">
-      <li class="flex gap-2 text-white font-bold items-center cursor-pointer">
+      <li class="flex gap-2 text-white font-bold items-center cursor-pointer z-40" id="language">
         <img class="w-5"
           src="/language.svg" /> English 
           <img
-          class="w-5 rotate-180"
+          class="w-5 md:rotate-180"
           src="/arrow.svg"
+          id="arrowLanguage"
         />
       </li>
-      <li class="flex gap-2 text-white font-bold items-center cursor-pointer">
-        Motion <img class="w-5 rotate-180" src="/arrow.svg" />
+      <div id="listLanguages" class="absolute z-30 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0"> 
+          <ul class="relative top-1/6 ml-15 flex flex-col gap-5 text-sm items-baseline text-white font-bold
+              md:text-2xl
+          ">
+            <li> <input type="radio"> English</li>
+            <li> <input type="radio"> Deutsch</li>
+            <li> <input type="radio"> Español</li>
+            <li> <input type="radio"> Español de lationoamerica</li>
+            <li> <input type="radio"> Français</li>
+            <li> <input type="radio"> Italiano</li>
+            <li> <input type="radio"> 日本語</li>
+            <li> <input type="radio"> 한국어</li>
+            <li> <input type="radio"> Polski</li>
+            <li> <input type="radio"> Português do Brasil</li>
+            <li> <input type="radio"> Русский</li>
+            <li> <input type="radio"> 繁體中文</li>
+            <li> <input type="radio"> 简体中文</li>
+          </ul>
+        </div>
+      <li class="flex gap-2 text-white font-bold items-center cursor-pointer" id="motion">
+        Motion <img class="w-5 md:rotate-180" src="/arrow.svg" />
       </li>
     </ul>
   </div>
@@ -278,6 +338,11 @@
       rgba(50, 0, 50, 1) 40%,
       rgba(42, 0, 48, 1) 100%
     );
+  }
+
+  .custom_background{
+    background: #2A0030;
+background: linear-gradient(90deg, rgba(42, 0, 48, 1) 0%, rgba(50, 0, 50, 1) 71%, rgba(42, 0, 48, 0) 100%);
   }
 
   .item_active {
