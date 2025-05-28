@@ -1,5 +1,6 @@
 <script>
-  import { gsap } from "gsap";
+  import type { toCodes } from "astro:i18n";
+import { gsap } from "gsap";
   const menuIcon = document.getElementById("menuIcon");
   const xIcon = document.getElementById("xIcon");
   const sidebar = document.getElementById("sidebar");
@@ -8,21 +9,28 @@
   const language = document.getElementById("language");
   const arrowLanguage = document.getElementById("arrowLanguage");
   const charactersList = document.getElementById("charactersList");
+  const animesList = document.getElementById("animesList");
   const listLanguages = document.getElementById("listLanguages");
   const motion = document.getElementById("motion");
   const motionContainer = document.getElementById("motionContainer");
   const motionArrow = document.getElementById("motionArrow");
   const movementInputContainer = document.getElementById("movementInputContainer");
   const movementInputBall = document.getElementById("movementInputBall");
+  const charactersId = document.getElementById("characters");
+  const characterImages = document.getElementById("characterImages");
+  const animes = document.getElementById("animes");
+  const animeImages = document.getElementById("animeImages");
+
+
   let openLanguage = false;
   let openMotion = false;
   let fullMovementActive = true;
 
   const sidebarMovementValue = 768 > window.innerWidth ? "-91.6667%" : "-50%";
 
-  const characters = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao"]
+  const images = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao", "chainsaw", "jujutsu", "kaijuu", "leveling", "mashle", "Oshi"]
   let anyActive = "";
-  characters.forEach((character)=>{
+  images.forEach((character)=>{
     let current = document.getElementById(character);
     let currentButton = document.getElementById(character+"Button")
     
@@ -167,6 +175,78 @@
         })
       openLanguage = !openLanguage;
   })
+
+  animes?.addEventListener("click", ()=>{
+    
+    gsap.to(characterImages,{
+      display: "none",
+      opacity:  0,
+      onComplete: ()=>{
+        gsap.to(animeImages,{
+          display: "block",
+          opacity:  1,
+          duration: 2
+        })
+      }
+    })
+    gsap.to(charactersList,{
+      display: "none",
+      opacity:  0,
+      onComplete: ()=>{
+        gsap.to(animesList,{
+          display: "block",
+          opacity:  1,
+          duration: 2
+        })
+      }
+    })
+    gsap.to(charactersId,{
+      color: "white",
+      background: "none",
+      onComplete: ()=>{
+        gsap.to(animes,{
+          color: "black",
+          background: "white",
+        })
+      }
+    })
+  })
+
+  charactersId?.addEventListener("click", ()=>{
+    
+    gsap.to(animeImages,{
+      display: "none",
+      opacity:  0,
+      onComplete: ()=>{
+        gsap.to(characterImages,{
+          display: "block",
+          opacity:  1,
+          duration: 2
+        })
+      }
+    })
+    gsap.to(animesList,{
+      display: "none",
+      opacity:  0,
+      onComplete: ()=>{
+        gsap.to(charactersList,{
+          display: "block",
+          opacity:  1,
+          duration: 2
+        })
+      }
+    })
+    gsap.to(animes,{
+      color: "white",
+      background: "none",
+      onComplete: ()=>{
+        gsap.to(charactersId,{
+          color: "black",
+          background: "white",
+        })
+      }
+    })
+  })
 </script>
 
 <div class="fixed top-0 w-full m-auto">
@@ -196,10 +276,10 @@
         md:w-6/12
     "
   >
-    <ul class="h-full w-full relative overflow-hidden">
-      <li class="justify-center items-center w-full h-full hidden
+    <ul class="h-full w-full relative overflow-hidden" id="characterImages">
+      <li class="justify-center items-center w-full h-full
         md:flex
-      "><img id="iconImages" class="z-0" src="cosplayer.png" /></li>
+      "><img id="iconImages" class="z-0 hidden md:block" src="cosplayer.png" /></li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]" class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="sailormoon"
@@ -257,6 +337,53 @@
         />
       </li>
     </ul>
+    <ul class="h-full w-full relative overflow-hidden hidden opacity-0" id="animeImages">
+      <li class="justify-center items-center w-full h-full hidden
+        md:flex
+      "><img id="iconImages" class="z-0 hidden md:block" src="cosplayer.png" /></li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]" class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+        <img
+          id="leveling"
+          class="relative h-[100vh] w-[100vw] opacity-0"
+          src="/animes/leveling.jpg"
+        />
+      </li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+        <img
+          id="kaijuu"
+          class="relative h-[100vh] w-[100vw] opacity-0"
+          src="/animes/kaijuu.jpg"
+        />
+      </li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+        <img
+          id="jujutsu"
+          class="relative h-[100vh] w-[100vw] opacity-0"
+          src="/animes/jujutsu.png"
+        />
+      </li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+        <img
+          id="chainsaw"
+          class="relative h-[100vh] w-[100vw] opacity-0"
+          src="/animes/chainsaw.jpg"
+        />
+      </li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+        <img
+          id="mashle"
+          class="relative h-[100vh] w-[100vw] opacity-0"
+          src="/animes/mashle.jpg"
+        />
+      </li>
+      <li class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12">
+        <img
+          id="Oshi"
+          class="relative h-[100vh] w-[100vw] opacity-0"
+          src="/animes/Oshi.jpeg"
+        />
+      </li>
+    </ul>
   </div>
   <div
     id="sidebar"
@@ -264,27 +391,27 @@
         md:w-6/12 md:right-[-50%] md:flex-col md:pl-15 md:pt-0
     "
   >
-    <ul class="flex content-center mt-18 text-sm text-white font-semibold border-t-2 border-pink-300 py-5 overflow-scroll -ml-5 pl-5
+    <ul class="flex content-center mt-18 text-sm text-white font-semibold border-t-2 border-pink-300 py-5 overflow-scroll -ml-5 pl-5 gap-1
         sm:text-md
         md:border-none md:pl-0 md:overflow-auto
         lg:text-lg
         xl:text-xl
     ">
-      <li class="cursor-pointer py-1 px-3 item_active
+      <li id="characters" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl item_active
           md:py-3 md:px-5
       ">Characters.</li>
-      <li class="cursor-pointer py-1 px-3
+      <li id="animes" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
           md:py-3 md:px-5
-      ">Pages.</li>
-      <li class="cursor-pointer py-1 px-3
+      ">Animes.</li>
+      <li id="trailers" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
           md:py-3 md:px-5
       ">Trailers.</li>
-      <li class="cursor-pointer py-1 px-3
+      <li id="download" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
           md:py-3 md:px-5
       ">Download.</li>
     </ul>
     <ul id="charactersList"
-      class="font-bold flex flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3
+      class="font-bold flex flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3 opacity-100
           sm:textl-xl
           md:text-2xl  md:translate-y-0
           lg:text-4xl
@@ -311,6 +438,30 @@
       </li>
       <li id="naoButton" class="cursor-pointer hover:text-pink-400 duration-200">
         Nao Tomori
+      </li>
+    </ul>
+    <ul id="animesList"
+      class="font-bold flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3 hidden opacity-0
+          sm:textl-xl
+          md:text-2xl  md:translate-y-0
+          lg:text-4xl
+          xl:text-6xl
+      "
+    >
+    <li class="text-gray-700 md:hidden"> Animes. </li>
+      <li id="levelingButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Solo Leveling
+      </li>
+      <li id="kaijuuButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Kaijuu 8
+      </li>
+      <li id="jujutsuButton" class="cursor-pointer hover:text-pink-400 duration-200">Jujutsu Kaisen</li>
+      <li id="chainsawButton" class="cursor-pointer hover:text-pink-400 duration-200">
+        Chainsaw Man
+      </li>
+      <li id="mashleButton" class="cursor-pointer hover:text-pink-400 duration-200">Mashle</li>
+      <li id="OshiButton" class="cursor-pointer hover:text-pink-400 duration-200">
+         Oshi no Ko
       </li>
     </ul>
     <ul class="flex w-11/12 text-sm gap-2
