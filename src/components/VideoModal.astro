@@ -1,0 +1,66 @@
+---
+import VideoInfo from "./VideoInfo.astro"
+const {srcValue} = Astro.props;
+---
+
+<script >
+    import {gsap} from "gsap";
+    document.addEventListener("DOMContentLoaded", () => {
+    const duration1 = document.getElementById("animeDuration");
+    const duration2 = document.getElementById("highDuration");
+    const animeItem = document.getElementById("animeItem");
+    const highItem = document.getElementById("highItem");
+    const animePlay = document.getElementById("animePlay");
+    const highPlay = document.getElementById("highPlay");
+    const iframe = document.getElementById("iframe") as HTMLIFrameElement;
+
+
+    animeItem?.addEventListener("click", () => {
+      if (duration1 && duration2 && iframe) {
+        duration1.textContent = "Reproduciendo";
+        duration2.textContent = "4:28"
+        iframe.src = "https://www.youtube.com/embed/_NXrTujMP50?si=Rmv3-LcXdHoDdCic"
+        gsap.to(animePlay,{
+            opacity: 0,
+            onComplete: ()=>{
+                gsap.to(highPlay,{
+                    opacity: 1
+                })
+            }
+        })
+      }
+    });
+
+    highItem?.addEventListener("click",()=>{
+        if(duration1 && duration2 && iframe){
+            duration1.textContent = "4:21";
+            duration2.textContent = "Repoduciendo";
+            iframe.src = "https://www.youtube.com/embed/OEQPYC1Rvm4?si=n1lbFR1mXm9nQ9tU"
+            gsap.to(highPlay,{
+                opacity:0,
+                onComplete: ()=>{
+                    gsap.to(animePlay,{
+                        opacity:1
+                    })
+                }
+            })
+        }
+    })  
+  });
+</script>
+
+<div class="fixed top-0 left-0 w-full h-screen bg-[rgb(55,11,61)] translate-y-full opacity-0 z-0" id="modalTrailers">
+    <div class="w-9/12 bg-[rgb(42,0,48)] relative top-20 mx-auto h-[calc(100vh-80px)] overflow-y-auto">
+        <div class="w-full object-cover">
+            <iframe class="w-full h-[70vh]" id="iframe" src={srcValue} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <ul class="flex m-14 gap-4">
+            <li class="w-[26rem]" id="animeItem">
+                <VideoInfo isNew={false} title="Anime 404" date="01 de diciembre 2014" img="/anime404.avif" duration="4:21" idDuration="animeDuration" idPlay="animePlay"/>
+            </li>
+            <li class="w-[26rem]" id="highItem">
+                <VideoInfo isNew={false} title="High School DxD AMV - Courtesy Call" date="06 de junio 2017" img="/amv.avif" duration="4:28" idDuration="highDuration" idPlay="highPlay"/>
+            </li>
+        </ul>
+    </div>
+</div>
