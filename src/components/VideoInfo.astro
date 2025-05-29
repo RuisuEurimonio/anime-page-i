@@ -1,0 +1,16 @@
+---
+
+const { isNew, title, date, img, duration } = Astro.props;
+---
+<div class="w-11/12 bg-[rgb(50,0,80)] flex cursor-pointer hover:bg-[rgb(60,0,90)] duration-150">
+    <div class="flex-1/2 relative flex justify-center items-center">
+        <img src={img} class="object-cover h-full">
+        <img src="play.svg" class="absolute h-20 p-5 bg-white/30 backdrop-blur-md rounded-full "> 
+        <p class="absolute bottom-3 left-3 p-2 tracking-normal text-sm bg-[rgb(50,0,80)]"> {duration} </p>
+    </div>
+    <div class="flex-1/2 ml-4 tracking-normal">
+        {isNew && <p class="text-sm bg-violet-500 px-2 inline"> Nuevo </p>}
+        <p class="text-lg"> {title} </p>
+        <p class="text-sm text-gray-400"> {date} </p>
+    </div>
+</div>
