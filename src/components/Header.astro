@@ -8,14 +8,14 @@ import VideoModal from "./VideoModal.astro";
 <script>
   import { gsap } from "gsap";
   import { animePlayAnimation, highPlayAnimation } from "./../../src/scripts/modalTrailersAnimations.js";
-import { menuIconClose } from "../scripts/navbarAnimations";
+  import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
 
   //navbarAnimations
   const menuIcon = document.getElementById("menuIcon");
   const xIcon = document.getElementById("xIcon");
   const sidebar = document.getElementById("sidebar");
   const sidebarImages = document.getElementById("sidebarImages");
-  
+
   const iconImages = document.getElementById("iconImages");
   const language = document.getElementById("language");
   const arrowLanguage = document.getElementById("arrowLanguage");
@@ -125,32 +125,11 @@ import { menuIconClose } from "../scripts/navbarAnimations";
   })
 
   menuIcon?.addEventListener("click", () => {
-    menuIconClose(menuIcon, xIcon, sidebar, sidebarImages);
+    openSidebar(menuIcon, xIcon, sidebar, sidebarImages);
   });
 
   xIcon?.addEventListener("click", () => {
-    gsap.to(xIcon, {
-      opacity: 0,
-      scale: 0.5,
-      duration: 0.3,
-      zIndex: 20,
-      onComplete: () => {
-        gsap.to(menuIcon, {
-          opacity: 1,
-          scale: 1,
-          zIndex: 50,
-          delay: 0.2,
-        });
-        gsap.to(sidebar, {
-          right: sidebarMovementValue,
-          delay: 0.2,
-        });
-        gsap.to(sidebarImages, {
-          opacity: 0,
-          display: "hidden",
-        });
-      },
-    });
+    closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
     gsap.to(modalTrailers,{
       opacity: 0,
       zIndex: 0,
