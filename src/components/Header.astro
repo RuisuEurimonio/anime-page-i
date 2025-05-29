@@ -7,6 +7,7 @@ import VideoModal from "./VideoModal.astro";
 
 <script>
   import { gsap } from "gsap";
+  import { animePlayAnimation, highPlayAnimation } from "./../../src/scripts/modalTrailersAnimations.js";
 
   const menuIcon = document.getElementById("menuIcon");
   const xIcon = document.getElementById("xIcon");
@@ -33,8 +34,21 @@ import VideoModal from "./VideoModal.astro";
   const animeContainerVideo = document.getElementById("animeContainerVideo");
   const highContainerVideo = document.getElementById("highContainerVideo");
   const modalTrailers = document.getElementById("modalTrailers");
+  const iframe = document.getElementById("iframe") as HTMLIFrameElement;
+
 
   animeContainerVideo?.addEventListener("click", ()=>{
+    animePlayAnimation();
+    gsap.to(modalTrailers,{
+      opacity:1,
+      zIndex: 45,
+      y: 0,
+      duration: 1
+    })
+  })
+
+  highContainerVideo?.addEventListener("click", ()=>{
+    highPlayAnimation();
     gsap.to(modalTrailers,{
       opacity:1,
       zIndex: 45,
@@ -79,7 +93,7 @@ import VideoModal from "./VideoModal.astro";
     })
 
     currentButton?.addEventListener("mouseleave",()=>{
-        anyActive = "";
+        
         gsap.to(current, {
             opacity: 0,
             zIndex: 10,
