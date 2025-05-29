@@ -37,3 +37,12 @@ export const highPlayAnimation = () => {
             })
         }
 }
+
+export const closeModalTrailer = (modalTrailers) => {
+    gsap.to(modalTrailers,{
+      opacity: 0,
+      zIndex: 0,
+      y: window.innerWidth,
+      duration: 1
+    })
+}

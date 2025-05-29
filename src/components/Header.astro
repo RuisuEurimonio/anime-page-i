@@ -7,7 +7,7 @@ import VideoModal from "./VideoModal.astro";
 
 <script>
   import { gsap } from "gsap";
-  import { animePlayAnimation, highPlayAnimation } from "./../../src/scripts/modalTrailersAnimations.js";
+  import { animePlayAnimation, highPlayAnimation, closeModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
   import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
 
   //navbarAnimations
@@ -63,8 +63,6 @@ import VideoModal from "./VideoModal.astro";
   let openLanguage = false;
   let openMotion = false;
   let fullMovementActive = true;
-
-  const sidebarMovementValue = 768 > window.innerWidth ? "-91.6667%" : "-50%";
 
   const images = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao", "chainsaw", "jujutsu", "kaijuu", "leveling", "mashle", "Oshi"]
   let anyActive = "";
@@ -130,12 +128,7 @@ import VideoModal from "./VideoModal.astro";
 
   xIcon?.addEventListener("click", () => {
     closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
-    gsap.to(modalTrailers,{
-      opacity: 0,
-      zIndex: 0,
-      y: window.innerWidth,
-      duration: 1
-    })
+    closeModalTrailer(modalTrailers);
   });
 
   motion?.addEventListener("click",()=>{
