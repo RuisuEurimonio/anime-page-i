@@ -518,18 +518,13 @@ import VideoInfo from "./videoInfo.astro";
       </li>
     </ul>
     <ul id="trailerList"
-      class="font-bold flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3 opacity-0 hidden
-          sm:textl-xl
-          md:text-2xl  md:translate-y-0
-          lg:text-4xl
-          xl:text-6xl
-      "
+      class="font-bold flex-col items-start w-11/12 gap-4 overflow-x-auto h-full tracking-tighter opacity-0 hidden justify-center"
     >
       <li>
-        <VideoInfo isNew=false title="Anime 404" date="01 de diciembre 2014" img="/anime404.avif" duration="4:21" >
+        <VideoInfo isNew=false title="Anime 404" date="01 de diciembre 2014" img="/anime404.avif" duration="4:21" />
       </li>
       <li>
-        <VideoInfo isNew
+        <VideoInfo isNew=true title="High School DxD AMV - Courtesy Call" date="06 de junio 2017" img="/amv.avif" duration="4:28" />
       </li>
     </ul>
     <ul class="flex w-11/12 text-sm gap-2
