@@ -22,15 +22,19 @@ import VideoInfo from "./VideoInfo.astro"
 </script>
 
 <div class="fixed top-0 left-0 w-full h-screen bg-[rgb(55,11,61)] translate-y-full opacity-0 z-0" id="modalTrailers">
-    <div class="w-9/12 bg-[rgb(5,4,5)] relative top-20 mx-auto h-[calc(100vh-80px)] overflow-y-auto">
+    <div class="w-full rounded-tl-3xl rounded-tr-3xl bg-[rgb(5,4,5)] relative top-20 mx-auto h-[calc(100vh-80px)] overflow-y-auto
+        md:w-9/12
+    ">
         <div class="w-full object-cover">
             <iframe class="w-full h-[70vh]" id="iframe" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <ul class="flex m-14 gap-4">
-            <li class="w-[26rem]" id="animeItem">
+        <ul class="flex flex-col gap-4 w-full flex-wrap justify-center my-3 items-center flex-1 h-auto
+            md:flex-row
+        ">
+            <li class="w-11/12 xl:w-[26rem] sm:w-[16rem] lg:h-[7rem]" id="animeItem">
                 <VideoInfo isNew={false} title="Anime 404" date="01 de diciembre 2014" img="/anime404.avif" duration="4:21" idDuration="animeDuration" idPlay="animePlay"/>
             </li>
-            <li class="w-[26rem]" id="highItem">
+            <li class="w-11/12 xl:w-[26rem] sm:w-[16rem] lg:h-[7rem]" id="highItem">
                 <VideoInfo isNew={false} title="High School DxD AMV - Courtesy Call" date="06 de junio 2017" img="/amv.avif" duration="4:28" idDuration="highDuration" idPlay="highPlay"/>
             </li>
         </ul>
