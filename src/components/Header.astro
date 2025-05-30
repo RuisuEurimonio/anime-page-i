@@ -154,60 +154,17 @@ import VideoModal from "./VideoModal.astro";
 
   charactersId?.addEventListener("click", ()=>{
     
-  animeImages && toggleElementSidebar(characterImages, false, animeImages);
+    animeImages && toggleElementSidebar(animeImages, false, characterImages);
+    animeImages && toggleElementSidebar(animesList, false, charactersList);
 
-  currentItemNavbar = charactersList;
+    animeImages && toggleElementSidebar(trailerList, false, charactersList);
 
-    gsap.to(animeImages,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(characterImages,{
-          display: "flex",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(animesList,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(charactersList,{
-          display: "flex",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(trailerList,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(charactersList,{
-          display: "flex",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(animes,{
-      color: "white",
-      background: "none",
-      onComplete: ()=>{
-        gsap.to(charactersId,{
-          color: "black",
-          background: "white",
-        })
-      }
-    })
-    gsap.to(trailers,{
-      color: "white",
-      background: "none",
-      onComplete: ()=>{
-        gsap.to(charactersId,{
-          color: "black",
-          background: "white",
-        })
-      }
-    })
+      toggleElementButtoStyles(trailers, false)
+      toggleElementButtoStyles(animes, false)
+      toggleElementButtoStyles(charactersId, true)
+
+    currentItemNavbar = charactersList;
+
   })
 
   trailers?.addEventListener("click", ()=>{
