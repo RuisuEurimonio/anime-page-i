@@ -9,7 +9,11 @@ import VideoModal from "./VideoModal.astro";
   import { gsap } from "gsap";
   import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
   import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
-  import { inputToggleQuestion, toggleMotionContainer } from "../scripts/motionAnimations"
+  import { inputToggleQuestion, toggleMotionContainer } from "../scripts/motionAnimations";
+  import { toggleCharacterList } from "../scripts/charactersListAnimations";
+  import { toggleTrailerList } from "../scripts/trailerListAnimations";
+  import { toggleAnimesList } from "../scripts/animeListAnimations";
+  import { lowerLanguageIcon } from "../scripts/languageAnimations";
 
   //navbarAnimations
   const menuIcon = document.getElementById("menuIcon");
@@ -120,26 +124,15 @@ import VideoModal from "./VideoModal.astro";
     toggleModalTrailer(modalTrailers, true);
   });
 
+  let isOpen = false;
+
   motion?.addEventListener("click",()=>{
-    let openMotion = false;
       toggleMotionContainer();
-      
-      gsap.to(charactersList,{
-        opacity: openMotion ? 1 : 0,
-        duration: 0.2
-      })
-      gsap.to(trailerList,{
-        opacity: openMotion ? 1 : 0,
-        duration: 0.2
-      })
-      gsap.to(animesList,{
-        opacity: openMotion ? 1 : 0,
-        duration: 0.2
-      })
-      gsap.to(language,{
-        zIndex: openMotion ? 40 : 20
-      })
-      openMotion = !openMotion
+      toggleCharacterList(charactersList, isOpen);
+      toggleAnimesList(animesList, isOpen);
+      toggleTrailerList(trailerList, isOpen);
+      lowerLanguageIcon(language, isOpen);
+      isOpen = !isOpen
   })
 
   language?.addEventListener("click", ()=>{
