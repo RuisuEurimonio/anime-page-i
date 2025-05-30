@@ -10,9 +10,7 @@ import VideoModal from "./VideoModal.astro";
   import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
   import { openSidebar, closeSidebar, toggleElementButtoStyles } from "../scripts/navbarAnimations";
   import { inputToggleQuestion, toggleMotionContainer, lowerMotion } from "../scripts/motionAnimations";
-  import { toggleCharacterList } from "../scripts/charactersListAnimations";
-  import { toggleTrailerList } from "../scripts/trailerListAnimations";
-  import { toggleAnimesList } from "../scripts/animeListAnimations";
+  import { toggleElementSidebar } from "../scripts/sidebarAnimations";
   import { lowerLanguageIcon, toggleLanguagesList, toggleArrowIcon } from "../scripts/languageAnimations";
 
   //navbarAnimations
@@ -59,8 +57,9 @@ import VideoModal from "./VideoModal.astro";
     toggleModalTrailer(modalTrailers, false);
   })
 
-
-  let openLanguage = false;
+  let currentItemNavbar = charactersList;
+  let isLanguageOpen = false;
+  let isMotionOpen = false;
 
   const images = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao", "chainsaw", "jujutsu", "kaijuu", "leveling", "mashle", "Oshi"]
   let anyActive = "";
@@ -124,41 +123,41 @@ import VideoModal from "./VideoModal.astro";
     toggleModalTrailer(modalTrailers, true);
   });
 
-  let isOpen = false;
-
   motion?.addEventListener("click",()=>{
       toggleMotionContainer();
-      toggleCharacterList(charactersList, isOpen);
-      toggleAnimesList(animesList, isOpen);
-      toggleTrailerList(trailerList, isOpen);
-      lowerLanguageIcon(language, isOpen);
-      isOpen = !isOpen
+      toggleElementSidebar(currentItemNavbar, isMotionOpen);
+      lowerLanguageIcon(language, isMotionOpen);
+      isMotionOpen = !isMotionOpen
   })
 
   language?.addEventListener("click", ()=>{
-      toggleArrowIcon(arrowLanguage, openLanguage)
-      toggleLanguagesList(listLanguages, openLanguage)
-      toggleAnimesList(animesList, openLanguage)
-      toggleTrailerList(trailerList, openLanguage)
-      toggleCharacterList(charactersList, openLanguage)
-      lowerMotion(motion, openLanguage)
-      openLanguage = !openLanguage;
+      toggleArrowIcon(arrowLanguage, isLanguageOpen)
+      toggleLanguagesList(listLanguages, isLanguageOpen)
+      toggleElementSidebar(currentItemNavbar, isLanguageOpen)
+      lowerMotion(motion, isLanguageOpen)
+      isLanguageOpen = !isLanguageOpen;
   })
 
   animes?.addEventListener("click", ()=>{
-      animeImages && toggleCharacterList(characterImages, false, animeImages);
-      animesList && toggleTrailerList(trailerList, false, animesList)
+      animeImages && toggleElementSidebar(characterImages, false, animeImages);
+      animesList && toggleElementSidebar(trailerList, false, animesList)
     
-      animesList && toggleCharacterList(charactersList, false, animesList)
+      animesList && toggleElementSidebar(charactersList, false, animesList)
       
       toggleElementButtoStyles(trailers, false)
       toggleElementButtoStyles(animes, true)
       toggleElementButtoStyles(charactersId, false)
+
+      currentItemNavbar = animesList;
   
   })
 
   charactersId?.addEventListener("click", ()=>{
     
+  animeImages && toggleElementSidebar(characterImages, false, animeImages);
+
+  currentItemNavbar = charactersList;
+
     gsap.to(animeImages,{
       display: "none",
       opacity:  0,
@@ -212,6 +211,9 @@ import VideoModal from "./VideoModal.astro";
   })
 
   trailers?.addEventListener("click", ()=>{
+
+    currentItemNavbar = trailerList;
+
     gsap.to(animesList,{
       display: "none",
       opacity:  0,
