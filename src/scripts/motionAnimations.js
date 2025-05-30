@@ -31,3 +31,9 @@ const animationArrow = () => {
         duration: 1
       })
 }
+
+export const lowerMotion = (motion, isAnyOpen) => {
+  gsap.to(motion,{
+        zIndex: isAnyOpen ? 40 : 20
+        })
+}

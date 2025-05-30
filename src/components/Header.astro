@@ -9,11 +9,11 @@ import VideoModal from "./VideoModal.astro";
   import { gsap } from "gsap";
   import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
   import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
-  import { inputToggleQuestion, toggleMotionContainer } from "../scripts/motionAnimations";
+  import { inputToggleQuestion, toggleMotionContainer, lowerMotion } from "../scripts/motionAnimations";
   import { toggleCharacterList } from "../scripts/charactersListAnimations";
   import { toggleTrailerList } from "../scripts/trailerListAnimations";
   import { toggleAnimesList } from "../scripts/animeListAnimations";
-  import { lowerLanguageIcon } from "../scripts/languageAnimations";
+  import { lowerLanguageIcon, toggleLanguagesList, toggleArrowIcon } from "../scripts/languageAnimations";
 
   //navbarAnimations
   const menuIcon = document.getElementById("menuIcon");
@@ -136,31 +136,12 @@ import VideoModal from "./VideoModal.astro";
   })
 
   language?.addEventListener("click", ()=>{
-      gsap.to(arrowLanguage, {
-        rotate: openLanguage ? (window.innerWidth > 768 ? 180 : 360) : (window.innerWidth > 768 ? 360 : 180),
-        duration: 1
-      })
-      gsap.to(listLanguages,{
-        opacity: openLanguage ? 0 : 1,
-        zIndex: openLanguage ? -10 : 30,
-        duration: 0.2
-      })
-      gsap.to(animesList,{
-        opacity: openLanguage ? 1 : 0,
-        duration: 0.2
-      })
-      gsap.to(trailerList,{
-        opacity: openLanguage ? 1 : 0,
-        duration: 0.2
-      })
-      gsap.to(charactersList, {
-          opacity: openLanguage ? 1 : 0,
-          zIndex: openLanguage ? 30 : -10,
-          duration: 0.2
-        })
-        gsap.to(motion,{
-        zIndex: openLanguage ? 40 : 20
-        })
+      toggleArrowIcon(arrowLanguage, openLanguage)
+      toggleLanguagesList(listLanguages, openLanguage)
+      toggleAnimesList(animesList, openLanguage)
+      toggleTrailerList(trailerList, openLanguage)
+      toggleCharacterList(charactersList, openLanguage)
+      lowerMotion(motion, openLanguage)
       openLanguage = !openLanguage;
   })
 
