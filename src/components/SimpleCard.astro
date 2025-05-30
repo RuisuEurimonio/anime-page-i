@@ -1,0 +1,14 @@
+---
+const { title, srcImage, link } = Astro.props;
+---
+
+<div class="w-full h-full cursor-pointer group hover:border-2 relative hover:border-white duration-150">
+  <img src={"/downloads/"+srcImage}  class="w-full h-full object-cover"/>
+  <p class="absolute bottom-6 left-3 uppercase text-base w-8/12 font-extraboldbold text-fuchsia-200
+    lg:text-2xl
+    xl:text-4xl
+  ">{title}</p>
+  <a href={"/downloads/" + link} class="size-8 bg-[rgb(82,0,88)] group-hover:bg-fuchsia-200 absolute bottom-6 right-8 rounded-full p-2 cursor-pointer block
+    lg:text-10
+  "> <svg class="w-full h-full object-cover text-pink-500"><use href="/arrow2.svg"> </use></svg> </a>
+</div>

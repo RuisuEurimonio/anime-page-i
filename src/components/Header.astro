@@ -1,4 +1,5 @@
 ---
+import SimpleCard from "./SimpleCard.astro";
 import VideoInfo from "./VideoInfo.astro";
 import VideoModal from "./VideoModal.astro";
 
@@ -23,23 +24,34 @@ import VideoModal from "./VideoModal.astro";
   const movementInputBall = document.getElementById("movementInputBall");
   const movementInputContainer = document.getElementById("movementInputContainer");
 
+  //icons
   const iconImages = document.getElementById("iconImages");
-  const language = document.getElementById("language");
   const arrowLanguage = document.getElementById("arrowLanguage");
+
+  //options list
   const charactersList = document.getElementById("charactersList");
   const animesList = document.getElementById("animesList");
+  const trailerList = document.getElementById("trailerList");
+  const downloadList = document.getElementById("downloadList");
+
+  //list of languages
   const listLanguages = document.getElementById("listLanguages");
-
-
+  
+  //bottom options
+  const language = document.getElementById("language");
   const motion = document.getElementById("motion");
 
+  //buttons
   const charactersId = document.getElementById("characters");
-  const characterImages = document.getElementById("characterImages");
   const animes = document.getElementById("animes");
-  const animeImages = document.getElementById("animeImages");
   const trailers = document.getElementById("trailers");
-  const trailerList = document.getElementById("trailerList");
+  const download = document.getElementById("download");
 
+  //images sidebar
+  const characterImages = document.getElementById("characterImages");
+  const animeImages = document.getElementById("animeImages");
+
+  //trailers
   const animeContainerVideo = document.getElementById("animeContainerVideo");
   const highContainerVideo = document.getElementById("highContainerVideo");
 
@@ -139,14 +151,15 @@ import VideoModal from "./VideoModal.astro";
   })
 
   animes?.addEventListener("click", ()=>{
-      animeImages && toggleElementSidebar(characterImages, false, animeImages);
-      animesList && toggleElementSidebar(trailerList, false, animesList)
-    
-      animesList && toggleElementSidebar(charactersList, false, animesList)
+      toggleElementSidebar(characterImages, false, animeImages);
+      toggleElementSidebar(trailerList, false, animesList)
+      toggleElementSidebar(downloadList, false, animesList)
+      toggleElementSidebar(charactersList, false, animesList)
       
       toggleElementButtoStyles(trailers, false)
       toggleElementButtoStyles(animes, true)
       toggleElementButtoStyles(charactersId, false)
+      toggleElementButtoStyles(download, false)
 
       currentItemNavbar = animesList;
   
@@ -154,14 +167,15 @@ import VideoModal from "./VideoModal.astro";
 
   charactersId?.addEventListener("click", ()=>{
     
-    animeImages && toggleElementSidebar(animeImages, false, characterImages);
-    animeImages && toggleElementSidebar(animesList, false, charactersList);
-
-    animeImages && toggleElementSidebar(trailerList, false, charactersList);
+    toggleElementSidebar(animeImages, false, characterImages);
+    toggleElementSidebar(animesList, false, charactersList);
+    toggleElementSidebar(downloadList, false, charactersList)
+    toggleElementSidebar(trailerList, false, charactersList);
 
       toggleElementButtoStyles(trailers, false)
       toggleElementButtoStyles(animes, false)
       toggleElementButtoStyles(charactersId, true)
+      toggleElementButtoStyles(download, false)
 
     currentItemNavbar = charactersList;
 
@@ -169,16 +183,31 @@ import VideoModal from "./VideoModal.astro";
 
   trailers?.addEventListener("click", ()=>{
 
-    animeImages && toggleElementSidebar(animesList, false, trailerList);
-
-    animeImages && toggleElementSidebar(charactersList, false, trailerList);
+    toggleElementSidebar(animesList, false, trailerList);
+    toggleElementSidebar(downloadList, false, trailerList);
+    toggleElementSidebar(charactersList, false, trailerList);
 
     toggleElementButtoStyles(trailers, true)
     toggleElementButtoStyles(animes, false)
     toggleElementButtoStyles(charactersId, false)
+    toggleElementButtoStyles(download, false)
 
     currentItemNavbar = trailerList;
 
+  })
+
+  download?.addEventListener("click", ()=>{
+    toggleElementSidebar(animesList, false, downloadList);
+    toggleElementSidebar(trailerList, false, downloadList);
+
+    toggleElementSidebar(charactersList, false, downloadList);
+
+    toggleElementButtoStyles(trailers, false)
+    toggleElementButtoStyles(animes, false)
+    toggleElementButtoStyles(charactersId, false)
+    toggleElementButtoStyles(download, true)
+
+    currentItemNavbar = downloadList;
   })
 </script>
 
@@ -405,6 +434,24 @@ import VideoModal from "./VideoModal.astro";
       </li>
       <li id="highContainerVideo">
         <VideoInfo isNew={true} title="High School DxD AMV - Courtesy Call" date="06 de junio 2017" img="/amv.avif" duration="4:28" />
+      </li>
+    </ul>
+    <ul id="downloadList"
+      class="font-bold flex-col w-full h-9/12 gap-4 overflow-x-auto tracking-tighter opacity-0 hidden justify-start items-stretch"
+    >
+      <li class="w-11/12 max-h-[15.5rem]">
+        <SimpleCard title="Vídeos" srcImage="videos.jpg" link="videos" />
+      </li>
+      <li class="w-11/12 max-h-[15.5rem]">
+        <SimpleCard title="Capturas de pantalla" srcImage="capturas.jpg" link="capturas" />
+      </li>
+      <li class="w-11/12 max-h-[15.5rem]">
+        <SimpleCard title="Arte y fondos de pantalla" srcImage="arte.jpg" link="arte-and-backgrounds" />
+      </li>
+      <li class="max-w-11/12 mx-auto">
+        <a class="flex items-center gap-2 bg-[rgb(32,0,38)] py-2 px-4 cursor-pointer rounded-3xl text-base text-white
+          lg:text-lg lg:font-extrabold lg:py-4 lg:pl-8
+        "> <p > Ver todas las descargas </p>  <svg class="size-4 object-cover font-bold"> <use href="/arrow2.svg"></use> </svg> </a>
       </li>
     </ul>
     <ul class="flex w-11/12 text-sm gap-2
