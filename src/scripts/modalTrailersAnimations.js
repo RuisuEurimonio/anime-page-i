@@ -6,8 +6,6 @@ const iframe = document.getElementById("iframe");
 const animePlay = document.getElementById("animePlay");
 const highPlay = document.getElementById("highPlay");
 
-let isOpen = false;
-
 export const animePlayAnimation = () =>{
     if (duration1 && duration2 && iframe) {
             duration1.textContent = "Reproduciendo";
@@ -40,7 +38,7 @@ export const highPlayAnimation = () => {
         }
 }
 
-export const toggleModalTrailer = (modalTrailers) => {
+export const toggleModalTrailer = (modalTrailers, isOpen) => {
     gsap.to(modalTrailers,{
       opacity: isOpen ? 0 : 1, 
       zIndex: isOpen ? 0 : 45,
