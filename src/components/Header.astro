@@ -169,48 +169,16 @@ import VideoModal from "./VideoModal.astro";
 
   trailers?.addEventListener("click", ()=>{
 
+    animeImages && toggleElementSidebar(animesList, false, trailerList);
+
+    animeImages && toggleElementSidebar(charactersList, false, trailerList);
+
+    toggleElementButtoStyles(trailers, true)
+    toggleElementButtoStyles(animes, false)
+    toggleElementButtoStyles(charactersId, false)
+
     currentItemNavbar = trailerList;
 
-    gsap.to(animesList,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(trailerList,{
-          display: "flex",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(charactersList,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(trailerList,{
-          display: "flex",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(charactersId,{
-      color: "white",
-      background: "none",
-      onComplete: ()=>{
-        gsap.to(trailers,{
-          color: "black",
-          background: "white",
-        })
-      }
-    })
-    gsap.to(animes,{
-      color: "white",
-      background: "none",
-      onComplete: ()=>{
-        gsap.to(trailers,{
-          color: "black",
-          background: "white",
-        })
-      }
-    })
   })
 </script>
 
