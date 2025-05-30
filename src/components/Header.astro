@@ -7,7 +7,7 @@ import VideoModal from "./VideoModal.astro";
 
 <script>
   import { gsap } from "gsap";
-  import { animePlayAnimation, highPlayAnimation, closeModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
+  import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
   import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
 
   //navbarAnimations
@@ -41,22 +41,12 @@ import VideoModal from "./VideoModal.astro";
 
   animeContainerVideo?.addEventListener("click", ()=>{
     animePlayAnimation();
-    gsap.to(modalTrailers,{
-      opacity:1,
-      zIndex: 45,
-      y: 0,
-      duration: 1
-    })
+    toggleModalTrailer(modalTrailers);
   })
 
   highContainerVideo?.addEventListener("click", ()=>{
     highPlayAnimation();
-    gsap.to(modalTrailers,{
-      opacity:1,
-      zIndex: 45,
-      y: 0,
-      duration: 1
-    })
+    toggleModalTrailer(modalTrailers);
   })
 
 
@@ -128,7 +118,7 @@ import VideoModal from "./VideoModal.astro";
 
   xIcon?.addEventListener("click", () => {
     closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
-    closeModalTrailer(modalTrailers);
+    toggleModalTrailer(modalTrailers);
   });
 
   motion?.addEventListener("click",()=>{

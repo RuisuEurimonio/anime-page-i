@@ -6,6 +6,8 @@ const iframe = document.getElementById("iframe");
 const animePlay = document.getElementById("animePlay");
 const highPlay = document.getElementById("highPlay");
 
+let isOpen = false;
+
 export const animePlayAnimation = () =>{
     if (duration1 && duration2 && iframe) {
             duration1.textContent = "Reproduciendo";
@@ -38,11 +40,12 @@ export const highPlayAnimation = () => {
         }
 }
 
-export const closeModalTrailer = (modalTrailers) => {
+export const toggleModalTrailer = (modalTrailers) => {
     gsap.to(modalTrailers,{
-      opacity: 0,
-      zIndex: 0,
-      y: window.innerWidth,
+      opacity: isOpen ? 0 : 1, 
+      zIndex: isOpen ? 0 : 45,
+      y: isOpen ? window.innerWidth : 0 ,
       duration: 1
     })
+    isOpen = !isOpen;
 }
