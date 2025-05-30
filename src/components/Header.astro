@@ -9,7 +9,7 @@ import VideoModal from "./VideoModal.astro";
   import { gsap } from "gsap";
   import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
   import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
-  import { inputToggleQuestion } from "../scripts/motionAnimations"
+  import { inputToggleQuestion, toggleMotionContainer } from "../scripts/motionAnimations"
 
   //navbarAnimations
   const menuIcon = document.getElementById("menuIcon");
@@ -17,17 +17,20 @@ import VideoModal from "./VideoModal.astro";
   const sidebar = document.getElementById("sidebar");
   const sidebarImages = document.getElementById("sidebarImages");
 
+  //motionAnimations
+  const movementInputBall = document.getElementById("movementInputBall");
+  const movementInputContainer = document.getElementById("movementInputContainer");
+
   const iconImages = document.getElementById("iconImages");
   const language = document.getElementById("language");
   const arrowLanguage = document.getElementById("arrowLanguage");
   const charactersList = document.getElementById("charactersList");
   const animesList = document.getElementById("animesList");
   const listLanguages = document.getElementById("listLanguages");
+
+
   const motion = document.getElementById("motion");
-  const motionContainer = document.getElementById("motionContainer");
-  const motionArrow = document.getElementById("motionArrow");
-  const movementInputContainer = document.getElementById("movementInputContainer");
-  const movementInputBall = document.getElementById("movementInputBall");
+
   const charactersId = document.getElementById("characters");
   const characterImages = document.getElementById("characterImages");
   const animes = document.getElementById("animes");
@@ -54,8 +57,6 @@ import VideoModal from "./VideoModal.astro";
 
 
   let openLanguage = false;
-  let openMotion = false;
-  
 
   const images = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao", "chainsaw", "jujutsu", "kaijuu", "leveling", "mashle", "Oshi"]
   let anyActive = "";
@@ -120,15 +121,9 @@ import VideoModal from "./VideoModal.astro";
   });
 
   motion?.addEventListener("click",()=>{
-      gsap.to(motionContainer,{
-        opacity: openMotion ? 0 : 1,
-        zIndex: openMotion ? -10 : 30,
-        duration: 0.2
-      })
-      gsap.to(motionArrow,{
-        rotate: openMotion ? (window.innerWidth > 768 ? 180 : 360) : (window.innerWidth > 768 ? 360 : 180),
-        duration: 1
-      })
+    let openMotion = false;
+      toggleMotionContainer();
+      
       gsap.to(charactersList,{
         opacity: openMotion ? 1 : 0,
         duration: 0.2
