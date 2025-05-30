@@ -64,3 +64,11 @@ const menuIconHidden = (menuIcon) => {
           delay: 0.2,
     });
 }
+
+export const toggleElementButtoStyles = (element, isActive) => {
+  gsap.to(element,{
+      color: isActive ? "black" : "white",
+      background: isActive ? "white" : "none",
+      duration: 0.5
+    })
+}

@@ -8,7 +8,7 @@ import VideoModal from "./VideoModal.astro";
 <script>
   import { gsap } from "gsap";
   import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
-  import { openSidebar, closeSidebar } from "../scripts/navbarAnimations";
+  import { openSidebar, closeSidebar, toggleElementButtoStyles } from "../scripts/navbarAnimations";
   import { inputToggleQuestion, toggleMotionContainer, lowerMotion } from "../scripts/motionAnimations";
   import { toggleCharacterList } from "../scripts/charactersListAnimations";
   import { toggleTrailerList } from "../scripts/trailerListAnimations";
@@ -146,57 +146,15 @@ import VideoModal from "./VideoModal.astro";
   })
 
   animes?.addEventListener("click", ()=>{
+      animeImages && toggleCharacterList(characterImages, false, animeImages);
+      animesList && toggleTrailerList(trailerList, false, animesList)
     
-    gsap.to(characterImages,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(animeImages,{
-          display: "block",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(trailerList,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(animesList,{
-          display: "block",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(charactersList,{
-      display: "none",
-      opacity:  0,
-      onComplete: ()=>{
-        gsap.to(animesList,{
-          display: "block",
-          opacity:  1,
-        })
-      }
-    })
-    gsap.to(charactersId,{
-      color: "white",
-      background: "none",
-      onComplete: ()=>{
-        gsap.to(animes,{
-          color: "black",
-          background: "white",
-        })
-      }
-    })
-    gsap.to(trailers,{
-      color: "white",
-      background: "none",
-      onComplete: ()=>{
-        gsap.to(animes,{
-          color: "black",
-          background: "white",
-        })
-      }
-    })
+      animesList && toggleCharacterList(charactersList, false, animesList)
+      
+      toggleElementButtoStyles(trailers, false)
+      toggleElementButtoStyles(animes, true)
+      toggleElementButtoStyles(charactersId, false)
+  
   })
 
   charactersId?.addEventListener("click", ()=>{

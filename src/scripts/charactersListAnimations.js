@@ -1,8 +1,16 @@
 import gsap from "gsap"
+import { toggleAnimesList } from "./animeListAnimations"
 
-export const toggleCharacterList = (charactersList, isAnyOpen) =>{
-    gsap.to(charactersList,{
+export const toggleCharacterList = (characterItem, isAnyOpen, animeElement, closeAll = false) =>{
+    gsap.to(characterItem,{
         opacity: isAnyOpen ? 1 : 0,
-        duration: 0.2
+        zIndex: isAnyOpen ? 30 : -10,
+        display: isAnyOpen ? "block" : "none",
+        duration: 0.2,
+        onComplete: closeAll ? () => {} : () => {
+          if(animeElement){
+            toggleAnimesList(animeElement, true)
+          }
+        }
       })
 }
