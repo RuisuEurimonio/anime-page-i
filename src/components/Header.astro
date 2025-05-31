@@ -2,17 +2,31 @@
 import SimpleCard from "./SimpleCard.astro";
 import VideoInfo from "./VideoInfo.astro";
 import VideoModal from "./VideoModal.astro";
-
-
 ---
 
 <script>
   import { gsap } from "gsap";
-  import { animePlayAnimation, highPlayAnimation, toggleModalTrailer } from "./../../src/scripts/modalTrailersAnimations.js";
-  import { openSidebar, closeSidebar, toggleElementButtoStyles } from "../scripts/navbarAnimations";
-  import { inputToggleQuestion, toggleMotionContainer, lowerMotion } from "../scripts/motionAnimations";
+  import {
+    animePlayAnimation,
+    highPlayAnimation,
+    toggleModalTrailer,
+  } from "./../../src/scripts/modalTrailersAnimations.js";
+  import {
+    openSidebar,
+    closeSidebar,
+    toggleElementButtoStyles,
+  } from "../scripts/navbarAnimations";
+  import {
+    inputToggleQuestion,
+    toggleMotionContainer,
+    lowerMotion,
+  } from "../scripts/motionAnimations";
   import { toggleElementSidebar } from "../scripts/sidebarAnimations";
-  import { lowerLanguageIcon, toggleLanguagesList, toggleArrowIcon } from "../scripts/languageAnimations";
+  import {
+    lowerLanguageIcon,
+    toggleLanguagesList,
+    toggleArrowIcon,
+  } from "../scripts/languageAnimations";
 
   //navbarAnimations
   const menuIcon = document.getElementById("menuIcon");
@@ -22,7 +36,9 @@ import VideoModal from "./VideoModal.astro";
 
   //motionAnimations
   const movementInputBall = document.getElementById("movementInputBall");
-  const movementInputContainer = document.getElementById("movementInputContainer");
+  const movementInputContainer = document.getElementById(
+    "movementInputContainer"
+  );
 
   //icons
   const iconImages = document.getElementById("iconImages");
@@ -36,7 +52,7 @@ import VideoModal from "./VideoModal.astro";
 
   //list of languages
   const listLanguages = document.getElementById("listLanguages");
-  
+
   //bottom options
   const language = document.getElementById("language");
   const motion = document.getElementById("motion");
@@ -58,73 +74,91 @@ import VideoModal from "./VideoModal.astro";
   //modalTrailersAnimation
   const modalTrailers = document.getElementById("modalTrailers");
 
-
-  animeContainerVideo?.addEventListener("click", ()=>{
+  animeContainerVideo?.addEventListener("click", () => {
     animePlayAnimation();
     toggleModalTrailer(modalTrailers, false);
-  })
+  });
 
-  highContainerVideo?.addEventListener("click", ()=>{
+  highContainerVideo?.addEventListener("click", () => {
     highPlayAnimation();
     toggleModalTrailer(modalTrailers, false);
-  })
+  });
 
   let currentItemNavbar = charactersList;
   let isLanguageOpen = false;
   let isMotionOpen = false;
 
-  const images = ["sailormoon", "mikasa", "frieren", "hinata", "rukia", "zero", "matoko", "nao", "chainsaw", "jujutsu", "kaijuu", "leveling", "mashle", "Oshi"]
+  const images = [
+    "sailormoon",
+    "mikasa",
+    "frieren",
+    "hinata",
+    "rukia",
+    "zero",
+    "matoko",
+    "nao",
+    "chainsaw",
+    "jujutsu",
+    "kaijuu",
+    "leveling",
+    "mashle",
+    "Oshi",
+  ];
   let anyActive = "";
-  images.forEach((character)=>{
+  images.forEach((character) => {
     let current = document.getElementById(character);
-    let currentButton = document.getElementById(character+"Button")
-    
+    let currentButton = document.getElementById(character + "Button");
+
     const movementC = gsap.to(current, {
-                x: -400,
-                duration: 50,
-                yoyo: true,
-                repeat: -1,
-                ease: "Power1.inOut"
-              })
+      x: -400,
+      duration: 50,
+      yoyo: true,
+      repeat: -1,
+      ease: "Power1.inOut",
+    });
 
-    currentButton?.addEventListener("mouseenter",()=>{
-        anyActive = character;
-        gsap.to(current, {
-            opacity: 1,
-            zIndex: 20,
-            duration: 0.3,
-            })
-        movementC.play();
-        gsap.to(iconImages,{
-            opacity: 0,        
-            })
-        
-    })
+    currentButton?.addEventListener("mouseenter", () => {
+      anyActive = character;
+      gsap.to(current, {
+        opacity: 1,
+        zIndex: 20,
+        duration: 0.3,
+      });
+      movementC.restart();
+      movementC.play();
+      gsap.to(iconImages, {
+        opacity: 0,
+        zIndex: 0,
+        display: "none"
+      });
+    });
 
-    currentButton?.addEventListener("mouseleave",()=>{
-        
-        gsap.to(current, {
-            opacity: 0,
-            zIndex: 10,
-            duration: 0.3,
-            onComplete: ()=>{
-              movementC.restart();
-              movementC.pause();
-                if(anyActive === ""){
-                    gsap.to(iconImages,{
-                        opacity: 1,
-                        zIndex: 0,
-                        delay: .2
-                    })
-                }
-            }
-        })
-    })
-  })
+    currentButton?.addEventListener("mouseleave", () => {
+      console.log("hpña")
+      anyActive = "";
+      gsap.to(current, {
+        opacity: 0,
+        zIndex: 10,
+        duration: 0.3,
+        onComplete: () => {
+          movementC.restart();
+          movementC.pause();
+          if (anyActive === "") {
+            gsap.to(iconImages, {
+              opacity: 1,
+              zIndex: 20,
+              display: "flex",
+              delay: 0.2,
+            });
+          }
+        },
+      });
+    });
+  });
 
-  movementInputContainer?.addEventListener("click", ()=>{
-      inputToggleQuestion(movementInputBall);
-  })
+  movementInputContainer?.addEventListener("click", () => {
+    inputToggleQuestion(movementInputBall);
+  });
 
   menuIcon?.addEventListener("click", () => {
     openSidebar(menuIcon, xIcon, sidebar, sidebarImages);
@@ -135,114 +169,110 @@ import VideoModal from "./VideoModal.astro";
     toggleModalTrailer(modalTrailers, true);
   });
 
-  motion?.addEventListener("click",()=>{
-      toggleMotionContainer();
-      toggleElementSidebar(currentItemNavbar, isMotionOpen);
-      lowerLanguageIcon(language, isMotionOpen);
-      isMotionOpen = !isMotionOpen
-  })
+  motion?.addEventListener("click", () => {
+    toggleMotionContainer();
+    toggleElementSidebar(currentItemNavbar, isMotionOpen);
+    lowerLanguageIcon(language, isMotionOpen);
+    isMotionOpen = !isMotionOpen;
+  });
 
-  language?.addEventListener("click", ()=>{
-      toggleArrowIcon(arrowLanguage, isLanguageOpen)
-      toggleLanguagesList(listLanguages, isLanguageOpen)
-      toggleElementSidebar(currentItemNavbar, isLanguageOpen)
-      lowerMotion(motion, isLanguageOpen)
-      isLanguageOpen = !isLanguageOpen;
-  })
+  language?.addEventListener("click", () => {
+    toggleArrowIcon(arrowLanguage, isLanguageOpen);
+    toggleLanguagesList(listLanguages, isLanguageOpen);
+    toggleElementSidebar(currentItemNavbar, isLanguageOpen);
+    lowerMotion(motion, isLanguageOpen);
+    isLanguageOpen = !isLanguageOpen;
+  });
 
-  animes?.addEventListener("click", ()=>{
-      toggleElementSidebar(characterImages, false, animeImages);
-      toggleElementSidebar(trailerList, false, animesList)
-      toggleElementSidebar(downloadList, false, animesList)
-      toggleElementSidebar(charactersList, false, animesList)
-      
-      toggleElementButtoStyles(trailers, false)
-      toggleElementButtoStyles(animes, true)
-      toggleElementButtoStyles(charactersId, false)
-      toggleElementButtoStyles(download, false)
+  animes?.addEventListener("click", () => {
+    toggleElementSidebar(characterImages, false, animeImages);
+    toggleElementSidebar(trailerList, false, animesList);
+    toggleElementSidebar(downloadList, false, animesList);
+    toggleElementSidebar(charactersList, false, animesList);
 
-      currentItemNavbar = animesList;
-  
-  })
+    toggleElementButtoStyles(trailers, false);
+    toggleElementButtoStyles(animes, true);
+    toggleElementButtoStyles(charactersId, false);
+    toggleElementButtoStyles(download, false);
 
-  charactersId?.addEventListener("click", ()=>{
-    
+    currentItemNavbar = animesList;
+  });
+
+  charactersId?.addEventListener("click", () => {
     toggleElementSidebar(animeImages, false, characterImages);
     toggleElementSidebar(animesList, false, charactersList);
-    toggleElementSidebar(downloadList, false, charactersList)
+    toggleElementSidebar(downloadList, false, charactersList);
     toggleElementSidebar(trailerList, false, charactersList);
 
-      toggleElementButtoStyles(trailers, false)
-      toggleElementButtoStyles(animes, false)
-      toggleElementButtoStyles(charactersId, true)
-      toggleElementButtoStyles(download, false)
+    toggleElementButtoStyles(trailers, false);
+    toggleElementButtoStyles(animes, false);
+    toggleElementButtoStyles(charactersId, true);
+    toggleElementButtoStyles(download, false);
 
     currentItemNavbar = charactersList;
+  });
 
-  })
-
-  trailers?.addEventListener("click", ()=>{
-
+  trailers?.addEventListener("click", () => {
     toggleElementSidebar(animesList, false, trailerList);
     toggleElementSidebar(downloadList, false, trailerList);
     toggleElementSidebar(charactersList, false, trailerList);
 
-    toggleElementButtoStyles(trailers, true)
-    toggleElementButtoStyles(animes, false)
-    toggleElementButtoStyles(charactersId, false)
-    toggleElementButtoStyles(download, false)
+    toggleElementButtoStyles(trailers, true);
+    toggleElementButtoStyles(animes, false);
+    toggleElementButtoStyles(charactersId, false);
+    toggleElementButtoStyles(download, false);
 
     currentItemNavbar = trailerList;
+  });
 
-  })
-
-  download?.addEventListener("click", ()=>{
+  download?.addEventListener("click", () => {
     toggleElementSidebar(animesList, false, downloadList);
     toggleElementSidebar(trailerList, false, downloadList);
 
     toggleElementSidebar(charactersList, false, downloadList);
 
-    toggleElementButtoStyles(trailers, false)
-    toggleElementButtoStyles(animes, false)
-    toggleElementButtoStyles(charactersId, false)
-    toggleElementButtoStyles(download, true)
+    toggleElementButtoStyles(trailers, false);
+    toggleElementButtoStyles(animes, false);
+    toggleElementButtoStyles(charactersId, false);
+    toggleElementButtoStyles(download, true);
 
     currentItemNavbar = downloadList;
-  })
+  });
 </script>
 
 <div class="fixed top-0 w-full m-auto">
-  <div class="flex relative content-between w-11/12 m-auto mt-5 pt-3
+  <div
+    class="flex relative content-between w-11/12 m-auto mt-5 pt-3
       md:mt-8
-      xl:mt-15
-  ">
+      xl:mt-15"
+  >
     <img src="/cosplayer.png" class="w-10" />
     <img
       src="/menu.svg"
       id="menuIcon"
       class="menu_icon z-[60] cursor-pointer absolute right-0 top-3 w-10
-        md:right-8
-      "
+        md:right-8"
     />
     <img
       src="/xmark.svg"
       id="xIcon"
       class="menu_icon z-50 cursor-pointer absolute right-0 top-3 opacity-0 bg-gray-800/40 rounded-full p-2 w-10
-          md:right-8
-      "
+          md:right-8"
     />
   </div>
   <div
     id="sidebarImages"
     class="custom_gradient w-1/12 bg-black absolute h-[100vh] top-0 opacity-0 hidden
-        md:w-6/12
-    "
+        md:w-6/12"
   >
+    <div id="iconImages" class="justify-center items-center w-full h-full flex absolute z-30
+        md:flex">
+      <img class="md:block" src="cosplayer.png" />
+    </div>
     <ul class="h-full w-full relative overflow-hidden" id="characterImages">
-      <li class="justify-center items-center w-full h-full
-        md:flex
-      "><img id="iconImages" class="z-0 hidden md:block" src="cosplayer.png" /></li>
-      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]" class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+      <li
+        class="absolute w-[200%] object-cover top-0 left-[-5rem]"
+      >
         <img
           id="sailormoon"
           class="relative h-[100vh] w-[100vw] opacity-0"
@@ -277,14 +307,18 @@ import VideoModal from "./VideoModal.astro";
           src="/characters/rukia.jpg"
         />
       </li>
-      <li class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12">
+      <li
+        class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
+      >
         <img
           id="zero"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/zero.jpg"
         />
       </li>
-      <li class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12">
+      <li
+        class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
+      >
         <img
           id="matoko"
           class="relative h-[100vh] w-[100vw] opacity-0"
@@ -299,11 +333,14 @@ import VideoModal from "./VideoModal.astro";
         />
       </li>
     </ul>
-    <ul class="h-full w-full relative overflow-hidden hidden opacity-0" id="animeImages">
-      <li class="justify-center items-center w-full h-full hidden
-        md:flex
-      "><img id="iconImages" class="z-0 hidden md:block" src="cosplayer.png" /></li>
-      <li class="absolute w-[200%] object-cover top-0 left-[-5rem]" class="absolute w-[200%] object-cover top-0 left-[-5rem]">
+    <ul
+      class="h-full w-full relative overflow-hidden hidden opacity-0"
+      id="animeImages"
+    >
+      <li
+        class="absolute w-[200%] object-cover top-0 left-[-5rem]"
+        class="absolute w-[200%] object-cover top-0 left-[-5rem]"
+      >
         <img
           id="leveling"
           class="relative h-[100vh] w-[100vw] opacity-0"
@@ -338,7 +375,9 @@ import VideoModal from "./VideoModal.astro";
           src="/animes/mashle.jpg"
         />
       </li>
-      <li class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12">
+      <li
+        class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
+      >
         <img
           id="Oshi"
           class="relative h-[100vh] w-[100vw] opacity-0"
@@ -350,158 +389,279 @@ import VideoModal from "./VideoModal.astro";
   <div
     id="sidebar"
     class="absolute h-[100vh] pl-5 bg-[rgb(42,0,48)] w-11/12 right-[-91.6667%] top-0 pt-10 flex flex-col-reverse justify-between pb-10
-        md:w-6/12 md:right-[-50%] md:flex-col md:pl-15 md:pt-0
-    "
+        md:w-6/12 md:right-[-50%] md:flex-col md:pl-15 md:pt-0"
   >
-    <ul class="flex content-center mt-18 text-sm text-white font-semibold border-t-2 border-pink-300 py-5 overflow-scroll -ml-5 pl-5 gap-1
+    <ul
+      class="flex content-center mt-18 text-sm text-white font-semibold border-t-2 border-pink-300 py-5 overflow-scroll -ml-5 pl-5 gap-1
         sm:text-md
         md:border-none md:pl-0 md:overflow-auto
         lg:text-lg
-        xl:text-xl
-    ">
-      <li id="characters" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl bg-white text-black
-          md:py-3 md:px-5
-      ">Characters.</li>
-      <li id="animes" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5
-      ">Animes.</li>
-      <li id="trailers" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5
-      ">Trailers.</li>
-      <li id="download" class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5
-      ">Download.</li>
+        xl:text-xl"
+    >
+      <li
+        id="characters"
+        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl bg-white text-black
+          md:py-3 md:px-5"
+      >
+        Characters.
+      </li>
+      <li
+        id="animes"
+        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
+          md:py-3 md:px-5"
+      >
+        Animes.
+      </li>
+      <li
+        id="trailers"
+        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
+          md:py-3 md:px-5"
+      >
+        Trailers.
+      </li>
+      <li
+        id="download"
+        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
+          md:py-3 md:px-5"
+      >
+        Download.
+      </li>
     </ul>
-    <ul id="charactersList"
+    <ul
+      id="charactersList"
       class="font-bold flex flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3 opacity-100
           sm:textl-xl
-          md:text-2xl  md:translate-y-0
+          md:text-2xl md:translate-y-0
           lg:text-4xl
-          xl:text-6xl
-      "
+          xl:text-6xl"
     >
-    <li class="text-gray-700 md:hidden"> Characters. </li>
-      <li id="sailormoonButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li class="text-gray-700 md:hidden">Characters.</li>
+      <li
+        id="sailormoonButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Sailon Moon
       </li>
-      <li id="mikasaButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="mikasaButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Mikasa Ackerman
       </li>
-      <li id="frierenButton" class="cursor-pointer hover:text-pink-400 duration-200">Frieren</li>
-      <li id="hinataButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="frierenButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
+        Frieren
+      </li>
+      <li
+        id="hinataButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Hinata Hyuga
       </li>
-      <li id="rukiaButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="rukiaButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Rukia Kuchiki
       </li>
-      <li id="zeroButton" class="cursor-pointer hover:text-pink-400 duration-200">Zero Two</li>
-      <li id="matokoButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="zeroButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
+        Zero Two
+      </li>
+      <li
+        id="matokoButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Motoko Kusanagi
       </li>
-      <li id="naoButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="naoButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Nao Tomori
       </li>
     </ul>
-    <ul id="animesList"
+    <ul
+      id="animesList"
       class="font-bold flex-col text-xl items-start text-white uppercase gap-2 tracking-tighter -translate-y-1/3 hidden opacity-0
           sm:textl-xl
-          md:text-2xl  md:translate-y-0
+          md:text-2xl md:translate-y-0
           lg:text-4xl
-          xl:text-6xl
-      "
+          xl:text-6xl"
     >
-    <li class="text-gray-700 md:hidden"> Animes. </li>
-      <li id="levelingButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li class="text-gray-700 md:hidden">Animes.</li>
+      <li
+        id="levelingButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Solo Leveling
       </li>
-      <li id="kaijuuButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="kaijuuButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Kaijuu 8
       </li>
-      <li id="jujutsuButton" class="cursor-pointer hover:text-pink-400 duration-200">Jujutsu Kaisen</li>
-      <li id="chainsawButton" class="cursor-pointer hover:text-pink-400 duration-200">
+      <li
+        id="jujutsuButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
+        Jujutsu Kaisen
+      </li>
+      <li
+        id="chainsawButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
         Chainsaw Man
       </li>
-      <li id="mashleButton" class="cursor-pointer hover:text-pink-400 duration-200">Mashle</li>
-      <li id="OshiButton" class="cursor-pointer hover:text-pink-400 duration-200">
-         Oshi no Ko
+      <li
+        id="mashleButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
+        Mashle
+      </li>
+      <li
+        id="OshiButton"
+        class="cursor-pointer hover:text-pink-400 duration-200"
+      >
+        Oshi no Ko
       </li>
     </ul>
-    <ul id="trailerList"
+    <ul
+      id="trailerList"
       class="font-bold flex-col w-11/12 gap-4 overflow-x-auto tracking-tighter opacity-0 hidden justify-center items-stretch"
     >
       <li id="animeContainerVideo">
-        <VideoInfo isNew={false} title="Anime 404" date="01 de diciembre 2014" img="/anime404.avif" duration="4:21" />
+        <VideoInfo
+          isNew={false}
+          title="Anime 404"
+          date="01 de diciembre 2014"
+          img="/anime404.avif"
+          duration="4:21"
+        />
       </li>
       <li id="highContainerVideo">
-        <VideoInfo isNew={true} title="High School DxD AMV - Courtesy Call" date="06 de junio 2017" img="/amv.avif" duration="4:28" />
+        <VideoInfo
+          isNew={true}
+          title="High School DxD AMV - Courtesy Call"
+          date="06 de junio 2017"
+          img="/amv.avif"
+          duration="4:28"
+        />
       </li>
     </ul>
-    <ul id="downloadList"
+    <ul
+      id="downloadList"
       class="font-bold flex-col w-full h-9/12 gap-4 overflow-x-auto tracking-tighter opacity-0 hidden justify-start items-stretch"
     >
       <li class="w-11/12 max-h-[15.5rem]">
         <SimpleCard title="Vídeos" srcImage="videos.jpg" link="videos" />
       </li>
       <li class="w-11/12 max-h-[15.5rem]">
-        <SimpleCard title="Capturas de pantalla" srcImage="capturas.jpg" link="capturas" />
+        <SimpleCard
+          title="Capturas de pantalla"
+          srcImage="capturas.jpg"
+          link="capturas"
+        />
       </li>
       <li class="w-11/12 max-h-[15.5rem]">
-        <SimpleCard title="Arte y fondos de pantalla" srcImage="arte.jpg" link="arte-and-backgrounds" />
+        <SimpleCard
+          title="Arte y fondos de pantalla"
+          srcImage="arte.jpg"
+          link="arte-and-backgrounds"
+        />
       </li>
       <li class="max-w-11/12 mx-auto">
-        <a class="flex items-center gap-2 bg-[rgb(32,0,38)] py-2 px-4 cursor-pointer rounded-3xl text-base text-white
-          lg:text-lg lg:font-extrabold lg:py-4 lg:pl-8
-        "> <p > Ver todas las descargas </p>  <svg class="size-4 object-cover font-bold"> <use href="/arrow2.svg"></use> </svg> </a>
+        <a
+          class="flex items-center gap-2 bg-[rgb(32,0,38)] py-2 px-4 cursor-pointer rounded-3xl text-base text-white
+          lg:text-lg lg:font-extrabold lg:py-4 lg:pl-8"
+        >
+          <p>Ver todas las descargas</p>
+          <svg class="size-4 object-cover font-bold">
+            <use href="/arrow2.svg"></use>
+          </svg>
+        </a>
       </li>
     </ul>
     <ul class="flex w-11/12 text-sm gap-2
-        md:text-xl md:justify-between
-    ">
-      <li class="flex gap-2 text-white font-bold items-center cursor-pointer z-40" id="language">
-        <img class="w-5"
-          src="/language.svg" /> English 
-          <img
+        md:text-xl md:justify-between">
+      <li
+        class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
+        id="language"
+      >
+        <img class="w-5" src="/language.svg" /> English
+        <img class="w-5 md:rotate-180" src="/arrow.svg" id="arrowLanguage" />
+      </li>
+      <div
+        id="listLanguages"
+        class="absolute -z-10 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0"
+      >
+        <ul
+          class="relative top-1/6 ml-15 flex flex-col gap-5 text-sm items-baseline text-white font-bold
+              md:text-2xl"
+        >
+          <li><input type="radio" /> English</li>
+          <li><input type="radio" /> Deutsch</li>
+          <li><input type="radio" /> Español</li>
+          <li><input type="radio" /> Español de lationoamerica</li>
+          <li><input type="radio" /> Français</li>
+          <li><input type="radio" /> Italiano</li>
+          <li><input type="radio" /> 日本語</li>
+          <li><input type="radio" /> 한국어</li>
+          <li><input type="radio" /> Polski</li>
+          <li><input type="radio" /> Português do Brasil</li>
+          <li><input type="radio" /> Русский</li>
+          <li><input type="radio" /> 繁體中文</li>
+          <li><input type="radio" /> 简体中文</li>
+        </ul>
+      </div>
+      <li
+        class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
+        id="motion"
+      >
+        Motion <img
           class="w-5 md:rotate-180"
           src="/arrow.svg"
-          id="arrowLanguage"
+          id="motionArrow"
         />
       </li>
-      <div id="listLanguages" class="absolute -z-10 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0"> 
-          <ul class="relative top-1/6 ml-15 flex flex-col gap-5 text-sm items-baseline text-white font-bold
-              md:text-2xl
-          ">
-            <li> <input type="radio"> English</li>
-            <li> <input type="radio"> Deutsch</li>
-            <li> <input type="radio"> Español</li>
-            <li> <input type="radio"> Español de lationoamerica</li>
-            <li> <input type="radio"> Français</li>
-            <li> <input type="radio"> Italiano</li>
-            <li> <input type="radio"> 日本語</li>
-            <li> <input type="radio"> 한국어</li>
-            <li> <input type="radio"> Polski</li>
-            <li> <input type="radio"> Português do Brasil</li>
-            <li> <input type="radio"> Русский</li>
-            <li> <input type="radio"> 繁體中文</li>
-            <li> <input type="radio"> 简体中文</li>
-          </ul>
+      <div
+        class="absolute -z-10 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0"
+        id="motionContainer"
+      >
+        <div
+          class="relative top-3/12 left-0 right-0 mx-auto w-2/3 bg-purple-950 px-6 py-10
+            md:top-5/12"
+        >
+          <input type="checkbox" class="sr-only" id="movementInput" />
+          <label
+            id="movementInputContainer"
+            for="movementInput"
+            class="absolute top-10 right-10 w-14 h-8 bg-gray-800 border-2 rounded-2xl flex items-center cursor-pointer"
+          >
+            <div
+              id="movementInputBall"
+              class="bg-black size-6 rounded-full ml-0.5"
+            >
+            </div>
+          </label>
+          <h2 class="font-semibold text-lg text-white">Reducir movimiento</h2>
+          <p class="text-lg text-shadow-fuchsia-500 mt-2">
+            Reduce al mínimo las animaciones, los efectos dinámicos y el
+            movimiento visual para aumentar el rendimiento.
+          </p>
         </div>
-      <li class="flex gap-2 text-white font-bold items-center cursor-pointer z-40" id="motion">
-        Motion <img class="w-5 md:rotate-180" src="/arrow.svg" id="motionArrow"/>
-      </li>
-      <div class="absolute -z-10 h-full w-full top-0 right-0 bg-[rgba(42,0,48,.8)] opacity-0" id="motionContainer">
-        <div class="relative top-3/12 left-0 right-0 mx-auto w-2/3 bg-purple-950 px-6 py-10
-            md:top-5/12
-        ">
-          <input type="checkbox" class="sr-only" id="movementInput"> 
-          <label id="movementInputContainer" for="movementInput" class="absolute top-10 right-10 w-14 h-8 bg-gray-800 border-2 rounded-2xl flex items-center cursor-pointer"> <div id="movementInputBall" class="bg-black size-6 rounded-full ml-0.5"> </div> </label>
-          <h2 class="font-semibold text-lg text-white"> Reducir movimiento </h2>
-          <p class="text-lg text-shadow-fuchsia-500 mt-2"> Reduce al mínimo las animaciones, los efectos dinámicos y el movimiento visual para aumentar el rendimiento. </p>
-        </div> 
       </div>
     </ul>
   </div>
 
-  <VideoModal srcValue="https://www.youtube.com/embed/_NXrTujMP50?si=Rmv3-LcXdHoDdCic"/>
+  <VideoModal
+    srcValue="https://www.youtube.com/embed/_NXrTujMP50?si=Rmv3-LcXdHoDdCic"
+  />
 </div>
 
 <style>
@@ -515,9 +675,14 @@ import VideoModal from "./VideoModal.astro";
     );
   }
 
-  .custom_background{
-    background: #2A0030;
-background: linear-gradient(90deg, rgba(42, 0, 48, 1) 0%, rgba(50, 0, 50, 1) 71%, rgba(42, 0, 48, 0) 100%);
+  .custom_background {
+    background: #2a0030;
+    background: linear-gradient(
+      90deg,
+      rgba(42, 0, 48, 1) 0%,
+      rgba(50, 0, 50, 1) 71%,
+      rgba(42, 0, 48, 0) 100%
+    );
   }
 
   .item_active {
@@ -526,5 +691,3 @@ background: linear-gradient(90deg, rgba(42, 0, 48, 1) 0%, rgba(50, 0, 50, 1) 71%
     border-radius: 2rem;
   }
 </style>
-
-
