@@ -1,57 +1,30 @@
 ---
 import Header from "./Header.astro";
+import TextMask from "./TextMask.jsx";
 
 ---
 
-<div class="image_container">
-  <img src="/miku.jpg" alt="Miku" class="main" />
-  <img src="/play.svg" class="icon">
-  <img src="down.svg" class="icon_secondary" >
+<div>
+
+</div>
+  <div class="w-full h-screen relative">
+    <img src="/background.jpg" alt="background image" class="object-cover w-full h-full z-[5]" />
+    <h2 class="z-10 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white text-9xl"> Anime <br> Page </h2>
+    <img src="/character.png" alt="background image" class="absolute left-0 top-0 w-full h-full object-cover z-[15]" />
+    <img src="/play.svg" class="z-[15] absolute top-0 right-0 left-0 bottom-0 m-auto size-32 bg-white p-8 rounded-full duration-200 cursor-pointer hover:scale-105">
+    <img src="down.svg" class="z-[15] absolute bottom-4 w-16 left-0 right-0 m-auto icon_secondary" >
+  </div>
   <Header />
+  <TextMask client:load />
+  <section class="h-screen flex items-center justify-center">
+    <h1 class="text-4xl font-bold">Anime Page</h1>
+  </section>
 </div>
 
 <style>
-  .image_container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-  }
-
-  .main{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  .icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-    width: 8rem;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 100%;
-    transition: transform 1s;
-    cursor: pointer
-  }
 
   .icon_secondary{
-    position: absolute;
-    bottom: 1rem;
-    width: 4rem;
-    left: 0;
-    right: 0;
-    margin: auto;
-    transform: rotate(90deg);
     animation: move infinite 2s alternate;
-  }
-
-  .icon:hover{
-    transition: transform 1s;
-    transform: scale(1.1);
   }
 
   @keyframes move {
@@ -63,7 +36,5 @@ import Header from "./Header.astro";
       transform: scale(0.95) rotate(90deg);
       opacity: .5;
     }
-      
-    
   }
 </style>
