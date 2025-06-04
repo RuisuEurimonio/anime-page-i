@@ -5,9 +5,7 @@ import TextMask from "./TextMask.jsx";
 ---
 
 <div>
-
-</div>
-  <div class="w-full h-screen relative">
+  <div id="main-container" class="w-full h-screen relative">
     <img src="/background.jpg" alt="background image" class="object-cover w-full h-full z-[5]" />
     <h2 class="z-10 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white text-9xl"> Anime <br> Page </h2>
     <img src="/character.png" alt="background image" class="absolute left-0 top-0 w-full h-full object-cover z-[15]" />
@@ -15,8 +13,10 @@ import TextMask from "./TextMask.jsx";
     <img src="down.svg" class="z-[15] absolute bottom-4 w-16 left-0 right-0 m-auto icon_secondary" >
   </div>
   <Header />
-  <TextMask client:load />
-  <section class="h-screen flex items-center justify-center">
+  <div class="prueba2">
+    <TextMask client:load />
+  </div>
+  <section id="prueba" class="h-screen flex items-center justify-center">
     <h1 class="text-4xl font-bold">Anime Page</h1>
   </section>
 </div>
