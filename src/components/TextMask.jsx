@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import {gsap, ScrollTrigger} from "./../scripts/gsapConfig"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,13 +12,12 @@ export default function AnimeMask() {
         fontSize: "128px",
         attr: {y: "30%"},
         ease: "expo.inOut",
-        pin: true,
         scrollTrigger:{
-          trigger: "#main-container",
-          start: "bottom bottom",
-          endTrigger: "#container-mask",
+          trigger: "#container-mask",
+          start: "top center",
           end: "center center",
-          scrub: true
+          scrub: true,
+          markers: true   
         }
       })
     })
