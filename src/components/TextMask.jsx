@@ -9,25 +9,28 @@ export default function AnimeMask() {
   useEffect(()=>{
     const ctx = gsap.context(()=>{
       gsap.to(textRef.current,{
-        fontSize: "128px",
-        attr: {y: "30%"},
+        fontSize: "100px",
+        attr: {y: "15%"},
         ease: "expo.inOut",
         scrollTrigger:{
           trigger: "#container-mask",
           start: "top center",
-          end: "center center",
+          end: "+1000",
           scrub: true,
-          markers: true   
+          markers: true,
         }
       })
     })
 
+    ScrollTrigger.refresh();
     return ()=>{
       ctx.revert()
     }
   }, [])
 
   return (
+
+    
     <div id="container-mask" className="relative h-screen bg-black overflow-hidden flex justify-center items-center">
       <svg className="absolute inset-0 w-full h-full">
         <defs>

@@ -1,17 +1,15 @@
 ---
 import Header from "./Header.astro";
 import Home from "./Home";
-import TextMask from "./TextMask.jsx";
-
 ---
 
 
 <div>
   <Home client:load/>
   <Header />
-  <div class="prueba2">
-    <TextMask client:load />
-  </div>
+  <section id="prueba" class="h-screen flex items-center justify-center">
+    <h1 class="text-4xl font-bold">Anime Page</h1>
+  </section>
   <section id="prueba" class="h-screen flex items-center justify-center">
     <h1 class="text-4xl font-bold">Anime Page</h1>
   </section>
