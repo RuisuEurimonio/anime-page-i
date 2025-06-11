@@ -12,42 +12,67 @@ const Home =  () => {
     const backgroundRef = useRef(null);
     const characterRef = useRef(null);
     const maskContainerRef = useRef(null);
+    const textChildRef = useRef(null);
 
     useEffect(()=>{
 
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#wrapper-container",
-                start: "center center",
-                end: "+=1000",
-                scrub: true,
+                start: "top top",
+                end: "+=500",
+                scrub: 0.3,
                 pin: true,
-                anticipatePin: 1
+                markers: true
             }
         })
 
+        
         tl.to(textRef.current, {
             scale: 0.8,
             opacity: 0,
-            ease: "Power1.out"
+            ease: "Power1.out",
+            duration: 0.10
         }).to(iconRef.current,{
             scale: 0.8,
             opacity: 0,
-            ease: "Power1.out"
+            ease: "Power1.out",
+            duration: 0.10
         }, "<").to(downIconRef.current,{
             scale: 0.8,
             opacity: 0,
-            ease: "Power1.out"
+            ease: "Power1.out",
+            duration: 0.10
         }, "<").to(backgroundRef.current,{
-            scale: 1
+            scale: 1,
+            duration: 0.10
         }, "<").to(characterRef.current,{
-            scale: 1
-        },"<").to(maskContainerRef.current,{
+            scale: 1,
+            duration: 0.10
+        },"<")
+        
+        tl.set(textChildRef.current,{
+            fontSize: 10000,
+            attr: {
+                y: "175%",
+                x: "45%"
+            }
+        }).to(maskContainerRef.current,{
             pointerEvents: "auto",
             display: "block",
+        }, "<")
+        
+        tl.to(textChildRef.current, {
+            fontSize: "100",
+            attr: {
+                y: "15%",
+                x: "50%"
+                },
+            ease: "expo.out",
+            duration: 0.90
         })
 
-        return () => ScrollTrigger.getAll().forEach(st => st.kill());
+        ScrollTrigger.refresh();
     },[])
 
     return (
@@ -59,8 +84,8 @@ const Home =  () => {
                 <img ref={iconRef} src="/play.svg" className="z-[15] absolute top-0 right-0 left-0 bottom-0 m-auto size-32 bg-white p-8 rounded-full duration-200 cursor-pointer hover:scale-105" />
                 <img ref={downIconRef} src="down.svg" className="z-[15] absolute rotate-90 bottom-4 w-16 left-0 right-0 m-auto icon_secondary" />
             </div>
-            <div ref={maskContainerRef} className="absolute top-0 left-0 w-full h-screen z-30 hidden pointer-events-none">
-                <TextMask client:load />
+            <div id="mask-container" ref={maskContainerRef} className="absolute top-0 left-0 w-full h-screen z-30 hidden pointer-events-none">
+                <TextMask client:load textRef={textChildRef} />
             </div>
         </div>
     )

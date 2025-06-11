@@ -3,30 +3,8 @@ import {gsap, ScrollTrigger} from "./../scripts/gsapConfig"
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AnimeMask() {
-  const textRef = useRef(null)
+export default function AnimeMask({textRef}) {
 
-  useEffect(()=>{
-    const ctx = gsap.context(()=>{
-      gsap.to(textRef.current,{
-        fontSize: "100px",
-        attr: {y: "15%"},
-        ease: "expo.inOut",
-        scrollTrigger:{
-          trigger: "#container-mask",
-          start: "top center",
-          end: "+1000",
-          scrub: true,
-          markers: true,
-        }
-      })
-    })
-
-    ScrollTrigger.refresh();
-    return ()=>{
-      ctx.revert()
-    }
-  }, [])
 
   return (
 
@@ -34,15 +12,13 @@ export default function AnimeMask() {
     <div id="container-mask" className="relative h-screen bg-black overflow-hidden flex justify-center items-center">
       <svg className="absolute inset-0 w-full h-full">
         <defs>
-          <mask id="anime-text-mask">
+          <mask id="anime-text-mask" className='flex justify-center'>
             <rect width="100%" height="100%" fill="black" />
             <text
               ref={textRef}
-              x="50%"
-              y="100%"
+              y="30%"
               textAnchor="middle"
               fontSize="10000"
-              fontWeight="bold"
               fill="white"
               strokeWidth="2"
               className='font-extrabold uppercase'
