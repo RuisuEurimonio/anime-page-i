@@ -55,7 +55,6 @@ const Home =  () => {
             fontSize: 10000,
             attr: {
                 y: "175%",
-                x: "45%"
             }
         }).to(maskContainerRef.current,{
             pointerEvents: "auto",
@@ -63,10 +62,9 @@ const Home =  () => {
         }, "<")
         
         tl.to(textChildRef.current, {
-            fontSize: "100",
+            fontSize: window.innerWidth > 768 ? "100" : "48",
             attr: {
-                y: "15%",
-                x: "50%"
+                y: window.innerWidth > 768 ? "15%" : "28%",
                 },
             ease: "expo.out",
             duration: 0.90
@@ -79,9 +77,13 @@ const Home =  () => {
         <div id="wrapper-container" className="w-full h-screen relative overflow-hidden">
             <div id="main-container" className="w-full h-screen relative overflow-hidden">
                 <img ref={backgroundRef} src="/background.jpg" alt="background image" className="object-cover w-full h-full z-[5] scale-125" />
-                <h2 ref={textRef} className="z-10 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white text-9xl"> Anime <br /> Page </h2>
+                <h2 ref={textRef} className="z-10 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white translate-y-36 text-5xl
+                    lg:text-9xl lg:translate-y-0
+                "> Anime <br /> Page </h2>
                 <img ref={characterRef} src="/character.png" alt="background image" className="absolute left-0 top-0 w-full h-full object-cover z-[15] scale-125" />
-                <img ref={iconRef} src="/play.svg" className="z-[15] absolute top-0 right-0 left-0 bottom-0 m-auto size-32 bg-white p-8 rounded-full duration-200 cursor-pointer hover:scale-105" />
+                <img ref={iconRef} src="/play.svg" className="z-[15] absolute top-0 right-0 left-0 bottom-0 m-auto size-16 bg-white p-3 rounded-full duration-200 cursor-pointer hover:scale-105
+                    md:p-8 md:size-32
+                " />
                 <img ref={downIconRef} src="down.svg" className="z-[15] absolute rotate-90 bottom-4 w-16 left-0 right-0 m-auto icon_secondary" />
             </div>
             <div id="mask-container" ref={maskContainerRef} className="absolute top-0 left-0 w-full h-screen z-30 hidden pointer-events-none">

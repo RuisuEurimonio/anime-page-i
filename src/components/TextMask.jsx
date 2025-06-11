@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import {gsap, ScrollTrigger} from "./../scripts/gsapConfig"
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +20,7 @@ export default function AnimeMask({textRef}) {
               fontSize="10000"
               fill="white"
               strokeWidth="2"
-              className='font-extrabold uppercase'
+              className='font-extrabold uppercase text-5xl'
             >
               <tspan x="50%" dy="0">anime</tspan>
               <tspan x="50%" dy="1.2em">page</tspan>  
