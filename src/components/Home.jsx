@@ -13,6 +13,8 @@ const Home =  () => {
     const characterRef = useRef(null);
     const maskContainerRef = useRef(null);
     const textChildRef = useRef(null);
+    const svgRef = useRef(null);
+    const whiteSvgRef = useRef(null);
 
     useEffect(()=>{
 
@@ -56,19 +58,37 @@ const Home =  () => {
             attr: {
                 y: "175%",
             }
-        }).to(maskContainerRef.current,{
+        }).set(whiteSvgRef.current,{
+            fontSize: 10000,
+            attr: {
+                y: "175%",
+            }
+        })
+        .to(maskContainerRef.current,{
             pointerEvents: "auto",
             display: "block",
         }, "<")
-        
+
         tl.to(textChildRef.current, {
-            fontSize: window.innerWidth > 768 ? "100" : "48",
+            fontSize: window.innerWidth > 768 ? "128" : "48",
             attr: {
                 y: window.innerWidth > 768 ? "15%" : "28%",
                 },
             ease: "expo.out",
             duration: 0.90
-        })
+        }).to(whiteSvgRef.current, {
+            fontSize: window.innerWidth > 768 ? "128" : "48",
+            attr: {
+                y: window.innerWidth > 768 ? "15%" : "28%",
+                },
+            ease: "expo.out",
+            duration: 0.90
+        },"<")
+        .to(svgRef.current,{
+            opacity: 0,
+            duration: 0.95,
+            ease: "power1.inOut"
+        },"<")
 
         ScrollTrigger.refresh();
     },[])
@@ -87,7 +107,7 @@ const Home =  () => {
                 <img ref={downIconRef} src="down.svg" className="z-[15] absolute rotate-90 bottom-4 w-16 left-0 right-0 m-auto icon_secondary" />
             </div>
             <div id="mask-container" ref={maskContainerRef} className="absolute top-0 left-0 w-full h-screen z-30 hidden pointer-events-none">
-                <TextMask client:load textRef={textChildRef} />
+                <TextMask client:load textRef={textChildRef} svgRef={svgRef} whiteSvgRef={whiteSvgRef} />
             </div>
         </div>
     )
