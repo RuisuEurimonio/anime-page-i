@@ -8,7 +8,7 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
   return (
 
     
-    <div className="relative h-screen bg-black overflow-hidden flex justify-center items-center">
+    <div className="relative h-full bg-[rgb(18,3,20)] overflow-hidden flex justify-center items-center">
       <svg  className="absolute inset-0 w-full h-full z-10">
         <text
           ref={whiteSvgRef}
@@ -16,7 +16,10 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
           textAnchor="middle"
           fontSize="10000"
           fill="white"
-          strokeWidth="2"
+          strokeWidth="15"
+          stroke="black"         
+          paintOrder="stroke"    
+          strokeLinejoin="round" 
           className="font-extrabold uppercase text-5xl"
         >
           <tspan x="50%" dy="0">anime</tspan>
