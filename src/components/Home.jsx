@@ -96,10 +96,8 @@ const Home =  () => {
             opacity: 0,
             duration: secondPartTime + 0.05,
             ease: "power1.inOut"
-        },"<").to(lastMaskRef.current,{
-            opacity: 0,
-            ease: "power1.inOut"
         },"<")
+
 
         const scaleValue = 0.9
 
@@ -111,13 +109,11 @@ const Home =  () => {
             scale: scaleValue
         },"<").to(referencesRef.current,{
             scale: scaleValue
-        },"<").to(lastMaskRef.current,{
-            backgroundColor: "radial-gradient(ellipse_at_top,rgba(51,0,51,1)_0%)",
-            opacity: 1,
-            delay: 0.2
         },"<")
 
-        
+        tl.to(lastMaskRef.current,{
+            y: "-150vh",
+        }, tl.totalDuration() * 0.70)
 
         ScrollTrigger.refresh();
     },[])
@@ -135,20 +131,20 @@ const Home =  () => {
                 " />
                 <img ref={downIconRef} src="down.svg" className="z-5 absolute rotate-90 bottom-4 w-16 left-0 right-0 m-auto icon_secondary" />
             </div>
-            <div id="mask-container" ref={maskContainerRef} className="absolute top-0 left-0 w-full h-screen hidden pointer-events-none">
+            <div id="mask-container" ref={maskContainerRef} className="z-10 absolute top-0 left-0 w-full h-screen hidden pointer-events-none bg-[rgb(18,3,20)]">
                 <TextMask client:load textRef={textChildRef} svgRef={svgRef} whiteSvgRef={whiteSvgRef} />
-                <div className="absolute w-full h-screen top-0">
-                    <img src="/iconAnime.png" ref={imageIcon} className="size-72 absolute z-40 top-0 left-0 right-0 m-auto translate-y-[12vh]" />
+                <div className="absolute w-full h-screen top-0 z-10">
+                    <img src="/iconAnime.png" ref={imageIcon} className="size-72 absolute z-20 top-0 left-0 right-0 m-auto translate-y-[12vh]" />
                 </div>
-                <div className="absolute top-0 text-center z-40 mx-auto right-0 left-0 translate-y-[50vh]">
-                    <h2 ref={textInfoRef} className="text-8xl font-bold uppercase bg-[radial-gradient(circle,rgba(185,0,209,1)_0%,rgba(122,0,122,1)_57%,rgba(51,0,51,1)_99%)] bg-clip-text text-transparent z-40"> Disponible <br/> en todos los idiomas <br/> y generos. </h2>
-                    <ul ref={referencesRef} className="text-gray-100 font-bold flex z-40 gap-5 justify-center text-4xl mt-7 uppercase">
+                <div className="z-20 absolute top-0 text-center mx-auto right-0 left-0 translate-y-[50vh]">
+                    <h2 ref={textInfoRef} className="text-8xl font-bold uppercase bg-[radial-gradient(circle,rgba(185,0,209,1)_0%,rgba(122,0,122,1)_57%,rgba(51,0,51,1)_99%)] bg-clip-text text-transparent"> Disponible <br/> en todos los idiomas <br/> y generos. </h2>
+                    <ul ref={referencesRef} className="text-gray-100 font-bold flex gap-5 justify-center text-4xl mt-7 uppercase">
                         <li> Online </li>
                         <li> Dvd </li>
                     </ul>
                 </div>
-            </div>
-            <div ref={lastMaskRef} className="opacity-0 hidden h-[200vh] translate-y-[50vh] top-0 w-full absolute z-45 pointer-events-none bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_30%,rgba(18,3,20,1)_100%)]">
+                <div ref={lastMaskRef} className="opacity-0 z-25 h-[250vh] top-0 w-full absolute bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_30%,rgba(18,3,20,1)_100%)]">
+                </div>
             </div>
         </div>
     )
