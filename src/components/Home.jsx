@@ -99,22 +99,21 @@ const Home =  () => {
             duration: 0.5
         },"<").to(textInfoRef.current,{
             opacity: 1,
-
         }).to(referencesRef.current,{
             opacity: 1
-        })
+        },"<")
 
         const scaleValue = 0.9
 
         tl.to(whiteSvgRef.current,{
-            scale: scaleValue
+            fontSize: window.innerWidth > 768 ? "50" : "38"
         }).to(imageIcon.current,{
             scale: scaleValue
         },"<").to(textInfoRef.current,{
             scale: scaleValue
         },"<").to(referencesRef.current,{
             scale: scaleValue
-        })
+        },"<")
 
         ScrollTrigger.refresh();
     },[])
@@ -144,6 +143,8 @@ const Home =  () => {
                         <li> Dvd </li>
                     </ul>
                 </div>
+            </div>
+            <div className="h-[100vh] top-0 w-full absolute z-30 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0)_10%,rgba(0,0,0,0.4)_25%,rgba(51,0,51,1)_80%)]">
             </div>
         </div>
     )

@@ -1,21 +1,42 @@
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { gsap } from "gsap";
 
 const LenisSetup = ({ children }) => {
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smoothTouch: false
+    });
+
     const raf = (time) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
     };
     requestAnimationFrame(raf);
 
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-  }, []);
+    ScrollTrigger.scrollerProxy(document.body,{
+      scrollTop(value){
+        return arguments.length ? lenis.scrollTo(value) : lenis.scroll.instance.scroll.y
+      },
+      getBoundingClientRect(){
+        return {
+          top: 0,
+          left: 0,
+          wifth: window.innerWidth,
+          height: windows.innerHeight
+        }
+      },
+      pinType: document.body.style.transform ? "transform" : "fixed"
+    })
+
+    ScrollTrigger.addEventListener("refresh", ()=> lenis.update())
+    ScrollTrigger.refresh()
+  })
 
   return <>{ children }</>;
 };
