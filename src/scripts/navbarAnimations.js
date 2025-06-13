@@ -4,6 +4,7 @@ let isClose = true;
 const sidebarMovementValue = 768 > window.innerWidth ? "-91.6667%" : "-50%";
 
 export const openSidebar = (menuIcon, closeIcon, sidebar, imagesSidebar) =>{
+   document.body.style.overflow = "hidden"
     gsap.to(menuIcon, {
       opacity: 0,
       scale: 0.5,
@@ -42,6 +43,7 @@ const toggleImagesSidebar = (imagesSidebar) => {
 }
 
 export const closeSidebar = (closeIcon, menuIcon, sidebar, imagesSidebar) =>{
+  document.body.style.overflow = "";
     gsap.to(closeIcon, {
       opacity: 0,
       scale: 0.5,
