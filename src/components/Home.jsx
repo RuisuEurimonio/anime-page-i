@@ -35,7 +35,6 @@ const Home =  () => {
 
         const firstPartTime = 0.15
         const secondPartTime = 0.70
-        const thirdPartTime = 0.15;
         
         tl.to(textRef.current, {
             scale: 0.8,
@@ -73,7 +72,7 @@ const Home =  () => {
         }).set(lastMaskRef.current,{
             opacity: 1
         })
-        .to(maskContainerRef.current,{
+        .set(maskContainerRef.current,{
             pointerEvents: "auto",
             display: "block",
         }, "<")
@@ -112,7 +111,7 @@ const Home =  () => {
         },"<")
 
         tl.to(lastMaskRef.current,{
-            y: "-150vh",
+            y: "-300vh",
         }, tl.totalDuration() * 0.70)
 
         ScrollTrigger.refresh();
@@ -143,7 +142,7 @@ const Home =  () => {
                         <li> Dvd </li>
                     </ul>
                 </div>
-                <div ref={lastMaskRef} className="opacity-0 z-25 h-[250vh] top-0 w-full absolute bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_30%,rgba(18,3,20,1)_100%)]">
+                <div ref={lastMaskRef} className="opacity-0 z-25 h-[400vh] top-0 w-full absolute bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]">
                 </div>
             </div>
         </div>
