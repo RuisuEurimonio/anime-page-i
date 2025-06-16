@@ -111,8 +111,14 @@ const Home =  () => {
         },"<")
 
         tl.to(lastMaskRef.current,{
-            y: "-300vh",
-        }, tl.totalDuration() * 0.70)
+            y: "-240vh",
+        }, tl.totalDuration() * 0.55)
+        .set(lastMaskRef.current,{
+            zIndex: 45
+        })
+        .to(lastMaskRef.current,{
+            y: "-400vh"
+        },">+1")
 
         ScrollTrigger.refresh();
     },[])
@@ -142,7 +148,7 @@ const Home =  () => {
                         <li> Dvd </li>
                     </ul>
                 </div>
-                <div ref={lastMaskRef} className="opacity-0 z-25 h-[400vh] top-0 w-full absolute bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]">
+                <div ref={lastMaskRef} className="opacity-0 z-25 h-[500vh] top-0 w-full absolute bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]">
                 </div>
             </div>
         </div>
