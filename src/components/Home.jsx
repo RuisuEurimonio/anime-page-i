@@ -18,7 +18,8 @@ const Home =  () => {
     const imageIcon = useRef(null);
     const textInfoRef = useRef(null);
     const referencesRef = useRef(null);
-    const lastMaskRef = useRef(null)
+    const lastMaskRef = useRef(null);
+    const defRef = useRef(null);
 
     useEffect(()=>{
 
@@ -26,15 +27,16 @@ const Home =  () => {
             scrollTrigger: {
                 trigger: "#wrapper-container",
                 start: "top top",
-                end: "+=2000",
+                end: "+=2500",
                 scrub: 0.3,
                 pin: true,
                 markers: true
             }
         })
 
-        const firstPartTime = 0.15
-        const secondPartTime = 0.70
+        const firstPartTime = 0.10
+        const secondPartTime = 0.60
+        const thirdtPartTime = 0.25
         
         tl.to(textRef.current, {
             scale: 0.8,
@@ -101,13 +103,17 @@ const Home =  () => {
         const scaleValue = 0.9
 
         tl.to(whiteSvgRef.current,{
-            fontSize: window.innerWidth > 768 ? "50" : "38"
+            fontSize: window.innerWidth > 768 ? "50" : "38",
+            duration: thirdtPartTime / 2
         }).to(imageIcon.current,{
-            scale: scaleValue
+            scale: scaleValue,
+            duration: thirdtPartTime / 2
         },"<").to(textInfoRef.current,{
-            scale: scaleValue
+            scale: scaleValue,
+            duration: thirdtPartTime / 2
         },"<").to(referencesRef.current,{
-            scale: scaleValue
+            scale: scaleValue,
+            duration: thirdtPartTime / 2
         },"<")
 
         tl.to(lastMaskRef.current,{
@@ -117,8 +123,37 @@ const Home =  () => {
             zIndex: 45
         })
         .to(lastMaskRef.current,{
-            y: "-400vh"
+            y: "-550vh"
         },">+1")
+        .set(referencesRef.current,{
+            opacity: 0
+        })
+        .set(textInfoRef.current,{
+            opacity: 0
+        })
+        .set(imageIcon.current,{
+            opacity: 0
+        })
+        .set(textChildRef.current,{
+            opacity: 0
+        })
+        .set(whiteSvgRef.current,{
+            opacity:0
+        })
+        .set(defRef.current,{
+            opacity:1
+        })
+        
+        tl.to(lastMaskRef.current,{
+            y: "-800vh"
+        })
+        .to(lastMaskRef.current,{
+            y: "-1000vh"
+        },">+1")
+        .to(defRef.current,{
+                opacity: 0
+        },"<")
+
 
         ScrollTrigger.refresh();
     },[])
@@ -148,7 +183,16 @@ const Home =  () => {
                         <li> Dvd </li>
                     </ul>
                 </div>
-                <div ref={lastMaskRef} className="opacity-0 z-25 h-[500vh] top-0 w-full absolute bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]">
+                <div ref={lastMaskRef} className="opacity-0 z-25 h-[1100vh] top-0 w-full absolute ">
+                    <div className="h-[500vh] bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]"></div>
+                    <div className="h-[100vh] bg-[rgb(18,3,20)]"></div>
+                    <div className="h-[500vh] bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]"></div>
+                </div>
+                <div ref={defRef} className="absolute w-full h-screen bg-[rgb(18,3,20)] inset-0 m-auto opacity-0 z-15">
+                    <div className="w-8/12 mx-auto h-full flex justify-center  gap-10 flex-col text-white text-justify font-bold uppercase">
+                        <h2 className="text-6xl"> Anime </h2>
+                        <p className="text-4xl"> El anime es un estilo de animación originado en Japón. Se distingue por sus colores vivos, expresiones exageradas y narrativa emocional. Cubre una amplia gama de géneros, desde acción hasta drama y ciencia ficción. Es popular mundialmente y forma parte importante de la cultura japonesa. </p>
+                    </div>
                 </div>
             </div>
         </div>
