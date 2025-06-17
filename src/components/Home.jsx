@@ -34,9 +34,9 @@ const Home =  () => {
             }
         })
 
-        const firstPartTime = 0.10
+        const firstPartTime = 0.30
         const secondPartTime = 0.60
-        const thirdtPartTime = 0.25
+        const thirdtPartTime = 0.10
         
         tl.to(textRef.current, {
             scale: 0.8,
@@ -124,7 +124,7 @@ const Home =  () => {
         })
         .to(lastMaskRef.current,{
             y: "-550vh"
-        },">+1")
+        },">+0.3")
         .set(referencesRef.current,{
             opacity: 0
         })
@@ -149,7 +149,7 @@ const Home =  () => {
         })
         .to(lastMaskRef.current,{
             y: "-1000vh"
-        },">+1")
+        },">+0.2")
         .to(defRef.current,{
                 opacity: 0
         },"<")
@@ -174,24 +174,37 @@ const Home =  () => {
             <div id="mask-container" ref={maskContainerRef} className="z-10 absolute top-0 left-0 w-full h-screen hidden pointer-events-none bg-[rgb(18,3,20)]">
                 <TextMask client:load textRef={textChildRef} svgRef={svgRef} whiteSvgRef={whiteSvgRef} />
                 <div className="absolute w-full h-screen top-0 z-10">
-                    <img src="/iconAnime.png" ref={imageIcon} className="size-72 absolute z-20 top-0 left-0 right-0 m-auto translate-y-[12vh]" />
+                    <img src="/iconAnime.png" ref={imageIcon} className="size-44 absolute z-20 top-0 left-0 right-0 m-auto translate-y-[18vh]
+                        md:size-72 md:translate-y-[12vh]
+                    " />
                 </div>
                 <div className="z-20 absolute top-0 text-center mx-auto right-0 left-0 translate-y-[50vh]">
-                    <h2 ref={textInfoRef} className="text-8xl font-bold uppercase bg-[radial-gradient(circle,rgba(185,0,209,1)_0%,rgba(122,0,122,1)_57%,rgba(51,0,51,1)_99%)] bg-clip-text text-transparent"> Disponible <br/> en todos los idiomas <br/> y generos. </h2>
-                    <ul ref={referencesRef} className="text-gray-100 font-bold flex gap-5 justify-center text-4xl mt-7 uppercase">
+                    <h2 ref={textInfoRef} className="text-4xl font-bold uppercase bg-[radial-gradient(circle,rgba(185,0,209,1)_0%,rgba(122,0,122,1)_57%,rgba(51,0,51,1)_99%)] bg-clip-text text-transparent
+                        md:text-6xl 
+                        xl:text-8xl
+                    "> Disponible <br/> en todos los idiomas <br/> y generos. </h2>
+                    <ul ref={referencesRef} className="text-gray-100 font-bold flex gap-5 justify-center text-4xl mt-7 uppercase flex-col
+                        md:flex-row
+                    ">
                         <li> Online </li>
                         <li> Dvd </li>
                     </ul>
                 </div>
                 <div ref={lastMaskRef} className="opacity-0 z-25 h-[1100vh] top-0 w-full absolute ">
                     <div className="h-[500vh] bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]"></div>
-                    <div className="h-[100vh] bg-[rgb(18,3,20)]"></div>
-                    <div className="h-[500vh] bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)]"></div>
+                    <div className="h-[100vh] bg-[rgb(18,3,20)] -translate-y-2"></div>
+                    <div className="h-[500vh] bg-[radial-gradient(circle,rgba(185,0,209,0)_0%,rgba(13,3,20,1)_50%,rgba(18,3,20,1)_100%)] -translate-y-2"></div>
                 </div>
                 <div ref={defRef} className="absolute w-full h-screen bg-[rgb(18,3,20)] inset-0 m-auto opacity-0 z-15">
                     <div className="w-8/12 mx-auto h-full flex justify-center  gap-10 flex-col text-white text-justify font-bold uppercase">
-                        <h2 className="text-6xl"> Anime </h2>
-                        <p className="text-4xl"> El anime es un estilo de animación originado en Japón. Se distingue por sus colores vivos, expresiones exageradas y narrativa emocional. Cubre una amplia gama de géneros, desde acción hasta drama y ciencia ficción. Es popular mundialmente y forma parte importante de la cultura japonesa. </p>
+                        <h2 className="text-2xl
+                            md:text-4xl
+                            lg:text-6xl
+                        "> Anime </h2>
+                        <p className="text-lg
+                            md:text-2xl
+                            lg:text-4xl
+                        "> El anime es un estilo de animación originado en Japón. Se distingue por sus colores vivos, expresiones exageradas y narrativa emocional. Cubre una amplia gama de géneros, desde acción hasta drama y ciencia ficción. Es popular mundialmente y forma parte importante de la cultura japonesa. </p>
                     </div>
                 </div>
             </div>
