@@ -1,18 +1,14 @@
 ---
 import Header from "./Header.astro";
 import Home from "./Home";
+import SailorMoon from "./SailorMoon";
 ---
 
 
-<div>
+<div class="bg-[rgb(18,3,20)]">
   <Home client:load/>
   <Header />
-  <section id="prueba" class=" relative h-screen flex items-center justify-center bg-[rgb(18,3,20)]">
-    <div class="h-[100vh] top-0 w-full absolute z-30 rotate-180 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0)_10%,rgba(0,0,0,0.4)_25%,rgba(51,0,51,1)_80%)]" />
-    <h1 class="text-4xl font-bold">Anime Page</h1>
-  </section>
-  <section id="prueba" class="h-screen flex items-center justify-center">
-    <h1 class="text-4xl font-bold">Anime Page</h1>
-  </section>
+  <SailorMoon client:load/>
+  <div class="h-screen w-full"> Hola </div>
 </div>
 

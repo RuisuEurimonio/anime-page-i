@@ -30,7 +30,6 @@ const Home =  () => {
                 end: "+=2500",
                 scrub: 0.3,
                 pin: true,
-                markers: true
             }
         })
 
@@ -153,6 +152,9 @@ const Home =  () => {
         .to(defRef.current,{
                 opacity: 0
         },"<")
+        .to("#wrapper-container",{
+            opacity: 0
+        })
 
 
         ScrollTrigger.refresh();
