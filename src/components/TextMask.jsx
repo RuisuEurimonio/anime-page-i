@@ -8,7 +8,7 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
   return (
 
     
-    <div id="hpñ" className="relative h-full overflow-hidden flex justify-center items-center z-30">
+    <div className="relative h-full overflow-hidden flex justify-center items-center z-30">
       <svg  className="absolute inset-0 w-full h-full z-30">
         <text
           ref={whiteSvgRef}
@@ -46,7 +46,6 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
         </defs>
 
         <image
-        id="dsadasd"
           href="background.jpg"
           width="100%"
           height="100%"
