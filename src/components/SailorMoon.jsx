@@ -125,7 +125,7 @@ const SailorMoon = () => {
                     " imgSrc="/characters/sailormoon/sailor3.jpg"/> 
                 </div>
                 <div></div>
-                <ImgZoom otherClass="h-full my-5
+                <ImgZoom otherClass="h-full my-5 fixed w-full h-full
                     sm:row-span-2 sm:col-span-1 md:my-0
                 " imgSrc="/characters/sailormoon/sailor2.jpg" /> 
 
