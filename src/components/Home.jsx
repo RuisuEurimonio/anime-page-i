@@ -152,10 +152,6 @@ const Home =  () => {
         .to(defRef.current,{
                 opacity: 0
         },"<")
-        .to("#wrapper-container",{
-            opacity: 0
-        })
-
 
         ScrollTrigger.refresh();
     },[])

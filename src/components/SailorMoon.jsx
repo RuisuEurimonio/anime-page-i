@@ -20,12 +20,12 @@ const SailorMoon = () => {
     useEffect(()=>{
         [imgRef1,imgRef3].forEach((ref, i)=>{
             gsap.to(ref.current,{
-                y: i == 0 ? -250 : -200,
+                y: i == 0 ? -230 : -245,
                 ease: "power1.inOut",
                 duration: 1,
                 scrollTrigger: {
                     trigger: "#text-container",
-                    start: "top top",
+                    start: "top+=380vh top",
                     end: "bottom bottom",
                     scrub: true,
                     markers: true
@@ -55,21 +55,10 @@ const SailorMoon = () => {
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
-                
             },
         })
 
-        const tl2 = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#sailor-container",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true,
-                
-            }
-        })
-
-        tl.to(imgRef.current,{
+        tl.to("#sailor-image-container",{
             opacity: 1,
             duration: 0.1
         })
@@ -93,10 +82,6 @@ const SailorMoon = () => {
                     duration: 0.1
                 })
 
-       
-
-        console.log(tl.totalDuration() * 0.5 , " ", tl.totalDuration() )
-
         return ()=>{
             tl.scrollTrigger?.kill();
             tl.kill();
@@ -104,11 +89,11 @@ const SailorMoon = () => {
     },[images])
 
     return(
-        <div id="sailor-container">
-            <div id="sailor-image-container" className="h-[400vh] w-full relative bg-[rgb(18,3,20)]">
-                <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover opacity-0" /> 
+        <div id="sailor-container" className="relative">
+            <div id="sailor-image-container" className="h-[400vh] w-full absolute top-[-70vh] bg-[rgb(18,3,20)] z-0 opacity-0">
+                <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" /> 
             </div>
-            <div id="text-container" className="text-white z-10 grid grid-cols-[15vw_1.2fr_1.2fr_0.6fr] grid-rows-[0.4fr_1fr_1fr_1fr] gap-10"> 
+            <div id="text-container" className="text-white z-10 grid grid-cols-[15vw_1.2fr_1.2fr_0.6fr] grid-rows-[0.4fr_1fr_1fr_1fr] gap-10 relative pt-[180vh]"> 
                 <div></div>
                 <h2 className="text-8xl uppercase place-content-end font-bold text-pink-300"> Sailor Moon </h2>
                 <div></div>
@@ -122,10 +107,10 @@ const SailorMoon = () => {
                 <div className="col-span-2 row-span-2 h-full w-full relative">
                     <img ref={imgRef1} className="border-white hover:border-8 duration-200 bottom-0 absolute w-full h-11/12 object-cover" src="/characters/sailormoon/sailor3.jpg"/> 
                 </div>
-                <div className=""></div>
+                <div></div>
                 <img className="border-white hover:border-8 duration-200 row-span-2 col-span-1 h-full object-cover" src="/characters/sailormoon/sailor2.jpg" /> 
 
-                <div className=""></div>
+                <div></div>
                 <img ref={imgRef3} className="border-white hover:border-8 duration-200 row-span-1 col-span-1 h-10/12 w-full object-cover" src="/characters/sailormoon/sailor1.jpg" /> 
             </div>
         </div>
