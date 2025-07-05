@@ -9,7 +9,6 @@ const getFramesSource = (index) => {
 
 gsap.registerPlugin(ScrollTrigger)
 
-
 const SailorMoon = () => {
 
     const imgRef = useRef(null);
@@ -26,11 +25,10 @@ const SailorMoon = () => {
                 ease: "power1.inOut",
                 duration: 1,
                 scrollTrigger: {
-                    trigger: "#text-container",
+                    trigger: "#text-container_sailor",
                     start: "top+=380vh top",
                     end: "bottom bottom",
                     scrub: true,
-                    markers: true
                 }
             })
         })
@@ -47,20 +45,22 @@ const SailorMoon = () => {
         setImages(imgs);
     },[])
 
+    
+
     useEffect(()=>{
         if(!imgRef.current || images.length === 0) return;
 
         const obj = { frame : 0}
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: "#sailor-image-container",
+                trigger: "#image-container_sailor",
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
             },
         })
 
-        tl.to("#sailor-image-container",{
+        tl.to("#image-container_sailor",{
             opacity: 1,
             duration: 0.1
         })
@@ -91,11 +91,11 @@ const SailorMoon = () => {
     },[images])
 
     return(
-        <div id="sailor-container" className="relative">
-            <div id="sailor-image-container" className="h-[400vh] w-full absolute top-[-70vh] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
+        <div id="container_sailor" className="relative">
+            <div id="image-container_sailor" className="h-[400vh] w-full absolute top-[-70vh] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
                 <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" /> 
             </div>
-            <div id="text-container" className="text-white z-10 relative pt-[180vh] px-10
+            <div id="text-container_sailor" className="text-white z-10 relative pt-[180vh] px-10
                 sm:grid sm:grid-cols-[10vw_1.2fr_1.2fr_0.6fr] sm:grid-rows-[0.4fr_1fr_0.3fr_0.3fr] sm:gap-10 sm:px-0
                 md:grid-cols-[12vw_1fr_1fr_1fr] md:grid-rows-[0.4fr_1fr_0.5fr_0.5fr]
             "> 
@@ -134,6 +134,7 @@ const SailorMoon = () => {
                     sm:row-span-1 sm:col-span-1 md:h-10/12
                 " imgSrc="/characters/sailormoon/sailor1.jpg" /> 
             </div>
+            
         </div>
     )
 

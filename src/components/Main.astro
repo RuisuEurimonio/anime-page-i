@@ -2,13 +2,15 @@
 import Header from "./Header.astro";
 import Home from "./Home";
 import SailorMoon from "./SailorMoon";
+import SailorMoonBottom from "./SailorMoonBottom";
 ---
 
 
 <div class="bg-[rgb(18,3,20)]">
   <Home client:load/>
   <Header />
-  <SailorMoon client:load/>
+  <SailorMoon client:load />
+  <SailorMoonBottom client:load />
   <div class="h-screen w-full"> Hola </div>
 </div>
 
