@@ -28,7 +28,23 @@ const SailorMoonBottom = () => {
         setImages(imgs)
     },[])
 
-
+    useEffect(()=>{
+        [imgRef1, imgRef3].forEach((element, index) => {
+            if(!(window.innerWidth > 768)) return
+            gsap.to(element.current,{
+                y : index === 1 ? -50 : -35,
+                duration: 1,
+                ease: "power4.in",
+                scrollTrigger: {
+                    trigger: "#text-container_sailorBottom",
+                    start: "center top",
+                    end: "bottom bottom",
+                    scrub: true,
+                    markers: true
+                }
+            })
+        })
+    },[])
 
     useEffect(()=>{
         if(!imgRef.current || images.length === 0) return;
@@ -139,17 +155,17 @@ const SailorMoonBottom = () => {
                     sm:col-span-2
                 ">
                     <ImgZoom ref={imgRef1} otherClass=" bottom-0 relative w-full h-full
-                        sm:11/12 sm:absolute 
+                        sm:11/12 sm:absolute  md:translate-y-100
                     " imgSrc="/characters/sailormoon/sailor4.jpg"/> 
                 </div>
                 <ImgZoom otherClass="h-full my-5 fixed w-full h-full
-                    sm:row-span-2 sm:col-span-1 md:my-0 md:h-10/12 md:my-auto
+                    sm:row-span-2 sm:col-span-1 md:my-0 md:h-10/12 md:my-auto 
                 " imgSrc="/characters/sailormoon/sailor5.jpg" /> 
                 <div></div>
 
                 <div></div>
                 <ImgZoom ref={imgRef3} otherClass="object-cover
-                    sm:row-span-1 sm:col-span-1
+                    sm:row-span-1 sm:col-span-1 md:translate-y-100
                 " imgSrc="/characters/sailormoon/sailor6.jpg" /> 
             </div>
         </div>

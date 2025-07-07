@@ -21,12 +21,12 @@ const SailorMoon = () => {
         if(!(window.innerWidth > 768)) return;
         [imgRef1,imgRef3].forEach((ref, i)=>{
             gsap.to(ref.current,{
-                y: i == 0 ? -230 : -245,
+                y: i == 0 ? -150 : -145,
                 ease: "power1.inOut",
                 duration: 1,
                 scrollTrigger: {
                     trigger: "#text-container_sailor",
-                    start: "top+=380vh top",
+                    start: "center bottom",
                     end: "bottom bottom",
                     scrub: true,
                 }
@@ -95,7 +95,6 @@ const SailorMoon = () => {
                 start: "top+=180vh top",
                 end: "bottom+=180vh bottom",
                 scrub: true,
-                markers: true
             }
         })
 
