@@ -1,6 +1,6 @@
-import {gsap, ScrollTrigger} from "./../scripts/gsapConfig"
+import {gsap, ScrollTrigger} from "../../scripts/gsapConfig"
 import { useEffect, useRef, useState } from "react";
-import ImgZoom from "./ImgZoom";
+import ImgZoom from "../ImgZoom";
 
 const frames = 30;
 const getFramesSource = (index) => {
@@ -45,8 +45,6 @@ const SailorMoon = () => {
         setImages(imgs);
     },[])
 
-    
-
     useEffect(()=>{
         if(!imgRef.current || images.length === 0) return;
 
@@ -89,6 +87,24 @@ const SailorMoon = () => {
             tl.kill();
         }
     },[images])
+
+    useEffect(()=>{
+        const tl = gsap.timeline({
+                scrollTrigger: {
+                trigger: "#text-container_sailor",
+                start: "top+=180vh top",
+                end: "bottom+=180vh bottom",
+                scrub: true,
+                markers: true
+            }
+        })
+
+        tl.to("#text-container_sailor",{
+            y: "-20rem",
+            ease: "power4.in",
+            duration: 1
+        })
+    },[])
 
     return(
         <div id="container_sailor" className="relative">

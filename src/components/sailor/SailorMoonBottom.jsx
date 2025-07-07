@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
-import ImgZoom from "./ImgZoom";
+import { gsap, ScrollTrigger } from "../../scripts/gsapConfig";
+import ImgZoom from "../ImgZoom";
 
 const frames = 40;
 const getFramesSource = (index) => {
@@ -49,7 +49,6 @@ const SailorMoonBottom = () => {
                 endTrigger: "#title_sailorBottom",
                 end: "bottom+=100vh bottom",
                 scrub: true,
-                markers: true
             }
         })
 
