@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 import ImgZoom from "./ImgZoom";
 
-const frames = 18;
+const frames = 40;
 const getFramesSource = (index) => {
-    return `/frames/sailorMoon2/sailor_${index.toString()}.png`
+    return `/frames/sailorMoon2/sailormoon_${index.toString()}.jpg`
 }
 
 gsap.registerPlugin(ScrollTrigger)
