@@ -2,7 +2,7 @@ import { forwardRef, useRef, useState } from "react";
 import { gsap } from "../scripts/gsapConfig";
 import { createPortal } from "react-dom";
 
-const ImgZoom = forwardRef(({imgSrc, otherClass = ""}, ref) => {
+const ImgZoom = forwardRef(({imgSrc, alt, otherClass = ""}, ref) => {
 
     const imgRef = useRef(null)
 
@@ -44,14 +44,14 @@ const ImgZoom = forwardRef(({imgSrc, otherClass = ""}, ref) => {
     return(
         <>
         <div ref={ref} className={"group w-full relative duration-200 hover:border-8 border-white cursor-zoom-in "+otherClass} onClick={handleClic}>
-            <img src={imgSrc} loading="lazy" className="w-full h-full object-cover"/>
-            <img src="/zoom.svg" className="group-hover:bg-pink-100 duration-200 group-hover:scale-125 absolute bottom-5 right-5 size-10 bg-pink-400 rounded-full p-2" />
+            <img src={imgSrc} alt={alt +" miniatura"} loading="lazy" className="w-full h-full object-cover"/>
+            <img src="/zoom.svg" alt="Icono de zoom" className="group-hover:bg-pink-100 duration-200 group-hover:scale-125 absolute bottom-5 right-5 size-10 bg-pink-400 rounded-full p-2" />
         </div>
         {
             showFullImage &&
                 createPortal(
                 <div className="fixed w-screen h-screen inset-0 z-50 bg-[rgba(18,3,20,0.9)] cursor-zoom-out justify-center items-center" onClick={handleClose}>
-                    <img ref={imgRef} src={imgSrc} className="absolute object-cover rounded-xl"/> 
+                    <img ref={imgRef} src={imgSrc} alt={alt +" expandida"} className="absolute object-cover rounded-xl"/> 
                 </div>
                 ,document.body)
         }
