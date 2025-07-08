@@ -29,34 +29,21 @@ const SailorMoonBottom = () => {
     }, [])
 
     useEffect(() => {
+        if (!(window.innerWidth > 768)) return
         [imgRef1, imgRef3].forEach((element, index) => {
-            if (!(window.innerWidth > 768)) return
             gsap.to(element.current, {
-                y: index === 1 ? -50 : -35,
-                duration: 1,
-                ease: "power4.in",
+                y : index === 0 ? -100 : -130,
+                ease: "power1.inOut",
                 scrollTrigger: {
                     trigger: "#text-container_sailorBottom",
-                    start: "center top",
-                    end: "bottom bottom",
+                    start: "top-=200px bottom",
+                    end: "bottom+=200px top",
                     scrub: true,
-                    markers: true
-                }
+                    markers: true,
+                    scroller: document.body,
+                },
+                
             })
-        })
-    }, [])
-
-    useEffect(() => {
-        gsap.to("#text-container_sailorBottom", {
-            y: "10rem",
-            duration: 1,
-            ease: "power4.in",
-            scrollTrigger: {
-                trigger: "#text-container_sailorBottom",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true
-            }
         })
     }, [])
 
@@ -135,12 +122,13 @@ const SailorMoonBottom = () => {
 
     return (
         <div className="relative">
-            <div id="image-container_sailorBottom" className="h-[400vh] w-full absolute top-[-70vh] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
+            <div id="image-container_sailorBottom" className="h-[400vh] w-full absolute top-[-280vh] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
                 <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" />
                 <h2 id="aux-title_sailorBottom" className="fixed text-5xl uppercase font-bold text-pink-500 bottom-8 ml-[calc(2.5rem)] pr-10 opacity-0
                     md:text-6xl md:ml-[calc(12vw+2.5rem)] md:pr-0"> "Conejo de la Luna"  </h2>
             </div>
-            <div id="text-container_sailorBottom" className="text-white z-10 relative pt-[220vh] px-10
+            <div className="mt-[220vh]">
+            <div id="text-container_sailorBottom" className="text-white z-10 relative px-10
                 sm:grid sm:grid-cols-[10vw_1.2fr_1.2fr_0.6fr] sm:grid-rows-[0.8fr_1fr_0.3fr_0.3fr] sm:gap-10 sm:px-0
                 md:grid-cols-[12vw_1.4fr_1.2fr_12vw] md:grid-rows-[0.4fr_1fr_5fr_3fr]
             ">
@@ -167,8 +155,8 @@ const SailorMoonBottom = () => {
                 <div className="h-full w-full relative
                     sm:col-span-2
                 ">
-                    <ImgZoom ref={imgRef1} otherClass=" bottom-0 relative w-full h-full
-                        sm:11/12 sm:absolute  md:translate-y-100
+                    <ImgZoom ref={imgRef1} otherClass="w-full h-full
+                        sm:11/12 sm:absolute  md:mt-20
                     " imgSrc="/characters/sailormoon/sailor4.jpg" />
                 </div>
                 <ImgZoom otherClass="h-full my-5 w-full h-full
@@ -177,9 +165,9 @@ const SailorMoonBottom = () => {
                 <div></div>
 
                 <div></div>
-                <ImgZoom ref={imgRef3} otherClass="object-cover
-                    sm:row-span-1 sm:col-span-1 md:translate-y-100
+                <ImgZoom ref={imgRef3} otherClass="sm:row-span-1 sm:col-span-1 md:mt-20
                 " imgSrc="/characters/sailormoon/sailor6.jpg" />
+            </div>
             </div>
         </div>
     )
