@@ -118,10 +118,10 @@ const MikasaBottom = () => {
 
     return(
         <div className="relative">
-            <div id="image-container_mikasaBottom" className="h-[400vh] w-full absolute top-[-220vh] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
+            <div id="image-container_mikasaBottom" className="h-[400vh] w-full absolute top-[-450px] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
                 <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" /> 
             </div>
-            <div className="mt-[180vh]">
+            <div className="pt-[180vh]">
                 <div id="text-container_mikasaBottom" className="text-white z-10 relative px-10
                     sm:grid sm:grid-cols-[10vw_1.2fr_1.2fr_0.6fr] sm:grid-rows-[0.4fr_1fr_0.3fr_0.3fr] sm:gap-10 sm:px-0
                     md:grid-cols-[12vw_1.3fr_1fr_12vw] md:grid-rows-[1fr_1fr_2fr_1.5fr]
