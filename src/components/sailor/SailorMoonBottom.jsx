@@ -39,7 +39,6 @@ const SailorMoonBottom = () => {
                     start: "top-=200px bottom",
                     end: "bottom+=200px top",
                     scrub: true,
-                    markers: true,
                     scroller: document.body,
                 },
                 
@@ -119,6 +118,10 @@ const SailorMoonBottom = () => {
             tl.kill();
         }
     }, [images])
+
+    useEffect(()=>{
+        ScrollTrigger.refresh()
+    })
 
     return (
         <div className="relative">

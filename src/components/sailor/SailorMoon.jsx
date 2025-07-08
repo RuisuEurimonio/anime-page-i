@@ -89,6 +89,10 @@ const SailorMoon = () => {
     },[images])
 
     useEffect(()=>{
+        ScrollTrigger.refresh()
+    })
+
+    useEffect(()=>{
         const tl = gsap.timeline({
                 scrollTrigger: {
                 trigger: "#text-container_sailor",
