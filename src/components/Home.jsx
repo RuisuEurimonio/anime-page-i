@@ -23,6 +23,11 @@ const Home =  () => {
 
     useEffect(()=>{
 
+        if(!textRef || !iconRef || !downIconRef || !backgroundRef || !characterRef || !maskContainerRef 
+            ||  !textChildRef || !svgRef || !whiteSvgRef || !imageIcon || !textInfoRef || !referencesRef || !lastMaskRef || !defRef){
+            return;
+        }
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#wrapper-container",
@@ -153,7 +158,11 @@ const Home =  () => {
                 opacity: 0
         },"<")
 
-        ScrollTrigger.refresh();
+        return () =>{
+            tl.scrollTrigger?.kill();
+            tl.kill();
+            ScrollTrigger.refresh();
+        }
     },[])
 
     return (

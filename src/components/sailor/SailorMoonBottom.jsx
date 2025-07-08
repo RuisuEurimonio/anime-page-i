@@ -26,24 +26,30 @@ const SailorMoonBottom = () => {
             imgs.push(img)
         }
         setImages(imgs)
+
+        setTimeout(()=>{
+            ScrollTrigger.refresh()
+        },100)
     }, [])
 
     useEffect(() => {
-        if (!(window.innerWidth > 768)) return
-        [imgRef1, imgRef3].forEach((element, index) => {
-            gsap.to(element.current, {
-                y : index === 0 ? -100 : -130,
-                ease: "power1.inOut",
-                scrollTrigger: {
-                    trigger: "#text-container_sailorBottom",
-                    start: "top-=200px bottom",
-                    end: "bottom+=200px top",
-                    scrub: true,
-                    scroller: document.body,
-                },
-                
+        if (!(window.innerWidth > 768)) return;
+        if(imgRef1 && imgRef3){
+            [imgRef1, imgRef3].forEach((element, index) => {
+                gsap.to(element.current, {
+                    y : index === 0 ? -100 : -130,
+                    ease: "power1.inOut",
+                    scrollTrigger: {
+                        trigger: "#text-container_sailorBottom",
+                        start: "top-=500px bottom",
+                        end: "bottom top",
+                        scrub: true,
+                        
+                    },
+                    
+                })
             })
-        })
+        }
     }, [])
 
     useEffect(() => {
@@ -55,6 +61,7 @@ const SailorMoonBottom = () => {
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
+                markers: true
             }
         })
 
@@ -78,7 +85,7 @@ const SailorMoonBottom = () => {
             opacity: 1,
             y: "-8vh",
             duration: 0.2,
-            delay: 0.05
+            delay: 0.3
         })
 
         tlAux.to({}, { duration: 0.70 })
@@ -118,19 +125,15 @@ const SailorMoonBottom = () => {
             tl.kill();
         }
     }, [images])
-
-    useEffect(()=>{
-        ScrollTrigger.refresh()
-    })
-
+    
     return (
         <div className="relative">
-            <div id="image-container_sailorBottom" className="h-[400vh] w-full absolute top-[-280vh] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
+            <div id="image-container_sailorBottom" className="h-[400vh] w-full absolute top-[-500px] bg-[rgb(18,3,20)] z-0 opacity-0 overflow-y-visible">
                 <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" />
                 <h2 id="aux-title_sailorBottom" className="fixed text-5xl uppercase font-bold text-pink-500 bottom-8 ml-[calc(2.5rem)] pr-10 opacity-0
                     md:text-6xl md:ml-[calc(12vw+2.5rem)] md:pr-0"> "Conejo de la Luna"  </h2>
             </div>
-            <div className="mt-[220vh]">
+            <div className="pt-[220vh]">
             <div id="text-container_sailorBottom" className="text-white z-10 relative px-10
                 sm:grid sm:grid-cols-[10vw_1.2fr_1.2fr_0.6fr] sm:grid-rows-[0.8fr_1fr_0.3fr_0.3fr] sm:gap-10 sm:px-0
                 md:grid-cols-[12vw_1.4fr_1.2fr_12vw] md:grid-rows-[0.4fr_1fr_5fr_3fr]

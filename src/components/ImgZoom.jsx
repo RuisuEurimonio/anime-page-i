@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { gsap } from "../scripts/gsapConfig";
 import { createPortal } from "react-dom";
 
-const ImgZoom = ({imgSrc, ref, otherClass = ""}) => {
+const ImgZoom = forwardRef(({imgSrc, otherClass = ""}, ref) => {
 
     const imgRef = useRef(null)
 
@@ -58,6 +58,6 @@ const ImgZoom = ({imgSrc, ref, otherClass = ""}) => {
         </>
     )
 
-}
+})
 
 export default ImgZoom;

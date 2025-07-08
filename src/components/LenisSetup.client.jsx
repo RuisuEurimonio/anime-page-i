@@ -27,7 +27,7 @@ const LenisSetup = ({ children }) => {
           top: 0,
           left: 0,
           width: window.innerWidth,
-          height: windows.innerHeight
+          height: window.innerHeight
         }
       },
       pinType: document.body.style.transform ? "transform" : "fixed"
