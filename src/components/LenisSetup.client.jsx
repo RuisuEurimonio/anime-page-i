@@ -1,7 +1,6 @@
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { gsap } from "gsap";
+import { ScrollTrigger } from "../scripts/gsapConfig";
 
 const LenisSetup = ({ children }) => {
   useEffect(() => {
@@ -27,7 +26,7 @@ const LenisSetup = ({ children }) => {
         return {
           top: 0,
           left: 0,
-          wifth: window.innerWidth,
+          width: window.innerWidth,
           height: windows.innerHeight
         }
       },
@@ -36,7 +35,7 @@ const LenisSetup = ({ children }) => {
 
     ScrollTrigger.addEventListener("refresh", ()=> lenis.update())
     ScrollTrigger.refresh()
-  })
+  },[])
 
   return <>{ children }</>;
 };

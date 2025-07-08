@@ -43,7 +43,7 @@ const ImgZoom = ({imgSrc, ref, otherClass = ""}) => {
             <img src={imgSrc} className="w-full h-full object-cover"/>
             <img src="/zoom.svg" className="group-hover:bg-pink-100 duration-200 group-hover:scale-125 absolute bottom-5 right-5 size-10 bg-pink-400 rounded-full p-2" />
         </div>
-        <div ref={overlayRef} className="fixed inset-0 z-50 bg-[rgba(18,3,20,0.9)] cursor-zoom-out hidden justify-center items-center" onClick={handleClose}>
+        <div ref={overlayRef} className="fixed w-screen h-screen inset-0 z-50 bg-[rgba(18,3,20,0.9)] cursor-zoom-out hidden justify-center items-center" onClick={handleClose}>
             <img ref={imgRef} src={imgSrc} className="absolute object-cover rounded-xl"/> 
         </div>
         </>

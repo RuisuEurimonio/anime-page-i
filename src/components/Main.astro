@@ -1,6 +1,7 @@
 ---
 import Header from "./Header.astro";
 import Home from "./Home";
+import Mikasa from "./mikasa/mikasa";
 import SailorMoon from "./sailor/SailorMoon";
 import SailorMoonBottom from "./sailor/SailorMoonBottom";
 ---
@@ -11,6 +12,7 @@ import SailorMoonBottom from "./sailor/SailorMoonBottom";
   <Header />
   <SailorMoon client:load />
   <SailorMoonBottom client:load />
+  <Mikasa client:load />
   <div class="h-screen w-full"> Hola </div>
 </div>
 
