@@ -41,7 +41,7 @@ const SailorMoonBottom = () => {
                     ease: "power1.inOut",
                     scrollTrigger: {
                         trigger: "#text-container_sailorBottom",
-                        start: "top-=500px bottom",
+                        start: "top bottom",
                         end: "bottom top",
                         scrub: true,
                         
@@ -85,7 +85,7 @@ const SailorMoonBottom = () => {
             opacity: 1,
             y: "-8vh",
             duration: 0.2,
-            delay: 0.3
+            delay: 0.05
         })
 
         tlAux.to({}, { duration: 0.70 })
