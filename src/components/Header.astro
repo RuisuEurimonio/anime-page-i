@@ -245,15 +245,17 @@ import VideoModal from "./VideoModal.astro";
       md:mt-8
       xl:mt-15"
   >
-    <img src="/iconAnime.png" class="w-10" />
+    <img src="/iconAnime.png" alt="icon of the page" class="w-10" />
     <img
       src="/menu.svg"
+      alt="icon of menu"
       id="menuIcon"
       class="menu_icon z-[60] cursor-pointer absolute right-0 top-3 w-10
         md:right-8"
     />
     <img
       src="/xmark.svg"
+      alt="icon for close the menu"
       id="xIcon"
       class="menu_icon z-50 cursor-pointer absolute right-0 top-3 opacity-0 bg-gray-800/40 rounded-full p-2 w-10
           md:right-8"
@@ -266,7 +268,7 @@ import VideoModal from "./VideoModal.astro";
   >
     <div id="iconImages" class="justify-center items-center w-full h-full flex absolute z-30
         md:flex">
-      <img class="hidden md:block size-96" src="/iconAnime.png" />
+      <img class="hidden md:block size-96" alt="main icon of page " src="/iconAnime.png" />
     </div>
     <ul class="h-full w-full relative overflow-hidden" id="characterImages">
       <li
@@ -274,6 +276,7 @@ import VideoModal from "./VideoModal.astro";
       >
         <img
           id="sailormoon"
+          alt="image of the character with name Sailor moon"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/sailormoon.jpeg"
         />
@@ -281,6 +284,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="mikasa"
+          alt="image of the character with name Mikasa Ackerman"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/mikasa.jpeg"
         />
@@ -288,6 +292,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="frieren"
+          alt="image of the character with name Frieren"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/frieren.jpg"
         />
@@ -295,6 +300,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="hinata"
+          alt="image of the character with name Hinata Hyuga"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/hinata.jpg"
         />
@@ -302,6 +308,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="rukia"
+          alt="image of the character with name Rukia Kuchiki"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/rukia.jpg"
         />
@@ -311,6 +318,7 @@ import VideoModal from "./VideoModal.astro";
       >
         <img
           id="zero"
+          alt="image of the character with name Zero"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/zero.jpg"
         />
@@ -320,6 +328,7 @@ import VideoModal from "./VideoModal.astro";
       >
         <img
           id="matoko"
+          alt="image of the character with name Matoko Kusanagi"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/matoko.jpg"
         />
@@ -327,6 +336,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="nao"
+          alt="image of the character with name Nao Tomori"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/characters/nao.jpg"
         />
@@ -342,6 +352,7 @@ import VideoModal from "./VideoModal.astro";
       >
         <img
           id="leveling"
+          alt="image of the anime Solo Leveling"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/animes/leveling.jpg"
         />
@@ -349,6 +360,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="kaijuu"
+          alt="image of the anime Kaijuu n8"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/animes/kaijuu.jpg"
         />
@@ -356,6 +368,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="jujutsu"
+          alt="image of the anime Jujutsu Kaisen"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/animes/jujutsu.png"
         />
@@ -363,6 +376,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="chainsaw"
+          alt="image of the anime Chainsaw Man"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/animes/chainsaw.jpg"
         />
@@ -370,6 +384,7 @@ import VideoModal from "./VideoModal.astro";
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
         <img
           id="mashle"
+          alt="image of the anime Mashle"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/animes/mashle.jpg"
         />
@@ -379,6 +394,7 @@ import VideoModal from "./VideoModal.astro";
       >
         <img
           id="Oshi"
+          alt="image of anime Oshi No Ko"
           class="relative h-[100vh] w-[100vw] opacity-0"
           src="/animes/Oshi.jpeg"
         />
@@ -592,8 +608,8 @@ import VideoModal from "./VideoModal.astro";
         class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
         id="language"
       >
-        <img class="w-5" src="/language.svg" /> English
-        <img class="w-5 md:rotate-180" src="/arrow.svg" id="arrowLanguage" />
+        <img class="w-5" src="/language.svg" alt="icon of languages menu"/> English
+        <img class="w-5 md:rotate-180" src="/arrow.svg" id="arrowLanguage" alt="arrow icon of the languages menu" />
       </li>
       <div
         id="listLanguages"
