@@ -126,7 +126,7 @@ const Frieren = () => {
                         " imgSrc="/characters/frieren/frieren1.jpg"/> 
                     </div>
                     <ImgZoom otherClass="h-full my-5 fixed w-full h-full object-top object-cover
-                        sm:row-span-1 sm:col-span-2 md:my-0
+                        sm:row-span-2 sm:col-span-2 md:my-0 md:h-9/12
                     " imgSrc="/characters/frieren/frieren2.jpg" /> 
                     <div></div>
                     <ImgZoom ref={imgRef3} otherClass="border-white hover:border-8 duration-200 h-full w-full 

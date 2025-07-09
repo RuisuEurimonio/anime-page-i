@@ -61,6 +61,7 @@ const SailorMoonBottom = () => {
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
+
             }
         })
 
