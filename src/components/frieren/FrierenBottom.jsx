@@ -1,6 +1,5 @@
 import { gsap, ScrollTrigger } from "../../scripts/gsapConfig"
 import { useEffect, useRef, useState } from "react";
-import ImgZoom from "../ImgZoom";
 
 const frames = 39;
 const getFramesSource = (index) => {
@@ -16,12 +15,6 @@ const FrierenBottom = () => {
     const imgStatic = useRef(null);
 
     const textRef = useRef(null);
-
-    useEffect(() => {
-
-                
-
-    }, [])
 
     useEffect(() => {
         let imgs = []
