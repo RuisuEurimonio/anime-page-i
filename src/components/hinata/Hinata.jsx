@@ -9,16 +9,38 @@ const getFramesSource = (index) => {
     return `/frames/hinata/hinata_${index.toString()}.jpg`
 }
 
-const Hinata = ()=> {
+const Hinata = () => {
 
     const imgStatic = useRef(null);
     const containerRef = useRef(null);
     const imgRef = useRef(null);
-
     const [images, setImages] = useState([]);
 
-    useEffect(()=>{
-        gsap.to(containerRef.current,{
+    const handleClickVideo = () =>{
+        if (images.length === 0 || !imgRef.current) return;
+
+    const obj = { frame: 0 };
+
+    gsap.timeline()
+        .to(obj, {
+            frame: frames - 1,
+            duration: 3.5,
+            ease: "power1.inOut",
+            onUpdate: () => {
+                const index = Math.floor(obj.frame);
+                imgRef.current.src = images[index].src;
+            }
+        }).fromTo("#pointVideoRef", {
+            y: "100%",
+        }, {
+            y: "0%",
+            duration: 3.5,
+            ease: "power1.inOut"
+        }, "<");
+    }
+
+    useEffect(() => {
+        gsap.to(containerRef.current, {
             backgroundColor: "rgba(7,23,51,1)",
             duration: 2.5,
             scrollTrigger: {
@@ -28,11 +50,11 @@ const Hinata = ()=> {
                 scrub: true
             }
         })
-    },[])
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         let imgs = []
-        for(let i = 1 ; i <= frames ; i++){
+        for (let i = 1; i <= frames; i++) {
             let imgSrc = getFramesSource(i);
             let newImg = new Image();
             newImg.src = imgSrc
@@ -40,14 +62,57 @@ const Hinata = ()=> {
         }
 
         setImages(imgs);
-    },[])
+    }, [])
+
+    useEffect(() => {
+        ["#video-container_hinata", "#firstImages-container_hinata"].forEach((item, i) => {
+            gsap.fromTo(item, {
+                opacity: i === 0 ? "" : 1,
+                filter: i === 0 ? "grayscale(100%)" : "",
+            }, {
+                opacity: i === 0 ? "" : 0,
+                filter: i === 0 ? "grayscale(0%)" : "",
+                duration: 1,
+                scrollTrigger: {
+                    trigger: "#firstImages-container_hinata",
+                    start: "center center",
+                    end: "bottom top",
+                    scrub: true,
+                }
+            })
+
+        })
+    }, [])
 
     useEffect(()=>{
-        if(!imgRef || images.length === 0) return;
-        const obj = { frame: 0}
+        ["#secondImages-container_hinata", "#video-container_hinata"].forEach((item, i)=>{
+            gsap.fromTo(item,{
+                opacity: i === 0 ? 0 : "",
+                filter: i === 0 ? "" : "grayscale(0%)"
+            },{
+                opacity: i === 0 ? 1 : "",
+                filter: i === 0 ? "" : "grayscale(100%)",
+                duration: 1,
+                ease: "power1.in",
+                scrollTrigger: {
+                    trigger: "#secondImages-container_hinata",
+                    start: "top bottom",
+                    end: "center bottom",
+                    scrub: true,
+                    markers: true
+                }
+            })
+
+        })
+    },[])
+
+    useEffect(() => {
+        if (!imgRef || images.length === 0) return;
+        const obj = { frame: 0 }
 
         const tl = gsap.timeline({
-            scrollTrigger:{
+            
+            scrollTrigger: {
                 trigger: "#image-container_hinata",
                 start: "top top",
                 end: "bottom bottom",
@@ -55,59 +120,67 @@ const Hinata = ()=> {
             }
         })
 
-        tl.to(obj,{
+        tl.to(obj, {
             frame: frames - 1,
-            duration: 0.7 ,
+            duration: 0.7,
             ease: "none",
-            onUpdate: ()=>{
+            onUpdate: () => {
                 const index = Math.floor(obj.frame)
-                if(imgRef.current){
+                if (imgRef.current) {
                     imgRef.current.src = images[index].src;
                 }
             }
-        }).to("#pointVideoRef",{
-            top: "95%"
-        },"<")
-    },[images])
+        }).fromTo("#pointVideoRef", {
+            y: "100%",
+            duration: 0.7
+        }, {
+            y: "0%",
+            duration: 0.7
+        }, "<")
 
-    useEffect(()=>{
+        return () => {
+            tl.scrollTrigger.kill();
+            tl.kill();
+        }
+    }, [images])
+
+    useEffect(() => {
         const tl = gsap.timeline({
-                ease: "power1.inOut",
-                scrollTrigger: {
-                    trigger: "#image-parallax_hinata",
-                    start: "top center",
-                    end: "bottom top",
-                    scrub: true,
-                    markers: true
-                }
-            })
-
-            tl.to(imgStatic.current,{
-                y: "-20vh",
-                duration: 0.8
-            }).to(imgStatic.current,{
-                opacity: 0,
-                duration: 0.2
-            })
-
-            return () => {
-                tl.scrollTrigger?.kill();
-                tl.kill();
+            ease: "power1.inOut",
+            scrollTrigger: {
+                trigger: "#image-parallax_hinata",
+                start: "top center",
+                end: "bottom top",
+                scrub: true,
             }
-    },[])
+        })
+
+        tl.to(imgStatic.current, {
+            y: "-20vh",
+            duration: 0.8
+        }).to(imgStatic.current, {
+            opacity: 0,
+            duration: 0.2
+        })
+
+        return () => {
+            tl.scrollTrigger?.kill();
+            tl.kill();
+        }
+    }, [])
 
     return (
         <div ref={containerRef} className="bg-[rgba(7,23,51,0)] py-72">
             <div id="image-parallax_hinata" className="w-full h-[140vh] overflow-y-hidden relative"
-                style={{clipPath: "polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%)"}}
+                style={{ clipPath: "polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%)" }}
             >
                 <div className="h-[160vh] w-full"
-                ref={imgStatic}
-                style={{
-                    backgroundImage: "url('/characters/hinata/hinata1.jpg')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
+                    ref={imgStatic}
+                    style={{
+                        backgroundImage: "url('/characters/hinata/hinata1.jpg')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}
                 >
                     <div className="w-4/12 right-20 top-1/2 absolute z-10 font-bold">
                         <h2 className="text-7xl text-fuchsia-400 uppercase text-right"> Hinata Hyuga </h2>
@@ -116,15 +189,23 @@ const Hinata = ()=> {
                     </div>
                 </div>
             </div>
-            <div className="flex w-11/12 ml-auto flex-row mt-24 gap-16 justify-center items-center h-[90vh]">
+            <div id="firstImages-container_hinata" className="flex w-11/12 ml-auto flex-row mt-24 gap-16 justify-center items-center h-[90vh]">
                 <ImgZoom imgSrc="/characters/hinata/hinata2.jpeg" otherClass="h-8/12" alt="Hinata's second image" ></ImgZoom>
                 <ImgZoom imgSrc="/characters/hinata/hinata3.jpg" otherClass="h-full" alt="Hinata's second image" ></ImgZoom>
             </div>
             <div id="image-container_hinata" className="h-[300vh] relative">
-                <img ref={imgRef} src={getFramesSource(1)} className="sticky top-[10vh] w-6/12 object-cover h-[80vh]" />
-                <span className="w-5 h-32 absolute bottom-3 rounded-full right-6/12 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden"> 
-                    <span id={"pointVideoRef"} className="w-2.5 h-full absolute top-[90%] bg-white rounded-full"></span>
-                 </span>
+                <div id="video-container_hinata" className="sticky top-[10vh] h-[80vh] w-6/12 grayscale">
+                    <img ref={imgRef} src={getFramesSource(1)} className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
+
+                    <span className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
+                        <span id="pointVideoRef" className="w-2.5 h-full translate-y-[95%] bg-white rounded-full"></span>
+                    </span>
+                </div>
+                <p className="sticky mt-[200vh] right-6 top-[50vh] -translate-y-1/2 font-bold text-fuchsia-400 text-7xl mr-20 w-1/3 ml-auto"> "No me rendiré... ¡Ese es mi camino ninja!" </p>
+            </div>
+            <div id="secondImages-container_hinata" className="flex w-10/12 mx-auto flex-row mt-24 gap-16 justify-center items-center h-[90vh]">
+                <ImgZoom imgSrc="/characters/hinata/hinata4.jpg" otherClass="h-11/12" alt="Hinata's second image" ></ImgZoom>
+                <ImgZoom imgSrc="/characters/hinata/hinata5.jpg" otherClass="h-8/12" alt="Hinata's second image" ></ImgZoom>
             </div>
         </div>
     )
