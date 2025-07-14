@@ -21,8 +21,11 @@ const Hinata = () => {
 
     const obj = { frame: 0 };
 
-    gsap.timeline()
-        .to(obj, {
+    gsap.timeline().set("#refreshVideoRef",{
+        display: "none"
+    }).set("#pointVideoRef",{
+        display: "block"
+    }).to(obj, {
             frame: frames - 1,
             duration: 3.5,
             ease: "power1.inOut",
@@ -36,7 +39,29 @@ const Hinata = () => {
             y: "0%",
             duration: 3.5,
             ease: "power1.inOut"
-        }, "<");
+        }, "<").fromTo("#pointVideoContainerRef",{
+            width: "1.25rem",
+            height: "8rem"
+        },{
+            width: "3rem",
+            height: "3rem",
+            duration: 0.02
+        }).set("#pointVideoRef",{
+            display: "none",
+        }).fromTo("#pointVideoRef",{
+            opacity: 1
+        },{
+            opacity: 0,
+            duration: 0.01
+        },"<").set("#refreshVideoRef",{
+            display: "flex",
+        })
+        .fromTo("#refreshVideoRef",{
+            opacity: 0
+        },{
+            opacity: 1,
+            duration: 0.02
+        },"<")
     }
 
     useEffect(() => {
@@ -120,6 +145,12 @@ const Hinata = () => {
             }
         })
 
+        tl.set("#refreshVideoRef",{
+        display: "none"
+    }).set("#pointVideoRef",{
+        display: "block"
+    })
+
         tl.to(obj, {
             frame: frames - 1,
             duration: 0.7,
@@ -137,6 +168,30 @@ const Hinata = () => {
             y: "0%",
             duration: 0.7
         }, "<")
+        
+        tl.fromTo("#pointVideoContainerRef",{
+            width: "1.25rem",
+            height: "8rem"
+        },{
+            width: "3rem",
+            height: "3rem",
+            duration: 0.02
+        }).set("#pointVideoRef",{
+            display: "none",
+        }).fromTo("#pointVideoRef",{
+            opacity: 1
+        },{
+            opacity: 0,
+            duration: 0.01
+        },"<").set("#refreshVideoRef",{
+            display: "flex",
+        })
+        .fromTo("#refreshVideoRef",{
+            opacity: 0
+        },{
+            opacity: 1,
+            duration: 0.02
+        },"<")
 
         return () => {
             tl.scrollTrigger.kill();
@@ -170,7 +225,7 @@ const Hinata = () => {
     }, [])
 
     return (
-        <div ref={containerRef} className="bg-[rgba(7,23,51,0)] py-72">
+        <div ref={containerRef} className="bg-[rgba(18,3,20,0)]">
             <div id="image-parallax_hinata" className="w-full h-[140vh] overflow-y-hidden relative"
                 style={{ clipPath: "polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%)" }}
             >
@@ -197,11 +252,17 @@ const Hinata = () => {
                 <div id="video-container_hinata" className="sticky top-[10vh] h-[80vh] w-6/12 grayscale">
                     <img ref={imgRef} src={getFramesSource(1)} className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
 
-                    <span className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
-                        <span id="pointVideoRef" className="w-2.5 h-full translate-y-[95%] bg-white rounded-full"></span>
+                    <span id="pointVideoContainerRef" className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
+                        <span id="pointVideoRef" className="w-2.5 block h-full translate-y-[95%] bg-white rounded-full"></span>
+                        <div className="hidden opacity-0 size-10 p-1.5 justify-center items-center" id="refreshVideoRef">
+                            <img  src="/refresh.svg" className="w-full h-full" />
+                        </div>
                     </span>
+
+                    
+                    
                 </div>
-                <p className="sticky mt-[200vh] right-6 top-[50vh] -translate-y-1/2 font-bold text-fuchsia-400 text-7xl mr-20 w-1/3 ml-auto"> "No me rendiré... ¡Ese es mi camino ninja!" </p>
+                <p id="textVideo_hinata" className="sticky top-0 translate-y-1/2  right-6 font-bold text-fuchsia-400 text-7xl mr-20 w-1/3 ml-auto"> "No me rendiré... ¡Ese es mi camino ninja!" </p>
             </div>
             <div id="secondImages-container_hinata" className="flex w-10/12 mx-auto flex-row mt-24 gap-16 justify-center items-center h-[90vh]">
                 <ImgZoom imgSrc="/characters/hinata/hinata4.jpg" otherClass="h-11/12" alt="Hinata's second image" ></ImgZoom>
