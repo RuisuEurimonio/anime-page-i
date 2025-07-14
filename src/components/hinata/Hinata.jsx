@@ -200,6 +200,7 @@ const Hinata = () => {
     }, [images])
 
     useEffect(() => {
+        if(window.innerWidth < 768) return;
         const tl = gsap.timeline({
             ease: "power1.inOut",
             scrollTrigger: {
@@ -237,19 +238,32 @@ const Hinata = () => {
                         backgroundPosition: "center",
                     }}
                 >
-                    <div className="w-4/12 right-20 top-1/2 absolute z-10 font-bold">
-                        <h2 className="text-7xl text-fuchsia-400 uppercase text-right"> Hinata Hyuga </h2>
-                        <h3 className="text-4xl my-3 text-fuchsia-700 text-right"> Quiero ser más fuerte... como tú, Naruto. </h3>
-                        <p className="text-3xl text-pink-500 text-right"> Tímida heredera Hyuga, encuentra inspiración en Naruto. Su amor y determinación la transforman en una valiente y poderosa ninja. </p>
+                    <div className="w-11/12 top-1/2 absolute z-10 font-bold
+                        sm:right-20 sm:w-4/12
+                    ">
+                        <h2 className="text-5xl text-fuchsia-400 uppercase text-right
+                            md:text-7xl
+                        "> Hinata Hyuga </h2>
+                        <h3 className="text-2xl my-3 text-fuchsia-700 text-right
+                            md:text-4xl
+                        "> Quiero ser más fuerte... como tú, Naruto. </h3>
+                        <p className="text-xl text-pink-500 text-right
+                            md:text-3xl
+                        "> Tímida heredera Hyuga, encuentra inspiración en Naruto. Su amor y determinación la transforman en una valiente y poderosa ninja. </p>
                     </div>
                 </div>
             </div>
-            <div id="firstImages-container_hinata" className="flex w-11/12 ml-auto flex-row mt-24 gap-16 justify-center items-center h-[90vh]">
+            <div id="firstImages-container_hinata" className="flex w-11/12 mx-auto my-5 flex-col gap-5 justify-center items-center
+                sm:flex-row sm:h-[90vh] md:mt-24 md:gap-16 sm:ml-auto
+            ">
                 <ImgZoom imgSrc="/characters/hinata/hinata2.jpeg" otherClass="h-8/12" alt="Hinata's second image" ></ImgZoom>
                 <ImgZoom imgSrc="/characters/hinata/hinata3.jpg" otherClass="h-full" alt="Hinata's second image" ></ImgZoom>
             </div>
-            <div id="image-container_hinata" className="h-[300vh] relative">
-                <div id="video-container_hinata" className="sticky top-[10vh] h-[80vh] w-6/12 grayscale">
+            <div id="image-container_hinata" className="h-[350vh] relative">
+                <div id="video-container_hinata" className="sticky top-0 h-[70vh] w-full grayscale
+                    sm:w-6/12 
+                    md:h-[80vh] md:top-[10vh]
+                ">
                     <img ref={imgRef} src={getFramesSource(1)} className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
 
                     <span id="pointVideoContainerRef" className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
@@ -262,9 +276,14 @@ const Hinata = () => {
                     
                     
                 </div>
-                <p id="textVideo_hinata" className="sticky top-0 translate-y-1/2  right-6 font-bold text-fuchsia-400 text-7xl mr-20 w-1/3 ml-auto"> "No me rendiré... ¡Ese es mi camino ninja!" </p>
+                <p id="textVideo_hinata" className="sticky top-[70vh] translate-y-1/2  font-bold text-fuchsia-400 text-4xl ml-auto
+                    sm:mb-[35vh] sm:right-6 sm:mr-20 sm:w-1/3
+                    md:text-7xl
+                "> "No me rendiré... ¡Ese es mi camino ninja!" </p>
             </div>
-            <div id="secondImages-container_hinata" className="flex w-10/12 mx-auto flex-row mt-24 gap-16 justify-center items-center h-[90vh]">
+            <div id="secondImages-container_hinata" className="flex  flex-col w-10/12 mx-auto mt-24 gap-16 justify-center items-center h-[90vh] pb-5
+                md:flex-row sm:pb-0
+            ">
                 <ImgZoom imgSrc="/characters/hinata/hinata4.jpg" otherClass="h-11/12" alt="Hinata's second image" ></ImgZoom>
                 <ImgZoom imgSrc="/characters/hinata/hinata5.jpg" otherClass="h-8/12" alt="Hinata's second image" ></ImgZoom>
             </div>
