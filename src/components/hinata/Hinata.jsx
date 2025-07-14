@@ -23,7 +23,7 @@ const Hinata = () => {
 
     gsap.timeline().set("#refreshVideoRef",{
         display: "none"
-    }).set("#pointVideoRef",{
+    }).set("#pointVideoRef_hinata",{
         display: "block"
     }).to(obj, {
             frame: frames - 1,
@@ -33,22 +33,22 @@ const Hinata = () => {
                 const index = Math.floor(obj.frame);
                 imgRef.current.src = images[index].src;
             }
-        }).fromTo("#pointVideoRef", {
+        }).fromTo("#pointVideoRef_hinata", {
             y: "100%",
         }, {
             y: "0%",
             duration: 3.5,
             ease: "power1.inOut"
-        }, "<").fromTo("#pointVideoContainerRef",{
+        }, "<").fromTo("#pointVideoContainerRef_hinata",{
             width: "1.25rem",
             height: "8rem"
         },{
             width: "3rem",
             height: "3rem",
             duration: 0.02
-        }).set("#pointVideoRef",{
+        }).set("#pointVideoRef_hinata",{
             display: "none",
-        }).fromTo("#pointVideoRef",{
+        }).fromTo("#pointVideoRef_hinata",{
             opacity: 1
         },{
             opacity: 0,
@@ -147,7 +147,7 @@ const Hinata = () => {
 
         tl.set("#refreshVideoRef",{
         display: "none"
-    }).set("#pointVideoRef",{
+    }).set("#pointVideoRef_hinata",{
         display: "block"
     })
 
@@ -161,7 +161,7 @@ const Hinata = () => {
                     imgRef.current.src = images[index].src;
                 }
             }
-        }).fromTo("#pointVideoRef", {
+        }).fromTo("#pointVideoRef_hinata", {
             y: "100%",
             duration: 0.7
         }, {
@@ -169,16 +169,16 @@ const Hinata = () => {
             duration: 0.7
         }, "<")
         
-        tl.fromTo("#pointVideoContainerRef",{
+        tl.fromTo("#pointVideoContainerRef_hinata",{
             width: "1.25rem",
             height: "8rem"
         },{
             width: "3rem",
             height: "3rem",
             duration: 0.02
-        }).set("#pointVideoRef",{
+        }).set("#pointVideoRef_hinata",{
             display: "none",
-        }).fromTo("#pointVideoRef",{
+        }).fromTo("#pointVideoRef_hinata",{
             opacity: 1
         },{
             opacity: 0,
@@ -266,8 +266,8 @@ const Hinata = () => {
                 ">
                     <img ref={imgRef} src={getFramesSource(1)} className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
 
-                    <span id="pointVideoContainerRef" className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
-                        <span id="pointVideoRef" className="w-2.5 block h-full translate-y-[95%] bg-white rounded-full"></span>
+                    <span id="pointVideoContainerRef_hinata" className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
+                        <span id="pointVideoRef_hinata" className="w-2.5 block h-full translate-y-[95%] bg-white rounded-full"></span>
                         <div className="hidden opacity-0 size-10 p-1.5 justify-center items-center" id="refreshVideoRef">
                             <img  src="/refresh.svg" className="w-full h-full" />
                         </div>
@@ -286,6 +286,16 @@ const Hinata = () => {
             ">
                 <ImgZoom imgSrc="/characters/hinata/hinata4.jpg" otherClass="h-11/12" alt="Hinata's second image" ></ImgZoom>
                 <ImgZoom imgSrc="/characters/hinata/hinata5.jpg" otherClass="h-8/12" alt="Hinata's second image" ></ImgZoom>
+            </div>
+            <div className="w-10/12 mx-auto font-bold pb-10
+                md:-translate-y-[30%] md:w-4/12 md:ml-auto md:mr-[10vw] 
+            ">
+                <h2 className="text-2xl text-fuchsia-400
+                    md:text-4xl
+                ">Fortaleza Silenciosa y Amor Inquebrantable</h2>
+                <p className="text-xl text-fuchsia-200
+                    md:text-2xl
+                ">supera el rechazo y la inseguridad, inspirada por Naruto. Se convierte en una mujer valiente, amorosa y fuerte, formando con él una familia feliz.</p>
             </div>
         </div>
     )
