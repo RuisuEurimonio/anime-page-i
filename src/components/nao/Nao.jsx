@@ -66,7 +66,7 @@ const Nao = () => {
 
     useEffect(() => {
         gsap.to(containerRef.current, {
-            backgroundColor: "rgba(0,0,0,1 )",
+            backgroundColor: "rgba(240, 236, 209,1)",
             duration: 2.5,
             ease: "expo.in",
             scrollTrigger: {
@@ -227,7 +227,7 @@ const Nao = () => {
     }, [])
 
     return (
-        <div ref={containerRef} className="bg-[rgba(7,23,51,1)]">
+        <div ref={containerRef} className="bg-[rgba(0,0,0,1)]">
             <div id="image-parallax_nao" className="w-full h-[140vh] overflow-y-hidden relative"
                 style={{ clipPath: "polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%)" }}
             >
@@ -242,7 +242,7 @@ const Nao = () => {
                     <div className="w-11/12 top-1/2 absolute z-10 font-bold
                         sm:right-20 sm:w-4/12
                     ">
-                        <h2 className="text-5xl text-fuchsia-400 uppercase text-right
+                        <h2 className="text-5xl text-fuchsia-900 uppercase text-right
                             md:text-7xl
                         "> Nao Tomori </h2>
                         <h3 className="text-2xl my-3 text-fuchsia-700 text-right
@@ -294,7 +294,7 @@ const Nao = () => {
                 <h2 className="text-2xl text-fuchsia-400
                     md:text-4xl
                 ">Lo grabé todo, así que no puedes mentir.</h2>
-                <p className="text-xl text-fuchsia-200
+                <p className="text-xl text-fuchsia-900
                     md:text-2xl
                 "> En el olvido de él, Nao permaneció. Sin memoria, sin promesas, pero con fe: reconstruiría su historia, desde cero, una vez más. </p>
             </div>
