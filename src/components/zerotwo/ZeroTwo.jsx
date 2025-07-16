@@ -292,7 +292,7 @@ const ZeroTwo = () => {
             ">
                 <h2 className="text-2xl text-fuchsia-400
                     md:text-4xl
-                ">Hielo que aprendió a sentir</h2>
+                ">No soy humana... soy un monstruo. ¿Aún así vas a amarme?</h2>
                 <p className="text-xl text-fuchsia-200
                     md:text-2xl
                 ">Guerrera creada para destruir que se eleva al cosmos, se sacrifica por amor y renace junto a Hiro, demostrando que su vínculo trasciende la muerte, el tiempo y el universo.</p>
