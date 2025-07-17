@@ -115,12 +115,12 @@ const MikasaBottom = () => {
                     <div></div>
 
                     <div></div>
-                    <p className="text-xl text-fuchsia-300 mb-10 font-bold
+                    <p className="text-xl text-fuchsia-300 mb-10 font-bold drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             sm:place-self-end sm:mb-10 sm:mx-14 
                             md:text-2xl md:mt-0 
                         "> Eso crea en ella un vacío emocional que intenta llenar a través de su conexión con Eren y Armin. Su lealtad, fuerza y disciplina surgen de no querer perder esa "nueva familia". </p>
-                    <h3 className="text-2xl text-purple-100 mb-5 font-bold
-                            md:text-4xl md:mb-16
+                    <h3 className="text-2xl text-purple-100 mb-5 font-bold drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
+                            md:text-3xl md:mb-16
                         "> Ante la crueldad del mundo, Mikasa entrena duro y se convierte en la mejor de su clase, no por gloria, sino porque ser fuerte le da control en un mundo caótico. </h3>
                     <div></div>
 

@@ -111,10 +111,10 @@ const Frieren = () => {
                     <div></div>
                     <div className="font-bold
                     sm:col-span-2 sm:mb-16">
-                        <h2 className="text-5xl uppercase place-content-end font-bold text-fuchsia-800 my-10
+                        <h2 className="text-5xl uppercase place-content-end font-bold text-fuchsia-800 my-10 drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                         md:text-8xl md:my-0
                         "> Frieren </h2>
-                        <h3 className="text-2xl text-fuchsia-600 mb-5
+                        <h3 className="text-2xl text-fuchsia-600 mb-5 drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-4xl
                         "> Miembro del grupo que derrotó al Rey Demonio. Aunque parece ser muy joven, nació en una raza longeva de elfos y ha vivido durante más de mil años. </h3>
                     </div>

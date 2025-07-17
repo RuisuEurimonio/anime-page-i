@@ -151,7 +151,7 @@ const SailorMoonBottom = () => {
                         md:text-4xl
                     "> "En el nombre de la luna te castigaré" </h3>
                     </div>
-                    <div className="md:flex md:items-center md:justify-center font-bold">
+                    <div className="md:flex md:items-center md:justify-center font-bold drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]">
                         <p className="text-xl mb-10
                         md:text-2xl md:mb-0 md:w-10/12
                     "> No me rendiré. Porque sé que mientras tenga el amor de mis amigas y crea en mí misma, puedo superar cualquier oscuridad. </p>

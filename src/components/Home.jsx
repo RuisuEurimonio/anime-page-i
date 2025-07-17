@@ -170,7 +170,8 @@ const Home =  () => {
             <div id="main-container" className="w-full h-screen relative overflow-hidden">
                 <img ref={backgroundRef} src="/background.jpg" alt="background image" className="object-cover w-full h-full z-0 scale-125" />
                 <h2 ref={textRef} className="z-0 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white translate-y-36 text-5xl
-                    lg:text-9xl lg:translate-y-0
+                    sm:text-6xl
+                    lg:text-8xl lg:translate-y-0
                 "> Anime <br /> Page </h2>
                 <img ref={characterRef} src="/character.png" alt="background image" className="absolute left-0 top-0 w-full h-full object-cover z-5 scale-125" />
                 <img ref={iconRef} src="/play.svg" className="z-0 absolute top-0 right-0 left-0 bottom-0 m-auto size-16 bg-white p-3 rounded-full duration-200 cursor-pointer hover:scale-105
@@ -181,17 +182,20 @@ const Home =  () => {
             <div id="mask-container" ref={maskContainerRef} className="z-10 absolute top-0 left-0 w-full h-screen hidden pointer-events-none bg-[rgb(18,3,20)]">
                 <TextMask client:load textRef={textChildRef} svgRef={svgRef} whiteSvgRef={whiteSvgRef} />
                 <div className="absolute w-full h-screen top-0 z-10">
-                    <img src="/iconAnime.png" ref={imageIcon} className="size-44 absolute z-20 top-0 left-0 right-0 m-auto translate-y-[18vh]
-                        md:size-72 md:translate-y-[12vh]
+                    <img src="/iconAnime.png" ref={imageIcon} className="size-44 absolute z-20 top-[14vh] left-0 right-0 m-auto 
+                        md:size-52 md:top-7
+                        xl:size-60 xl:top-14
+                        2xl:size-64 2xl:top-16
                     " />
                 </div>
                 <div className="z-20 absolute top-0 text-center mx-auto right-0 left-0 translate-y-[50vh]">
                     <h2 ref={textInfoRef} className="text-4xl font-bold uppercase bg-[radial-gradient(circle,rgba(185,0,209,1)_0%,rgba(122,0,122,1)_57%,rgba(51,0,51,1)_99%)] bg-clip-text text-transparent
-                        md:text-6xl 
-                        xl:text-8xl
+                        md:text-5xl
+                        lg:text-6xl
+                        xl:text-7xl
                     "> Disponible <br/> en todos los idiomas <br/> y generos. </h2>
                     <ul ref={referencesRef} className="text-gray-100 font-bold flex gap-5 justify-center text-4xl mt-7 uppercase flex-col
-                        md:flex-row
+                        md:flex-row md:text-3xl
                     ">
                         <li> Online </li>
                         <li> Dvd </li>

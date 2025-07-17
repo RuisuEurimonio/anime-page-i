@@ -247,7 +247,7 @@ const Hinata = () => {
                         <h3 className="text-2xl my-3 text-fuchsia-700 text-right
                             md:text-4xl
                         "> Quiero ser más fuerte... como tú, Naruto. </h3>
-                        <p className="text-xl text-pink-500 text-right
+                        <p className="text-xl text-pink-500 text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-3xl
                         "> Tímida heredera Hyuga, encuentra inspiración en Naruto. Su amor y determinación la transforman en una valiente y poderosa ninja. </p>
                     </div>
