@@ -1,17 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger } from "../../scripts/gsapConfig";
-import ImgZoom from "../ImgZoom";
 import CharacterPageStyleTwo from "../CharacterPageStyleTwo";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const frames = 78;
-const getFramesSource = (index) => {
-    return `/frames/motoko/motoko_${index.toString()}.jpg`
-}
-
 const Motoko = () => {
-
 
     return (
         <CharacterPageStyleTwo
