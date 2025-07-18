@@ -228,7 +228,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
     }, [])
 
     return (
-        <div ref={containerRef} className={`bg-[${bgColorPage}]`}>
+        <div ref={containerRef} style={{ backgroundColor: bgColorPage}}>
             <div id={`image-parallax_${keyNameCharacter}`} className="w-full h-[140vh] overflow-y-hidden relative"
                 style={{ clipPath: "polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%)" }}
             >
@@ -291,7 +291,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                 <ImgZoom imgSrc={`/characters/${keyNameCharacter}/${keyNameCharacter}5.jpg`} otherClass="h-8/12" alt={`${keyNameCharacter}'s fifth image`} ></ImgZoom>
             </div>
             <div className="w-10/12 mx-auto font-bold pb-10
-                md:-translate-y-[30%] md:w-4/12 md:ml-auto md:mr-[10vw] 
+                md:-translate-y-[30%] md:w-4/12 md:ml-auto md:mr-[10vw] md:mt-10
             ">
                 <h2 className="text-2xl text-fuchsia-400 drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                     md:text-4xl
