@@ -243,13 +243,13 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                     <div className="w-11/12 top-1/2 absolute z-10 font-bold
                         sm:right-20 sm:w-4/12
                     ">
-                        <h2 className="text-5xl text-fuchsia-400 uppercase text-right
+                        <h2 className="text-5xl text-fuchsia-400 uppercase text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-7xl
                         "> {fullName} </h2>
-                        <h3 className="text-2xl my-3 text-fuchsia-700 text-right
+                        <h3 className="text-2xl my-3 text-fuchsia-700 text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-4xl
                         "> «{mainQuote}» </h3>
-                        <p className="text-xl text-pink-500 text-right
+                        <p className="text-xl text-pink-500 text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-3xl
                         "> {historyStart} </p>
                     </div>
@@ -292,10 +292,10 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
             <div className="w-10/12 mx-auto font-bold pb-10
                 md:-translate-y-[30%] md:w-4/12 md:ml-auto md:mr-[10vw] 
             ">
-                <h2 className="text-2xl text-fuchsia-400
+                <h2 className="text-2xl text-fuchsia-400 drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                     md:text-4xl
                 "> «{EndQuote}» </h2>
-                <p className="text-xl text-fuchsia-200
+                <p className="text-xl text-fuchsia-200 drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                     md:text-2xl
                 "> {historyEnd} </p>
             </div>
