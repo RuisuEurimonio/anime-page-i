@@ -5,7 +5,7 @@ import ImgZoom from "./ImgZoom";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuote, videoQuote, EndQuote, historyStart, historyEnd, bgColorPage = "rgba(0,0,0,0 )", toColorPage = "rgba(7,23,51,1)"}) => {
+const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuote, videoQuote, EndQuote, historyStart, historyEnd, bgColorPage = "rgba(0,0,0,0 )", toColorPage = "rgba(7,23,51,1)", activeSecondStyle = false}) => {
 
     const imgStatic = useRef(null);
     const containerRef = useRef(null);
@@ -240,18 +240,18 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                         backgroundPosition: "center",
                     }}
                 >
-                    <div className="w-11/12 top-1/2 absolute z-10 font-bold
-                        sm:right-20 sm:w-4/12
-                    ">
-                        <h2 className="text-5xl text-fuchsia-400 uppercase text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
+                    <div className={`w-11/12 top-1/2 absolute z-10 font-bold
+                        ${activeSecondStyle ? "sm:left-20" : "sm:right-20"} sm:w-4/12
+                    `}>
+                        <h2 className={`text-5xl ${activeSecondStyle ? "text-left text-fuchsia-800" : "text-right text-fuchsia-400"} uppercase  drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-7xl
-                        "> {fullName} </h2>
-                        <h3 className="text-2xl my-3 text-fuchsia-700 text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
+                        `}> {fullName} </h2>
+                        <h3 className={`text-2xl my-3 ${activeSecondStyle ? "text-left text-pink-600" : "text-right text-fuchsia-700"}  drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-4xl
-                        "> «{mainQuote}» </h3>
-                        <p className="text-xl text-pink-500 text-right drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
+                        `}> «{mainQuote}» </h3>
+                        <p className={`text-xl ${activeSecondStyle ? "text-left text-rose-700" : "text-right text-pink-500"} drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-3xl
-                        "> {historyStart} </p>
+                        `}> {historyStart} </p>
                     </div>
                 </div>
             </div>
@@ -280,7 +280,8 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                 </div>
                 <p id={`textVideo_${keyNameCharacter}`} className="sticky top-[70vh] translate-y-1/2  font-bold text-fuchsia-400 text-4xl ml-auto
                     sm:mb-[35vh] sm:right-6 sm:mr-20 sm:w-1/3
-                    md:text-7xl
+                    md:text-5xl
+                    xl:text-6xl
                 "> «{videoQuote}» </p>
             </div>
             <div id={`secondImages-container_${keyNameCharacter}`} className="flex  flex-col w-10/12 mx-auto mt-24 gap-16 justify-center items-center h-[90vh] pb-5
