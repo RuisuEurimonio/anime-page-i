@@ -1,14 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger } from "../../scripts/gsapConfig";
-import ImgZoom from "../ImgZoom";
 import CharacterPageStyleTwo from "../CharacterPageStyleTwo";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const frames = 100;
-const getFramesSource = (index) => {
-    return `/frames/nao/nao_${index.toString()}.jpg`
-}
 
 const Nao = () => {
 

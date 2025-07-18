@@ -1,9 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger } from "../../scripts/gsapConfig";
-import ImgZoom from "../ImgZoom";
 import CharacterPageStyleTwo from "../CharacterPageStyleTwo";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Hinata = () => {
 
