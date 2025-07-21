@@ -125,8 +125,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                     trigger: `#secondImages-container_${keyNameCharacter}`,
                     start: "top bottom",
                     end: "center bottom",
-                    scrub: true,
-                    markers: true
+                    scrub: true
                 }
             })
 
@@ -240,7 +239,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                         backgroundPosition: "center",
                     }}
                 >
-                    <div className={`w-11/12 top-1/2 absolute z-10 font-bold
+                    <div className={`w-11/12 top-1/2 absolute z-10 font-bold m-auto left-0 right-0
                         ${activeSecondStyle ? "sm:left-20" : "sm:right-20"} sm:w-4/12
                     `}>
                         <h2 className={`text-5xl ${activeSecondStyle ? "text-left text-fuchsia-800" : "text-right text-fuchsia-400"} uppercase  drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
@@ -278,8 +277,8 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                     
                     
                 </div>
-                <p id={`textVideo_${keyNameCharacter}`} className="sticky top-[70vh] translate-y-1/2  font-bold text-fuchsia-400 text-4xl ml-auto
-                    sm:mb-[35vh] sm:right-6 sm:mr-20 sm:w-1/3
+                <p id={`textVideo_${keyNameCharacter}`} className="sticky top-[75vh] translate-y-1/2 w-11/12 font-bold text-fuchsia-400 text-xl ml-auto
+                    sm:mb-[35vh] sm:right-6 sm:mr-20 sm:text-3xl
                     md:text-5xl
                     xl:text-6xl
                 "> «{videoQuote}» </p>

@@ -111,7 +111,9 @@ const FrierenBottom = () => {
       >
         <h3
           ref={textRef}
-          className="font-bold text-6xl sticky top-1/2 w-1/2 text-justify text-fuchsia-500"
+          className="font-bold text-3xl sticky top-1/2 w-1/2 text-justify text-fuchsia-500
+            md:text-6xl
+          "
         >
           "Solo he empezado a darme cuenta de lo valioso que fue nuestro viaje... ahora que ya terminó."
         </h3>
