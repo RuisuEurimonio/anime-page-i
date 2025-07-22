@@ -6,48 +6,89 @@ const AnimeExpo = ({}) => {
 
     const [listImages, setListImages] = useState([]);
 
-    const handleClickButton = () => {
-        document.body.style.overflow = "";
+    const handleOpenModal = () => {
+        document.body.style.overflowY = "hidden";
+
         gsap.set("#animeInfo",{
-            display: "block"
+            display: "flex",
+        })
+        
+        gsap.fromTo("#animeInfo",{
+            x: "100%",
+        },{
+            x: "0",
+            ease: "expo.out",
+            duration: 1
+        })
+    }
+
+    const handleCloseModal = () => {
+        document.body.style.overflowY = "";
+        
+        gsap.fromTo("#animeInfo",{
+            x: "0%",
+        },{
+            x: "100%",
+            duration: 2,
+            ease: "expo.out",
+        })
+        
+        gsap.set("#animeInfo",{
+            display: "none",
+            delay: 3
         })
     }
 
     useEffect(()=>{
-
+        setListImages(["sololeveling4","sololeveling5","sololeveling6","sololeveling7"])
     },[])
 
-    const mainImage = () =>{
-        return (<img src="/animes/soloLeveling/sololeveling.jpg" className="h-full w-full object-cover"></img>)
+    const mainImage = (minimal = false) =>{
+        return (<img src="/animes/soloLeveling/sololeveling.jpg" className="h-full w-full object-cover border-[16px] border-white" style={{transform: minimal ? "rotate(-8deg" : ""}} onClick={handleOpenModal}></img>)
     }
 
     return (
-        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-x-hidden">
-            <div className="w-11/12 h-5/12 m-auto border-[16px] relative hover:drop-shadow-pink-300 hover:drop-shadow-xl border-white duration-200 hover:cursor-pointer hover:rotate-2
+        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden">
+            <div className="w-11/12 h-5/12 m-auto relative hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2
                 md:h-11/12 md:w-8/12
             ">
                 {mainImage()}
-                <button className=" absolute -bottom-16 right-0 left-0 mx-auto font-bold w-10/12 px-0.5 py-0.5 rounded-4xl bg-white
+                <button className=" absolute -bottom-16 right-0 left-0 mx-auto font-bold w-10/12 px-0.5 py-0.5 rounded-4xl bg-white cursor-pointer
                     sm:py-1.5
                     md:py-2.5 md:bottom-5
-                " onClick={handleClickButton}> Explorar Solo Leveling </button>
+                " onClick={handleOpenModal}> Explorar Solo Leveling </button>
             </div>
-            <div id="animeInfo" className="absolute h-full overflow-x-scroll hidden bg-[rgb(18,3,20)] z-[100]"> 
-                <div>
-                    <div>
-                        {mainImage}
-                        <h2> Solo leveling </h2>
-                        <h3> Sube de nivel </h3>
-                        <p> Solo Leveling sigue a Sung Jin-Woo, el cazador más débil del mundo, quien tras un evento misterioso obtiene la habilidad única de volverse más fuerte al completar misiones como en un videojuego. Su camino lo lleva de ser despreciado a convertirse en el cazador más poderoso.</p>
-                    </div>
-                    <div>
-                        <img src="" alt="" className="" />
-                        <img src="" alt="" className="" />
-                        <img src="" alt="" className="" />
-                    </div>
-                    {listImages.map((item)=>(
-                        <></>
-                    ))}
+            <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-[rgb(18,3,20)] z-[60] hidden">
+                    <div className="flex items-center gap-10 relative pl-64 w-full">
+                    <button className="absolute top-20 left-10 bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
+                        <div  className="min-w-96">
+                            {mainImage(true)}
+                        </div>
+                        <div className="font-bold min-w-[25rem]">
+                            <h2 className="text-4xl text-fuchsia-600"> Solo leveling </h2>
+                            <h3 className="text-3xl text-pink-400"> Sube de nivel </h3>
+                            <p className="text-2xl text-white"> Solo Leveling sigue a Sung Jin-Woo, el cazador más débil del mundo, quien tras un evento misterioso obtiene la habilidad única de volverse más fuerte al completar misiones como en un videojuego. Su camino lo lleva de ser despreciado a convertirse en el cazador más poderoso.</p>
+                        </div>
+                        <div className="grid grid-cols-[25vw_25vw_25vw] grid-rows-[30vh_1fr_1fr] gap-10 h-[100vh]">
+                            <div className="col-span-1 row-span-1"></div>
+                            <img src="/animes/soloLeveling/sololeveling1.jpg" alt="" className="col-span-1 row-span-1 h-full w-full object-cover" />
+                            <img src="/animes/soloLeveling/sololeveling2.jpg" alt="" className="col-span-1 row-span-3 h-[80vh] place-self-center w-full object-cover" />
+                            <img src="/animes/soloLeveling/sololeveling3.jpg" alt="" className="col-span-2 row-span-2 h-full w-full object-cover" />
+                        </div>
+                        <div className="flex gap-16 items-center ml-10">
+                            {listImages.map((item, index)=>{
+                                index++
+                                if(index === listImages.length) {
+                                    return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[60vw] h-[100vh]`}  />
+                                } else if(index / 1 === 1){
+                                    return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[30vw] h-[100vh]`}  />
+                                }else if(index / 2 === 1){
+                                    return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[40vw] h-[40vh]`}  /> 
+                                }else {
+                                    return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[30vw] h-[70vh]`}  />
+                                }
+                                })}
+                        </div>
                 </div>
             </div>
         </div>
