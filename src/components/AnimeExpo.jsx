@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { gsap } from "../scripts/gsapConfig";
+import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
+gsap.registerPlugin(ScrollTrigger)
 
 const AnimeExpo = ({}) => {
 
     const [listImages, setListImages] = useState([]);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     const handleOpenModal = () => {
         document.body.style.overflowY = "hidden";
@@ -12,35 +14,63 @@ const AnimeExpo = ({}) => {
         gsap.set("#animeInfo",{
             display: "flex",
         })
+
+        gsap.set("#bgAnimeInfo",{
+            display: "block"
+        });
         
-        gsap.fromTo("#animeInfo",{
-            x: "100%",
-        },{
-            x: "0",
-            ease: "expo.out",
-            duration: 1
+        ["#animeInfo", "#bgAnimeInfo"].forEach((item)=>{
+            gsap.fromTo(item,{
+                x: "100%",
+            },{
+                x: "0",
+                ease: "expo.out",
+                duration: 1
+            })
         })
     }
 
     const handleCloseModal = () => {
         document.body.style.overflowY = "";
         
-        gsap.fromTo("#animeInfo",{
-            x: "0%",
-        },{
-            x: "100%",
-            duration: 2,
-            ease: "expo.out",
-        })
-        
-        gsap.set("#animeInfo",{
-            display: "none",
-            delay: 3
+        ["#animeInfo", "#bgAnimeInfo"].forEach((item)=>{
+            gsap.fromTo(item,{
+                x: "0%",
+            },{
+                x: "100%",
+                duration: 2,
+                ease: "expo.out",
+                onComplete: ()=>{
+                    gsap.set(item,{
+                        display: "none",
+                    })
+                }
+            })
+            
         })
     }
 
     useEffect(()=>{
+        gsap.fromTo("#bgAnimeInfo",{
+            x: 0
+        },{
+            x: -50,
+            ease: "none",        
+            scrollTrigger: {
+                trigger: "#animeInfo",
+                scroller: "#animeInfo",
+                horizontal: true,
+                start: "left left",
+                end: "right right",
+                scrub: true,
+                markers: true
+            }
+        })
+    },[])
+
+    useEffect(()=>{
         setListImages(["sololeveling4","sololeveling5","sololeveling6","sololeveling7"])
+        setIsDesktop(window.innerWidth > 768)
     },[])
 
     const mainImage = (minimal = false) =>{
@@ -58,15 +88,15 @@ const AnimeExpo = ({}) => {
                     md:py-2.5 md:bottom-5
                 " onClick={handleOpenModal}> Explorar Solo Leveling </button>
             </div>
-            <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-[rgb(18,3,20)] z-[60] hidden">
-                <div className="absolute"> </div>
-                <div className="h-[100vh] w-full bg-cover bg-center absolute top-0 left-0" style={{
+            <div id="bgAnimeInfo" className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={{
                 backgroundImage: `
-                    linear-gradient(to right, rgba(0, 0, 0, 0.8) 10%, rgb(18,3,20) 30%, rgb(18,3,20) 100%),
+                    linear-gradient(${isDesktop ? "to right" : "to bottom"}, rgba(0, 0, 0, 0.8) 10%, rgb(18,3,20) ${isDesktop ? "50%" : "80%"}, rgb(18,3,20) 100%),
                     url('/animes/soloLeveling/sololeveling_bg.jpg')
                 `
                 }}>
                 </div>
+            <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden">
+                
                     <div className="flex items-center gap-10 relative pl-64 w-full">
                     <button className="absolute top-20 left-10 bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                         <div  className="min-w-96">
