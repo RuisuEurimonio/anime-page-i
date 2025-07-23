@@ -59,6 +59,14 @@ const AnimeExpo = ({}) => {
                 " onClick={handleOpenModal}> Explorar Solo Leveling </button>
             </div>
             <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-[rgb(18,3,20)] z-[60] hidden">
+                <div className="absolute"> </div>
+                <div className="h-[100vh] w-full bg-cover bg-center absolute top-0 left-0" style={{
+                backgroundImage: `
+                    linear-gradient(to right, rgba(0, 0, 0, 0.8) 10%, rgb(18,3,20) 30%, rgb(18,3,20) 100%),
+                    url('/animes/soloLeveling/sololeveling_bg.jpg')
+                `
+                }}>
+                </div>
                     <div className="flex items-center gap-10 relative pl-64 w-full">
                     <button className="absolute top-20 left-10 bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                         <div  className="min-w-96">
