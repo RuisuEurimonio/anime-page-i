@@ -53,21 +53,23 @@ const AnimeExpo = ({ }) => {
 
     useEffect(() => {
         if(!isDesktop) return; 
-        gsap.fromTo("#bgAnimeInfo", {
-            x: 0
-        }, {
-            x: -50,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#animeInfo",
-                scroller: "#animeInfo",
-                horizontal: true,
-                start: "left left",
-                end: "right right",
-                scrub: true,
-                markers: true
-            }
-        })
+        else{
+            gsap.fromTo("#bgAnimeInfo", {
+                x: 0
+            }, {
+                x: -50,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#animeInfo",
+                    scroller: "#animeInfo",
+                    horizontal: true,
+                    start: "left left",
+                    end: "right right",
+                    scrub: true,
+                    markers: true
+                }
+            })
+        }
     }, [])
 
     useEffect(() => {
@@ -87,7 +89,9 @@ const AnimeExpo = ({ }) => {
     }, []);
 
     const mainImage = (minimal = false) => {
-        return (<img src="/animes/soloLeveling/sololeveling.jpg" className="h-full w-full object-cover border-[16px] border-white" style={{ transform: minimal ? "rotate(-8deg" : "" }} onClick={handleOpenModal}></img>)
+        return (<img src="/animes/soloLeveling/sololeveling.jpg" className="h-full w-full object-cover border-4 m-4 border-white
+                md:border-[16px]
+            " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={handleOpenModal}></img>)
     }
 
     return (
@@ -105,47 +109,64 @@ const AnimeExpo = ({ }) => {
             </div>
             <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden">
 
-                <div className="flex items-center gap-10 relative pl-16 w-full
+                <div className="flex items-center gap-10 relative pl-5 w-full
                         md:pl-64
                     ">
-                    <button className="absolute top-20 left-10 bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
-                    <div className="font-bold flex min-w-[190vw]
+                    <button className="absolute top-5 left-20 bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
+                    <div className="font-bold grid grid-cols-[100vw_95vw] grid-rows-2 min-w-[190vw] h-8/12 my-auto mr-16
                         md:w-[25rem]
                     ">
-                        <div className="h-1/2
-                        md:min-w-96
+                        <div className="grid-cols-1 grid-rows-1 w-9/12 h-10/12
+                        md:h-60 md:w-[50vw]
                             ">
                             {mainImage(true)}
                         </div>
-                        <div className="h-1/2">
-                            <h2 className="text-2xl text-fuchsia-600
-                                    md:text-4xl
-                                "> Solo leveling </h2>
-                            <h3 className="text-xl text-pink-400
+                        <div className="grid-cols-1 grid-rows-1
+                            md:grid-cols-none md:grid-rows-none
+                        "></div>
+                        <h2 className="text-5xl text-fuchsia-600 grid-cols-1 grid-rows-1 uppercase font-extrabold h-11/12 self-end
+                                md:text-4xl
+                            "> Solo leveling </h2>
+                        <div className="grid-cols-1 grid-rows-1">
+                            <h3 className="text-base text-pink-400 uppercase font-bold
                                     md:text-3xl
                                 "> Sube de nivel </h3>
+                            <p className="text-base text-white h-full
+                                    md:text-2xl
+                                "> Solo Leveling sigue a Sung Jin-Woo, el cazador más débil del mundo, quien tras un evento misterioso obtiene la habilidad única de volverse más fuerte al completar misiones como en un videojuego. Su camino lo lleva de ser despreciado a convertirse en el cazador más poderoso.</p>
                         </div>
-                        <p className="text-lg text-white h-full
-                                md:text-2xl
-                            "> Solo Leveling sigue a Sung Jin-Woo, el cazador más débil del mundo, quien tras un evento misterioso obtiene la habilidad única de volverse más fuerte al completar misiones como en un videojuego. Su camino lo lleva de ser despreciado a convertirse en el cazador más poderoso.</p>
                     </div>
-                    <div className="grid grid-cols-[25vw_25vw_25vw] grid-rows-[30vh_1fr_1fr] gap-10 h-[100vh]">
-                        <div className="col-span-1 row-span-1"></div>
+                    <div className="grid grid-cols-[200vw_80vw_80vw] grid-rows-1 gap-10 h-[100vh] 
+                        md:grid-cols-[25vw_25vw_25vw] md:grid-rows-[30vh_1fr_1fr]
+                    ">
+                        <div className="col-span-1 row-span-1 hidden
+                            md:block
+                        "></div>
                         <img src="/animes/soloLeveling/sololeveling1.jpg" alt="" className="col-span-1 row-span-1 h-full w-full object-cover" />
-                        <img src="/animes/soloLeveling/sololeveling2.jpg" alt="" className="col-span-1 row-span-3 h-[80vh] place-self-center w-full object-cover" />
-                        <img src="/animes/soloLeveling/sololeveling3.jpg" alt="" className="col-span-2 row-span-2 h-full w-full object-cover" />
+                        <img src="/animes/soloLeveling/sololeveling2.jpg" alt="" className="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover" />
+                        <img src="/animes/soloLeveling/sololeveling3.jpg" alt="" className="col-span-1  row-span-1 h-full w-[90vh] object-cover
+                            md:h-full md:col-span-2 md:row-span-2
+                        " />
                     </div>
                     <div className="flex gap-16 items-center ml-10">
                         {listImages.map((item, index) => {
                             index++
                             if (index === listImages.length) {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[60vw] h-[100vh]`} />
+                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[100vw] h-[100vh]
+                                    md:min-w-[60vw]
+                                " />
                             } else if (index / 1 === 1) {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[30vw] h-[100vh]`} />
+                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[80vw] h-[100vh]
+                                    md:min-w-[30vw]
+                                " />
                             } else if (index / 2 === 1) {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[40vw] h-[40vh]`} />
+                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[70vw] h-[40vh]
+                                    md:min-w-[40vw]
+                                " />
                             } else {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className={`object-cover min-w-[30vw] h-[70vh]`} />
+                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[60vw] h-[70vh]
+                                    md:
+                                " />
                             }
                         })}
                     </div>
