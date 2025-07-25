@@ -123,7 +123,7 @@ const AnimeExpo = ({ }) => {
 
     const mainImage = (minimal = false) => {
         return (<img src="/animes/soloLeveling/sololeveling.jpg" className="h-full w-full object-cover border-4 m-4 border-white
-                md:border-[16px]
+                md:border-[12px]
             " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={handleOpenModal}></img>)
     }
 
@@ -156,25 +156,30 @@ const AnimeExpo = ({ }) => {
                         md:pl-64
                     ">
                     <div className="font-bold grid grid-cols-[100vw_95vw] grid-rows-2 min-w-[190vw] h-8/12 my-auto mr-16
-                        md:w-[25rem]
+                        md:grid-cols-[1fr_1fr] md:grid-rows-1 md:min-w-[90vw] md:items-center
                     ">
                         <div className="grid-cols-1 grid-rows-1 w-10/12 h-10/12
-                        md:h-60 md:w-[50vw]
+                        md:h-full md:w-[50vw] md:row-span-1 md:col-span-1 md:mr-16
                             ">
                             {mainImage(true)}
                         </div>
                         <div className="grid-cols-1 grid-rows-1
-                            md:grid-cols-none md:grid-rows-none
+                            md:grid-cols-none md:grid-rows-none md:hidden
                         "></div>
                         <h2 className="text-5xl text-fuchsia-600 grid-cols-1 grid-rows-1 uppercase font-extrabold h-11/12 self-end
-                                md:text-4xl
+                                md:text-4xl md:col-span-1 md:row-span-1 md:content-end md:hidden
                             "> Solo leveling </h2>
-                        <div className="grid-cols-1 grid-rows-1">
+                        <div className="grid-cols-1 grid-rows-1
+                            md:col-span-1 md:row-span-1
+                        ">
+                            <h2 className="text-5xl text-fuchsia-600 grid-cols-1 grid-rows-1 uppercase font-extrabold h-11/12 self-end hidden
+                                md:text-4xl md:col-span-1 md:row-span-1 md:content-end md:block
+                            "> Solo leveling </h2>
                             <h3 className="text-base text-pink-400 uppercase font-bold
-                                    md:text-3xl
+                                    md:text-2xl
                                 "> Sube de nivel </h3>
                             <p className="text-base text-white h-full
-                                    md:text-2xl
+                                    md:text-xl
                                 "> Solo Leveling sigue a Sung Jin-Woo, el cazador más débil del mundo, quien tras un evento misterioso obtiene la habilidad única de volverse más fuerte al completar misiones como en un videojuego. Su camino lo lleva de ser despreciado a convertirse en el cazador más poderoso.</p>
                         </div>
                     </div>
@@ -184,8 +189,10 @@ const AnimeExpo = ({ }) => {
                         <div className="col-span-1 row-span-1 hidden
                             md:block
                         "></div>
-                        <img src="/animes/soloLeveling/sololeveling1.jpg" alt="" className="col-span-1 row-span-1 h-full w-full object-cover" />
-                        <img src="/animes/soloLeveling/sololeveling2.jpg" alt="" className="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover" />
+                        <img src="/animes/soloLeveling/sololeveling1.jpg" alt="" className="col-span-1 row-span-1 h-full w-full object-cover
+                        " />
+                        <img src="/animes/soloLeveling/sololeveling2.jpg" alt="" className="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover
+                        md:row-span-3" />
                         <img src="/animes/soloLeveling/sololeveling3.jpg" alt="" className="col-span-1  row-span-1 h-full w-[90vh] object-cover
                             md:h-full md:col-span-2 md:row-span-2
                         " />
@@ -198,12 +205,12 @@ const AnimeExpo = ({ }) => {
 
                             if (isLast) {
                                 className += "min-w-[100vw] md:min-w-[60vw]";
+                            } else if (index === 0) {
+                                className += "min-w-[80vw] md:min-w-[30vw] md:h-[70vh]";
                             } else if (index === 1) {
-                                className += "min-w-[80vw] md:min-w-[30vw]";
-                            } else if (index === 2) {
-                                className += "min-w-[70vw] h-[40vh] md:min-w-[40vw]";
+                                className += "min-w-[70vw] h-[40vh] md:min-w-[40vw] md:h-[40vh]";
                             } else {
-                                className += "min-w-[60vw] h-[70vh] md:min-w-[50vw]";
+                                className += "min-w-[60vw] h-[70vh] md:min-w-[30vw] md:h-[60vh]";
                             }
 
                             return (
