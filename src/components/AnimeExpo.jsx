@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
 gsap.registerPlugin(ScrollTrigger)
@@ -8,6 +8,8 @@ const AnimeExpo = ({ }) => {
     const [listImages, setListImages] = useState([]);
     const [bgStyle, setBgStyle] = useState({})
     const [isDesktop, setIsDesktop] = useState(false)
+
+    const lastImgGrid = useRef(null);
 
     const handleOpenModal = () => {
         document.body.style.overflowY = "hidden";
@@ -20,7 +22,11 @@ const AnimeExpo = ({ }) => {
             display: "block"
         });
 
-        ["#animeInfo", "#bgAnimeInfo"].forEach((item) => {
+         gsap.set("#optionsModal", {
+            display: "flex"
+        });
+
+        ["#animeInfo", "#bgAnimeInfo", "#optionsModal"].forEach((item) => {
             gsap.fromTo(item, {
                 x: "100%",
             }, {
@@ -34,7 +40,7 @@ const AnimeExpo = ({ }) => {
     const handleCloseModal = () => {
         document.body.style.overflowY = "";
 
-        ["#animeInfo", "#bgAnimeInfo"].forEach((item) => {
+        ["#animeInfo", "#bgAnimeInfo", "#optionsModal"].forEach((item) => {
             gsap.fromTo(item, {
                 x: "0%",
             }, {
@@ -52,8 +58,32 @@ const AnimeExpo = ({ }) => {
     }
 
     useEffect(() => {
-        if(!isDesktop) return; 
-        else{
+
+        //TODO : Ajustar el efecto
+
+        console.log(lastImgGrid.current)
+        requestAnimationFrame(()=>{
+            if (!lastImgGrid.current) return;
+
+        if (!isDesktop) {
+            gsap.fromTo("#progressbar-modal", {
+                x: "91.6667%"
+            }, {
+                x: "0%",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#animeInfo",
+                    scroller: "#animeInfo",
+                    start: "left left",
+                    endTrigger: lastImgGrid.current,
+                    end: "right right",
+                    scrub: true,
+                    horizontal: true,
+                    markers: true
+                }
+            })
+
+        } else {
             gsap.fromTo("#bgAnimeInfo", {
                 x: 0
             }, {
@@ -66,11 +96,14 @@ const AnimeExpo = ({ }) => {
                     start: "left left",
                     end: "right right",
                     scrub: true,
-                    markers: true
                 }
             })
         }
-    }, [])
+        })
+
+        
+        
+    }, [isDesktop, listImages])
 
     useEffect(() => {
         setListImages(["sololeveling4", "sololeveling5", "sololeveling6", "sololeveling7"])
@@ -107,16 +140,25 @@ const AnimeExpo = ({ }) => {
             </div>
             <div id="bgAnimeInfo" className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
             </div>
+            <div id="optionsModal" className="fixed top-5 left-5 w-[90vw] justify-between z-[65] hidden">
+                        <button className="bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
+                        <div className="bg-fuchsia-700/10 rounded-full h-8 w-7/12 flex items-center justify-center
+                                md:hidden
+                            ">
+                            <div className="relative w-10/12 h-2 bg-gray-800 rounded-full overflow-hidden">
+                                <div id="progressbar-modal" className="absolute h-full w-full bg-gray-300 left-0 -translate-x-11/12 rounded-full">  </div>
+                            </div>
+                        </div>
+                    </div>
             <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden">
 
                 <div className="flex items-center gap-10 relative pl-5 w-full
                         md:pl-64
                     ">
-                    <button className="absolute top-5 left-20 bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                     <div className="font-bold grid grid-cols-[100vw_95vw] grid-rows-2 min-w-[190vw] h-8/12 my-auto mr-16
                         md:w-[25rem]
                     ">
-                        <div className="grid-cols-1 grid-rows-1 w-9/12 h-10/12
+                        <div className="grid-cols-1 grid-rows-1 w-10/12 h-10/12
                         md:h-60 md:w-[50vw]
                             ">
                             {mainImage(true)}
@@ -150,24 +192,29 @@ const AnimeExpo = ({ }) => {
                     </div>
                     <div className="flex gap-16 items-center ml-10">
                         {listImages.map((item, index) => {
-                            index++
-                            if (index === listImages.length) {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[100vw] h-[100vh]
-                                    md:min-w-[60vw]
-                                " />
-                            } else if (index / 1 === 1) {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[80vw] h-[100vh]
-                                    md:min-w-[30vw]
-                                " />
-                            } else if (index / 2 === 1) {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[70vw] h-[40vh]
-                                    md:min-w-[40vw]
-                                " />
+                            const isLast = index === listImages.length - 1;
+
+                            let className = "object-cover h-[100vh] ";
+
+                            if (isLast) {
+                                className += "min-w-[100vw] md:min-w-[60vw]";
+                            } else if (index === 1) {
+                                className += "min-w-[80vw] md:min-w-[30vw]";
+                            } else if (index === 2) {
+                                className += "min-w-[70vw] h-[40vh] md:min-w-[40vw]";
                             } else {
-                                return <img key={item} src={`/animes/soloLeveling/${item}.jpg`} className="object-cover min-w-[60vw] h-[70vh]
-                                    md:
-                                " />
+                                className += "min-w-[60vw] h-[70vh] md:min-w-[50vw]";
                             }
+
+                            return (
+                                <img
+                                    key={item}
+                                    ref={isLast ? lastImgGrid : null}
+                                    src={`/animes/soloLeveling/${item}.jpg`}
+                                    className={className}
+                                    alt=""
+                                />
+                            );
                         })}
                     </div>
                 </div>
