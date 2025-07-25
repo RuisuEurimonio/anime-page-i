@@ -29,7 +29,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
 
         ["#animeInfo_"+keyName, "#bgAnimeInfo_"+keyName, "#optionsModal_"+keyName].forEach((item) => {
             gsap.fromTo(item, {
-                x: "100%",
+                x: "105%",
             }, {
                 x: "0",
                 ease: "expo.out",
@@ -45,7 +45,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
             gsap.fromTo(item, {
                 x: "0%",
             }, {
-                x: "100%",
+                x: "105%",
                 duration: 2,
                 ease: "expo.out",
                 onComplete: () => {
@@ -127,7 +127,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
     }
 
     return (
-        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden">
+        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden pointer-events-none">
             <div className="w-11/12 h-5/12 m-auto relative hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2
                 md:h-11/12 md:w-8/12
             ">
@@ -139,7 +139,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
             </div>
             <div id={`bgAnimeInfo_${keyName}`} className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
             </div>
-            <div id={`optionsModal_${keyName}`} className="fixed top-5 left-5 w-[90vw] justify-between z-[65] hidden">
+            <div id={`optionsModal_${keyName}`} className="fixed top-5 left-5 w-full justify-between z-[65] hidden">
                         <button className="bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                         <div className="bg-fuchsia-700/10 rounded-full h-8 w-7/12 flex items-center justify-center
                                 md:hidden
