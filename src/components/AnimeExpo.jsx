@@ -4,7 +4,7 @@ import ImgZoom from "./ImgZoom";
 
 gsap.registerPlugin(ScrollTrigger)
 
-const AnimeExpo = ({ keyName, fileName, fullName, quote, text, listImagesProp }) => {
+const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listImagesProp }) => {
 
     const [listImages, setListImages] = useState(listImagesProp);
     const [bgStyle, setBgStyle] = useState({})
@@ -135,7 +135,7 @@ const AnimeExpo = ({ keyName, fileName, fullName, quote, text, listImagesProp })
                 <button className=" absolute -bottom-16 right-0 left-0 mx-auto font-bold w-10/12 px-0.5 py-0.5 rounded-4xl bg-white cursor-pointer
                     sm:py-1.5
                     md:py-2.5 md:bottom-5
-                " onClick={handleOpenModal}> Explorar Solo Leveling </button>
+                " onClick={handleOpenModal}> Explorar {fullName} </button>
             </div>
             <div id={`bgAnimeInfo_${keyName}`} className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
             </div>
