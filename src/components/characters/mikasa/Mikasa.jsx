@@ -1,6 +1,6 @@
-import { gsap, ScrollTrigger } from "../../scripts/gsapConfig"
+import { gsap, ScrollTrigger } from "../../../scripts/gsapConfig"
 import { useEffect, useRef, useState } from "react";
-import ImgZoom from "../ImgZoom";
+import ImgZoom from "../../ImgZoom";
 
 const frames = 48;
 const getFramesSource = (index) => {

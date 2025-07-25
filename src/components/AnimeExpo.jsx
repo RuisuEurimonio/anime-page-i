@@ -3,9 +3,9 @@ import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
 gsap.registerPlugin(ScrollTrigger)
 
-const AnimeExpo = ({ }) => {
+const AnimeExpo = ({ keyName, fileName, fullName, quote, text, listImagesProp }) => {
 
-    const [listImages, setListImages] = useState([]);
+    const [listImages, setListImages] = useState(listImagesProp);
     const [bgStyle, setBgStyle] = useState({})
     const [isDesktop, setIsDesktop] = useState(false)
 
@@ -14,19 +14,19 @@ const AnimeExpo = ({ }) => {
     const handleOpenModal = () => {
         document.body.style.overflowY = "hidden";
 
-        gsap.set("#animeInfo", {
+        gsap.set("#animeInfo_"+keyName, {
             display: "flex",
         })
 
-        gsap.set("#bgAnimeInfo", {
+        gsap.set("#bgAnimeInfo_"+keyName, {
             display: "block"
         });
 
-         gsap.set("#optionsModal", {
+         gsap.set("#optionsModal_"+keyName, {
             display: "flex"
         });
 
-        ["#animeInfo", "#bgAnimeInfo", "#optionsModal"].forEach((item) => {
+        ["#animeInfo_"+keyName, "#bgAnimeInfo_"+keyName, "#optionsModal_"+keyName].forEach((item) => {
             gsap.fromTo(item, {
                 x: "100%",
             }, {
@@ -40,7 +40,7 @@ const AnimeExpo = ({ }) => {
     const handleCloseModal = () => {
         document.body.style.overflowY = "";
 
-        ["#animeInfo", "#bgAnimeInfo", "#optionsModal"].forEach((item) => {
+        ["#animeInfo_"+keyName, "#bgAnimeInfo_"+keyName, "#optionsModal_"+keyName].forEach((item) => {
             gsap.fromTo(item, {
                 x: "0%",
             }, {
@@ -61,19 +61,18 @@ const AnimeExpo = ({ }) => {
 
         //TODO : Ajustar el efecto
 
-        console.log(lastImgGrid.current)
         requestAnimationFrame(()=>{
             if (!lastImgGrid.current) return;
 
         if (!isDesktop) {
-            gsap.fromTo("#progressbar-modal", {
+            gsap.fromTo("#progressbar-modal_"+keyName, {
                 x: "91.6667%"
             }, {
                 x: "0%",
                 ease: "none",
                 scrollTrigger: {
-                    trigger: "#animeInfo",
-                    scroller: "#animeInfo",
+                    trigger: "#animeInfo_"+keyName,
+                    scroller: "#animeInfo_"+keyName,
                     start: "left left",
                     endTrigger: lastImgGrid.current,
                     end: "right right",
@@ -84,14 +83,14 @@ const AnimeExpo = ({ }) => {
             })
 
         } else {
-            gsap.fromTo("#bgAnimeInfo", {
+            gsap.fromTo("#bgAnimeInfo_"+keyName, {
                 x: 0
             }, {
                 x: -50,
                 ease: "none",
                 scrollTrigger: {
-                    trigger: "#animeInfo",
-                    scroller: "#animeInfo",
+                    trigger: "#animeInfo_"+keyName,
+                    scroller: "#animeInfo_"+keyName,
                     horizontal: true,
                     start: "left left",
                     end: "right right",
@@ -106,7 +105,6 @@ const AnimeExpo = ({ }) => {
     }, [isDesktop, listImages])
 
     useEffect(() => {
-        setListImages(["sololeveling4", "sololeveling5", "sololeveling6", "sololeveling7"])
         setIsDesktop(window.innerWidth > 768)
     }, [])
 
@@ -116,13 +114,13 @@ const AnimeExpo = ({ }) => {
         setBgStyle({
             backgroundImage: `
       linear-gradient(${gradientDirection}, rgba(0, 0, 0, 0.8) 10%, rgb(18,3,20) ${gradientDirection === "to right" ? "50%" : "80%"}, rgb(18,3,20) 100%),
-      url('/animes/soloLeveling/sololeveling_bg.jpg')
+      url('/animes/${keyName}/${fileName}_bg.jpg')
     `
         });
     }, []);
 
     const mainImage = (minimal = false) => {
-        return (<img src="/animes/soloLeveling/sololeveling.jpg" className="h-full w-full object-cover border-4 m-4 border-white
+        return (<img src={`/animes/${keyName}/${fileName}.jpg`} alt={`${minimal ? "small" : ""} portrait image from ${fullName} anime`} className="h-full w-full object-cover border-4 m-4 border-white
                 md:border-[12px]
             " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={handleOpenModal}></img>)
     }
@@ -138,19 +136,19 @@ const AnimeExpo = ({ }) => {
                     md:py-2.5 md:bottom-5
                 " onClick={handleOpenModal}> Explorar Solo Leveling </button>
             </div>
-            <div id="bgAnimeInfo" className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
+            <div id={`bgAnimeInfo_${keyName}`} className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
             </div>
-            <div id="optionsModal" className="fixed top-5 left-5 w-[90vw] justify-between z-[65] hidden">
+            <div id={`optionsModal_${keyName}`} className="fixed top-5 left-5 w-[90vw] justify-between z-[65] hidden">
                         <button className="bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                         <div className="bg-fuchsia-700/10 rounded-full h-8 w-7/12 flex items-center justify-center
                                 md:hidden
                             ">
                             <div className="relative w-10/12 h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div id="progressbar-modal" className="absolute h-full w-full bg-gray-300 left-0 -translate-x-11/12 rounded-full">  </div>
+                                <div id={`progressbar-modal_${keyName}`} className="absolute h-full w-full bg-gray-300 left-0 -translate-x-11/12 rounded-full">  </div>
                             </div>
                         </div>
                     </div>
-            <div id="animeInfo" className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden">
+            <div id={`animeInfo_${keyName}`} className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden">
 
                 <div className="flex items-center gap-10 relative pl-5 w-full
                         md:pl-64
@@ -174,13 +172,13 @@ const AnimeExpo = ({ }) => {
                         ">
                             <h2 className="text-5xl text-fuchsia-600 grid-cols-1 grid-rows-1 uppercase font-extrabold h-11/12 self-end hidden
                                 md:text-4xl md:col-span-1 md:row-span-1 md:content-end md:block
-                            "> Solo leveling </h2>
+                            "> {fullName} </h2>
                             <h3 className="text-base text-pink-400 uppercase font-bold
                                     md:text-2xl
-                                "> Sube de nivel </h3>
+                                "> {quote} </h3>
                             <p className="text-base text-white h-full
                                     md:text-xl
-                                "> Solo Leveling sigue a Sung Jin-Woo, el cazador más débil del mundo, quien tras un evento misterioso obtiene la habilidad única de volverse más fuerte al completar misiones como en un videojuego. Su camino lo lleva de ser despreciado a convertirse en el cazador más poderoso.</p>
+                                "> {text} </p>
                         </div>
                     </div>
                     <div className="grid grid-cols-[200vw_80vw_80vw] grid-rows-1 gap-10 h-[100vh] 
@@ -189,16 +187,16 @@ const AnimeExpo = ({ }) => {
                         <div className="col-span-1 row-span-1 hidden
                             md:block
                         "></div>
-                        <img src="/animes/soloLeveling/sololeveling1.jpg" alt="" className="col-span-1 row-span-1 h-full w-full object-cover
+                        <img src={`/animes/${keyName}/${fileName}1.jpg`} alt={`First collage image about ${fullName} anime`} className="col-span-1 row-span-1 h-full w-full object-cover
                         " />
-                        <img src="/animes/soloLeveling/sololeveling2.jpg" alt="" className="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover
+                        <img src={`/animes/${keyName}/${fileName}2.jpg`} alt={`Second collage image about ${fullName} anime`} className="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover
                         md:row-span-3" />
-                        <img src="/animes/soloLeveling/sololeveling3.jpg" alt="" className="col-span-1  row-span-1 h-full w-[90vh] object-cover
+                        <img src={`/animes/${keyName}/${fileName}3.jpg`} alt={`Third collage image about ${fullName} anime`} className="col-span-1  row-span-1 h-full w-[90vh] object-cover
                             md:h-full md:col-span-2 md:row-span-2
                         " />
                     </div>
                     <div className="flex gap-16 items-center ml-10">
-                        {listImages.map((item, index) => {
+                        {listImages && listImages.map((item, index) => {
                             const isLast = index === listImages.length - 1;
 
                             let className = "object-cover h-[100vh] ";
@@ -217,9 +215,9 @@ const AnimeExpo = ({ }) => {
                                 <img
                                     key={item}
                                     ref={isLast ? lastImgGrid : null}
-                                    src={`/animes/soloLeveling/${item}.jpg`}
+                                    src={`/animes/${keyName}/${item}.jpg`}
                                     className={className}
-                                    alt=""
+                                    alt={`${index+1} image about ${fullName} anime`}
                                 />
                             );
                         })}

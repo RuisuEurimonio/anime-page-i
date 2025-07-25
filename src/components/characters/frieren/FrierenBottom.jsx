@@ -1,4 +1,4 @@
-import { gsap, ScrollTrigger } from "../../scripts/gsapConfig"
+import { gsap, ScrollTrigger } from "../../../scripts/gsapConfig"
 import { useEffect, useRef, useState } from "react";
 
 const frames = 39;

@@ -1,4 +1,4 @@
-import CharacterPageStyleTwo from "../CharacterPageStyleTwo";
+import CharacterPageStyleTwo from "../../CharacterPageStyleTwo";
 
 const Hinata = () => {
 
