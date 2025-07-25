@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
+import ImgZoom from "./ImgZoom";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -122,7 +123,7 @@ const AnimeExpo = ({ keyName, fileName, fullName, quote, text, listImagesProp })
     const mainImage = (minimal = false) => {
         return (<img src={`/animes/${keyName}/${fileName}.jpg`} alt={`${minimal ? "small" : ""} portrait image from ${fullName} anime`} className="h-full w-full object-cover border-4 m-4 border-white
                 md:border-[12px]
-            " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={handleOpenModal}></img>)
+            " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={handleOpenModal} />)
     }
 
     return (
@@ -187,11 +188,11 @@ const AnimeExpo = ({ keyName, fileName, fullName, quote, text, listImagesProp })
                         <div className="col-span-1 row-span-1 hidden
                             md:block
                         "></div>
-                        <img src={`/animes/${keyName}/${fileName}1.jpg`} alt={`First collage image about ${fullName} anime`} className="col-span-1 row-span-1 h-full w-full object-cover
+                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}1.jpg`} alt={`First collage image about ${fullName} anime`} otherClass="col-span-1 row-span-1 h-full w-full object-cover
                         " />
-                        <img src={`/animes/${keyName}/${fileName}2.jpg`} alt={`Second collage image about ${fullName} anime`} className="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover
+                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}2.jpg`} alt={`Second collage image about ${fullName} anime`} otherClass="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover
                         md:row-span-3" />
-                        <img src={`/animes/${keyName}/${fileName}3.jpg`} alt={`Third collage image about ${fullName} anime`} className="col-span-1  row-span-1 h-full w-[90vh] object-cover
+                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}3.jpg`} alt={`Third collage image about ${fullName} anime`} otherClass="col-span-1  row-span-1 h-full w-[90vh] object-cover
                             md:h-full md:col-span-2 md:row-span-2
                         " />
                     </div>
@@ -212,11 +213,11 @@ const AnimeExpo = ({ keyName, fileName, fullName, quote, text, listImagesProp })
                             }
 
                             return (
-                                <img
+                                <ImgZoom
                                     key={item}
                                     ref={isLast ? lastImgGrid : null}
-                                    src={`/animes/${keyName}/${item}.jpg`}
-                                    className={className}
+                                    imgSrc={`/animes/${keyName}/${item}.jpg`}
+                                    otherClass={className}
                                     alt={`${index+1} image about ${fullName} anime`}
                                 />
                             );
