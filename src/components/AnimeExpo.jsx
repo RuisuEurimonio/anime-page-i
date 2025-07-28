@@ -6,9 +6,11 @@ gsap.registerPlugin(ScrollTrigger)
 
 const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listImagesProp }) => {
 
-    const [listImages, setListImages] = useState(listImagesProp);
+    const [listImages] = useState(listImagesProp);
     const [bgStyle, setBgStyle] = useState({})
     const [isDesktop, setIsDesktop] = useState(false)
+
+    const miniatureImgRef = useRef(null)
 
     const lastImgGrid = useRef(null);
 
@@ -56,6 +58,8 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
             })
 
         })
+
+        miniatureImgRef?.current?.scrollIntoView({behavior: "smooth"})
     }
 
     useEffect(() => {
@@ -123,11 +127,11 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
     const mainImage = (minimal = false) => {
         return (<img src={`/animes/${keyName}/${fileName}.jpg`} alt={`${minimal ? "small" : ""} portrait image from ${fullName} anime`} className="h-full w-full object-cover border-4 m-4 border-white
                 md:border-[12px]
-            " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={handleOpenModal} />)
+            " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={minimal ? null : handleOpenModal} />)
     }
 
     return (
-        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden pointer-events-none">
+        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden">
             <div className="w-11/12 h-5/12 m-auto relative hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2
                 md:h-11/12 md:w-8/12
             ">
@@ -149,15 +153,17 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                             </div>
                         </div>
                     </div>
-            <div id={`animeInfo_${keyName}`} className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden">
+            <div id={`animeInfo_${keyName}`} className="fixed pointer-events-none top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden"
+                onClick={(e)=>{e.stopPropagation()}}
+            >
 
-                <div className="flex items-center gap-10 relative pl-5 w-full
+                <div className="flex items-center gap-10 relative pl-5 w-full pointer-events-auto
                         md:pl-64
                     ">
                     <div className="font-bold grid grid-cols-[100vw_95vw] grid-rows-2 min-w-[190vw] h-8/12 my-auto mr-16
                         md:grid-cols-[1fr_1fr] md:grid-rows-1 md:min-w-[90vw] md:items-center
                     ">
-                        <div className="grid-cols-1 grid-rows-1 w-10/12 h-10/12
+                        <div ref={miniatureImgRef} className="grid-cols-1 grid-rows-1 w-10/12 h-10/12
                         md:h-full md:w-[50vw] md:row-span-1 md:col-span-1 md:mr-16
                             ">
                             {mainImage(true)}
