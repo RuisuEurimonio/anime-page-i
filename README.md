@@ -46,3 +46,12 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+## Disclaimer
+
+This project is intended solely for educational and non-commercial purposes.
+
+All images used in this website are the property of their respective owners. No copyright infringement is intended. The images were obtained from [Wallpaperflare.com](https://www.wallpaperflare.com/) and are used only to practice frontend development.
+
+If you are the rightful owner of any image and wish for it to be removed or credited differently, please contact me and I will take appropriate action.
