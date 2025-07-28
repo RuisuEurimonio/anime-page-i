@@ -4,7 +4,7 @@ import ImgZoom from "./ImgZoom";
 
 gsap.registerPlugin(ScrollTrigger)
 
-const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listImagesProp }) => {
+const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listImagesProp, noBgImg = false }) => {
 
     const [listImages] = useState(listImagesProp);
     const [bgStyle, setBgStyle] = useState({})
@@ -21,15 +21,18 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
             display: "flex",
         })
 
-        gsap.set("#bgAnimeInfo_"+keyName, {
-            display: "block"
-        });
+        if(!noBgImg){
+            gsap.set("#bgAnimeInfo_"+keyName, {
+                display: "block"
+            });
+        }
 
          gsap.set("#optionsModal_"+keyName, {
             display: "flex"
         });
 
-        ["#animeInfo_"+keyName, "#bgAnimeInfo_"+keyName, "#optionsModal_"+keyName].forEach((item) => {
+        ["#animeInfo_"+keyName, !noBgImg ? "#bgAnimeInfo_"+keyName : null, "#optionsModal_"+keyName].forEach((item) => {
+            if(!item) return;
             gsap.fromTo(item, {
                 x: "105%",
             }, {
@@ -43,7 +46,9 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
     const handleCloseModal = () => {
         document.body.style.overflowY = "";
 
-        ["#animeInfo_"+keyName, "#bgAnimeInfo_"+keyName, "#optionsModal_"+keyName].forEach((item) => {
+        ["#animeInfo_"+keyName, !noBgImg ? "#bgAnimeInfo_"+keyName : null, "#optionsModal_"+keyName].forEach((item) => {
+            if(!item) return;
+
             gsap.fromTo(item, {
                 x: "0%",
             }, {
@@ -67,7 +72,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
         //TODO : Ajustar el efecto
 
         requestAnimationFrame(()=>{
-            if (!lastImgGrid.current) return;
+            if (!lastImgGrid.current || noBgImg) return;
 
         if (!isDesktop) {
             gsap.fromTo("#progressbar-modal_"+keyName, {
@@ -114,6 +119,8 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
     }, [])
 
     useEffect(() => {
+        if(noBgImg) return;
+
         const gradientDirection = window.innerWidth > 768 ? "to right" : "to bottom";
 
         setBgStyle({
@@ -141,8 +148,8 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                     md:py-2.5 md:bottom-5
                 " onClick={handleOpenModal}> Explorar {fullName} </button>
             </div>
-            <div id={`bgAnimeInfo_${keyName}`} className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
-            </div>
+            {!noBgImg && <div id={`bgAnimeInfo_${keyName}`} className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
+            </div>}
             <div id={`optionsModal_${keyName}`} className="fixed top-5 left-5 w-full justify-between z-[65] hidden">
                         <button className="bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                         <div className="bg-fuchsia-700/10 rounded-full h-8 w-7/12 flex items-center justify-center
@@ -155,6 +162,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                     </div>
             <div id={`animeInfo_${keyName}`} className="fixed pointer-events-none top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden"
                 onClick={(e)=>{e.stopPropagation()}}
+                style={{backgroundColor: noBgImg ? "rgb(18,3,20)" : ""}}
             >
 
                 <div className="flex items-center gap-10 relative pl-5 w-full pointer-events-auto
