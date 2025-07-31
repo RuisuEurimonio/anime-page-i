@@ -138,7 +138,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
     }
 
     return (
-        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden">
+        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden z-5">
             <div className="w-11/12 h-5/12 m-auto relative hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2
                 md:h-11/12 md:w-8/12
             ">

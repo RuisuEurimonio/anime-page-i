@@ -32,11 +32,23 @@ const Footer = () =>{
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#videoFooter",
-                start: "bottom top",
-                end: "top bottom",
+                start: "top bottom",
+                end: "bottom bottom",
                 scrub: true,
                 markers: true
             }
+        })
+
+        tl.to("#separator_footer",{
+            opacity: 1,
+            ease: "none",
+            duration: 0.05
+        },"<")
+
+        tl.to(imgRef.current,{
+            opacity: 1,
+            ease: "power4.in",
+            duration: 0.05
         })
 
         tl.to(obj,{
@@ -51,17 +63,48 @@ const Footer = () =>{
             })
         })
 
+        tl.to("#footer",{
+            duration: 0.05,
+            backgroundColor: "rgb(10,4,4)",
+            ease: "power4.out"
+        })
+
     },[images])
 
     return (
-        <footer className="w-full">
+        <footer id="footer" className="w-full pb-12 relative bg-[18,3,20]">
             <div className="relative">
-                <div id="videoFooter" className="w-full h-[800vh] relative">
-                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 w-full h-screen" />
+                <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[120vh] absolute w-full z-0 top-[-60vh] opacity-0" ></div>
+                <div id="videoFooter" className="w-full h-[600vh] relative pt-10">
+                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 w-full h-screen opacity-0" />
                 </div>
             </div>
+            <div>
+                <div className="text-white uppercase font-bold text-3xl my-20 flex w-full flex-row items-center justify-center gap-16">
+                    <h2 className="font-extrabold uppercase text-4xl"> Conoce más </h2>
+                    <p className="bg-gray-600/50 rounded-4xl px-8 py-2"> Online </p>
+                    <p className="bg-gray-600/50 rounded-4xl px-8 py-2"> DVD </p>
+                </div>
+                <div className="text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-row items-center justify-evenly">
+                    <p className="text-lg w-2/12 text-center">Descargo de responsabilidad</p>
+                    <p className="text-xs w-10/12"> Este contenido incluye fragmentos de obras con derechos de autor, utilizados con fines educativos, de análisis, comentario o sin fines de lucro. No se pretende infringir ningún derecho, y todo el material pertenece a sus respectivos autores y productoras. Si eres titular de los derechos y deseas que se retire algún contenido, por favor contáctame y se procederá de inmediato. </p>
+                </div>
+                <ul className="text-white flex w-8/12 my-12 mx-auto justify-center gap-16">
+                    <li> <a href="" target="_blank"> Contactame. </a> </li>
+                    <li> <a href="" target="_blank"> Mira anime. </a> </li>
+                    <li> <a href="" target="_blank"> WallpaperFlare. </a> </li>
+                    <li> <a href="" target="_blank"> Gta VI </a> </li>
+                </ul>
+            </div>
+            <div className="flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap">
+                <div className="h-full"> <img className="h-full" src="/iconAnime.png" alt="anime logo" /> </div>
+                <div>
+                    <p> Anime Page I </p>
+                    <h4 className="text-white text-center text-xs"> Por Luis Linares.</h4>
+                </div>
+            </div> 
         </footer>
     )
 }
 
-export default Footer;
+export default Footer
