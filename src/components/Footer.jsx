@@ -80,16 +80,32 @@ const Footer = () =>{
                 </div>
             </div>
             <div>
-                <div className="text-white uppercase font-bold text-3xl my-20 flex w-full flex-row items-center justify-center gap-16">
-                    <h2 className="font-extrabold uppercase text-4xl"> Conoce más </h2>
-                    <p className="bg-gray-600/50 rounded-4xl px-8 py-2"> Online </p>
-                    <p className="bg-gray-600/50 rounded-4xl px-8 py-2"> DVD </p>
+                <div className="text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4
+                    md:text-row md:text-3xl md:gap-16 md:flex-nowrap
+                ">
+                    <h2 className="font-extrabold uppercase text-xl w-full text-center
+                        md:text-4xl md:w-auto
+                    "> Conoce más </h2>
+                    <p className="bg-gray-600/50 rounded-4xl px-4 py-1 w-1/3 text-center
+                        md:w-auto md:px-8 md:py-2
+                    "> Online </p>
+                    <p className="bg-gray-600/50 rounded-4xl px-4 py-1 w-1/3 text-center
+                        md:w-auto md:px-8 md:py-2
+                    "> DVD </p>
                 </div>
-                <div className="text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-row items-center justify-evenly">
-                    <p className="text-lg w-2/12 text-center">Descargo de responsabilidad</p>
-                    <p className="text-xs w-10/12"> Este contenido incluye fragmentos de obras con derechos de autor, utilizados con fines educativos, de análisis, comentario o sin fines de lucro. No se pretende infringir ningún derecho, y todo el material pertenece a sus respectivos autores y productoras. Si eres titular de los derechos y deseas que se retire algún contenido, por favor contáctame y se procederá de inmediato. </p>
+                <div className="text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-col items-center justify-evenly
+                    md:flex-row
+                ">
+                    <p className="text-base w-full font-bold mb-4 text-center
+                        md:text-lg md:2-2/12 md:mb-0
+                    ">Descargo de responsabilidad</p>
+                    <p className="text-xs w-11/12 text-justify
+                        md:2-10/12 md:text-left
+                    "> Este contenido incluye fragmentos de obras con derechos de autor, utilizados con fines educativos, de análisis, comentario o sin fines de lucro. No se pretende infringir ningún derecho, y todo el material pertenece a sus respectivos autores y productoras. Si eres titular de los derechos y deseas que se retire algún contenido, por favor contáctame y se procederá de inmediato. </p>
                 </div>
-                <ul className="text-white flex w-8/12 my-12 mx-auto justify-center gap-16">
+                <ul className="text-white flex w-8/12 my-12 mx-auto justify-center gap-4 flex-wrap
+                    md:gap-16
+                ">
                     <li> <a href="" target="_blank"> Contactame. </a> </li>
                     <li> <a href="" target="_blank"> Mira anime. </a> </li>
                     <li> <a href="" target="_blank"> WallpaperFlare. </a> </li>
