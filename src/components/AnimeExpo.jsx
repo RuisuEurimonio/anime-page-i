@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 import ImgZoom from "./ImgZoom";
+import PortraitImage from "./PortraitImage";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -16,6 +17,10 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
 
     const handleOpenModal = () => {
         document.body.style.overflowY = "hidden";
+
+        gsap.set("#header",{
+            display: "none"
+        })
 
         gsap.set("#animeInfo_"+keyName, {
             display: "flex",
@@ -59,6 +64,9 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                     gsap.set(item, {
                         display: "none",
                     })
+                    gsap.set("#header",{
+                        display: "block"
+                    });
                 }
             })
 
@@ -87,8 +95,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                     endTrigger: lastImgGrid.current,
                     end: "right right",
                     scrub: true,
-                    horizontal: true,
-                    markers: true
+                    horizontal: true
                 }
             })
 
@@ -131,18 +138,19 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
         });
     }, []);
 
-    const mainImage = (minimal = false) => {
-        return (<img src={`/animes/${keyName}/${fileName}.jpg`} alt={`${minimal ? "small" : ""} portrait image from ${fullName} anime`} className="h-full w-full object-cover border-4 m-4 border-white
-                md:border-[12px]
-            " style={{ transform: minimal ? "rotate(-6deg" : "" }} onClick={minimal ? null : handleOpenModal} />)
-    }
-
     return (
         <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden z-5">
             <div className="w-11/12 h-5/12 m-auto relative hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2
                 md:h-11/12 md:w-8/12
             ">
-                {mainImage()}
+                <div id={`mainImageContainer_${keyName}`} className="w-full h-full overflow-hidden border-[12px] border-white">
+                    <PortraitImage 
+                        keyName={keyName}
+                        fileName={fileName}
+                        fullName={fullName}
+                        fatherContainer={"mainImageContainer_"}
+                    />
+                </div>
                 <button className=" absolute -bottom-16 right-0 left-0 mx-auto font-bold w-10/12 px-0.5 py-0.5 rounded-4xl bg-white cursor-pointer
                     sm:py-1.5
                     md:py-2.5 md:bottom-5
@@ -150,7 +158,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
             </div>
             {!noBgImg && <div id={`bgAnimeInfo_${keyName}`} className="fixed h-full w-full bg-cover bg-center inset-0 top-0 left-0 z-[50] hidden" style={bgStyle}>
             </div>}
-            <div id={`optionsModal_${keyName}`} className="fixed top-5 left-5 w-full justify-between z-[65] hidden">
+            <div id={`optionsModal_${keyName}`} className="fixed top-5 left-5 w-full justify-between z-[70] hidden">
                         <button className="bg-fuchsia-700 text-black font-bold py-1 px-4 rounded-3xl cursor-pointer" onClick={handleCloseModal}> Cerrar. </button>
                         <div className="bg-fuchsia-700/10 rounded-full h-8 w-7/12 flex items-center justify-center
                                 md:hidden
@@ -174,7 +182,13 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                         <div ref={miniatureImgRef} className="grid-cols-1 grid-rows-1 w-10/12 h-10/12
                         md:h-full md:w-[50vw] md:row-span-1 md:col-span-1 md:mr-16
                             ">
-                            {mainImage(true)}
+                            <PortraitImage
+                                keyName={keyName}
+                                fileName={fileName}
+                                fullName={fullName}
+                                handleOpenModal={handleCloseModal}
+                                minimal={true}
+                            />
                         </div>
                         <div className="grid-cols-1 grid-rows-1
                             md:grid-cols-none md:grid-rows-none md:hidden
