@@ -21,7 +21,6 @@ const PortraitImage = ({ keyName, fileName, fullName, fatherContainer = "", hand
                 start: "top bottom",
                 end: "bottom top",
                 scrub: true,
-                markers: true
             }
         })
 

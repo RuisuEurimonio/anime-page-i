@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 const frames = 194;
 const getFramesSource = (index) =>{
     return `/frames/footer/footer_${index.toString()}.jpg`
-}
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +12,7 @@ const Footer = () =>{
 
     const imgRef = useRef(null)
     const [images, setImages] = useState([]);
+    const logoRef = useRef(null);
 
     useEffect(()=>{
         const imgs = []
@@ -27,6 +28,7 @@ const Footer = () =>{
 
     useEffect(()=>{
         if(!imgRef.current || images.length === 0 ) return;
+        if(!logoRef.current) return;
 
         const obj = {frame: 0}
         const tl = gsap.timeline({
@@ -42,7 +44,7 @@ const Footer = () =>{
         tl.to("#separator_footer",{
             opacity: 1,
             ease: "none",
-            duration: 0.05
+            duration: 0.06
         },"<")
 
         tl.to(imgRef.current,{
@@ -53,7 +55,7 @@ const Footer = () =>{
 
         tl.to(obj,{
             frame: frames - 1,
-            duration: 0.8,
+            duration: 0.9,
             ease: "none",
             onUpdate: (()=>{
                 const index = Math.floor(obj.frame);
@@ -67,7 +69,13 @@ const Footer = () =>{
             duration: 0.05,
             backgroundColor: "rgb(10,4,4)",
             ease: "power4.out"
+        }, "<")
+
+        tl.to(imgRef.current,{
+            opacity: 0,
+            duration: 0.05
         })
+        
 
     },[images])
 
@@ -76,10 +84,18 @@ const Footer = () =>{
             <div className="relative">
                 <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[120vh] absolute w-full z-0 top-[-60vh] opacity-0" ></div>
                 <div id="videoFooter" className="w-full h-[600vh] relative pt-10">
-                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 w-full h-screen opacity-0" />
+                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 w-full h-screen opacity-0 z-5" />
                 </div>
             </div>
-            <div>
+            <div className="relative mt-[-100vh]">
+                <div ref={logoRef} className="relative w-full h-[300vh] items-center flex-col flex z-0">
+                    <div className="sticky top-50 -translate-y-1/2 flex justify-center items-center">
+                        <img src="/iconAnime.png"  className="size-60"/> 
+                        <p className="absolute text-white text-5xl uppercase font-extrabold text-center"
+                            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
+                        >Anime<br/>Page<br/>I</p>
+                    </div>
+                </div>
                 <div className="text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4
                     md:text-row md:text-3xl md:gap-16 md:flex-nowrap
                 ">
@@ -123,4 +139,4 @@ const Footer = () =>{
     )
 }
 
-export default Footer
+export default Footer;      
