@@ -135,7 +135,9 @@ const Footer = () =>{
                                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
                             >Anime<br/>Page<br/>I</p>
                         </div>
-                        <h3 ref={textLogoRef} className="uppercase text-6xl font-extrabold mt-10   text-center text-fuchsia-500 w-1/2" style={{transform: "scale(1.2)"}}> Para todo los gustos. </h3>
+                        <h3 ref={textLogoRef} className="uppercase text-3xl font-extrabold mt-10   text-center text-fuchsia-500 w-1/2
+                            md:text-6xl
+                        " style={{transform: "scale(1.2)"}}> Para todo los gustos. </h3>
                     </div>
                 </div>
                 <div ref={infoFooterRef} className="relative -mt-5 text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4 opacity-0
