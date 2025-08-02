@@ -12,7 +12,10 @@ const Footer = () =>{
 
     const imgRef = useRef(null)
     const [images, setImages] = useState([]);
-    const logoRef = useRef(null);
+    const belowContainerRef = useRef(null);
+    const logoRef = useRef(null)
+    const infoFooterRef = useRef(null)
+    const textLogoRef = useRef(null)
 
     useEffect(()=>{
         const imgs = []
@@ -28,7 +31,6 @@ const Footer = () =>{
 
     useEffect(()=>{
         if(!imgRef.current || images.length === 0 ) return;
-        if(!logoRef.current) return;
 
         const obj = {frame: 0}
         const tl = gsap.timeline({
@@ -37,7 +39,6 @@ const Footer = () =>{
                 start: "top bottom",
                 end: "bottom bottom",
                 scrub: true,
-                markers: true
             }
         })
 
@@ -76,8 +77,46 @@ const Footer = () =>{
             duration: 0.05
         })
         
+        return ()=> {
+            tl.kill();
+            tl.scrollTrigger?.kill()
+        }
 
     },[images])
+
+    useEffect(()=>{
+        if(!logoRef.current || !infoFooterRef.current || !belowContainerRef.current || !textLogoRef.current) return;
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: belowContainerRef.current,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true,
+                markers: true
+
+            }
+        })
+
+        tl.fromTo(logoRef.current,{
+            scale: 1.2,
+        },{
+            scale: 1,
+            duration: 0.9
+        })
+
+        tl.fromTo(textLogoRef.current,{
+            scale: 1.2,
+        },{
+            scale: 1,
+            duration: 0.9
+        },"<")
+
+        tl.to(infoFooterRef.current,{
+            opacity: 1,
+            duration: 0.1
+        })
+    },[])
 
     return (
         <footer id="footer" className="w-full pb-12 relative bg-[18,3,20]">
@@ -87,16 +126,19 @@ const Footer = () =>{
                     <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 w-full h-screen opacity-0 z-5" />
                 </div>
             </div>
-            <div className="relative mt-[-100vh]">
-                <div ref={logoRef} className="relative w-full h-[300vh] items-center flex-col flex z-0">
-                    <div className="sticky top-50 -translate-y-1/2 flex justify-center items-center">
-                        <img src="/iconAnime.png"  className="size-60"/> 
-                        <p className="absolute text-white text-5xl uppercase font-extrabold text-center"
-                            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
-                        >Anime<br/>Page<br/>I</p>
+            <div ref={belowContainerRef} className="relative mt-[-100vh]">
+                <div className="relative w-full h-[300vh] items-center flex-col flex z-0">
+                    <div  className="sticky top-50 -translate-y-1/4 flex items-center flex-col w-full" > 
+                        <div ref={logoRef} className="flex justify-center items-center"style={{transform: "scale(1.2)"}} >
+                            <img src="/iconAnime.png"  className="size-60"/> 
+                            <p className="absolute text-white text-5xl uppercase font-extrabold text-center"
+                                style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
+                            >Anime<br/>Page<br/>I</p>
+                        </div>
+                        <h3 ref={textLogoRef} className="uppercase text-6xl font-extrabold mt-10   text-center text-fuchsia-500 w-1/2" style={{transform: "scale(1.2)"}}> Para todo los gustos. </h3>
                     </div>
                 </div>
-                <div className="text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4
+                <div ref={infoFooterRef} className="relative -mt-5 text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4 opacity-0
                     md:text-row md:text-3xl md:gap-16 md:flex-nowrap
                 ">
                     <h2 className="font-extrabold uppercase text-xl w-full text-center
