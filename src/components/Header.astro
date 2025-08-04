@@ -2,6 +2,8 @@
 import SimpleCard from "./SimpleCard.astro";
 import VideoInfo from "./VideoInfo.astro";
 import VideoModal from "./VideoModal.astro";
+
+const {showLinks = false} = Astro.props;
 ---
 
 <script>
@@ -246,6 +248,14 @@ import VideoModal from "./VideoModal.astro";
       xl:mt-15"
   >
     <img src="/iconAnime.png" alt="icon of the page" class="w-10" />
+    {showLinks && <ul class="text-white w-full justify-center gap-5 items-center hidden
+      md:flex
+    ">
+            <li class="hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer"> Caracteristicas. </li>
+            <li class="hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer"> Videos. </li>
+            <li class="hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer"> Imagenes. </li>
+            <li class="hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer"> Recursos. </li>
+        </ul>}
     <img
       src="/menu.svg"
       alt="icon of menu"
