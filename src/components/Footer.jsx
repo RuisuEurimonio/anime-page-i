@@ -10,12 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () =>{
 
-    const imgRef = useRef(null)
+    const imgRef = useRef(null);
     const [images, setImages] = useState([]);
     const belowContainerRef = useRef(null);
-    const logoRef = useRef(null)
-    const infoFooterRef = useRef(null)
-    const textLogoRef = useRef(null)
+    const logoRef = useRef(null);
+    const moreInfoRef = useRef(null);
+    const textLogoRef = useRef(null);
+    const disclaimerRef = useRef(null);
+    const contactMeRef = useRef(null);
+    const aboutMeRef = useRef(null);
 
     useEffect(()=>{
         const imgs = []
@@ -85,7 +88,7 @@ const Footer = () =>{
     },[images])
 
     useEffect(()=>{
-        if(!logoRef.current || !infoFooterRef.current || !belowContainerRef.current || !textLogoRef.current) return;
+        if(!logoRef.current || !moreInfoRef.current || !belowContainerRef.current || !textLogoRef.current || !disclaimerRef.current || !contactMeRef.current || !aboutMeRef.current) return;
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -109,13 +112,27 @@ const Footer = () =>{
             scale: 1.2,
         },{
             scale: 1,
-            duration: 0.9
+            duration: 0.5
         },"<")
 
-        tl.to(infoFooterRef.current,{
+        tl.to(moreInfoRef.current,{
+            opacity: 1,
+            duration: 0.1,
+        }).to(disclaimerRef.current,{
             opacity: 1,
             duration: 0.1
-        })
+        },"<").to(contactMeRef.current,{
+            opacity: 1,
+            duration: 0.1
+        },"<").to(aboutMeRef.current,{
+            opacity: 1,
+            duration: 0.1
+        },"<")
+
+        return ()=>{
+            tl.kill()
+            tl.scrollTrigger?.kill()
+        }
     },[])
 
     return (
@@ -123,7 +140,7 @@ const Footer = () =>{
             <div className="relative">
                 <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[120vh] absolute w-full z-0 top-[-60vh] opacity-0" ></div>
                 <div id="videoFooter" className="w-full h-[600vh] relative pt-10">
-                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 w-full h-screen opacity-0 z-5" />
+                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 object-cover w-full h-screen opacity-0 z-5" />
                 </div>
             </div>
             <div ref={belowContainerRef} className="relative mt-[-100vh]">
@@ -140,7 +157,7 @@ const Footer = () =>{
                         " style={{transform: "scale(1.2)"}}> Para todo los gustos. </h3>
                     </div>
                 </div>
-                <div ref={infoFooterRef} className="relative -mt-5 text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4 opacity-0
+                <div ref={moreInfoRef} className="relative -mt-5 text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4 opacity-0
                     md:text-row md:text-3xl md:gap-16 md:flex-nowrap
                 ">
                     <h2 className="font-extrabold uppercase text-xl w-full text-center
@@ -153,7 +170,7 @@ const Footer = () =>{
                         md:w-auto md:px-8 md:py-2
                     "> DVD </p>
                 </div>
-                <div className="text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-col items-center justify-evenly
+                <div ref={disclaimerRef} className="text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-col items-center justify-evenly opacity-0
                     md:flex-row
                 ">
                     <p className="text-base w-full font-bold mb-4 text-center
@@ -163,7 +180,7 @@ const Footer = () =>{
                         md:2-10/12 md:text-left
                     "> Este contenido incluye fragmentos de obras con derechos de autor, utilizados con fines educativos, de análisis, comentario o sin fines de lucro. No se pretende infringir ningún derecho, y todo el material pertenece a sus respectivos autores y productoras. Si eres titular de los derechos y deseas que se retire algún contenido, por favor contáctame y se procederá de inmediato. </p>
                 </div>
-                <ul className="text-white flex w-8/12 my-12 mx-auto justify-center gap-4 flex-wrap
+                <ul ref={contactMeRef} className="text-white flex w-8/12 my-12 mx-auto justify-center gap-4 flex-wrap opacity-0
                     md:gap-16
                 ">
                     <li> <a href="" target="_blank"> Contactame. </a> </li>
@@ -172,7 +189,7 @@ const Footer = () =>{
                     <li> <a href="" target="_blank"> Gta VI </a> </li>
                 </ul>
             </div>
-            <div className="flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap">
+            <div ref={aboutMeRef} className="flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap opacity-0">
                 <div className="h-full"> <img className="h-full" src="/iconAnime.png" alt="anime logo" /> </div>
                 <div>
                     <p> Anime Page I </p>
