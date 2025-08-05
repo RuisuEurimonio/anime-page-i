@@ -1,8 +1,8 @@
-const ExpoResources = ({mainTitle, firstElement, secondElement, thirdElement}) => {
+const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, thirdElement}) => {
     return(
-        <div className="w-8/12 mx-auto">
+        <div className="w-8/12 mx-auto mb-15">
             <div className="flex justify-between ">
-                <h2 className="text-white text-2xl font-bold"> {mainTitle} <span className="border text-sm ml-5 border-gray-600/40 py-1 px-2"> 70 </span></h2>
+                <h2 className="text-white text-2xl font-bold"> {mainTitle} <span className="border text-sm ml-5 border-gray-600/40 py-1 px-2">  {count ? count : 70} </span></h2>
                 <div className="flex items-center gap-6 ">
                     <p className="text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400"> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" alt="download all icon"/> </span> </p>
                     <button className="py-2 px-4 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white"> Ver todo <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" /> </span> </button>
