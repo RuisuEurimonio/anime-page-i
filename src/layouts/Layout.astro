@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import "../../global.css";
 
-const {showHeaderLinks = false} = Astro.props;
+const {showHeaderLinks = false, active = "/"} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,7 +15,7 @@ const {showHeaderLinks = false} = Astro.props;
 		<title> Anime Page </title>
 	</head>
 	<body>
-		<Header showLinks={showHeaderLinks}/>
+		<Header showLinks={showHeaderLinks} active={active}/>
 		<slot />
 	</body>
 </html>
