@@ -1,4 +1,40 @@
-const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, thirdElement}) => {
+import { useRef, useState } from "react";
+import ExpoElement from "./ExpoElement";
+import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, thirdElement, isPage = false}) => {
+
+    const [nameElement, setNameElement] = useState("");
+    const [sizes, setSizes] = useState("");
+    const [urlElement, setUrlElement] = useState("");
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const expoModalRef = useRef(null);
+
+    const handleOpenModal = (nameElement, sizes, urlElement) => {
+        setNameElement(nameElement);
+        setSizes(sizes);
+        setUrlElement(urlElement);
+        setIsModalVisible(true);
+
+        const timeout = setTimeout(()=>{
+            if(!expoModalRef.current) return;
+    
+            console.log("hola")
+    
+            gsap.fromTo(expoModalRef.current,{
+                top: "100vh"
+            },{
+                top: "0vh",
+                duration: 1,
+                ease: "power1.inOut"
+            })
+        , 100})
+
+        return ()=>{ clearTimeout(timeout)}
+    }
 
     const DownloadAllElement = ({extraClass = ""}) =>{
         return (<p className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" alt="download all icon"/> </span> </p>)
@@ -22,7 +58,7 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
             ">
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
                     md:w-4/12
-                ">
+                " onClick={()=>{ handleOpenModal(firstElement?.name, "1 Tamaño", firstElement?.imageUrl)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={firstElement?.imageUrl} alt={firstElement?.name +"picture"}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
@@ -32,11 +68,11 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                     "> {firstElement?.name} </h3>
                     <p className="w-11/12 mx-auto text-gray-300 text-xs mb-5
                         md:text-base
-                    "> 1 Tamaño. </p>
+                    "> {isPage ? "Visitar" : "1 Tamaño."} </p>
                 </li>
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
                     md:w-4/12
-                ">
+                " onClick={()=> {handleOpenModal(secondElement?.name, "1 Tamaño", secondElement?.imageUrl)}} >
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={secondElement.imageUrl} alt={secondElement?.name + "picture"}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
@@ -46,11 +82,11 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                     "> {secondElement?.name} </h3>
                     <p className="w-11/12 mx-auto text-gray-300 text-xs mb-5
                         md:text-base
-                    "> 1 Tamaño. </p>
+                    ">  {isPage ? "Visitar" : "1 Tamaño.   "} </p>
                 </li>
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
                     md:w-4/12
-                ">
+                " onClick={()=> {handleOpenModal(thirdElement?.name, "1 Tamaño", thirdElement?.imageUrl)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={thirdElement?.imageUrl} alt={thirdElement?.name + "picture"}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
@@ -60,12 +96,19 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                     "> {thirdElement?.name} </h3>
                     <p className="w-11/12 mx-auto text-gray-300 text-xs mb-5
                         md:text-base
-                    "> 1 Tamaño. </p>
+                    "> {isPage ? "Visitar" : "1 Tamaño."} </p>
                 </li>
                 <li className="block md:hidden">
                     <DownloadAllElement/>
                 </li>
             </ul>
+            {isModalVisible && <ExpoElement 
+                key={nameElement+"key"}
+                ref={expoModalRef}
+                nameElement={nameElement}
+                sizes={sizes}
+                urlElement={urlElement}
+            />}
         </div>
     )
 } 
