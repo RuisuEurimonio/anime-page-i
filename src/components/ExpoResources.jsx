@@ -28,8 +28,8 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                 top: "100vh"
             },{
                 top: "0vh",
-                duration: 1,
-                ease: "power1.inOut"
+                duration: 0.5,
+                ease: "power1.in"
             })
         , 100})
 
@@ -43,8 +43,8 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
             top: "0vh"
         },{
             top: "100vh",
-            duration: 1,
-            ease: "power1.inOut"
+            duration: 0.5,
+            ease: "power1.in"
         })
 
         const timeOut = setTimeout(()=>{
