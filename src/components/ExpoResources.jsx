@@ -22,8 +22,8 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
         const timeout = setTimeout(()=>{
             if(!expoModalRef.current) return;
     
-            console.log("hola")
-    
+            document.body.style.overflowY = "hidden"
+            
             gsap.fromTo(expoModalRef.current,{
                 top: "100vh"
             },{
@@ -34,6 +34,29 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
         , 100})
 
         return ()=>{ clearTimeout(timeout)}
+    }
+
+    const handleCloseModal = () =>{
+        if(!expoModalRef.current) return;
+
+        gsap.fromTo(expoModalRef.current,{
+            top: "0vh"
+        },{
+            top: "100vh",
+            duration: 1,
+            ease: "power1.inOut"
+        })
+
+        const timeOut = setTimeout(()=>{
+            document.body.style.overflowY = ""
+
+            setNameElement("");
+            setSizes("");
+            setUrlElement("");
+            setIsModalVisible(false);
+        }, 1100)
+
+        return ()=> clearTimeout(timeOut);
     }
 
     const DownloadAllElement = ({extraClass = ""}) =>{
@@ -108,6 +131,7 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                 nameElement={nameElement}
                 sizes={sizes}
                 urlElement={urlElement}
+                handleClose={handleCloseModal}
             />}
         </div>
     )
