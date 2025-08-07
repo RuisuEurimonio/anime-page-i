@@ -139,8 +139,8 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
     }, []);
 
     return (
-        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden z-5">
-            <div className="w-11/12 h-5/12 m-auto relative hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2
+        <div className="relative w-full flex items-center p-0 m-0 h-screen overflow-hidden">
+            <div className="w-11/12 h-5/12 m-auto hover:drop-shadow-pink-300 hover:drop-shadow-xl duration-200 hover:cursor-pointer hover:rotate-2 relative
                 md:h-11/12 md:w-8/12
             ">
                 <div id={`mainImageContainer_${keyName}`} className="w-full h-full overflow-hidden border-[12px] border-white">
@@ -168,7 +168,7 @@ const AnimeExpo = ({ keyName, fileName = keyName, fullName, quote, text, listIma
                             </div>
                         </div>
                     </div>
-            <div id={`animeInfo_${keyName}`} className="fixed pointer-events-none top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden"
+            <div id={`animeInfo_${keyName}`} className="fixed top-0 left-0 w-[100%] h-screen overflow-x-scroll overflow-y-hidden bg-transparent z-[60] hidden"
                 onClick={(e)=>{e.stopPropagation()}}
                 style={{backgroundColor: noBgImg ? "rgb(18,3,20)" : ""}}
             >
