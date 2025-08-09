@@ -8,7 +8,7 @@ const getFramesSource = (index) =>{
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Footer = () =>{
+const Footer = ({isSecondPage = false}) =>{
 
     const imgRef = useRef(null);
     const [images, setImages] = useState([]);
@@ -21,6 +21,8 @@ const Footer = () =>{
     const aboutMeRef = useRef(null);
 
     useEffect(()=>{
+        if(isSecondPage) return;
+
         const imgs = []
         for(let i = 1 ; i <= frames ; i++){
             const img = new Image()
@@ -33,6 +35,7 @@ const Footer = () =>{
     },[])
 
     useEffect(()=>{
+        if (isSecondPage) return;
         if(!imgRef.current || images.length === 0 ) return;
 
         const obj = {frame: 0}
@@ -88,6 +91,8 @@ const Footer = () =>{
     },[images])
 
     useEffect(()=>{
+        if(isSecondPage) return;
+
         if(!logoRef.current || !moreInfoRef.current || !belowContainerRef.current || !textLogoRef.current || !disclaimerRef.current || !contactMeRef.current || !aboutMeRef.current) return;
 
         const tl = gsap.timeline({
@@ -137,14 +142,14 @@ const Footer = () =>{
 
     return (
         <footer id="footer" className="w-full pb-12 relative bg-[18,3,20]">
-            <div className="relative">
+            {!isSecondPage && <div className="relative">
                 <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[120vh] absolute w-full z-0 top-[-60vh] opacity-0" ></div>
                 <div id="videoFooter" className="w-full h-[600vh] relative pt-10">
                     <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 object-cover w-full h-screen opacity-0 z-5" />
                 </div>
-            </div>
-            <div ref={belowContainerRef} className="relative mt-[-100vh]">
-                <div className="relative w-full h-[300vh] items-center flex-col flex z-0">
+            </div>}
+            <div ref={belowContainerRef} className={`relative ${isSecondPage ? "" : "mt-[-100vh]" }`}>
+                {!isSecondPage && <div className="relative w-full h-[300vh] items-center flex-col flex z-0">
                     <div  className="sticky top-50 -translate-y-1/4 flex items-center flex-col w-full" > 
                         <div ref={logoRef} className="flex justify-center items-center"style={{transform: "scale(1.2)"}} >
                             <img src="/iconAnime.png"  className="size-60"/> 
@@ -156,10 +161,10 @@ const Footer = () =>{
                             md:text-6xl
                         " style={{transform: "scale(1.2)"}}> Para todo los gustos. </h3>
                     </div>
-                </div>
-                <div ref={moreInfoRef} className="relative -mt-5 text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4 opacity-0
+                </div>}
+                <div ref={moreInfoRef} className={`relative -mt-5 text-white uppercase font-bold text-xl my-20 flex w-full flex-row flex-wrap  items-center justify-center gap-4 ${isSecondPage ? "opacity-100" : "opacity-0"}
                     md:text-row md:text-3xl md:gap-16 md:flex-nowrap
-                ">
+                `}>
                     <h2 className="font-extrabold uppercase text-xl w-full text-center
                         md:text-4xl md:w-auto
                     "> Conoce más </h2>
@@ -170,9 +175,9 @@ const Footer = () =>{
                         md:w-auto md:px-8 md:py-2
                     "> DVD </p>
                 </div>
-                <div ref={disclaimerRef} className="text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-col items-center justify-evenly opacity-0
+                <div ref={disclaimerRef} className={`text-white mx-auto py-4 px-4 border border-gray-600/60 rounded-4xl w-10/12 flex flex-col items-center justify-evenly ${isSecondPage ? "opacity-100" : "opacity-0"}
                     md:flex-row
-                ">
+                `}>
                     <p className="text-base w-full font-bold mb-4 text-center
                         md:text-lg md:2-2/12 md:mb-0
                     ">Descargo de responsabilidad</p>
@@ -180,16 +185,16 @@ const Footer = () =>{
                         md:2-10/12 md:text-left
                     "> Este contenido incluye fragmentos de obras con derechos de autor, utilizados con fines educativos, de análisis, comentario o sin fines de lucro. No se pretende infringir ningún derecho, y todo el material pertenece a sus respectivos autores y productoras. Si eres titular de los derechos y deseas que se retire algún contenido, por favor contáctame y se procederá de inmediato. </p>
                 </div>
-                <ul ref={contactMeRef} className="text-white flex w-8/12 my-12 mx-auto justify-center gap-4 flex-wrap opacity-0
+                <ul ref={contactMeRef} className={`text-white flex w-8/12 my-12 mx-auto justify-center gap-4 flex-wrap ${isSecondPage ? "opacity-100" : "opacity-0"}
                     md:gap-16
-                ">
+                `}>
                     <li> <a href="" target="_blank"> Contactame. </a> </li>
                     <li> <a href="" target="_blank"> Mira anime. </a> </li>
                     <li> <a href="" target="_blank"> WallpaperFlare. </a> </li>
                     <li> <a href="" target="_blank"> Gta VI </a> </li>
                 </ul>
             </div>
-            <div ref={aboutMeRef} className="flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap opacity-0">
+            <div ref={aboutMeRef} className={`flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap ${isSecondPage ? "opacity-100" : "opacity-0"}`}>
                 <div className="h-full"> <img className="h-full" src="/iconAnime.png" alt="anime logo" /> </div>
                 <div>
                     <p> Anime Page I </p>

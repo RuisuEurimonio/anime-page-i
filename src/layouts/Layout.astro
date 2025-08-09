@@ -1,8 +1,9 @@
 ---
 import Header from "../components/Header.astro";
 import "../../global.css";
+import Footer from "../components/Footer";
 
-const {showHeaderLinks = false, active = "/"} = Astro.props;
+const {showHeaderLinks = false, active = "/", isSecondPage = false} = Astro.props;
 ---
 
 <!doctype html>
@@ -17,6 +18,7 @@ const {showHeaderLinks = false, active = "/"} = Astro.props;
 	<body>
 		<Header showLinks={showHeaderLinks} active={active}/>
 		<slot />
+		<Footer isSecondPage={isSecondPage} client:load/>
 	</body>
 </html>
 
