@@ -59,6 +59,10 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
         return ()=> clearTimeout(timeOut);
     }
 
+    const handleVisitPage = (page) => {
+        window.open(page, "_blank", "noopener,noreferrer")
+    }
+
     const DownloadAllElement = ({extraClass = ""}) =>{
         return (<p className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" alt="download all icon"/> </span> </p>)
     }
@@ -81,7 +85,7 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
             ">
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
                     md:w-4/12
-                " onClick={()=>{ handleOpenModal(firstElement?.name, "1 Tamaño", firstElement?.imageUrl)} }>
+                " onClick={()=>{isPage ? handleVisitPage(firstElement?.pageUrl) : handleOpenModal(firstElement?.name, "1 Tamaño", firstElement?.imageUrl)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={firstElement?.imageUrl} alt={firstElement?.name +"picture"}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
@@ -95,7 +99,7 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                 </li>
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
                     md:w-4/12
-                " onClick={()=> {handleOpenModal(secondElement?.name, "1 Tamaño", secondElement?.imageUrl)}} >
+                " onClick={()=> {isPage ? handleVisitPage(secondElement?.pageUrl) : handleOpenModal(secondElement?.name, "1 Tamaño", secondElement?.imageUrl)}} >
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={secondElement.imageUrl} alt={secondElement?.name + "picture"}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
@@ -109,7 +113,7 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                 </li>
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
                     md:w-4/12
-                " onClick={()=> {handleOpenModal(thirdElement?.name, "1 Tamaño", thirdElement?.imageUrl)} }>
+                " onClick={()=> {isPage ? handleVisitPage(thirdElement?.pageUrl) : handleOpenModal(thirdElement?.name, "1 Tamaño", thirdElement?.imageUrl)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={thirdElement?.imageUrl} alt={thirdElement?.name + "picture"}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
