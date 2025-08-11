@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, thirdElement, isPage = false}) => {
+const ExpoResources = ({mainTitle, seeAllLink, count = 0, firstElement, secondElement, thirdElement, isPage = false, fullView = false}) => {
 
     const [nameElement, setNameElement] = useState("");
     const [sizes, setSizes] = useState("");
@@ -77,10 +77,10 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                     <DownloadAllElement extraClass="hidden md:block" />
                     <button className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
                         md:py-2 md:px-4
-                    "> <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" /> </span> </button>
+                    " onClick={()=> window.location.href = "/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" /> </span> </button>
                 </div>
             </div>
-            <ul className="my-5 flex gap-8 flex-col items-center
+            {!fullView && <ul className="my-5 flex gap-8 flex-col items-center
                 md:flex-row md
             ">
                 <li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
@@ -128,7 +128,10 @@ const ExpoResources = ({mainTitle, count = 0, firstElement, secondElement, third
                 <li className="block md:hidden">
                     <DownloadAllElement/>
                 </li>
-            </ul>
+            </ul>}
+            {fullView && <ul>
+
+            </ul>}
             {isModalVisible && <ExpoElement 
                 key={nameElement+"key"}
                 ref={expoModalRef}

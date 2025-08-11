@@ -251,10 +251,18 @@ const {showLinks = false, active = "home"} = Astro.props;
     {showLinks && <ul class="text-white w-full justify-center gap-5 items-center hidden
       md:flex
     ">
-            <li class={`${active === "download" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}> Caracteristicas. </li>
-            <li class={`${active === "videos" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}> Videos. </li>
-            <li class={`${active === "pictures" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}> Imagenes. </li>
-            <li class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}> Recursos. </li>
+            <li class={`${active === "download" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
+              onclick="window.location.href = '/download'"
+            > Todo. </li>
+            <li class={`${active === "videos" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
+              onclick="window.location.href = '/videos'"
+            > Videos. </li>
+            <li class={`${active === "pictures" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
+              onclick="window.location.href = '/pictures'"
+            > Imagenes. </li>
+            <li class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
+              onclick="window.location.href = '/resources'"
+            > Recursos. </li>
         </ul>}
     <img
       src="/menu.svg"
@@ -449,7 +457,6 @@ const {showLinks = false, active = "home"} = Astro.props;
         id="download"
         class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
           md:py-3 md:px-5"
-        onclick="window.location.href='/download'"
       >
         Download.
       </li>
@@ -467,7 +474,7 @@ const {showLinks = false, active = "home"} = Astro.props;
         id="sailormoonButton"
         class="cursor-pointer hover:text-pink-400 duration-200"
       >
-        Sailon Moon
+        Usagi Tsukino
       </li>
       <li
         id="mikasaButton"
@@ -606,6 +613,7 @@ const {showLinks = false, active = "home"} = Astro.props;
         <a
           class="flex items-center gap-2 bg-[rgb(32,0,38)] py-2 px-4 cursor-pointer rounded-3xl text-base text-white
           lg:text-lg lg:font-extrabold lg:py-4 lg:pl-8"
+          onclick="window.location.href = '/download'"
         >
           <p>Ver todas las descargas</p>
           <svg class="size-4 object-cover font-bold">

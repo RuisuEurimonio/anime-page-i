@@ -1,8 +1,94 @@
 ---
-import Downloads from "../components/downloads.astro";
+import ExpoResources from "../components/ExpoResources";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout showHeaderLinks={true} active={"download"} isSecondPage={true}>
-    <Downloads />
+    <section>
+    <div id="mainImage_download" class="relative w-full h-[60vh]
+        md:h-screen
+    ">
+        <div class="mask_donwload w-full absolute top-0 left-0 h-full z-10"></div>
+        <div class="absolute left-0 right-0 bottom-10 w-11/12 mx-auto z-20
+            md:w-8/12
+        ">
+                <h1 class="text-2xl text-fuchsia-400 uppercase w-11/12 font-bold mb-4
+                    md:text-5xl md:w-8/12
+                "> Explora recursos utilizados en Anime Page </h1>
+                <p class="text-xl text-white"> Descubre recursos, páginas y más</p>
+        </div>
+    </div>
+    <div>
+        <ExpoResources 
+            mainTitle={"Videos"}
+            firstElement={{
+                name: "Usagi Tsukino",
+                imageUrl: "/frames/sailorMoon/sailor_1.png"
+            }}
+            secondElement={{
+                name: "Mikara Ackerman",
+                imageUrl: "/frames/mikasa/mikasa_13.jpg"
+            }}
+            thirdElement={{
+                name: "Frieren",
+                imageUrl: "/frames/frieren/frieren_5.jpg"
+            }}
+            client:load
+            seeAllLink="videos"
+        />
+        <ExpoResources 
+            mainTitle={"Imagenes"}
+            firstElement={{
+                name: "Solo leveling",
+                imageUrl: "/animes/soloLeveling/sololeveling_bg.jpg"
+            }}
+            secondElement={{
+                name: "Kaijuu N8",
+                imageUrl: "/animes/kaijuu/kaijuu_bg.jpg"
+            }}
+            thirdElement={{
+                name: "Jujutsu Kaisen",
+                imageUrl: "/animes/jujutsu/jujutsu_bg.jpg"
+            }}
+            client:load
+            seeAllLink="pictures"
+        />
+        <ExpoResources 
+            mainTitle={"Recursos"}
+            count={3}
+            firstElement={{
+                name: "Gta VI",
+                imageUrl: "/externalPages/gtavi.png",
+                pageUrl: "https://www.rockstargames.com/VI"
+            }}
+            secondElement={{
+                name: "Walpaperflare",
+                imageUrl: "/externalPages/wallpaperflare.png",
+                pageUrl: "https://www.wallpaperflare.com/"
+            }}
+            thirdElement={{
+                name: "SakugaBooru",
+                imageUrl: "/externalPages/sakuga.png",
+                pageUrl : "https://www.sakugabooru.com/"
+            }}
+            isPage={true}
+            client:load
+            seeAllLink="resources"
+        />
+        </div>
+    </section>
 </Layout>
+
+<style>
+    #mainImage_download{
+        background-image: url("/animeBg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .mask_donwload{
+        background: #120314;
+        background: linear-gradient(0deg,rgba(18, 3, 20, 1) 0%, rgba(21, 3, 19, 1) 12%, rgba(94, 4, 0, 0) 100%);
+    }
+</style>
