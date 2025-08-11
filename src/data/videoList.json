@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Frieren",
+    "url": "/videos/frieren1.mp4",
+    "imageUrl": "/frames/frieren/frieren_15.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Frieren",
+    "url": "/videos/frieren2.mp4",
+    "imageUrl": "/frames/frieren2/frieren_15.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Hinata Hyuga",
+    "url": "/videos/hinata.mp4",
+    "imageUrl": "/frames/hinata/hinata_15.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Mikasa Ackerman",
+    "url": "/videos/mikasa1.mp4",
+    "imageUrl": "/frames/mikasa/mikasa_15.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mikasa Ackerman",
+    "url": "/videos/mikasa2.mp4",
+    "imageUrl": "/frames/mikasa2/mikasa_15.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Usagi Tsukino",
+    "url": "/videos/frieren 1.mp4",
+    "imageUrl": "/frames/sailorMoon/sailor_15.png"
+  }
+]

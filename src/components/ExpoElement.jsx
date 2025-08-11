@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlElement, handleClose},ref) =>{
+const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlImage, urlVideo = urlImage, handleClose},ref) =>{
 
     return (
         <div ref={ref} className="fixed left-0 top-[100vh] duration-100 w-full h-screen bg-[rgb(18,3,20)] z-50 flex items-end justify-center ">
@@ -10,8 +10,8 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlE
                 <div className="h-9/12
                     md:h-10/12
                 ">
-                    {!isVideo && <img className="bg-black w-full object-cover h-full" src={urlElement} alt={`${nameElement} image`} />}
-                    {isVideo && <video className="" src={urlElement}/> }
+                    {!isVideo && <img className="bg-black w-full object-cover h-full" src={urlImage} alt={`${nameElement} image`} />}
+                    {isVideo && <video className="" src={urlVideo}/> }
                 </div>
                 <div className="h-3/12 w-10/12 mx-auto flex justify-center gap-3  flex-col
                     md:h-2/12 md:flex-row md:justify-between md:items-center
@@ -21,7 +21,7 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlE
                     "> {nameElement} </span> <span className="text-base text-gray-500
                         md:text-lg
                     "> {sizes} </span></div>
-                    <button> <a className="px-4 py-2 rounded-full w-full h-full bg-white text-black flex items-center font-bold text-center justify-center" href={urlElement} download={"Imagen"}> <span className="inline-block"> <img className="size-4 mr-2 rotate-90" src="/arrow2.svg" alt="" /> </span> Descargar </a> </button>
+                    <button> <a className="px-4 py-2 rounded-full w-full h-full bg-white text-black flex items-center font-bold text-center justify-center" href={isVideo ? urlVideo : urlImage} download={"Imagen"}> <span className="inline-block"> <img className="size-4 mr-2 rotate-90" src="/arrow2.svg" alt="" /> </span> Descargar </a> </button>
                 </div>
             </div>
             <button onClick={handleClose} className="cursor-pointer absolute top-3 right-10

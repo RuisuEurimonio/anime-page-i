@@ -1,10 +1,21 @@
 ---
 import ExpoResources from "../../components/ExpoResources";
 import Layout from "../../layouts/Layout.astro";
+import data from "../../data/videoList.json";
 ---
 
 <Layout showHeaderLinks={true} active={"videos"} isSecondPage={true}>
-    <section>
-        <ExpoResources
+    <section class=" relative pt-[10vh]
+     md:pt-[20vh]
+    ">
+        <ExpoResources 
+            mainTitle={"Videos"}
+            count={data.length}
+            fullView={true}
+            listFullView={data}
+            firstElement={null}
+            secondElement={null}
+            thirdElement={null}
+        />
     </section>
 </Layout>
