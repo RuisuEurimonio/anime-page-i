@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, secondElement, thirdElement, isPage = false, fullView = false, listFullView = [{}]}) => {
+const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, secondElement, thirdElement, isPage = false, isVideo = false, fullView = false, listFullView = [{}]}) => {
 
     const [nameElement, setNameElement] = useState("");
     const [sizes, setSizes] = useState("");
@@ -75,7 +75,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
                 " onClick={()=>{isPage ? handleVisitPage(element?.pageUrl) : handleOpenModal(element?.name, "1 Tamaño", element?.imageUrl, element?.url)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
                         <img className="w-full h-full object-cover" src={element?.imageUrl} alt={element?.name +" picture"}></img>
-                        <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src="/play.svg" alt="play icon"/> </span>
+                        <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={"/play.svg"} alt="play icon"/> </span>
                     </div>
                     <h3 className="w-11/12 mx-auto text-white mt-2 text-base
                         md:text-lg
@@ -115,7 +115,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
             "> 
                 {listFullView.map((item)=>{
                     return(
-                    <ElementList element={item} />
+                    <ElementList element={item} key={item.id} />
                 )})}
             </ul>}
             {isModalVisible && <ExpoElement 
@@ -125,6 +125,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
                 sizes={sizes}
                 urlImage={urlElement}
                 urlVideo={urlVideo}
+                isVideo={isVideo}
                 handleClose={handleCloseModal}
             />}
         </div>
