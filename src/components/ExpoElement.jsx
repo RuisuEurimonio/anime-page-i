@@ -21,7 +21,7 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
                     "> {nameElement} </span> <span className="text-base text-gray-500
                         md:text-lg
                     "> {sizes} </span></div>
-                    <button> <a className="px-4 py-2 rounded-full w-full h-full bg-white text-black flex items-center font-bold text-center justify-center" href={isVideo ? urlVideo : urlImage} download={isVideo ? "video" : "imagen"}> <span className="inline-block"> <img className="size-4 mr-2 rotate-90" src="/arrow2.svg" alt="" /> </span> Descargar </a> </button>
+                    <button> <a className="px-4 py-2 rounded-full w-full h-full bg-white text-black flex items-center font-bold text-center justify-center" href={isVideo ? urlVideo : urlImage} download={isVideo ? "video" : "imagen"}> <span className="inline-block"> <img className="size-4 mr-2 rotate-90" src="/arrow2.svg" alt="Arrow download icon" /> </span> Descargar </a> </button>
                 </div>
             </div>
             <button onClick={handleClose} className="cursor-pointer absolute top-3 right-10

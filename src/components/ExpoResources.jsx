@@ -96,7 +96,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
                     <DownloadAllElement extraClass="hidden md:block" />
                     {!fullView && <button className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
                         md:py-2 md:px-4
-                    " onClick={()=> window.location.href = "/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" /> </span> </button>}
+                    " onClick={()=> window.location.href = "/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" alt="Arrow see all icon"/> </span> </button>}
                 </div>
             </div>
             {!fullView && <ul className="my-5 flex gap-8 flex-col items-center

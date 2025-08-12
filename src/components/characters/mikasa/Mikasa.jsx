@@ -98,7 +98,7 @@ const Mikasa = () => {
     return (
         <div className="relative">
             <div id="image-container_mikasa" className="h-[400vh] w-full absolute top-[-450px] bg-[rgb(18,3,20)] z-0 opacity-0">
-                <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" />
+                <img ref={imgRef} src={getFramesSource(1)} alt="Mikasa's video frame" className="sticky top-0 w-full h-screen object-cover" />
             </div>
             <div className="pt-[180vh]">
                 <div id="text-container_mikasa" className="text-white z-10 relative px-10

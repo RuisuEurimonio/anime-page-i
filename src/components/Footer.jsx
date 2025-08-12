@@ -152,7 +152,7 @@ const Footer = ({isSecondPage = false}) =>{
                 {!isSecondPage && <div className="relative w-full h-[300vh] items-center flex-col flex z-0">
                     <div  className="sticky top-50 -translate-y-1/4 flex items-center flex-col w-full" > 
                         <div ref={logoRef} className="flex justify-center items-center"style={{transform: "scale(1.2)"}} >
-                            <img src="/iconAnime.png"  className="size-60"/> 
+                            <img src="/iconAnime.png"  className="size-60" alt="page icon"/> 
                             <p className="absolute text-white text-5xl uppercase font-extrabold text-center"
                                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
                             >Anime<br/>Page<br/>I</p>

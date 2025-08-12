@@ -3,7 +3,7 @@ const { title, srcImage, link } = Astro.props;
 ---
 
 <div class="w-full h-full cursor-pointer group hover:border-2 relative hover:border-white duration-150">
-  <img src={"/downloads/"+srcImage}  class="w-full h-full object-cover"/>
+  <img src={"/downloads/"+srcImage} alt={title+" picture"} class="w-full h-full object-cover"/>
   <p class="absolute bottom-6 left-3 uppercase text-base w-8/12 font-extraboldbold text-fuchsia-200
     lg:text-2xl
     xl:text-4xl
