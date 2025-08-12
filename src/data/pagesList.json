@@ -1,0 +1,26 @@
+[{
+    "id": 1,
+    "name": "Gta VI",
+    "pageUrl": "https://www.rockstargames.com/VI",
+    "imageUrl": "/externalPages/gtavi.png"
+},{
+    "id": 2,
+    "name": "Wallpaperflare",
+    "pageUrl": "https://www.wallpaperflare.com/",
+    "imageUrl": "/externalPages/wallpaperflare.png"
+},{
+    "id": 2,
+    "name": "SakugaBooru",
+    "pageUrl": "https://www.sakugabooru.com/",
+    "imageUrl": "/externalPages/sakuga.png"
+},{
+    "id": 2,
+    "name": "Lenis Library",
+    "pageUrl": "https://lenis.darkroom.engineering/",
+    "imageUrl": "/externalPages/lenis.png"
+},{
+    "id": 2,
+    "name": "Gsap Library",
+    "pageUrl": "https://gsap.com/",
+    "imageUrl": "/externalPages/gsap.png"
+}]
