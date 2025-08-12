@@ -247,22 +247,18 @@ const {showLinks = false, active = "home"} = Astro.props;
       md:mt-8
       xl:mt-15"
   >
-    <img src="/iconAnime.png" alt="icon of the page" class="w-10" />
+    <img src="/iconAnime.png" alt="Icono de la página con una chica anime" class="w-10" />
     {showLinks && <ul class="text-white w-full justify-center gap-5 items-center hidden
       md:flex
     ">
-            <li class={`${active === "download" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
-              onclick="window.location.href = '/download'"
-            > Todo. </li>
-            <li class={`${active === "videos" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
-              onclick="window.location.href = '/download/videos'"
-            > Videos. </li>
-            <li class={`${active === "pictures" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
-              onclick="window.location.href = '/download/pictures'"
-            > Imagenes. </li>
-            <li class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`}
-              onclick="window.location.href = '/download/resources'"
-            > Recursos. </li>
+            <li
+            > <a class={`${active === "download" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href="/download"> Todo.  </a> </li>
+            <li 
+            > <a class={`${active === "videos" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href="/download/videos"> Videos. </a>  </li>
+            <li 
+            > <a class={`${active === "pictures" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href="/download/pictures"> Imagenes. </a>  </li>
+            <li 
+            > <a class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href="/download/resources"> Recursos. </a>  </li>
         </ul>}
     <img
       src="/menu.svg"
@@ -433,11 +429,12 @@ const {showLinks = false, active = "home"} = Astro.props;
     >
       <li
         id="characters"
-        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl bg-white text-black
-          md:py-3 md:px-5"
-          onclick="window.location.href='/'"
+        class="flex items-center justify-center"  
       >
-        Characters.
+        <a href="/" class="py-1 px-3 cursor-pointer  hover:bg-white hover:text-black duration-200 rounded-4xl bg-white text-black
+        md:py-3 md:px-5">
+          Characters.
+        </a>
       </li>
       <li
         id="animes"
@@ -592,28 +589,37 @@ const {showLinks = false, active = "home"} = Astro.props;
       id="downloadList"
       class="font-bold flex-col w-full h-9/12 gap-4 overflow-x-auto tracking-tighter opacity-0 hidden justify-start items-stretch"
     >
-      <li class="w-11/12 max-h-[15.5rem]" onclick="window.location.href = '/download/videos'">
-        <SimpleCard title="Vídeos" srcImage="videos.jpg" link="videos"/>
+      <li class="w-11/12 max-h-[15.5rem]">
+        <a href="/download/" class="w-full h-full">
+          <SimpleCard title="Vídeos" srcImage="videos.jpg" link="videos"/>
+          <span class="sr-only">Descargar recursos de arte y fondos</span>
+        </a>
       </li>
-      <li class="w-11/12 max-h-[15.5rem]" onclick="window.location.href = '/download/pictures'">
-        <SimpleCard
-          title="Imagenes"
-          srcImage="capturas.jpg"
-          link="capturas"
-        />
+      <li class="w-11/12 max-h-[15.5rem]">
+        <a href="/download/" class="w-full h-full">
+          <SimpleCard
+            title="Imagenes"
+            srcImage="capturas.jpg"
+            link="capturas"
+          />
+          <span class="sr-only">Descargar recursos de arte y fondos</span>
+        </a>
       </li>
-      <li class="w-11/12 max-h-[15.5rem]" onclick="window.location.href = '/download/resources'">
-        <SimpleCard
-          title="Recursos"
-          srcImage="arte.jpg"
-          link="arte-and-backgrounds"
-        />
+      <li class="w-11/12 max-h-[15.5rem]">
+        <a href="/download/" class="w-full h-full">
+          <SimpleCard
+            title="Recursos"
+            srcImage="arte.jpg"
+            link="arte-and-backgrounds"
+          />
+          <span class="sr-only">Descargar recursos de arte y fondos</span>
+        </a>
       </li>
       <li class="max-w-11/12 mx-auto">
         <a
           class="flex items-center gap-2 bg-[rgb(32,0,38)] py-2 px-4 cursor-pointer rounded-3xl text-base text-white
           lg:text-lg lg:font-extrabold lg:py-4 lg:pl-8"
-          onclick="window.location.href = '/download'"
+          href='/download'
         >
           <p>Ver todas las descargas</p>
           <svg class="size-4 object-cover font-bold">

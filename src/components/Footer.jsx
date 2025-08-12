@@ -188,10 +188,10 @@ const Footer = ({isSecondPage = false}) =>{
                 <ul ref={contactMeRef} className={`text-white flex w-8/12 my-12 mx-auto justify-center gap-4 flex-wrap ${isSecondPage ? "opacity-100" : "opacity-0"}
                     md:gap-16
                 `}>
-                    <li> <a href="" target="_blank"> Contactame. </a> </li>
-                    <li> <a href="" target="_blank"> Mira anime. </a> </li>
-                    <li> <a href="" target="_blank"> WallpaperFlare. </a> </li>
-                    <li> <a href="" target="_blank"> Gta VI </a> </li>
+                    <li> <a href="https://www.linkedin.com/in/luis-felipe-linares-perdomo/" target="_blank"> Contactame. </a> </li>
+                    <li> <a href="https://www.crunchyroll.com/" target="_blank"> Mira anime. </a> </li>
+                    <li> <a href="https://www.wallpaperflare.com/" target="_blank"> WallpaperFlare. </a> </li>
+                    <li> <a href="https://www.rockstargames.com/VI" target="_blank"> Gta VI </a> </li>
                 </ul>
             </div>
             <div ref={aboutMeRef} className={`flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap ${isSecondPage ? "opacity-100" : "opacity-0"}`}>

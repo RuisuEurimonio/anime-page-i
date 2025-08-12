@@ -66,7 +66,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
     }
 
     const DownloadAllElement = ({extraClass = ""}) =>{
-        return (<p className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" alt="download all icon"/> </span> </p>)
+        return (<p className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" loading="lazy" alt="download all icon"/> </span> </p>)
     }
 
     const ElementList = ({element}) => {
@@ -74,8 +74,8 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
                     md:w-full
                 " onClick={()=>{isPage ? handleVisitPage(element?.pageUrl) : handleOpenModal(element?.name, "1 Tamaño", element?.imageUrl, element?.url)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
-                        <img className="w-full h-full object-cover" src={element?.imageUrl} alt={element?.name +" picture"}></img>
-                        <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={"/play.svg"} alt="play icon"/> </span>
+                        <img className="w-full h-full object-cover" src={element?.imageUrl} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
+                        <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={"/play.svg"} loading={seeAllLink === "" ? "eager" : "lazy"} alt="play icon"/> </span>
                     </div>
                     <h3 className="w-11/12 mx-auto text-white mt-2 text-base
                         md:text-lg
@@ -94,9 +94,9 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
                 <h2 className="text-white text-2xl font-bold"> {mainTitle} <span className="border text-sm ml-5 border-gray-600/40 py-1 px-2">  {count ? count : 70} </span></h2>
                 <div className="flex items-center gap-6 ">
                     <DownloadAllElement extraClass="hidden md:block" />
-                    {!fullView && <button className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
+                    {!fullView && <a className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
                         md:py-2 md:px-4
-                    " onClick={()=> window.location.href = "/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" alt="Arrow see all icon"/> </span> </button>}
+                    " href={"/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" loading={seeAllLink === "" ? "eager" : "lazy"} alt="Arrow see all icon"/> </span> </a>}
                 </div>
             </div>
             {!fullView && <ul className="my-5 flex gap-8 flex-col items-center
@@ -115,7 +115,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
             "> 
                 {listFullView.map((item)=>{
                     return(
-                    <ElementList element={item} key={item.id} />
+                    <ElementList element={item} key={item.id+item.name} />
                 )})}
             </ul>}
             {isModalVisible && <ExpoElement 

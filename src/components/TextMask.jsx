@@ -46,7 +46,7 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
         </defs>
 
         <image
-          href="background.jpg"
+          src="background.jpg"
           width="100%"
           height="100%"
           preserveAspectRatio="xMidYMid slice"
