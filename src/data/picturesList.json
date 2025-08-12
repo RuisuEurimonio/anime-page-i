@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "name": "Frieren",
+    "imageUrl": "/characters/frieren/frieren1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Frieren",
+    "imageUrl": "/characters/frieren/frieren2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Frieren",
+    "imageUrl": "/characters/frieren/frieren3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Frieren",
+    "imageUrl": "/characters/frieren/frieren4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Hinata Hyuga",
+    "imageUrl": "/characters/hinata/hinata1.jpg"
+  },{
+    "id": 6,
+    "name": "Hinata Hyuga",
+    "imageUrl": "/characters/hinata/hinata2.jpg"
+  },{
+    "id": 7,
+    "name": "Hinata Hyuga",
+    "imageUrl": "/characters/hinata/hinata3.jpg"
+  },{
+    "id": 8,
+    "name": "Hinata Hyuga",
+    "imageUrl": "/characters/hinata/hinata4.jpg"
+  },{
+    "id": 9,
+    "name": "Hinata Hyuga",
+    "imageUrl": "/characters/hinata/hinata5.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Mikasa Ackerman",
+    "imageUrl": "/characters/mikasa/mikasa1.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Mikasa Ackerman",
+    "imageUrl": "/characters/mikasa/mikasa2.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Mikasa Ackerman",
+    "imageUrl": "/characters/mikasa/mikasa3.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Mikasa Ackerman",
+    "imageUrl": "/characters/mikasa/mikasa4.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Mikasa Ackerman",
+    "imageUrl": "/characters/mikasa/mikasa5.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Mikasa Ackerman",
+    "imageUrl": "/characters/mikasa/mikasa6.jpeg"
+  },
+  {
+    "id": 16,
+    "name": "Motoko Kusanagi",
+    "imageUrl": "/characters/motoko/motoko1.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Motoko Kusanagi",
+    "imageUrl": "/characters/motoko/motoko2.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Motoko Kusanagi",
+    "imageUrl": "/characters/motoko/motoko3.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Motoko Kusanagi",
+    "imageUrl": "/characters/motoko/motoko4.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Motoko Kusanagi",
+    "imageUrl": "/characters/motoko/motoko5.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Nao Tomori",
+    "imageUrl": "/characters/nao/nao1.jpg"
+  },{
+    "id": 22,
+    "name": "Nao Tomori",
+    "imageUrl": "/characters/nao/nao2.jpg"
+  },{
+    "id": 23,
+    "name": "Nao Tomori",
+    "imageUrl": "/characters/nao/nao3.jpg"
+  },{
+    "id": 24,
+    "name": "Nao Tomori",
+    "imageUrl": "/characters/nao/nao4.jpg"
+  },{
+    "id": 25,
+    "name": "Nao Tomori",
+    "imageUrl": "/characters/nao/nao5.jpg"
+  },{
+    "id": 26,
+    "name": "Rukia Kuchiki",
+    "imageUrl": "/characters/rukia/rukia1.jpg"
+  },{
+    "id": 27,
+    "name": "Rukia Kuchiki",
+    "imageUrl": "/characters/rukia/rukia2.jpg"
+  },{
+    "id": 28,
+    "name": "Rukia Kuchiki",
+    "imageUrl": "/characters/rukia/rukia3.jpg"
+  },{
+    "id": 29,
+    "name": "Rukia Kuchiki",
+    "imageUrl": "/characters/rukia/rukia4.jpg"
+  },{
+    "id": 30,
+    "name": "Rukia Kuchiki",
+    "imageUrl": "/characters/rukia/rukia5.jpg"
+  },{
+    "id": 31,
+    "name": "Usagi Tsukino",
+    "imageUrl": "/characters/sailor/sailor1.jpg"
+  },{
+    "id": 32,
+    "name": "Usagi Tsukino",
+    "imageUrl": "/characters/sailor/sailor2.jpg"
+  },{
+    "id": 33,
+    "name": "Usagi Tsukino",
+    "imageUrl": "/characters/sailor/sailor3.jpg"
+  },{
+    "id": 34,
+    "name": "Usagi Tsukino",
+    "imageUrl": "/characters/sailor/sailor4.jpg"
+  },{
+    "id": 35,
+    "name": "Usagi Tsukino",
+    "imageUrl": "/characters/sailor/sailor5.jpg"
+  },{
+    "id": 36,
+    "name": "Usagi Tsukino",
+    "imageUrl": "/characters/sailor/sailor6.jpg"
+  },{
+    "id": 37,
+    "name": "Zero Two",
+    "imageUrl": "/characters/zerotwo/zerotwo1.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Zero Two",
+    "imageUrl": "/characters/zerotwo/zerotwo2.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Zero Two",
+    "imageUrl": "/characters/zerotwo/zerotwo3.jpg"
+  },
+  {
+    "id": 40,
+    "name": "Zero Two",
+    "imageUrl": "/characters/zerotwo/zerotwo4.jpg"
+  },
+  {
+    "id": 41,
+    "name": "Zero Two",
+    "imageUrl": "/characters/zerotwo/zerotwo5.jpg"
+  }
+]

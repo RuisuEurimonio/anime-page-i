@@ -1,0 +1,23 @@
+---
+import ExpoResources from "../../components/ExpoResources";
+import Layout from "../../layouts/Layout.astro";
+import data from "../../data/picturesList.json"
+---
+
+<Layout showHeaderLinks={true} active={"pictures"} isSecondPage={true}>
+    <section class=" relative pt-[10vh]
+     md:pt-[20vh]
+    ">
+        <ExpoResources 
+            mainTitle={"Imagenes"}
+            count={data.length}
+            fullView={true}
+            listFullView={data}
+            firstElement={null}
+            secondElement={null}
+            thirdElement={null}
+            isVideo={false}
+            client:load
+        />
+    </section>
+</Layout>
