@@ -101,7 +101,6 @@ const Footer = ({isSecondPage = false}) =>{
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
-                markers: true
 
             }
         })
