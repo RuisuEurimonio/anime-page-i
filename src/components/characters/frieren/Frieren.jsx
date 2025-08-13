@@ -99,7 +99,7 @@ const Frieren = () => {
             <div id="image-container_frieren" className="h-[400vh] w-full absolute top-[-40vh] bg-[rgb(18,3,20)] z-0 opacity-0
                 sm:top-[-70vh]
             ">
-                <img ref={imgRef} alt="secuence of images from Frieren's video" src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" />
+                <img ref={imgRef} alt="secuence of images from Frieren's video" src={getFramesSource(1)} loading="eager" decoding="async" className="sticky top-0 w-full h-screen object-cover" />
             </div>
             <div className="pt-[250vh]
                 sm:pt-[180vh]

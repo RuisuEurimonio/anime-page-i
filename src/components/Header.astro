@@ -248,7 +248,7 @@ const {showLinks = false, active = "home"} = Astro.props;
       md:mt-8
       xl:mt-15"
   >
-    <Image src="/iconAnime.png" width={10} height={10} loading={"eager"} alt="Icono de la página con una chica anime" class="w-10" />
+    <Image src="/iconAnime.svg" width={10} height={10} loading={"eager"} alt="Page icon with an anime girl" class="w-10" />
     {showLinks && <ul class="text-white w-full justify-center gap-5 items-center hidden
       md:flex
     ">
@@ -261,19 +261,21 @@ const {showLinks = false, active = "home"} = Astro.props;
             <li 
             > <a class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href="/download/resources"> Recursos. </a>  </li>
         </ul>}
-    <img
+    <Image
       src="/menu.svg"
       alt="icon of menu"
       id="menuIcon"
-      class="menu_icon z-[60] cursor-pointer absolute right-0 top-3 w-10
-        md:right-8"
+      height={10}
+      width={10}
+      class="menu_icon z-[60] cursor-pointer absolute right-0 top-3 w-10 md:right-8"
     />
-    <img
+    <Image
       src="/xmark.svg"
       alt="icon for close the menu"
       id="xIcon"
-      class="menu_icon z-50 cursor-pointer absolute right-0 top-3 opacity-0 bg-gray-800/40 rounded-full p-2 w-10
-          md:right-8"
+      height={10}
+      width={10}
+      class="menu_icon z-50 cursor-pointer absolute right-0 top-3 opacity-0 bg-gray-800/40 rounded-full p-2 w-10 md:right-8"
     />
   </div>
   <div
@@ -283,76 +285,92 @@ const {showLinks = false, active = "home"} = Astro.props;
   >
     <div id="iconImages" class="justify-center items-center w-full h-full flex absolute z-30
         md:flex">
-      <img class="hidden md:block size-96" alt="main icon of page " src="/iconAnime.png" />
+      <Image class="hidden md:block size-96" height={10} width={10} alt="Page icon with an anime girl" src="/iconAnime.svg" />
     </div>
     <ul class="h-full w-full relative overflow-hidden" id="characterImages">
       <li
         class="absolute w-[200%] object-cover top-0 left-[-5rem]"
       >
-        <img
+        <Image
           id="sailormoon"
           alt="image of the character with name Sailor moon"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/sailormoon.jpeg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="mikasa"
           alt="image of the character with name Mikasa Ackerman"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/mikasa.jpeg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="frieren"
           alt="image of the character with name Frieren"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/frieren.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="hinata"
           alt="image of the character with name Hinata Hyuga"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/hinata.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="rukia"
           alt="image of the character with name Rukia Kuchiki"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/rukia.jpg"
         />
       </li>
       <li
         class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
       >
-        <img
+        <Image
           id="zero"
           alt="image of the character with name Zero"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/zero.jpg"
         />
       </li>
       <li
         class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
       >
-        <img
+        <Image
           id="matoko"
           alt="image of the character with name Matoko Kusanagi"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/matoko.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="nao"
           alt="image of the character with name Nao Tomori"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/characters/nao.jpg"
         />
       </li>
@@ -365,52 +383,64 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="absolute w-[200%] object-cover top-0 left-[-5rem]"
         class="absolute w-[200%] object-cover top-0 left-[-5rem]"
       >
-        <img
+        <Image
           id="leveling"
           alt="image of the anime Solo Leveling"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/animes/leveling.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="kaijuu"
           alt="image of the anime Kaijuu n8"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/animes/kaijuu.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="jujutsu"
           alt="image of the anime Jujutsu Kaisen"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/animes/jujutsu.png"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="chainsaw"
           alt="image of the anime Chainsaw Man"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/animes/chainsaw.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
-        <img
+        <Image
           id="mashle"
           alt="image of the anime Mashle"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/animes/mashle.jpg"
         />
       </li>
       <li
         class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
       >
-        <img
+        <Image
           id="Oshi"
           alt="image of anime Oshi No Ko"
           class="relative h-[100vh] w-[100vw] opacity-0"
+          height={1080}
+          width={1920}
           src="/animes/Oshi.jpeg"
         />
       </li>
@@ -572,7 +602,7 @@ const {showLinks = false, active = "home"} = Astro.props;
           isNew={false}
           title="Anime 404"
           date="01 de diciembre 2014"
-          img="/anime404.avif"
+          Image="/anime404.avif"
           duration="4:21"
         />
       </li>
@@ -581,7 +611,7 @@ const {showLinks = false, active = "home"} = Astro.props;
           isNew={true}
           title="High School DxD AMV - Courtesy Call"
           date="06 de junio 2017"
-          img="/amv.avif"
+          Image="/amv.avif"
           duration="4:28"
         />
       </li>
@@ -635,8 +665,8 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
         id="language"
       >
-        <img class="w-5" src="/language.svg" alt="icon of languages menu"/> Español.
-        <img class="w-5 md:rotate-180" src="/arrow.svg" id="arrowLanguage" alt="arrow icon of the languages menu" />
+        <Image class="w-5" src="/language.svg" height={50} width={50} alt="icon of languages menu"/> Español.
+        <Image class="w-5 md:rotate-180" src="/arrow.svg" height={50} width={50} id="arrowLanguage" alt="arrow icon of the languages menu" />
       </li>
       <div
         id="listLanguages"
@@ -704,11 +734,14 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
         id="motion"
       >
-        Motion <img
+        Motion <Image
           class="w-5 md:rotate-180"
           src="/arrow.svg"
           id="motionArrow"
-          alt="arrow icon"
+          height={50}
+          width={50}
+          alt=""
+          aria-label={"Arrow icon that accompanies the animation button"}
         />
       </li>
       <div

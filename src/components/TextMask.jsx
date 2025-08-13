@@ -1,13 +1,7 @@
-import {gsap, ScrollTrigger} from "./../scripts/gsapConfig"
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
 
-
-  return (
-
-    
+  return (    
     <div className="relative h-full overflow-hidden flex justify-center items-center z-30">
       <svg  className="absolute inset-0 w-full h-full z-30">
         <text
@@ -46,7 +40,7 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
         </defs>
 
         <image
-          src="background.jpg"
+          href="background.webp"
           width="100%"
           height="100%"
           preserveAspectRatio="xMidYMid slice"

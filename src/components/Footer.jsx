@@ -144,14 +144,14 @@ const Footer = ({isSecondPage = false}) =>{
             {!isSecondPage && <div className="relative">
                 <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[120vh] absolute w-full z-0 top-[-60vh] opacity-0" ></div>
                 <div id="videoFooter" className="w-full h-[600vh] relative pt-10">
-                    <img ref={imgRef} src={getFramesSource(1)} alt="video footer" className="sticky top-0 object-cover w-full h-screen opacity-0 z-5" />
+                    <img ref={imgRef} src={getFramesSource(1)} alt="Sequence of images about the final anime video" loading="eager" decoding="async" className="sticky top-0 object-cover w-full h-screen opacity-0 z-5" />
                 </div>
             </div>}
             <div ref={belowContainerRef} className={`relative ${isSecondPage ? "" : "mt-[-100vh]" }`}>
                 {!isSecondPage && <div className="relative w-full h-[300vh] items-center flex-col flex z-0">
                     <div  className="sticky top-50 -translate-y-1/4 flex items-center flex-col w-full" > 
                         <div ref={logoRef} className="flex justify-center items-center"style={{transform: "scale(1.2)"}} >
-                            <img src="/iconAnime.png"  className="size-60" alt="page icon"/> 
+                            <img src="/iconAnime.svg"  className="size-60" loading="eager" decoding="async" alt="page icon"/> 
                             <p className="absolute text-white text-5xl uppercase font-extrabold text-center"
                                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
                             >Anime<br/>Page<br/>I</p>
@@ -194,7 +194,7 @@ const Footer = ({isSecondPage = false}) =>{
                 </ul>
             </div>
             <div ref={aboutMeRef} className={`flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap ${isSecondPage ? "opacity-100" : "opacity-0"}`}>
-                <div className="h-full"> <img className="h-full" src="/iconAnime.png" alt="anime logo" /> </div>
+                <div className="h-full"> <img className="h-full" src="/iconAnime.svg" alt="anime logo" /> </div>
                 <div>
                     <p> Anime Page I </p>
                     <h4 className="text-white text-center text-xs"> Por Luis Linares.</h4>

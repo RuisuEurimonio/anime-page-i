@@ -29,7 +29,9 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
                             <img
                             className="size-4 mr-2 rotate-90"
                             src="/arrow2.svg"
-                            alt="Icono de descarga"
+                            alt="Button for download this video or image"
+                            loading="lazy"
+                            decoding="async"
                             />
                         </span>
                         Descargar {isVideo ? "video" : "imagen"}
@@ -38,7 +40,7 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
             </div>
             <button onClick={handleClose} className="cursor-pointer absolute top-3 right-10
                 md:top-15
-            "> <img className="size-10 p-2 bg-gray-700/40 rounded-full" src="/xmark.svg" alt="close icon"/> </button>
+            "> <img className="size-10 p-2 bg-gray-700/40 rounded-full" src="/xmark.svg" loading="lazy" decoding="async" alt="Button to close the display modal"/> </button>
         </div>
     )
 })

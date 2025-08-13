@@ -74,7 +74,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
                     md:w-full
                 " onClick={()=>{isPage ? handleVisitPage(element?.pageUrl) : handleOpenModal(element?.name, "1 Tamaño", element?.imageUrl, element?.url)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
-                        <img className="w-full h-full object-cover" src={element?.imageUrl} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
+                        <img className="w-full h-full object-cover" src={element?.imageUrl} loading={seeAllLink === "" ? "eager" : "lazy"} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={"/play.svg"} loading={seeAllLink === "" ? "eager" : "lazy"} alt="play icon"/> </span>
                     </div>
                     <h3 className="w-11/12 mx-auto text-white mt-2 text-base

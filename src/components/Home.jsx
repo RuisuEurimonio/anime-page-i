@@ -168,7 +168,7 @@ const Home =  () => {
     return (
         <div id="wrapper-container" className="w-full h-screen relative overflow-hidden">
             <div id="main-container" className="w-full h-screen relative overflow-hidden">
-                <img ref={backgroundRef} src="/background.jpg" alt="background image" className="object-cover w-full h-full z-0 scale-125" />
+                <img ref={backgroundRef} src="/background.webp" alt="background image" className="object-cover w-full h-full z-0 scale-125" />
                 <h2 ref={textRef} className="z-0 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white translate-y-36 text-5xl
                     sm:text-6xl
                     lg:text-8xl lg:translate-y-0
@@ -182,7 +182,7 @@ const Home =  () => {
             <div id="mask-container" ref={maskContainerRef} className="z-10 absolute top-0 left-0 w-full h-screen hidden pointer-events-none bg-[rgb(18,3,20)]">
                 <TextMask client:load textRef={textChildRef} svgRef={svgRef} whiteSvgRef={whiteSvgRef} />
                 <div className="absolute w-full h-screen top-0 z-10">
-                    <img src="/iconAnime.png" ref={imageIcon} alt="anime logo page" className="size-44 absolute z-20 top-[14vh] left-0 right-0 m-auto 
+                    <img src="/iconAnime.svg" ref={imageIcon} alt="anime logo page" className="size-44 absolute z-20 top-[14vh] left-0 right-0 m-auto 
                         md:size-52 md:top-7
                         xl:size-60 xl:top-14
                         2xl:size-64 2xl:top-16
