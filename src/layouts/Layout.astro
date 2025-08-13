@@ -18,10 +18,10 @@ const {showHeaderLinks = false, active = "/", isSecondPage = false} = Astro.prop
 		<title> Anime Page </title>
 	</head>
 	<body>
+		<LoadingScreen client:load/>
 		<Header showLinks={showHeaderLinks} active={active}/>
 		<slot />
 		<Footer isSecondPage={isSecondPage} client:load/>
-		<LoadingScreen client:load/>
 	</body>
 </html>
 
