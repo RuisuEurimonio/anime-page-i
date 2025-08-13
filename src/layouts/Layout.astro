@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import "../../global.css";
 import Footer from "../components/Footer";
+import LoadingScreen from "../components/LoadingScreen"
 
 const {showHeaderLinks = false, active = "/", isSecondPage = false} = Astro.props;
 ---
@@ -20,6 +21,7 @@ const {showHeaderLinks = false, active = "/", isSecondPage = false} = Astro.prop
 		<Header showLinks={showHeaderLinks} active={active}/>
 		<slot />
 		<Footer isSecondPage={isSecondPage} client:load/>
+		<LoadingScreen client:load/>
 	</body>
 </html>
 
