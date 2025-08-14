@@ -18,7 +18,8 @@ const SailorMoon = () => {
     const imgRef3 = useRef(null);
 
     useEffect(() => {
-        if (!(window.innerWidth > 768)) return;
+        if( window.localStorage.getItem("reduceAnimation") === "true" ) return;
+        if (!(window.innerWidth > 768) ) return;
         if (imgRef1 && imgRef3) {
             [imgRef1, imgRef3].forEach((ref, i) => {
                 gsap.to(ref.current, {

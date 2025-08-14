@@ -33,6 +33,7 @@ const SailorMoonBottom = () => {
     }, [])
 
     useEffect(() => {
+        if( window.localStorage.getItem("reduceAnimation") === "true" ) return;
         if (!(window.innerWidth > 768)) return;
         if (imgRef1 && imgRef3) {
             [imgRef1, imgRef3].forEach((element, index) => {

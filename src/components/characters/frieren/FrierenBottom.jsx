@@ -32,6 +32,8 @@ const FrierenBottom = () => {
     }, [])
 
     useEffect(()=>{
+      if( window.localStorage.getItem("reduceAnimation") === "true" ) return;
+      if (!(window.innerWidth > 768)) return;
         if(imgStatic){
             gsap.to(imgStatic.current,{
                 y: "20vh",

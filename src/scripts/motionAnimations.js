@@ -5,7 +5,7 @@ const motionArrow = document.getElementById("motionArrow");
 
 const movementInputBall = document.getElementById("movementInputBall");
 
-let isActive = window.localStorage.getItem("showFullAnimation") === "true";
+let isActive = window.localStorage.getItem("reduceAnimation") === "true";
 let openMotion = false;
 
 const animationButton = () =>{
@@ -21,7 +21,8 @@ const animationButton = () =>{
 export const inputToggleQuestion = () =>{
     isActive = !isActive;
     animationButton();
-    window.localStorage.setItem("showFullAnimation", isActive ? "true" : "false");
+    window.localStorage.setItem("reduceAnimation", isActive ? "true" : "false");
+    window.location.reload()
 }
 
 export const toggleMotionContainer = () => {

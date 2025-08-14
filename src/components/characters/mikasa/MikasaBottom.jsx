@@ -18,6 +18,7 @@ const MikasaBottom = () => {
     const imgRef3 = useRef(null);
 
     useEffect(() => {
+        if( window.localStorage.getItem("reduceAnimation") === "true" ) return;
         if (!(window.innerWidth > 768)) return;
         if (imgRef2 && imgRef3) {
             [imgRef2, imgRef3].forEach((ref, i) => {

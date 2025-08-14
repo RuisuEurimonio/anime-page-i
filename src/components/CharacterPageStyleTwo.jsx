@@ -112,6 +112,8 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
     }, [])
 
     useEffect(()=>{
+        if(window.localStorage.getItem("reduceAnimation") === "false") return;
+
         [`#secondImages-container_${keyNameCharacter}`, `#video-container_${keyNameCharacter}`].forEach((item, i)=>{
             gsap.fromTo(item,{
                 opacity: i === 0 ? 0 : "",
@@ -201,6 +203,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
     }, [images])
 
     useEffect(() => {
+        if( window.localStorage.getItem("reduceAnimation") === "true" ) return;
         if(window.innerWidth < 768) return;
         const tl = gsap.timeline({
             scrollTrigger: {

@@ -8,7 +8,7 @@ const PortraitImage = ({ keyName, fileName, fullName, fatherContainer = "", hand
     const imgRef = useRef(null);
 
     useEffect(()=>{
-        if(!imgRef || fatherContainer === "") return;
+        if(!imgRef || fatherContainer === "" || window.localStorage.getItem("reduceAnimation") === "true") return;
 
         gsap.fromTo(imgRef.current,{
             scale: "1",
