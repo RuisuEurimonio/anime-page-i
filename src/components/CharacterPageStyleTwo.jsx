@@ -203,22 +203,23 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
     useEffect(() => {
         if(window.innerWidth < 768) return;
         const tl = gsap.timeline({
-            ease: "power1.inOut",
             scrollTrigger: {
                 trigger: `#image-parallax_${keyNameCharacter}`,
-                start: "top center",
+                start: "top bottom",
                 end: "bottom top",
-                scrub: true,
+                scrub: true,    
+                markers: true
             }
         })
 
         tl.to(imgStatic.current, {
             y: "-20vh",
-            duration: 0.8
+            ease: "none",
+            duration: 0.9
         }).to(imgStatic.current, {
             opacity: 0,
-            duration: 0.2
-        })
+            duration: 0.1
+        },">    ")
 
         return () => {
             tl.scrollTrigger?.kill();
