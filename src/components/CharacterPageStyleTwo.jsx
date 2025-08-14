@@ -208,7 +208,6 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                 start: "top bottom",
                 end: "bottom top",
                 scrub: true,    
-                markers: true
             }
         })
 
@@ -278,9 +277,9 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                     
                     
                 </div>
-                <p id={`textVideo_${keyNameCharacter}`} className="sticky top-[75vh] translate-y-1/2 w-11/12 font-bold text-fuchsia-400 text-xl ml-auto
+                <p id={`textVideo_${keyNameCharacter}`} className="sticky top-[80vh] w-11/12 font-bold text-fuchsia-400 text-xl ml-auto
                     sm:mb-[35vh] sm:right-6 sm:mr-20 sm:text-3xl sm:w-4/12
-                    md:text-5xl
+                    md:text-5xl md:top-[50vh]
                     xl:text-6xl
                 "> «{videoQuote}» </p>
             </div>
