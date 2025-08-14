@@ -38,7 +38,6 @@ const {showLinks = false, active = "home"} = Astro.props;
   const sidebarImages = document.getElementById("sidebarImages");
 
   //motionAnimations
-  const movementInputBall = document.getElementById("movementInputBall");
   const movementInputContainer = document.getElementById(
     "movementInputContainer"
   );
@@ -159,7 +158,7 @@ const {showLinks = false, active = "home"} = Astro.props;
   });
 
   movementInputContainer?.addEventListener("click", () => {
-    inputToggleQuestion(movementInputBall);
+    inputToggleQuestion();
   });
 
   menuIcon?.addEventListener("click", () => {
@@ -464,7 +463,7 @@ const {showLinks = false, active = "home"} = Astro.props;
       >
         <a href="/" class="py-1 px-3 cursor-pointer  hover:bg-white hover:text-black duration-200 rounded-4xl bg-white text-black
         md:py-3 md:px-5">
-          Characters.
+          Personajes.
         </a>
       </li>
       <li
@@ -486,7 +485,7 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
           md:py-3 md:px-5"
       >
-        Download.
+        Descargar.
       </li>
     </ul>
     <ul
@@ -734,7 +733,7 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
         id="motion"
       >
-        Motion <Image
+        Animación <Image
           class="w-5 md:rotate-180"
           src="/arrow.svg"
           id="motionArrow"

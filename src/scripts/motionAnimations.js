@@ -3,19 +3,30 @@ import gsap from "gsap";
 const motionContainer = document.getElementById("motionContainer");
 const motionArrow = document.getElementById("motionArrow");
 
-let fullMovementActive = true;
+const movementInputBall = document.getElementById("movementInputBall");
+
+let isActive = window.localStorage.getItem("showFullAnimation") === "true";
 let openMotion = false;
 
-export const inputToggleQuestion = (movementInputBall) =>{
-    gsap.to(movementInputBall,{
-        x: fullMovementActive ? 22 : 0,
+const animationButton = () =>{
+  gsap.to(movementInputBall,{
+        x: isActive ? 22 : 0,
+        backgroundColor: isActive ? "var(--color-purple-950)" : "black",
         duration: .5,
         ease: "power3.out"
       })
-    fullMovementActive = !fullMovementActive;
+    
+}
+
+export const inputToggleQuestion = () =>{
+    isActive = !isActive;
+    animationButton();
+    window.localStorage.setItem("showFullAnimation", isActive ? "true" : "false");
 }
 
 export const toggleMotionContainer = () => {
+  console.log(isActive)
+  animationButton();
     gsap.to(motionContainer,{
         opacity: openMotion ? 0 : 1,
         zIndex: openMotion ? -10 : 30,
