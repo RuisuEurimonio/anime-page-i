@@ -265,7 +265,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                     sm:w-6/12 
                     md:h-[80vh] md:top-[10vh]
                 ">
-                    <img ref={imgRef} src={getFramesSource(1)} alt={"Sequence of images from the anime " +keyNameCharacter} loading="lazy" decoding="async" className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
+                    <img ref={imgRef} src={getFramesSource(1)} alt={"Sequence of images from the anime " +keyNameCharacter} loading="lazy"  className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
 
                     <span id={`pointVideoContainerRef_${keyNameCharacter}`} className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
                         <span id={`pointVideoRef_${keyNameCharacter}`} className="w-2.5 block h-full translate-y-[95%] bg-white rounded-full"></span>

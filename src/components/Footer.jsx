@@ -142,9 +142,9 @@ const Footer = ({isSecondPage = false}) =>{
     return (
         <footer id="footer" className="w-full pb-12 relative bg-[18,3,20]">
             {!isSecondPage && <div className="relative">
-                <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[120vh] absolute w-full z-0 top-[-60vh] opacity-0" ></div>
-                <div id="videoFooter" className="w-full h-[600vh] relative pt-10">
-                    <img ref={imgRef} src={getFramesSource(1)} alt="Sequence of images about the final anime video" loading="eager" decoding="async" className="sticky top-0 object-cover w-full h-screen opacity-0 z-5" />
+                <div id="separator_footer" className="bg-[linear-gradient(180deg,rgba(18,3,20,1)_0%,rgba(94,4,0,1)_100%)] h-[180vh] absolute w-full z-[-5] top-[-100vh] opacity-0" ></div>
+                <div id="videoFooter" className="w-full h-[600vh] relative mt-10">
+                    <img ref={imgRef} src={getFramesSource(1)} alt="Sequence of images about the final anime video" loading="eager" className="sticky top-0 object-cover w-full h-screen opacity-0 z-5" />
                 </div>
             </div>}
             <div ref={belowContainerRef} className={`relative ${isSecondPage ? "" : "mt-[-100vh]" }`}>
