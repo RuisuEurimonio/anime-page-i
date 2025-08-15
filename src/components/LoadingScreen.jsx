@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "../scripts/gsapConfig";
+import { sendToGsap } from "../scripts/indexToScroll";
 
 const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
@@ -20,6 +22,7 @@ const LoadingScreen = () => {
           onComplete: () => {
             gsap.set(loadingRef.current, { display: "none" });
             setLoading(false);
+            sendToGsap();
           }
         }
       );
@@ -28,7 +31,10 @@ const LoadingScreen = () => {
     if (document.readyState === "complete") {
       startAnimation();
     } else {
-      window.addEventListener("load", startAnimation);
+      window.addEventListener("load", ()=> {
+        startAnimation()
+        ScrollTrigger.refresh();
+    });
       return () => window.removeEventListener("load", startAnimation);
     }
   }, []);

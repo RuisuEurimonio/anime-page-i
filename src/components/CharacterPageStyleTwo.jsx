@@ -73,7 +73,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top center",
-                end: "+=500",
+                end: "+=1000",
                 scrub: true
             }
         })
@@ -230,7 +230,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
     }, [])
 
     return (
-        <div ref={containerRef} style={{ backgroundColor: bgColorPage}}>
+        <div ref={containerRef} style={{ backgroundColor: bgColorPage}} id={keyNameCharacter+"_container"}>
             <div id={`image-parallax_${keyNameCharacter}`} className="w-full h-[140vh] overflow-y-hidden relative"
                 style={{ clipPath: "polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%)" }}
             >

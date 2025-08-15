@@ -30,6 +30,7 @@ const {showLinks = false, active = "home"} = Astro.props;
     toggleLanguagesList,
     toggleArrowIcon,
   } from "../scripts/languageAnimations";
+import { sendToGsap } from "../scripts/indexToScroll";
 
   //navbarAnimations
   const menuIcon = document.getElementById("menuIcon");
@@ -96,8 +97,8 @@ const {showLinks = false, active = "home"} = Astro.props;
     "frieren",
     "hinata",
     "rukia",
-    "zero",
-    "matoko",
+    "zerotwo",
+    "motoko",
     "nao",
     "chainsaw",
     "jujutsu",
@@ -118,6 +119,12 @@ const {showLinks = false, active = "home"} = Astro.props;
       repeat: -1,
       ease: "Power1.inOut",
     });
+
+    currentButton?.addEventListener("click",()=>{
+      window.open("/#"+character, "_self")
+      sendToGsap();
+      closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
+    })
 
     currentButton?.addEventListener("mouseenter", () => {
       anyActive = character;
@@ -343,8 +350,8 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
       >
         <Image
-          id="zero"
-          alt="image of the character with name Zero"
+          id="zerotwo"
+          alt="image of the character with name Zerotwo"
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
@@ -355,12 +362,12 @@ const {showLinks = false, active = "home"} = Astro.props;
         class="absolute w-[200%] object-cover top-0 left-[-5rem] -translate-x-3/12"
       >
         <Image
-          id="matoko"
-          alt="image of the character with name Matoko Kusanagi"
+          id="motoko"
+          alt="image of the character with name Motoko Kusanagi"
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/matoko.jpg"
+          src="/characters/motoko.jpg"
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -528,13 +535,13 @@ const {showLinks = false, active = "home"} = Astro.props;
         Rukia Kuchiki
       </li>
       <li
-        id="zeroButton"
+        id="zerotwoButton"
         class="cursor-pointer hover:text-pink-400 duration-200"
       >
         Zero Two
       </li>
       <li
-        id="matokoButton"
+        id="motokoButton"
         class="cursor-pointer hover:text-pink-400 duration-200"
       >
         Motoko Kusanagi

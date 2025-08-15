@@ -108,7 +108,7 @@ const SailorMoon = () => {
                     <div></div>
                     <h2 className="text-5xl uppercase place-content-end font-bold text-pink-300 my-10
                         md:text-8xl md:my-0
-                    "> Usagi Tsukino </h2>
+                    " id={"sailormoon_container"}> Usagi Tsukino </h2>
                     <div></div>
                     <div></div>
 

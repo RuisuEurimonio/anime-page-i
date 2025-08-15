@@ -114,7 +114,7 @@ const Mikasa = () => {
                     sm:mx-auto">
                         <h2 className="text-4xl uppercase text-purple-700 my-10 
                             md:text-7xl md:mt-0 md:mb-20
-                        "> Mikasa Ackerman </h2>
+                        " id={"mikasa_container"}> Mikasa Ackerman </h2>
                         <h3 className="text-2xl text-purple-100 mb-5 drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)]
                             md:text-4xl md:mb-10
                         "> Cuando Mikasa tenía unos 9 años, unos traficantes de personas asesinaron a sus padres para venderla como esclava por su herencia asiática. </h3>
