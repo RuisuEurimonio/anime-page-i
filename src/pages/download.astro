@@ -21,23 +21,29 @@ import Layout from "../layouts/Layout.astro";
     <div>
         <ExpoResources 
             mainTitle={"Videos"}
+            srcAll={"/videos/videos.zip"}
             firstElement={{
                 name: "Usagi Tsukino",
+                url: "/videos/sailor.mp4",
                 imageUrl: "/frames/sailorMoon/sailor_1.png"
             }}
             secondElement={{
-                name: "Mikara Ackerman",
+                name: "Mikasa Ackerman",
+                url: "/videos/mikasa1.mp4",
                 imageUrl: "/frames/mikasa/mikasa_13.jpg"
             }}
             thirdElement={{
                 name: "Frieren",
+                url: "/videos/frieren1.mp4",
                 imageUrl: "/frames/frieren/frieren_5.jpg"
             }}
             client:load
+            isVideo={true}
             seeAllLink="videos"
         />
         <ExpoResources 
             mainTitle={"Imagenes"}
+            srcAll={"/characters/zip.zip"}
             firstElement={{
                 name: "Solo leveling",
                 imageUrl: "/animes/soloLeveling/sololeveling_bg.jpg"
@@ -55,6 +61,7 @@ import Layout from "../layouts/Layout.astro";
         />
         <ExpoResources 
             mainTitle={"Recursos"}
+            srcAll={null}
             count={3}
             firstElement={{
                 name: "Gta VI",

@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, secondElement, thirdElement, isPage = false, isVideo = false, fullView = false, listFullView = [{}]}) => {
+const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElement, secondElement, thirdElement, isPage = false, isVideo = false, fullView = false, listFullView = [{}]}) => {
 
     const [nameElement, setNameElement] = useState("");
     const [sizes, setSizes] = useState("");
@@ -66,11 +66,11 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
     }
 
     const DownloadAllElement = ({extraClass = ""}) =>{
-        return (<p className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" loading="lazy" alt="download all icon"/> </span> </p>)
+        return (<a className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`} download href={srcAll}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src="/down.svg" loading="lazy" alt="download all icon"/> </span> </a>)
     }
 
     const ElementList = ({element}) => {
-        return (<li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer
+        return (<li className="w-full bg-gray-700/40 hover:bg-gray-700/70 duration-300 cursor-pointer h-80
                     md:w-full
                 " onClick={()=>{isPage ? handleVisitPage(element?.pageUrl) : handleOpenModal(element?.name, "1 Tamaño", element?.imageUrl, element?.url)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
@@ -93,7 +93,7 @@ const ExpoResources = ({mainTitle, seeAllLink = "", count = 3, firstElement, sec
             <div className="flex justify-between">
                 <h2 className="text-white text-2xl font-bold"> {mainTitle} <span className="border text-sm ml-5 border-gray-600/40 py-1 px-2">  {count ? count : 70} </span></h2>
                 <div className="flex items-center gap-6 ">
-                    <DownloadAllElement extraClass="hidden md:block" />
+                    {!isPage && <DownloadAllElement extraClass="hidden md:block" />}
                     {!fullView && <a className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
                         md:py-2 md:px-4
                     " href={"/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" loading={seeAllLink === "" ? "eager" : "lazy"} alt="Arrow see all icon"/> </span> </a>}
