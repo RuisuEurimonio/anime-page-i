@@ -21,7 +21,7 @@ const {showHeaderLinks = false, active = "/", isSecondPage = false} = Astro.prop
 		<LoadingScreen client:load/>
 		<Header showLinks={showHeaderLinks} active={active}/>
 		<slot />
-		<Footer isSecondPage={isSecondPage} client:load/>
+		<Footer isSecondPage={isSecondPage} client:visible/>
 	</body>
 </html>
 

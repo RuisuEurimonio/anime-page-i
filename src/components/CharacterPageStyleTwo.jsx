@@ -266,7 +266,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
             <div id={`image-container_${keyNameCharacter}`} className="h-[350vh] relative">
                 <div id={`video-container_${keyNameCharacter}`} className="sticky top-0 h-[70vh] w-full grayscale
                     sm:w-6/12 
-                    md:h-[80vh] md:top-[10vh]
+                    md:h-screen md:mt-20
                 ">
                     <img ref={imgRef} src={getFramesSource(1)} alt={"Sequence of images from the anime " +keyNameCharacter} loading="lazy"  className="w-full h-full object-cover cursor-pointer" onClick={handleClickVideo} />
 
