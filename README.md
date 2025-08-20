@@ -1,54 +1,102 @@
-# Astro Starter Kit: Basics
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+</p>
 
-```sh
-npm create astro@latest -- --template basics
-```
+<h3 align="center">Anime Page I</h3>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+<div align="center">
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+</div>
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+<p align="center"> "This project is an experimental anime-themed website inspired by the design style of GTA VI. It serves as a learning experience where I explore smooth animations and transitions using GSAP and Lenis, all built within the Astro framework."
+    <br> 
+</p>
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 📝 Table of Contents
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [TODO](../TODO.md)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+- [Disclaimer](#disclaimer)
 
-## 🧞 Commands
+## 🧐 About <a name = "about"></a>
 
-All commands are run from the root of the project, from a terminal:
+The purpose of this project is to practice modern web development by combining creative design with smooth animations, while improving my skills with Astro, GSAP, and Lenis.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-## 👀 Want to learn more?
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Prerequisites
+
+To run this project locally, you need Git to clone the repository and Node.js to install dependencies and start the development server. After cloning the repo, install the dependencies with npm install and run the project in development mode using npm run dev.
+
+### Installing
+
+Open a terminal
+
+Git clone https://github.com/RuisuEurimonio/anime-page-i.git
+
+Navigate to the directory generated
+
+Npm install / npm i
+
+Npm run dev 
+
+## 🔧 Running the tests <a name = "tests"></a>
+
+For the moment, I still have pending tests to implement
+
+### Break down into end to end tests
+
+Pending...
+
+### And coding style tests
+
+Pending...
+
+## 🎈 Usage <a name="usage"></a>
+
+This project is a static page that can help you showcase projects or products. It is basically a gallery with animations.
+
+## 🚀 Deployment <a name = "deployment"></a>
+
+This project uses Github Actions to build the final project. The workflow file is locatec at .github/workflows/astro.yml
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Astro](https://astro.build/) - Web Framework
+- [React](https://es.react.dev//) - Web Framework
+- [Lenis](https://lenis.darkroom.engineering/) - Animation Library
+- [Gsap](https://gsap.com/) - Animation Library
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@LuisLinares](https://github.com/RuisuEurimonio) - Idea & Initial work
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+- [Gta VI](https://www.rockstargames.com/VI) - Idea
+- [Wallpaperflare](https://www.wallpaperflare.com/) - Resources
+- [SakugaBooru](https://www.sakugabooru.com/) - Resources
 
 
-## Disclaimer
+## Disclaimer <a name = "disclaimers"> </a>
 
 This project is intended solely for educational and non-commercial purposes.
 
