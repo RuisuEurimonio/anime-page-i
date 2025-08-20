@@ -3,7 +3,7 @@ import { gsap, ScrollTrigger } from "../scripts/gsapConfig";
 
 const frames = 194;
 const getFramesSource = (index) =>{
-    return `/frames/footer/footer_${index.toString()}.jpg`
+    return `${import.meta.env.BASE_URL}/frames/footer/footer_${index.toString()}.jpg`
 };
 
 gsap.registerPlugin(ScrollTrigger);
@@ -151,7 +151,7 @@ const Footer = ({isSecondPage = false}) =>{
                 {!isSecondPage && <div className="relative w-full h-[300vh] items-center flex-col flex z-0">
                     <div  className="sticky top-50 -translate-y-1/4 flex items-center flex-col w-full" > 
                         <div ref={logoRef} className="flex justify-center items-center"style={{transform: "scale(1.2)"}} >
-                            <img src="/iconAnime.svg"  className="size-60" loading="eager" decoding="async" alt="page icon"/> 
+                            <img src={`${import.meta.env.BASE_URL}/iconAnime.svg`}  className="size-60" loading="eager" decoding="async" alt="page icon"/> 
                             <p className="absolute text-white text-5xl uppercase font-extrabold text-center"
                                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
                             >Anime<br/>Page<br/>I</p>
@@ -194,7 +194,7 @@ const Footer = ({isSecondPage = false}) =>{
                 </ul>
             </div>
             <div ref={aboutMeRef} className={`flex w-6/12 h-10 mx-auto text-white items-center justify-center gap-6 flex-wrap ${isSecondPage ? "opacity-100" : "opacity-0"}`}>
-                <div className="h-full"> <img className="h-full" src="/iconAnime.svg" alt="anime logo" /> </div>
+                <div className="h-full"> <img className="h-full" src={`${import.meta.env.BASE_URL}/iconAnime.svg`} alt="anime logo" /> </div>
                 <div>
                     <p> Anime Page I </p>
                     <h4 className="text-white text-center text-xs"> Por Luis Linares.</h4>

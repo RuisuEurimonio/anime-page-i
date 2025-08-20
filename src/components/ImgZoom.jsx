@@ -51,7 +51,7 @@ const ImgZoom = forwardRef(({imgSrc, alt, otherClass = ""}, ref) => {
             showFullImage &&
                 createPortal(
                 <div className="fixed w-screen h-screen inset-0 z-[100] bg-[rgba(18,3,20,0.9)] cursor-zoom-out justify-center items-center" onClick={handleClose}>
-                    <img ref={import.meta.env.BASE_URL+imgRef} src={imgSrc} loading="lazy" decoding="async" alt={alt +" expandida"} className="absolute object-cover rounded-xl"/> 
+                    <img ref={imgRef} src={import.meta.env.BASE_URL+imgSrc} loading="lazy" decoding="async" alt={alt +" expandida"} className="absolute object-cover rounded-xl"/> 
                 </div>
                 ,document.body)
         }

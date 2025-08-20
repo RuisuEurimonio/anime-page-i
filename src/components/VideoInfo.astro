@@ -8,8 +8,8 @@ const { isNew = false, title, date, img, duration, idDuration, idPlay } = Astro.
     <div class="relative flex justify-center items-center
         md:flex-1/2
     ">
-        <img src={img} alt={title +" picture"} class="object-cover h-full w-full">
-        <img src="/play.svg" alt="play icon" class="absolute h-5 p-1 bg-white/30 backdrop-blur-md rounded-full opacity-100
+        <img src={import.meta.env.BASE_URL+img} alt={title +" picture"} class="object-cover h-full w-full">
+        <img src={`${import.meta.env.BASE_URL}/play.svg`} alt="play icon" class="absolute h-5 p-1 bg-white/30 backdrop-blur-md rounded-full opacity-100
             lg:h-8 lg:p-2.5
         " id={idPlay}> 
         <p class="absolute bottom-3  text-white left-3 p-0.5 tracking-normal text-xs bg-[rgb(50,0,80)]
