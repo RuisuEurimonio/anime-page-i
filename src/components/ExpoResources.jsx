@@ -74,7 +74,7 @@ const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElem
                     md:w-full
                 " onClick={()=>{isPage ? handleVisitPage(element?.pageUrl) : handleOpenModal(element?.name, "1 Tamaño", element?.imageUrl, element?.url)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
-                        <img className="w-full h-full object-cover" src={element?.imageUrl} loading={seeAllLink === "" ? "eager" : "lazy"} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
+                        <img className="w-full h-full object-cover" src={import.meta.env.BASE_URL+element?.imageUrl} loading={seeAllLink === "" ? "eager" : "lazy"} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
                         <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={"/play.svg"} loading={seeAllLink === "" ? "eager" : "lazy"} alt="play icon"/> </span>
                     </div>
                     <h3 className="w-11/12 mx-auto text-white mt-2 text-base
@@ -96,7 +96,7 @@ const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElem
                     {!isPage && <DownloadAllElement extraClass="hidden md:block" />}
                     {!fullView && <a className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
                         md:py-2 md:px-4
-                    " href={"/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" loading={seeAllLink === "" ? "eager" : "lazy"} alt="Arrow see all icon"/> </span> </a>}
+                    " href={import.meta.env.BASE_URL+"/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src="/arrow.svg" loading={seeAllLink === "" ? "eager" : "lazy"} alt="Arrow see all icon"/> </span> </a>}
                 </div>
             </div>
             {!fullView && <ul className="my-5 flex gap-8 flex-col items-center

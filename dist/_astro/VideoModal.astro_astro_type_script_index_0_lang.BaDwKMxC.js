@@ -1,1 +1,0 @@
-import{a as n,h as i}from"./modalTrailersAnimations.P0S0fUWA.js";import"./index.D3jsOSc0.js";document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("animeItem"),t=document.getElementById("highItem");e?.addEventListener("click",()=>{n()}),t?.addEventListener("click",()=>{i()})});

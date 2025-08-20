@@ -8,6 +8,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://ruisueurimonio.github.io/",
   base: "/anime-page-i",
   vite: {
       plugins: [tailwindcss()],

@@ -10,8 +10,8 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
                 <div className="h-9/12
                     md:h-10/12
                 ">
-                    {!isVideo && <img className="bg-black w-full object-cover h-full" src={urlImage} alt={`${nameElement} image`} />}
-                    {isVideo && <video className="w-full object-cover h-full bg-black" src={urlVideo} controls/> }
+                    {!isVideo && <img className="bg-black w-full object-cover h-full" src={import.meta.env.BASE_URL+urlImage} alt={`${nameElement} image`} />}
+                    {isVideo && <video className="w-full object-cover h-full bg-black" src={import.meta.env.BASE_URL+urlVideo} controls/> }
                 </div>
                 <div className="h-3/12 w-10/12 mx-auto flex justify-center gap-3  flex-col
                     md:h-2/12 md:flex-row md:justify-between md:items-center
