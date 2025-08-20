@@ -32,8 +32,8 @@ import{S as _,j as e}from"./gsapConfig.Dx5dlI8u.js";import{r as t}from"./index.B
                         md:grid-cols-[25vw_25vw_25vw] md:grid-rows-[30vh_1fr_1fr]\r
                     `,children:[e.jsx("div",{className:`col-span-1 row-span-1 hidden\r
                             md:block\r
-                        `}),e.jsx(f,{imgSrc:`/animes/${r}/${l}1.jpg`,alt:`First collage image about ${n} anime`,otherClass:`col-span-1 row-span-1 h-full w-full object-cover\r
-                        `}),e.jsx(f,{imgSrc:`/animes/${r}/${l}2.jpg`,alt:`Second collage image about ${n} anime`,otherClass:`col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover\r
-                        md:row-span-3`}),e.jsx(f,{imgSrc:`/animes/${r}/${l}3.jpg`,alt:`Third collage image about ${n} anime`,otherClass:`col-span-1  row-span-1 h-full w-[90vh] object-cover\r
+                        `}),e.jsx(f,{imgSrc:`/animes/${r}/${l}1.jpg`,alt:`First collage image about ${n} anime`,otherClass:`col-span-1 row-span-1 object-cover\r
+                        `}),e.jsx(f,{imgSrc:`/animes/${r}/${l}2.jpg`,alt:`Second collage image about ${n} anime`,otherClass:`col-span-1  row-span-1 h-[80vh] place-self-center object-cover\r
+                        md:row-span-3`}),e.jsx(f,{imgSrc:`/animes/${r}/${l}3.jpg`,alt:`Third collage image about ${n} anime`,otherClass:`col-span-1  row-span-1 w-[90vh] object-cover\r
                             md:h-full md:col-span-2 md:row-span-2\r
                         `})]}),e.jsx("div",{className:"flex gap-16 items-center ml-10",children:m&&m.map((s,h)=>{const b=h===m.length-1;let c="object-cover h-[100vh] ";return b?c+="min-w-[100vw] md:min-w-[60vw]":h===0?c+="min-w-[80vw] md:min-w-[30vw] md:h-[70vh]":h===1?c+="min-w-[70vw] h-[40vh] md:min-w-[40vw] md:h-[40vh]":c+="min-w-[60vw] h-[70vh] md:min-w-[30vw] md:h-[60vh]",e.jsx(f,{ref:b?p:null,imgSrc:`/animes/${r}/${s}.jpg`,otherClass:c,alt:`${h+1} image about ${n} anime`},s)})})]})})]})};export{R as A};
