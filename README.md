@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://srv521-files.hstgr.io/7c0cc5254a22b3eb/files/public_html/iconAnime.svg" alt="Project logo"></a>
+ <img width=200px height=200px src="/anime-page-i/iconAnime.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Anime Page I</h3>
