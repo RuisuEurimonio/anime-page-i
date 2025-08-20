@@ -44,14 +44,14 @@ const ImgZoom = forwardRef(({imgSrc, alt, otherClass = ""}, ref) => {
     return(
         <>
         <div ref={ref} className={"group w-full relative duration-200 hover:border-8 border-white cursor-zoom-in "+otherClass} onClick={handleClic}>
-            <img src={imgSrc} alt={alt +" miniatura"} loading="lazy" decoding="async" className="w-full h-full object-cover"/>
-            <img src="/zoom.svg" alt="Icono de zoom" loading="lazy" decoding="async" className="group-hover:bg-pink-100 duration-200 group-hover:scale-125 absolute bottom-5 right-5 size-10 bg-pink-400 rounded-full p-2" />
+            <img src={import.meta.env.BASE_URL+imgSrc} alt={alt +" miniatura"} loading="lazy" decoding="async" className="w-full h-full object-cover"/>
+            <img src={`${import.meta.env.BASE_URL}/zoom.svg`} alt="Icono de zoom" loading="lazy" decoding="async" className="group-hover:bg-pink-100 duration-200 group-hover:scale-125 absolute bottom-5 right-5 size-10 bg-pink-400 rounded-full p-2" />
         </div>
         {
             showFullImage &&
                 createPortal(
                 <div className="fixed w-screen h-screen inset-0 z-[100] bg-[rgba(18,3,20,0.9)] cursor-zoom-out justify-center items-center" onClick={handleClose}>
-                    <img ref={imgRef} src={imgSrc} loading="lazy" decoding="async" alt={alt +" expandida"} className="absolute object-cover rounded-xl"/> 
+                    <img ref={import.meta.env.BASE_URL+imgRef} src={imgSrc} loading="lazy" decoding="async" alt={alt +" expandida"} className="absolute object-cover rounded-xl"/> 
                 </div>
                 ,document.body)
         }

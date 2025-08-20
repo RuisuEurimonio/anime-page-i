@@ -14,7 +14,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
     const frames = framesVideo
     
     const getFramesSource = (index) => {
-        return `/frames/${keyNameCharacter}/${keyNameCharacter}_${index.toString()}.jpg`
+        return `${import.meta.env.BASE_URL}/frames/${keyNameCharacter}/${keyNameCharacter}_${index.toString()}.jpg`
     }
 
     const handleClickVideo = () =>{
@@ -261,7 +261,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                 sm:flex-row sm:h-[90vh] md:mt-24 md:gap-16 sm:ml-auto
             ">
                 <ImgZoom imgSrc={`/characters/${keyNameCharacter}/${keyNameCharacter}2.jpg`} otherClass="h-8/12" alt={`${keyNameCharacter}'s second image`} ></ImgZoom>
-                <ImgZoom imgSrc={`/characters/${keyNameCharacter}/${keyNameCharacter}3.jpg`} otherClass="h-full" alt={`${keyNameCharacter}'s third image`} ></ImgZoom>
+                <ImgZoom imgSrc={`/characters/${keyNameCharacter}/${keyNameCharacter}3.jpg`}  alt={`${keyNameCharacter}'s third image`} ></ImgZoom>
             </div>
             <div id={`image-container_${keyNameCharacter}`} className="h-[350vh] relative">
                 <div id={`video-container_${keyNameCharacter}`} className="sticky top-0 h-[70vh] w-full grayscale

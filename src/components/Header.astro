@@ -254,7 +254,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
       md:mt-8
       xl:mt-15"
   >
-    <Image src={`/iconAnime.svg`} width={10} height={10} loading={"eager"} alt="Page icon with an anime girl" class="w-10" />
+    <Image src={`${import.meta.env.BASE_URL}/iconAnime.svg`} width={10} height={10} loading={"eager"} alt="Page icon with an anime girl" class="w-10" />
     {showLinks && <ul class="text-white w-full justify-center gap-5 items-center hidden
       md:flex
     ">
@@ -291,7 +291,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
   >
     <div id="iconImages" class="justify-center items-center w-full h-full flex absolute z-30
         md:flex">
-      <Image class="hidden md:block size-96" height={10} width={10} alt="Page icon with an anime girl" src="/iconAnime.svg" />
+      <Image class="hidden md:block size-96" height={10} width={10} alt="Page icon with an anime girl" src={`${import.meta.env.BASE_URL}/iconAnime.svg`} />
     </div>
     <ul class="h-full w-full relative overflow-hidden" id="characterImages">
       <li
@@ -313,7 +313,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/mikasa.jpeg"
+          src={`${import.meta.env.BASE_URL}/characters/mikasa.jpeg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -323,7 +323,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/frieren.jpg"
+          src={`${import.meta.env.BASE_URL}/characters/frieren.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -333,7 +333,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/hinata.jpg"
+          src={`${import.meta.env.BASE_URL}/characters/hinata.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -343,7 +343,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/rukia.jpg"
+          src={`${import.meta.env.BASE_URL}/characters/rukia.jpg`}
         />
       </li>
       <li
@@ -355,7 +355,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/zero.jpg"
+          src={`${import.meta.env.BASE_URL}/characters/zero.jpg`}
         />
       </li>
       <li
@@ -367,7 +367,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/motoko.jpg"
+          src={`${import.meta.env.BASE_URL}/characters/motoko.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -377,7 +377,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/characters/nao.jpg"
+          src={`${import.meta.env.BASE_URL}/characters/nao.jpg`}
         />
       </li>
     </ul>
@@ -395,7 +395,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/animes/leveling.jpg"
+          src={`${import.meta.env.BASE_URL}/animes/leveling`}jpg`
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -405,7 +405,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/animes/kaijuu.jpg"
+          src={`${import.meta.env.BASE_URL}/animes/kaijuu`}jpg`
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -415,7 +415,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/animes/jujutsu.png"
+          src={`${import.meta.env.BASE_URL}/animes/jujutsu`}png`
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -425,7 +425,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/animes/chainsaw.jpg"
+          src={`${import.meta.env.BASE_URL}/animes/chainsaw`}jpg`
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -435,7 +435,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/animes/mashle.jpg"
+          src={`${import.meta.env.BASE_URL}/animes/mashle`}jpg`
         />
       </li>
       <li
@@ -447,7 +447,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src="/animes/Oshi.jpeg"
+          src={`${import.meta.env.BASE_URL}/animes/Oshi`}jpeg`
         />
       </li>
     </ul>
@@ -671,8 +671,8 @@ import { sendToGsap } from "../scripts/indexToScroll";
         class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
         id="language"
       >
-        <Image class="w-5" src="/language.svg" height={50} width={50} alt="icon of languages menu"/> Español.
-        <Image class="w-5 md:rotate-180" src="/arrow.svg" height={50} width={50} id="arrowLanguage" alt="arrow icon of the languages menu" />
+        <Image class="w-5" src={`${import.meta.env.BASE_URL}/language.svg`} height={50} width={50} alt="icon of languages menu"/> Español.
+        <Image class="w-5 md:rotate-180" src={`${import.meta.env.BASE_URL}/arrow.svg`} height={50} width={50} id="arrowLanguage" alt="arrow icon of the languages menu" />
       </li>
       <div
         id="listLanguages"
@@ -742,7 +742,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
       >
         Animación <Image
           class="w-5 md:rotate-180"
-          src="/arrow.svg"
+          src={`${import.meta.env.BASE_URL}/arrow.svg`}
           id="motionArrow"
           height={50}
           width={50}

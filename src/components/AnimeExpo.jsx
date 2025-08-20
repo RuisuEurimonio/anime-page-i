@@ -216,11 +216,11 @@ const AnimeExpo = ({ keyName, idNavbar = keyName, fileName = keyName, fullName, 
                         <div className="col-span-1 row-span-1 hidden
                             md:block
                         "></div>
-                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}1.jpg`} alt={`First collage image about ${fullName} anime`} otherClass="col-span-1 row-span-1 h-full w-full object-cover
+                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}1.jpg`} alt={`First collage image about ${fullName} anime`} otherClass="col-span-1 row-span-1 object-cover
                         " />
-                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}2.jpg`} alt={`Second collage image about ${fullName} anime`} otherClass="col-span-1  row-span-1 h-[80vh] place-self-center w-full object-cover
+                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}2.jpg`} alt={`Second collage image about ${fullName} anime`} otherClass="col-span-1  row-span-1 h-[80vh] place-self-center object-cover
                         md:row-span-3" />
-                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}3.jpg`} alt={`Third collage image about ${fullName} anime`} otherClass="col-span-1  row-span-1 h-full w-[90vh] object-cover
+                        <ImgZoom imgSrc={`/animes/${keyName}/${fileName}3.jpg`} alt={`Third collage image about ${fullName} anime`} otherClass="col-span-1  row-span-1 w-[90vh] object-cover
                             md:h-full md:col-span-2 md:row-span-2
                         " />
                     </div>

@@ -162,21 +162,21 @@ const SailorMoonBottom = () => {
                     <div className="h-full w-full relative
                     sm:col-span-2
                 ">
-                        <ImgZoom ref={imgRef1} otherClass="w-full h-full
+                        <ImgZoom ref={imgRef1} otherClass="
                         sm:11/12 sm:absolute 
                         md:mt-20
                     " imgSrc="/characters/sailormoon/sailor4.jpg"
                             alt="First Sailor's second image" />
                     </div>
-                    <ImgZoom otherClass="h-full my-5 w-full h-full
+                    <ImgZoom otherClass="h-full my-5 
                     sm:row-span-2 sm:col-span-1
-                    md:my-0 md:h-10/12 md:my-auto 
+                    md:my-0 md:h-10/12 
                 " imgSrc="/characters/sailormoon/sailor5.jpg"
                         alt="Second Sailor's second image" />
                     <div></div>
 
                     <div></div>
-                    <ImgZoom ref={imgRef3} otherClass="h-full w-full
+                    <ImgZoom ref={imgRef3} otherClass="
                 sm:row-span-1 sm:col-span-1 md:mt-20
                 " imgSrc="/characters/sailormoon/sailor6.jpg" alt="Third Sailor's second image" />
                 </div>
