@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 const frames = 39;
 const getFramesSource = (index) => {
-    return `/frames/frieren2/frieren_${index.toString()}.jpg`
+    return `${import.meta.env.BASE_URL}/frames/frieren2/frieren_${index.toString()}.jpg`
 }
 
 gsap.registerPlugin(ScrollTrigger)

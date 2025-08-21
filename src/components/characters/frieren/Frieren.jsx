@@ -4,7 +4,7 @@ import ImgZoom from "../../ImgZoom";
 
 const frames = 34;
 const getFramesSource = (index) => {
-    return `/frames/frieren/frieren_${index.toString()}.jpg`
+    return `${import.meta.env.BASE_URL}/frames/frieren/frieren_${index.toString()}.jpg`
 }
 
 gsap.registerPlugin(ScrollTrigger)
