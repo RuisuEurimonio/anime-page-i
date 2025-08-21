@@ -9,6 +9,7 @@ const {showLinks = false, active = "home"} = Astro.props;
 
 <script>
   import { gsap } from "gsap";
+  import "../scripts/menu.js";
   import {
     animePlayAnimation,
     highPlayAnimation,
@@ -395,7 +396,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/leveling`}.jpg`
+          src={`${import.meta.env.BASE_URL}/animes/leveling.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -405,7 +406,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/kaijuu`}.jpg`
+          src={`${import.meta.env.BASE_URL}/animes/kaijuu.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -415,7 +416,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/jujutsu`}.png`
+          src={`${import.meta.env.BASE_URL}/animes/jujutsu.png`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -425,7 +426,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/chainsaw`}.jpg`
+          src={`${import.meta.env.BASE_URL}/animes/chainsaw.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -435,7 +436,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/mashle`}.jpg`
+          src={`${import.meta.env.BASE_URL}/animes/mashle.jpg`}
         />
       </li>
       <li
@@ -447,7 +448,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/Oshi`}.jpeg`
+          src={`${import.meta.env.BASE_URL}/animes/Oshi.jpeg`}
         />
       </li>
     </ul>
@@ -466,12 +467,10 @@ import { sendToGsap } from "../scripts/indexToScroll";
     >
       <li
         id="characters"
-        class="flex items-center justify-center"  
+        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
+          md:py-3 md:px-5"  
       >
-        <a href={`${import.meta.env.BASE_URL}`} class="py-1 px-3 cursor-pointer  hover:bg-white hover:text-black duration-200 rounded-4xl bg-white text-black
-        md:py-3 md:px-5">
           Personajes.
-        </a>
       </li>
       <li
         id="animes"

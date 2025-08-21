@@ -10,6 +10,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: "https://ruisueurimonio.github.io/",
   base: "/anime-page-i",
+  //base: ".",
   vite: {
       plugins: [tailwindcss()],
   },
