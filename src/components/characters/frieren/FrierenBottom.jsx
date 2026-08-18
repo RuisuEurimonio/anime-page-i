@@ -129,7 +129,7 @@ const FrierenBottom = () => {
         ref={imgStatic}
         className="h-[120vh] w-full"
         style={{
-          backgroundImage: "url('/characters/frieren/frieren4.jpg')",
+          backgroundImage: `url('${import.meta.env.BASE_URL}characters/frieren/frieren4.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           

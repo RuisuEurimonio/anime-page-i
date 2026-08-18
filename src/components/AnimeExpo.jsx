@@ -133,7 +133,7 @@ const AnimeExpo = ({ keyName, idNavbar = keyName, fileName = keyName, fullName, 
         setBgStyle({
             backgroundImage: `
       linear-gradient(${gradientDirection}, rgba(0, 0, 0, 0.8) 10%, rgb(18,3,20) ${gradientDirection === "to right" ? "50%" : "80%"}, rgb(18,3,20) 100%),
-      url('/animes/${keyName}/${fileName}_bg.jpg')
+      url('${import.meta.env.BASE_URL}animes/${keyName}/${fileName}_bg.jpg')
     `
         });
     }, []);

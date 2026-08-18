@@ -237,7 +237,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                 <div className="h-[160vh] w-full"
                     ref={imgStatic}
                     style={{
-                        backgroundImage: `url('/characters/${keyNameCharacter}/${keyNameCharacter}1.jpg')`,
+                        backgroundImage: `url('${import.meta.env.BASE_URL}characters/${keyNameCharacter}/${keyNameCharacter}1.jpg')`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                     }}
@@ -273,7 +273,7 @@ const CharacterPageStyleTwo = ({keyNameCharacter, framesVideo, fullName ,mainQuo
                     <span id={`pointVideoContainerRef_${keyNameCharacter}`} className="w-5 h-32 rounded-full absolute bottom-5 right-0 mr-5 bg-gray-700 border-4 border-gray-700 flex justify-center overflow-hidden">
                         <span id={`pointVideoRef_${keyNameCharacter}`} className="w-2.5 block h-full translate-y-[95%] bg-white rounded-full"></span>
                         <div className="hidden opacity-0 size-10 p-1.5 justify-center items-center" id={`refreshVideoRef_${keyNameCharacter}`}>
-                            <img  src="/refresh.svg" className="w-full h-full" loading="lazy" decoding="async" alt="Refresh video icon" />
+                            <img src={`${import.meta.env.BASE_URL}/refresh.svg`} className="w-full h-full" loading="lazy" decoding="async" alt="Refresh video icon" />
                         </div>
                     </span>
 
