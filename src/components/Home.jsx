@@ -35,6 +35,7 @@ const Home =  () => {
                 end: "+=2500",
                 scrub: 0.3,
                 pin: true,
+                invalidateOnRefresh: true,
             }
         })
 
@@ -84,16 +85,16 @@ const Home =  () => {
         }, "<")
 
         tl.to(textChildRef.current, {
-            fontSize: window.innerWidth > 768 ? "60" : "48",
+            fontSize: () => window.innerWidth > 768 ? "60" : "48",
             attr: {
-                y: window.innerWidth > 768 ? "25%" : "28%",
+                y: () => window.innerWidth > 768 ? "25%" : "28%",
                 },
             ease: "expo.out",
             duration: secondPartTime
         }).to(whiteSvgRef.current, {
-            fontSize: window.innerWidth > 768 ? "60" : "48",
+            fontSize: () => window.innerWidth > 768 ? "60" : "48",
             attr: {
-                y: window.innerWidth > 768 ? "25%" : "28%",
+                y: () => window.innerWidth > 768 ? "25%" : "28%",
                 },
             ease: "expo.out",
             duration: secondPartTime
@@ -107,7 +108,7 @@ const Home =  () => {
         const scaleValue = 0.9
 
         tl.to(whiteSvgRef.current,{
-            fontSize: window.innerWidth > 768 ? "50" : "38",
+            fontSize: () => window.innerWidth > 768 ? "50" : "38",
             duration: thirdtPartTime / 2
         }).to(imageIcon.current,{
             scale: scaleValue,

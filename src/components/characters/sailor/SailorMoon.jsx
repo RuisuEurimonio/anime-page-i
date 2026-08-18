@@ -96,9 +96,9 @@ const SailorMoon = () => {
     }, [images])
 
     return (
-        <div className="relative">
-            <div id="image-container_sailor" className="h-[400vh] w-full absolute top-[-70vh] bg-[rgb(18,3,20)] z-0 opacity-0">
-                <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" alt="Secuence of imagenes about the Sailor's video" />
+        <div className="relative isolate">
+            <div id="image-container_sailor" className="h-[400vh] w-full absolute top-0 bg-[rgb(18,3,20)] z-0 opacity-0 pointer-events-none">
+                <img ref={imgRef} src={getFramesSource(1)} className="fixed inset-0 w-full h-screen object-cover" alt="Secuence of imagenes about the Sailor's video" />
             </div>
             <div className="pt-[180vh]">
                 <div id="text-container_sailor" className="text-white z-10 relative px-10
@@ -133,7 +133,7 @@ const SailorMoon = () => {
                         />
                     </div>
                     <div></div>
-                    <ImgZoom otherClass="h-full my-5 fixed w-full h-full
+                    <ImgZoom otherClass="h-full my-5 relative w-full
                         sm:row-span-2 sm:col-span-1
                         md:my-0
                     " imgSrc="/characters/sailormoon/sailor2.jpg"

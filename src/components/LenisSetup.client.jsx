@@ -1,43 +1,75 @@
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
 import { ScrollTrigger } from "../scripts/gsapConfig";
+import { gsap } from "../scripts/gsapConfig";
 
-const LenisSetup = ({ children }) => {
+const LenisSetup = () => {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      smooth: true,
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smoothTouch: false
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
     });
 
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    const updateLenis = (time) => {
+      // GSAP trabaja en segundos y Lenis espera milisegundos.
+      lenis.raf(time * 1000);
     };
-    requestAnimationFrame(raf);
 
-    ScrollTrigger.scrollerProxy(document.body,{
-      scrollTop(value){
-        return arguments.length ? lenis.scrollTo(value) : lenis.scroll.instance.scroll.y
-      },
-      getBoundingClientRect(){
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight
-        }
-      },
-      pinType: document.body.style.transform ? "transform" : "fixed"
-    })
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
 
-    ScrollTrigger.addEventListener("refresh", ()=> lenis.update())
-    ScrollTrigger.refresh()
-  },[])
+    let refreshTimer;
+    let lastDocumentHeight = 0;
 
-  return <>{ children }</>;
+    const refresh = () => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+      lastDocumentHeight = document.documentElement.scrollHeight;
+    };
+
+    // Agrupa los cambios de layout provocados por hidratacion, imagenes y fuentes.
+    const scheduleRefresh = () => {
+      window.clearTimeout(refreshTimer);
+      refreshTimer = window.setTimeout(refresh, 120);
+    };
+
+    const onLoad = () => scheduleRefresh();
+    const onResize = () => scheduleRefresh();
+    const onAssetLoad = (event) => {
+      if (event.target instanceof HTMLImageElement) scheduleRefresh();
+    };
+
+    const resizeObserver = new ResizeObserver(() => {
+      const documentHeight = document.documentElement.scrollHeight;
+
+      if (documentHeight !== lastDocumentHeight) {
+        scheduleRefresh();
+      }
+    });
+
+    window.addEventListener("load", onLoad);
+    window.addEventListener("resize", onResize);
+    document.addEventListener("load", onAssetLoad, true);
+    resizeObserver.observe(document.body);
+    document.fonts?.ready.then(scheduleRefresh);
+    refresh();
+
+    return () => {
+      window.clearTimeout(refreshTimer);
+      window.removeEventListener("load", onLoad);
+      window.removeEventListener("resize", onResize);
+      document.removeEventListener("load", onAssetLoad, true);
+      resizeObserver.disconnect();
+      gsap.ticker.remove(updateLenis);
+      lenis.off("scroll", ScrollTrigger.update);
+      lenis.destroy();
+    };
+  }, []);
+
+  return null;
 };
 
 export default LenisSetup;

@@ -96,9 +96,9 @@ const MikasaBottom = () => {
     }, [images])
 
     return (
-        <div className="relative">
-            <div id="image-container_mikasaBottom" className="h-[400vh] w-full absolute top-[-450px] bg-[rgb(18,3,20)] z-0 opacity-0">
-                <img ref={imgRef} src={getFramesSource(1)} alt="Secuence of imagenes from Mikasa's second video" className="sticky top-0 w-full h-screen object-cover" />
+        <div className="relative isolate">
+            <div id="image-container_mikasaBottom" className="h-[400vh] w-full absolute top-0 bg-[rgb(18,3,20)] z-0 opacity-0 pointer-events-none">
+                <img ref={imgRef} src={getFramesSource(1)} alt="Secuence of imagenes from Mikasa's second video" className="fixed inset-0 w-full h-screen object-cover" />
             </div>
             <div className="pt-[200vh]
                 sm:pt-[180vh]

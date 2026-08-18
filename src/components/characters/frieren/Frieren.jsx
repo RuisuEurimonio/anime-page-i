@@ -96,11 +96,9 @@ const Frieren = () => {
     }, [images])
 
     return (
-        <div className="relative">
-            <div id="image-container_frieren" className="h-[400vh] w-full absolute top-[-40vh] bg-[rgb(18,3,20)] z-0 opacity-0
-                sm:top-[-70vh]
-            ">
-                <img ref={imgRef} alt="secuence of images from Frieren's video" src={getFramesSource(1)} loading="eager" className="sticky top-0 w-full h-screen object-cover" />
+        <div className="relative isolate">
+            <div id="image-container_frieren" className="h-[400vh] w-full absolute top-0 bg-[rgb(18,3,20)] z-0 opacity-0 pointer-events-none">
+                <img ref={imgRef} alt="secuence of images from Frieren's video" src={getFramesSource(1)} loading="eager" className="fixed inset-0 w-full h-screen object-cover" />
             </div>
             <div className="pt-[250vh]
                 sm:pt-[180vh]
@@ -128,7 +126,7 @@ const Frieren = () => {
                             sm:h-11/12 sm:absolute
                         " imgSrc="/characters/frieren/frieren1.jpg" alt="First image about Frieren character" />
                     </div>
-                    <ImgZoom otherClass="h-full my-5 fixed w-full object-top
+                    <ImgZoom otherClass="h-full my-5 relative w-full object-top
                         sm:row-span-2 sm:col-span-2 
                         md:my-0 md:h-9/12
                     " imgSrc="/characters/frieren/frieren2.jpg" alt="Second image about Frieren character" />

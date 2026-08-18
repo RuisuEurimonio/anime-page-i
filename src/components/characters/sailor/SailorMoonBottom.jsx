@@ -128,9 +128,9 @@ const SailorMoonBottom = () => {
     }, [images])
 
     return (
-        <div className="relative">
-            <div id="image-container_sailorBottom" className="h-[400vh] w-full absolute top-[-500px] bg-[rgb(18,3,20)] z-0 opacity-0">
-                <img ref={imgRef} src={getFramesSource(1)} className="sticky top-0 w-full h-screen object-cover" alt="Secuence of imagenes about the second Sailor's video" />
+        <div className="relative isolate">
+            <div id="image-container_sailorBottom" className="h-[400vh] w-full absolute top-0 bg-[rgb(18,3,20)] z-0 opacity-0 pointer-events-none">
+                <img ref={imgRef} src={getFramesSource(1)} className="fixed inset-0 w-full h-screen object-cover" alt="Secuence of imagenes about the second Sailor's video" />
                 <h2 id="aux-title_sailorBottom" className="fixed text-5xl uppercase font-bold text-pink-500 bottom-8 ml-[calc(2.5rem)] pr-10 opacity-0
                     md:text-6xl md:ml-[calc(12vw+2.5rem)] md:pr-0"> "Conejo de la Luna"  </h2>
             </div>

@@ -93,23 +93,23 @@ const FrierenBottom = () => {
     }, [images])
 
     return (
-  <div className="relative">
+  <div className="relative isolate">
     <div
       id="image-container_frierenBottom"
-      className="h-[400vh] w-full absolute top-[-450px] bg-[rgb(18,3,20)] z-0 opacity-0"
+      className="h-[400vh] w-full absolute top-0 bg-[rgb(18,3,20)] z-0 opacity-0 pointer-events-none"
     >
       <img
         ref={imgRef}
         src={getFramesSource(1)}
         alt="Sequence of images from Frieren's second video"
-        className="sticky top-0 w-full h-screen object-cover"
+        className="fixed inset-0 w-full h-screen object-cover"
       />
     </div>
 
     <div className="pt-[230vh] sm:pt-[280vh]">
       <div
         id="text-container_frierenBottom"
-        className="h-screen w-full relative flex justify-center items-center"
+        className="h-screen w-full relative z-10 flex justify-center items-center"
       >
         <h3
           ref={textRef}
