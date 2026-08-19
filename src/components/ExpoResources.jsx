@@ -66,7 +66,7 @@ const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElem
     }
 
     const DownloadAllElement = ({extraClass = ""}) =>{
-        return (<a className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`} download href={srcAll}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src={`${import.meta.env.BASE_URL}/down.svg`} loading="lazy" alt="download all icon"/> </span> </a>)
+        return (<a className={`text-base cursor-pointer text-fuchsia-400/90 hover:text-fuchsia-400 ${extraClass}`} download href={srcAll}> Descargar todo <span> <img className="text-fuchsia-400 size-4 rotate-90 inline-block" src={`${import.meta.env.BASE_URL}down.svg`} loading="lazy" alt="download all icon"/> </span> </a>)
     }
 
     const ElementList = ({element}) => {
@@ -74,8 +74,8 @@ const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElem
                     md:w-full
                 " onClick={()=>{isPage ? handleVisitPage(element?.pageUrl) : handleOpenModal(element?.name, "1 Tamaño", element?.imageUrl, element?.url)} }>
                     <div className="h-9/12 relative flex justify-center items-center">
-                        <img className="w-full h-full object-cover" src={import.meta.env.BASE_URL+element?.imageUrl} loading={seeAllLink === "" ? "eager" : "lazy"} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
-                        <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={`${import.meta.env.BASE_URL}/play.svg`} loading={seeAllLink === "" ? "eager" : "lazy"} alt="play icon"/> </span>
+                        <img className="w-full h-full object-cover" src={import.meta.env.BASE_URL + element?.imageUrl.replace(/^\/+/, "")} loading={seeAllLink === "" ? "eager" : "lazy"} alt={"Imagen promocional, fanArt o extracción del anime: "+element?.name +""}></img>
+                        <span className="absolute size-12 bg-white/50 p-2 rounded-full"> <img src={`${import.meta.env.BASE_URL}play.svg`} loading={seeAllLink === "" ? "eager" : "lazy"} alt="play icon"/> </span>
                     </div>
                     <h3 className="w-11/12 mx-auto text-white mt-2 text-base
                         md:text-lg
@@ -96,7 +96,7 @@ const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElem
                     {!isPage && <DownloadAllElement extraClass="hidden md:block" />}
                     {!fullView && <a className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
                         md:py-2 md:px-4
-                    " href={import.meta.env.BASE_URL+"/download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src={`${import.meta.env.BASE_URL}/arrow.svg`} loading={seeAllLink === "" ? "eager" : "lazy"} alt="Arrow see all icon"/> </span> </a>}
+                    " href={import.meta.env.BASE_URL+"download/"+seeAllLink} > <span className="hidden md:inline-block"> Ver todo </span>  <span> <img className="rotate-90 size-6 inline-block" src={`${import.meta.env.BASE_URL}arrow.svg`} loading={seeAllLink === "" ? "eager" : "lazy"} alt="Arrow see all icon"/> </span> </a>}
                 </div>
             </div>
             {!fullView && <ul className="my-5 flex gap-8 flex-col items-center

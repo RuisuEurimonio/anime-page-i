@@ -6,7 +6,7 @@ const Separator = () => {
         ">
             <div className="flex items-center flex-col justify-center
                 md:flex-row md:justify-start
-            "> <img src={`${import.meta.env.BASE_URL}/iconAnime.svg`} alt="anime logo page" className="size-32"/> <span> Animes <br/> Series </span> </div>
+            "> <img src={`${import.meta.env.BASE_URL}iconAnime.svg`} alt="anime logo page" className="size-32"/> <span> Animes <br/> Series </span> </div>
             <p className="text-fuchsia-700 w-11/12 mx-auto
                 md:text-right md:w-5/12
             "> Animes populares que no te puedes perder. </p>

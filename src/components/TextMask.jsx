@@ -40,7 +40,7 @@ export default function AnimeMask({textRef, svgRef, whiteSvgRef}) {
         </defs>
 
         <image
-          href={`${import.meta.env.BASE_URL}/background.webp`}
+          href={`${import.meta.env.BASE_URL}background.webp`}
           width="100%"
           height="100%"
           preserveAspectRatio="xMidYMid slice"

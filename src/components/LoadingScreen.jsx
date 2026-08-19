@@ -47,7 +47,7 @@ const LoadingScreen = () => {
           className="fixed top-0 w-full h-screen z-[9999] bg-[radial-gradient(circle,rgba(18,3,20,1)_99%,rgba(51,20,74,1)_0%)]"
         >
           <div className="flex items-center justify-center w-full h-full">
-            <img src={`${import.meta.env.BASE_URL}/logoAnim.webp`} alt="Logo de la página" className="size-32" />
+            <img src={`${import.meta.env.BASE_URL}logoAnim.webp`} alt="Logo de la página" className="size-32" />
           </div>
         </section>
       )}

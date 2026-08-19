@@ -10,8 +10,8 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
                 <div className="h-9/12
                     md:h-10/12
                 ">
-                    {!isVideo && <img className="bg-black w-full object-cover h-full" src={import.meta.env.BASE_URL+urlImage} alt={`${nameElement} image`} />}
-                    {isVideo && <video className="w-full object-cover h-full bg-black" src={import.meta.env.BASE_URL+urlVideo} controls/> }
+                    {!isVideo && <img className="bg-black w-full object-cover h-full" src={import.meta.env.BASE_URL + urlImage.replace(/^\/+/, "")} alt={`${nameElement} image`} />}
+                    {isVideo && <video className="w-full object-cover h-full bg-black" src={import.meta.env.BASE_URL + urlVideo.replace(/^\/+/, "")} controls/> }
                 </div>
                 <div className="h-3/12 w-10/12 mx-auto flex justify-center gap-3  flex-col
                     md:h-2/12 md:flex-row md:justify-between md:items-center
@@ -28,7 +28,7 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
                         <span className="inline-block">
                             <img
                             className="size-4 mr-2 rotate-90"
-                            src={`${import.meta.env.BASE_URL}/arrow2.svg`}
+                            src={`${import.meta.env.BASE_URL}arrow2.svg`}
                             alt="Button for download this video or image"
                             loading="lazy"
                             decoding="async"
@@ -40,7 +40,7 @@ const ExpoElement = React.forwardRef(({nameElement, isVideo = false, sizes, urlI
             </div>
             <button onClick={handleClose} className="cursor-pointer absolute top-3 right-10
                 md:top-15
-            "> <img className="size-10 p-2 bg-gray-700/40 rounded-full" src={`${import.meta.env.BASE_URL}/xmark.svg`} loading="lazy" decoding="async" alt="Button to close the display modal"/> </button>
+            "> <img className="size-10 p-2 bg-gray-700/40 rounded-full" src={`${import.meta.env.BASE_URL}xmark.svg`} loading="lazy" decoding="async" alt="Button to close the display modal"/> </button>
         </div>
     )
 })

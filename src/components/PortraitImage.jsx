@@ -27,7 +27,7 @@ const PortraitImage = ({ keyName, fileName, fullName, fatherContainer = "", hand
     },[])
 
     return (
-        <img ref={imgRef} src={`${import.meta.env.BASE_URL}/animes/${keyName}/${fileName}.jpg`} alt={`${minimal ? "small" : ""} portrait image from ${fullName} anime`} className={`h-full w-full object-cover ${minimal ? "border-4 border-white md:border-[12px] m-4" : ""}
+        <img ref={imgRef} src={`${import.meta.env.BASE_URL}animes/${keyName}/${fileName}.jpg`} alt={`${minimal ? "small" : ""} portrait image from ${fullName} anime`} className={`h-full w-full object-cover ${minimal ? "border-4 border-white md:border-[12px] m-4" : ""}
                 
             `} style={{ transform: minimal ? "rotate(-6deg)" : "scale(1)" }} onClick={minimal ? null : handleOpenModal} />
     )

@@ -255,21 +255,21 @@ import { sendToGsap } from "../scripts/indexToScroll";
       md:mt-8
       xl:mt-15"
   >
-    <Image src={`${import.meta.env.BASE_URL}/iconAnime.svg`} width={10} height={10} loading={"eager"} alt="Page icon with an anime girl" class="w-10" />
+    <Image src={`${import.meta.env.BASE_URL}iconAnime.svg`} width={10} height={10} loading={"eager"} alt="Page icon with an anime girl" class="w-10" />
     {showLinks && <ul class="text-white w-full justify-center gap-5 items-center hidden
       md:flex
     ">
             <li
-            > <a class={`${active === "download" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}/download`}> Todo.  </a> </li>
+            > <a class={`${active === "download" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}download`}> Todo.  </a> </li>
             <li 
-            > <a class={`${active === "videos" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}/download/videos`}> Videos. </a>  </li>
+            > <a class={`${active === "videos" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}download/videos`}> Videos. </a>  </li>
             <li 
-            > <a class={`${active === "pictures" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}/download/pictures`}> Imagenes. </a>  </li>
+            > <a class={`${active === "pictures" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}download/pictures`}> Imagenes. </a>  </li>
             <li 
-            > <a class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}/download/resources`}> Recursos. </a>  </li>
+            > <a class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}download/resources`}> Recursos. </a>  </li>
         </ul>}
     <Image
-      src={`${import.meta.env.BASE_URL}/menu.svg`}
+      src={`${import.meta.env.BASE_URL}menu.svg`}
       alt="icon of menu"
       id="menuIcon"
       height={10}
@@ -277,7 +277,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
       class="menu_icon z-[60] cursor-pointer absolute right-0 top-3 w-10 md:right-8"
     />
     <Image
-      src={`${import.meta.env.BASE_URL}/xmark.svg`}
+      src={`${import.meta.env.BASE_URL}xmark.svg`}
       alt="icon for close the menu"
       id="xIcon"
       height={10}
@@ -292,7 +292,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
   >
     <div id="iconImages" class="justify-center items-center w-full h-full flex absolute z-30
         md:flex">
-      <Image class="hidden md:block size-96" height={10} width={10} alt="Page icon with an anime girl" src={`${import.meta.env.BASE_URL}/iconAnime.svg`} />
+      <Image class="hidden md:block size-96" height={10} width={10} alt="Page icon with an anime girl" src={`${import.meta.env.BASE_URL}iconAnime.svg`} />
     </div>
     <ul class="h-full w-full relative overflow-hidden" id="characterImages">
       <li
@@ -304,7 +304,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/sailormoon.jpeg`}
+          src={`${import.meta.env.BASE_URL}characters/sailormoon.jpeg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -314,7 +314,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/mikasa.jpeg`}
+          src={`${import.meta.env.BASE_URL}characters/mikasa.jpeg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -324,7 +324,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/frieren.jpg`}
+          src={`${import.meta.env.BASE_URL}characters/frieren.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -334,7 +334,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/hinata.jpg`}
+          src={`${import.meta.env.BASE_URL}characters/hinata.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -344,7 +344,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/rukia.jpg`}
+          src={`${import.meta.env.BASE_URL}characters/rukia.jpg`}
         />
       </li>
       <li
@@ -356,7 +356,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/zero.jpg`}
+          src={`${import.meta.env.BASE_URL}characters/zero.jpg`}
         />
       </li>
       <li
@@ -368,7 +368,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/motoko.jpg`}
+          src={`${import.meta.env.BASE_URL}characters/motoko.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -378,7 +378,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/characters/nao.jpg`}
+          src={`${import.meta.env.BASE_URL}characters/nao.jpg`}
         />
       </li>
     </ul>
@@ -396,7 +396,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/leveling.jpg`}
+          src={`${import.meta.env.BASE_URL}animes/leveling.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -406,7 +406,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/kaijuu.jpg`}
+          src={`${import.meta.env.BASE_URL}animes/kaijuu.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -416,7 +416,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/jujutsu.png`}
+          src={`${import.meta.env.BASE_URL}animes/jujutsu.png`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -426,7 +426,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/chainsaw.jpg`}
+          src={`${import.meta.env.BASE_URL}animes/chainsaw.jpg`}
         />
       </li>
       <li class="absolute w-[200%] object-cover top-0 left-[-5rem]">
@@ -436,7 +436,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/mashle.jpg`}
+          src={`${import.meta.env.BASE_URL}animes/mashle.jpg`}
         />
       </li>
       <li
@@ -448,7 +448,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
           class="relative h-[100vh] w-[100vw] opacity-0"
           height={1080}
           width={1920}
-          src={`${import.meta.env.BASE_URL}/animes/Oshi.jpeg`}
+          src={`${import.meta.env.BASE_URL}animes/Oshi.jpeg`}
         />
       </li>
     </ul>
@@ -626,13 +626,13 @@ import { sendToGsap } from "../scripts/indexToScroll";
       class="font-bold flex-col w-full h-9/12 gap-4 overflow-x-auto tracking-tighter opacity-0 hidden justify-start items-stretch"
     >
       <li class="w-11/12 max-h-[15.5rem]">
-        <a href={`${import.meta.env.BASE_URL}/download/videos`} class="w-full h-full">
+        <a href={`${import.meta.env.BASE_URL}download/videos`} class="w-full h-full">
           <SimpleCard title="Vídeos" srcImage="videos.jpg" link="videos"/>
           <span class="sr-only">Descargar recursos de arte y fondos</span>
         </a>
       </li>
       <li class="w-11/12 max-h-[15.5rem]">
-        <a href={`${import.meta.env.BASE_URL}/download/pictures`} class="w-full h-full">
+        <a href={`${import.meta.env.BASE_URL}download/pictures`} class="w-full h-full">
           <SimpleCard
             title="Imagenes"
             srcImage="capturas.jpg"
@@ -642,7 +642,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
         </a>
       </li>
       <li class="w-11/12 max-h-[15.5rem]">
-        <a href={`${import.meta.env.BASE_URL}/download/resources`} class="w-full h-full">
+        <a href={`${import.meta.env.BASE_URL}download/resources`} class="w-full h-full">
           <SimpleCard
             title="Recursos"
             srcImage="arte.jpg"
@@ -655,11 +655,11 @@ import { sendToGsap } from "../scripts/indexToScroll";
         <a
           class="flex items-center gap-2 bg-[rgb(32,0,38)] py-2 px-4 cursor-pointer rounded-3xl text-base text-white
           lg:text-lg lg:font-extrabold lg:py-4 lg:pl-8"
-          href={`${import.meta.env.BASE_URL}/download`}
+          href={`${import.meta.env.BASE_URL}download`}
         >
           <p>Ver todas las descargas</p>
           <svg class="size-4 object-cover font-bold">
-            <use href={`${import.meta.env.BASE_URL}/arrow2.svg`}></use>
+            <use href={`${import.meta.env.BASE_URL}arrow2.svg`}></use>
           </svg>
         </a>
       </li>
@@ -670,8 +670,8 @@ import { sendToGsap } from "../scripts/indexToScroll";
         class="flex gap-2 text-white font-bold items-center cursor-pointer z-40"
         id="language"
       >
-        <Image class="w-5" src={`${import.meta.env.BASE_URL}/language.svg`} height={50} width={50} alt="icon of languages menu"/> Español.
-        <Image class="w-5 md:rotate-180" src={`${import.meta.env.BASE_URL}/arrow.svg`} height={50} width={50} id="arrowLanguage" alt="arrow icon of the languages menu" />
+        <Image class="w-5" src={`${import.meta.env.BASE_URL}language.svg`} height={50} width={50} alt="icon of languages menu"/> Español.
+        <Image class="w-5 md:rotate-180" src={`${import.meta.env.BASE_URL}arrow.svg`} height={50} width={50} id="arrowLanguage" alt="arrow icon of the languages menu" />
       </li>
       <div
         id="listLanguages"
@@ -741,7 +741,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
       >
         Animación <Image
           class="w-5 md:rotate-180"
-          src={`${import.meta.env.BASE_URL}/arrow.svg`}
+          src={`${import.meta.env.BASE_URL}arrow.svg`}
           id="motionArrow"
           height={50}
           width={50}
