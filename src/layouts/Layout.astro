@@ -4,18 +4,56 @@ import "../../global.css";
 import Footer from "../components/Footer";
 import LoadingScreen from "../components/LoadingScreen"
 
-const {showHeaderLinks = false, active = "/", isSecondPage = false} = Astro.props;
+const {
+	showHeaderLinks = false,
+	active = "/",
+	isSecondPage = false,
+	title = "Anime Page | Personajes, historias y escenas de anime",
+	description = "Descubre personajes icónicos, historias, escenas y recursos de anime en una experiencia visual interactiva creada por Luis Linares.",
+	socialImage = "/background.webp",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(socialImage, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.ico`} />
-		<meta name="description" content="Descubre los animes más populares y conoce a sus personajes icónicos. Explora historias, curiosidades y momentos memorables que cautivan a millones de fans en todo el mundo.">
+
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href={`${import.meta.env.BASE_URL}favicon.ico`}
+		/>
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta name="description" content={description} />
+		<meta name="author" content="Luis Felipe Linares Perdomo" />
+
+		<meta name="theme-color" content="#120314" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_CO" />
+		<meta property="og:site_name" content="Anime Page" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={socialImageURL} />
+		<meta
+			property="og:image:alt"
+			content="Vista principal de Anime Page"
+		/>
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageURL} />
+
 		<meta name="generator" content={Astro.generator} />
-		<title> Anime Page </title>
+		<title> {title} </title>
 	</head>
 	<body>
 		<LoadingScreen client:load/>
