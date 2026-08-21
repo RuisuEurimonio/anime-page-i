@@ -170,10 +170,10 @@ const Home =  () => {
         <div id="wrapper-container" className="w-full h-screen relative overflow-hidden">
             <div id="main-container" className="w-full h-screen relative overflow-hidden">
                 <img ref={backgroundRef} src={`${import.meta.env.BASE_URL}background.webp`} alt="background image" className="object-cover w-full h-full z-0 scale-125" />
-                <h2 ref={textRef} className="z-0 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white translate-y-36 text-5xl
+                <h1 ref={textRef} className="z-0 absolute top-10 left-0 right-0 mx-auto text-center uppercase font-extrabold text-white translate-y-36 text-5xl
                     sm:text-6xl
                     lg:text-8xl lg:translate-y-0
-                "> Anime <br /> Page </h2>
+                "> Anime <br /> Page </h1>
                 <img ref={characterRef} src={`${import.meta.env.BASE_URL}character.png`} alt="background image" className="absolute left-0 top-0 w-full h-full object-cover z-5 scale-125" />
                 <img ref={iconRef} src={`${import.meta.env.BASE_URL}play.svg`} alt="play icon" className="z-0 absolute top-0 right-0 left-0 bottom-0 m-auto size-16 bg-white p-3 rounded-full duration-200 cursor-pointer hover:scale-105
                     md:p-8 md:size-32

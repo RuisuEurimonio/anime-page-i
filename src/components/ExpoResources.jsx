@@ -91,7 +91,7 @@ const ExpoResources = ({mainTitle, srcAll, seeAllLink = "", count = 3, firstElem
             md:w-8/12
         ">
             <div className="flex justify-between">
-                <h2 className="text-white text-2xl font-bold"> {mainTitle} <span className="border text-sm ml-5 border-gray-600/40 py-1 px-2">  {count ? count : 70} </span></h2>
+                <h1 className="text-white text-2xl font-bold"> {mainTitle} <span className="border text-sm ml-5 border-gray-600/40 py-1 px-2">  {count ? count : 70} </span></h1>
                 <div className="flex items-center gap-6 ">
                     {!isPage && <DownloadAllElement extraClass="hidden md:block" />}
                     {!fullView && <a className="py-1 px-1 bg-gray-600/40 hover:bg-gray-600/60 duration-300 cursor-pointer rounded-4xl text-white
