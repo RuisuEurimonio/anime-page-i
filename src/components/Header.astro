@@ -39,6 +39,10 @@ import { sendToGsap } from "../scripts/indexToScroll";
   const sidebar = document.getElementById("sidebar");
   const sidebarImages = document.getElementById("sidebarImages");
 
+  //NavbarButtons
+  const menuButton = document.getElementById("menuButton");
+  const closeMenuButton = document.getElementById("closeMenuButton");
+
   //motionAnimations
   const movementInputContainer = document.getElementById(
     "movementInputContainer"
@@ -169,14 +173,35 @@ import { sendToGsap } from "../scripts/indexToScroll";
     inputToggleQuestion();
   });
 
-  menuIcon?.addEventListener("click", () => {
-    openSidebar(menuIcon, xIcon, sidebar, sidebarImages);
-  });
+  const updateMenuAccesibility = (isOpen : boolean ) => {
+    menuButton?.setAttribute("aria-expanded", String(isOpen));
+    sidebar?.setAttribute("aria-hidden", String(!isOpen));
 
-  xIcon?.addEventListener("click", () => {
-    closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
-    toggleModalTrailer(modalTrailers, true);
-  });
+    menuButton?.classList.toggle("pointer-events-none", isOpen);
+    closeMenuButton?.classList.toggle("pointer-events-none", !isOpen);
+
+    if (menuButton instanceof HTMLButtonElement){
+      menuButton.tabIndex = isOpen ? -1 : 0;
+    }
+
+    if(closeMenuButton instanceof HTMLButtonElement){
+      closeMenuButton.tabIndex = isOpen ? 0 : -1;
+      closeMenuButton.setAttribute("aria-hidden", String(!isOpen));
+    }
+  }
+
+  menuButton?.addEventListener("click", ()=>{
+      openSidebar(menuIcon, xIcon, sidebar, sidebarImages);
+      updateMenuAccesibility(true);
+      closeMenuButton?.focus();
+    })
+
+  closeMenuButton?.addEventListener("click", () => {
+      closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
+      toggleModalTrailer(modalTrailers, true);
+      updateMenuAccesibility(false);
+      menuButton?.focus();
+    })
 
   motion?.addEventListener("click", () => {
     toggleMotionContainer();
@@ -268,25 +293,46 @@ import { sendToGsap } from "../scripts/indexToScroll";
             <li 
             > <a class={`${active === "resources" ? "bg-white text-black" : ""} hover:bg-white hover:text-black px-4 py-2 rounded-full font-bold cursor-pointer`} href={`${import.meta.env.BASE_URL}download/resources`}> Recursos. </a>  </li>
         </ul>}
-    <Image
-      src={`${import.meta.env.BASE_URL}menu.svg`}
-      alt="icon of menu"
-      id="menuIcon"
-      height={10}
-      width={10}
-      class="menu_icon z-[60] cursor-pointer absolute right-0 top-3 w-10 md:right-8"
-    />
-    <Image
-      src={`${import.meta.env.BASE_URL}xmark.svg`}
-      alt="icon for close the menu"
-      id="xIcon"
-      height={10}
-      width={10}
-      class="menu_icon z-50 cursor-pointer absolute right-0 top-3 opacity-0 bg-gray-800/40 rounded-full p-2 w-10 md:right-8"
-    />
+    <button
+        type="button"
+        id="menuButton"
+        aria-label="Abrir menú"
+        aria-controls="sidebar"
+        aria-expanded="false"
+        class="absolute right-0 top-3 z-[60] flex items-center justify-center rounded-full border-0 bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:right-8"
+    >
+      <Image
+        src={`${import.meta.env.BASE_URL}menu.svg`}
+        alt=""
+        id="menuIcon"
+        height={10}
+        width={10}
+        class="menu_icon w-10 cursor-pointer"
+      />
+    </button>
+
+    <button
+      type="button"
+      id="closeMenuButton"
+      aria-label="Cerrar menú"
+      aria-controls="sidebar"
+      aria-hidden="true"
+      tabindex="-1"
+      class="pointer-events-none absolute right-0 top-3 z-[60] flex w-10 items-center justify-center rounded-full border-0 bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:right-8"
+    >
+      <Image
+        src={`${import.meta.env.BASE_URL}xmark.svg`}
+        alt=""
+        id="xIcon"
+        height={10}
+        width={10}
+        class="menu_icon w-10 cursor-pointer rounded-full bg-gray-800/40 p-2 opacity-0"
+      />
+      </button>
   </div>
   <div
     id="sidebarImages"
+    aria-hidden="false"
     class="custom_gradient w-1/12 bg-black absolute h-[100vh] top-0 opacity-0 hidden
         md:w-6/12"
   >
