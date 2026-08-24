@@ -129,6 +129,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
       window.open("/#"+character, "_self")
       sendToGsap();
       closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
+      closeMenu();
     })
 
     currentButton?.addEventListener("mouseenter", () => {
@@ -179,6 +180,7 @@ import { sendToGsap } from "../scripts/indexToScroll";
 
     menuButton?.classList.toggle("pointer-events-none", isOpen);
     closeMenuButton?.classList.toggle("pointer-events-none", !isOpen);
+    sidebar?.toggleAttribute("inert", !isOpen);
 
     if (menuButton instanceof HTMLButtonElement){
       menuButton.tabIndex = isOpen ? -1 : 0;
@@ -190,17 +192,28 @@ import { sendToGsap } from "../scripts/indexToScroll";
     }
   }
 
-  menuButton?.addEventListener("click", ()=>{
+  const openMenu = ()=>{
       openSidebar(menuIcon, xIcon, sidebar, sidebarImages);
       updateMenuAccesibility(true);
       closeMenuButton?.focus();
-    })
+    }
 
-  closeMenuButton?.addEventListener("click", () => {
+  const closeMenu = () => {
       closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
       toggleModalTrailer(modalTrailers, true);
       updateMenuAccesibility(false);
       menuButton?.focus();
+    }
+
+    menuButton?.addEventListener("click", openMenu);
+    closeMenuButton?.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", (event : KeyboardEvent) => {
+      const isMenuOpen = menuButton?.getAttribute("aria-expanded") === "true";
+
+      if(event.key === "Escape" && isMenuOpen){
+        closeMenu();
+      }
     })
 
   motion?.addEventListener("click", () => {
@@ -501,6 +514,8 @@ import { sendToGsap } from "../scripts/indexToScroll";
   </div>
   <div
     id="sidebar"
+    aria-hidden="true"
+    inert 
     class="absolute h-[100vh] pl-5 bg-[rgb(42,0,48)] w-11/12 right-[-91.6667%] top-0 pt-10 flex flex-col-reverse justify-between pb-10
         md:w-6/12 md:right-[-50%] md:flex-col md:pl-15 md:pt-0"
   >
