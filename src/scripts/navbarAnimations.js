@@ -3,21 +3,26 @@ import { gsap } from "gsap";
 let isClose = true;
 const sidebarMovementValue = 768 > window.innerWidth ? "-91.6667%" : "-50%";
 
-export const openSidebar = (menuIcon, closeIcon, sidebar, imagesSidebar) =>{
-   document.body.style.overflow = "hidden"
-    gsap.to(menuIcon, {
-      opacity: 0,
-      scale: 0.5,
-      duration: 0.3,
-      zIndex: 20,
-      onComplete: ()=>{
-        closeIconOpen(closeIcon)
-        toggleSidebar(sidebar)
-        toggleImagesSidebar(imagesSidebar)
-      }
-    })
-    isClose = false;
-}
+export const openSidebar = (
+  menuIcon,
+  closeIcon,
+  sidebar,
+  imagesSidebar
+) => {
+  isClose = false;
+
+  gsap.to(menuIcon, {
+    opacity: 0,
+    scale: 0.5,
+    duration: 0.3,
+    zIndex: 20,
+    onComplete: () => {
+      closeIconOpen(closeIcon);
+      toggleSidebar(sidebar);
+      toggleImagesSidebar(imagesSidebar);
+    },
+  });
+};
 
 const closeIconOpen = (closeIcon) => {
     gsap.to(closeIcon, {
@@ -26,6 +31,27 @@ const closeIconOpen = (closeIcon) => {
           zIndex: 50,
         });
 }
+
+export const closeSidebar = (
+  closeIcon,
+  menuIcon,
+  sidebar,
+  imagesSidebar
+) => {
+  isClose = true;
+
+  gsap.to(closeIcon, {
+    opacity: 0,
+    scale: 0.5,
+    duration: 0.3,
+    zIndex: 20,
+    onComplete: () => {
+      menuIconHidden(menuIcon);
+      toggleSidebar(sidebar);
+      toggleImagesSidebar(imagesSidebar);
+    },
+  });
+};
 
 const toggleSidebar = (sidebar) =>{
     gsap.to(sidebar, {
@@ -42,21 +68,6 @@ const toggleImagesSidebar = (imagesSidebar) => {
         });
 }
 
-export const closeSidebar = (closeIcon, menuIcon, sidebar, imagesSidebar) =>{
-  document.body.style.overflow = "";
-    gsap.to(closeIcon, {
-      opacity: 0,
-      scale: 0.5,
-      duration: 0.3,
-      zIndex: 20,
-      onComplete: () => {
-        menuIconHidden(menuIcon)
-        toggleSidebar(sidebar)
-        toggleImagesSidebar(imagesSidebar)
-      }
-    })
-    isClose = true
-}
 
 const menuIconHidden = (menuIcon) => {
     gsap.to(menuIcon, {

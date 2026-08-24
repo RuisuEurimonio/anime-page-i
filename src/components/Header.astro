@@ -195,14 +195,14 @@ import { sendToGsap } from "../scripts/indexToScroll";
   const openMenu = ()=>{
       openSidebar(menuIcon, xIcon, sidebar, sidebarImages);
       updateMenuAccesibility(true);
-      closeMenuButton?.focus();
+      closeMenuButton?.focus({preventScroll: true});
     }
 
   const closeMenu = () => {
       closeSidebar(xIcon, menuIcon, sidebar, sidebarImages);
       toggleModalTrailer(modalTrailers, true);
       updateMenuAccesibility(false);
-      menuButton?.focus();
+      menuButton?.focus({preventScroll: true});
     }
 
     menuButton?.addEventListener("click", openMenu);
@@ -526,31 +526,44 @@ import { sendToGsap } from "../scripts/indexToScroll";
         lg:text-lg
         xl:text-xl"
     >
-      <li
+      <li>
+        <button
+        type="button"
+        aria-controls="charactersList"
         id="characters"
-        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5"  
-      >
+        class="cursor-pointer rounder-4xl border-0 bg-transparent px-3 py-1 text-inherit duration-200 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
+          md:px-5 md:py-3"
+        >
           Personajes.
+          </button>
       </li>
-      <li
+      <li>
+        <button
+        type="button"
         id="animes"
-        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5"
+        aria-controls="animesList"
+        class="cursor-pointer rounder-4xl border-0 bg-transparent px-3 py-1 text-inherit duration-200 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
+          md:px-5 md:py-3"
       >
         Animes.
       </li>
-      <li
+      <li>
+        <button
+        type="button"
         id="trailers"
-        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5"
+        aria-controls="trailersList"
+        class="cursor-pointer rounder-4xl border-0 bg-transparent px-3 py-1 text-inherit duration-200 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
+          md:px-5 md:py-3"
       >
         Trailers.
       </li>
-      <li
+      <li>
+        <button
+        type="button"
+        aria-controls="downloadList"
         id="download"
-        class="cursor-pointer py-1 px-3 hover:bg-white hover:text-black duration-200 rounded-4xl
-          md:py-3 md:px-5"
+        class="cursor-pointer rounder-4xl border-0 bg-transparent px-3 py-1 text-inherit duration-200 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
+          md:px-5 md:py-3"
       >
         Descargar.
       </li>
